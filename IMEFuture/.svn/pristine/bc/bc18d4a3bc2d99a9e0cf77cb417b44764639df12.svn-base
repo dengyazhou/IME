@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="OQCLabelAndButtonCell" customModule="NIM" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44.5"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FLv-JV-leM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="缺陷原因" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEC-TL-LpJ">
+                                <rect key="frame" x="15.5" y="12.5" width="65.5" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="20z-oU-w2r">
+                                <rect key="frame" x="15.5" y="43.5" width="359.5" height="0.5"/>
+                                <color key="backgroundColor" red="0.86666666670000003" green="0.86666666670000003" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.5" id="gpK-tO-ibL"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RR0-wk-a0G">
+                                <rect key="frame" x="81" y="7.5" width="262" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="请选择">
+                                    <color key="titleColor" red="0.69411764710000001" green="0.69411764710000001" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="next" translatesAutoresizingMaskIntoConstraints="NO" id="azf-1u-tyB">
+                                <rect key="frame" x="343" y="11" width="22" height="22"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sEn-vY-kMg">
+                                <rect key="frame" x="91" y="8.5" width="252" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="已选择8种">
+                                    <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="20z-oU-w2r" secondAttribute="trailing" id="3Sl-Nb-EpI"/>
+                            <constraint firstItem="azf-1u-tyB" firstAttribute="centerY" secondItem="FLv-JV-leM" secondAttribute="centerY" id="HRL-S9-nuS"/>
+                            <constraint firstItem="azf-1u-tyB" firstAttribute="leading" secondItem="RR0-wk-a0G" secondAttribute="trailing" id="HvE-Tx-iWE"/>
+                            <constraint firstItem="azf-1u-tyB" firstAttribute="leading" secondItem="sEn-vY-kMg" secondAttribute="trailing" id="Jta-Mj-iVN"/>
+                            <constraint firstAttribute="height" constant="44" id="Kbk-Ml-GDj"/>
+                            <constraint firstItem="RR0-wk-a0G" firstAttribute="centerY" secondItem="BEC-TL-LpJ" secondAttribute="centerY" id="Ta0-Vi-jcH"/>
+                            <constraint firstAttribute="trailing" secondItem="azf-1u-tyB" secondAttribute="trailing" constant="10" id="X62-Kx-b22"/>
+                            <constraint firstItem="sEn-vY-kMg" firstAttribute="leading" secondItem="BEC-TL-LpJ" secondAttribute="trailing" constant="10" id="hnl-mi-eaj"/>
+                            <constraint firstItem="sEn-vY-kMg" firstAttribute="centerY" secondItem="BEC-TL-LpJ" secondAttribute="centerY" id="j4k-Tb-qds"/>
+                            <constraint firstAttribute="bottom" secondItem="20z-oU-w2r" secondAttribute="bottom" id="juG-IS-ZM4"/>
+                            <constraint firstItem="BEC-TL-LpJ" firstAttribute="leading" secondItem="FLv-JV-leM" secondAttribute="leading" constant="15" id="neg-30-bBe"/>
+                            <constraint firstItem="RR0-wk-a0G" firstAttribute="leading" secondItem="BEC-TL-LpJ" secondAttribute="trailing" id="pqc-9l-XKR"/>
+                            <constraint firstItem="BEC-TL-LpJ" firstAttribute="centerY" secondItem="FLv-JV-leM" secondAttribute="centerY" id="xS5-cc-SVP"/>
+                            <constraint firstItem="20z-oU-w2r" firstAttribute="leading" secondItem="FLv-JV-leM" secondAttribute="leading" constant="15" id="y03-Ve-9BS"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="FLv-JV-leM" secondAttribute="bottom" id="9Dh-LP-wID"/>
+                    <constraint firstAttribute="trailing" secondItem="FLv-JV-leM" secondAttribute="trailing" id="iIU-yq-Yvz"/>
+                    <constraint firstItem="FLv-JV-leM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="qkP-mo-XED"/>
+                    <constraint firstItem="FLv-JV-leM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="x1o-W7-AJN"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="buttonQueXianYuanYing" destination="sEn-vY-kMg" id="En9-he-2XC"/>
+                <outlet property="buttonQueXianYuanYingXuanZe" destination="RR0-wk-a0G" id="53R-WI-TxO"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="next" width="22" height="22"/>
+    </resources>
+</document>

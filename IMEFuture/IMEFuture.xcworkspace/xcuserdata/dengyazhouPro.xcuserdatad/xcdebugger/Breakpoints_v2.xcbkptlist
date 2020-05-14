@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "1AF8AC4E-D4EE-4A2C-A0C8-E501F4900E1A"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "586678DC-5570-493A-8530-A080B1AC119C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IMEFuture/IMEfuture/TransparentFactory/MultiBaoGong /ScanMultiComplete/ScanMultiCompleteVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "499"
+            endingLineNumber = "499"
+            landmarkName = "requestDoConfirmProduction()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "586678DC-5570-493A-8530-A080B1AC119C - c176770427a49008"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IMEFuture.ScanMultiCompleteVC.requestDoConfirmProduction() -&gt; ()"
+                  moduleName = "IMEFuture"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dengyazhouPro/Desktop/SVN/IMEFuture/IMEFuture/IMEfuture/TransparentFactory/MultiBaoGong%20/ScanMultiComplete/ScanMultiCompleteVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "500"
+                  endingLineNumber = "500"
+                  offsetFromSymbolStart = "19628">
+               </Location>
+               <Location
+                  uuid = "586678DC-5570-493A-8530-A080B1AC119C - 39e45df1cbe6d68f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Any&gt;) -&gt; () in IMEFuture.ScanMultiCompleteVC.requestDoConfirmProduction() -&gt; ()"
+                  moduleName = "IMEFuture"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dengyazhouPro/Desktop/SVN/IMEFuture/IMEFuture/IMEfuture/TransparentFactory/MultiBaoGong%20/ScanMultiComplete/ScanMultiCompleteVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "500"
+                  endingLineNumber = "500"
+                  offsetFromSymbolStart = "0">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "49192D01-A9D0-4AE4-8191-5023D58124E3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IMEFuture/IMEfuture/Enostandard/EnostandardCai/YanHuo090114/YanHuoViewController09.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "268"
+            endingLineNumber = "268"
+            landmarkName = "-requestTemporaryStorageAndSubmit:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "49192D01-A9D0-4AE4-8191-5023D58124E3 - 418f330ec7468ffe"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[YanHuoViewController09 requestTemporaryStorageAndSubmit:]"
+                  moduleName = "IMEFuture"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dengyazhouPro/Desktop/SVN/IMEFuture/IMEFuture/IMEfuture/Enostandard/EnostandardCai/YanHuo090114/YanHuoViewController09.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "269"
+                  endingLineNumber = "269"
+                  offsetFromSymbolStart = "2624">
+               </Location>
+               <Location
+                  uuid = "49192D01-A9D0-4AE4-8191-5023D58124E3 - f563d7fed86a1b50"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__59-[YanHuoViewController09 requestTemporaryStorageAndSubmit:]_block_invoke"
+                  moduleName = "IMEFuture"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dengyazhouPro/Desktop/SVN/IMEFuture/IMEFuture/IMEfuture/Enostandard/EnostandardCai/YanHuo090114/YanHuoViewController09.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "269"
+                  endingLineNumber = "269"
+                  offsetFromSymbolStart = "0">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

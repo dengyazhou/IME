@@ -1,0 +1,381 @@
+//
+//  IQCJianYanJieGuoVC.swift
+//  IMEFuture
+//
+//  Created by 邓亚洲 on 2018/7/19.
+//  Copyright © 2018年 Netease. All rights reserved.
+//
+
+import UIKit
+
+class IQCJianYanJieGuoVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+    
+    var materialArrivedOrderDetailVo: MaterialArrivedOrderDetailVo!
+    
+    private let _height_NavBar = Height_NavBar
+    private let _height_BottomBar = Height_BottomBar
+    
+    var _viewLoading: UIView!
+    
+    private var bool001: Bool = true
+    private var bool002: Bool = false
+    private var bool003: Bool = false
+    
+    var arrayCauseCode: [String]! = []
+    var arrayDateImageView1: [Data]! = []
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var viewBottom: UIView!
+    @IBOutlet weak var heightNavBar: NSLayoutConstraint!
+    @IBOutlet weak var heightBottomBar: NSLayoutConstraint!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if self.materialArrivedOrderDetailVo.status.intValue == 1 {//已检验
+            self.viewBottom.isHidden = true
+        } else {//待检验
+            self.viewBottom.isHidden = false
+        }
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.heightNavBar.constant = _height_NavBar!
+        self.heightBottomBar.constant = _height_BottomBar!
+        
+        _viewLoading = UIView.loading(withFrame: CGRect(x: 0, y: _height_NavBar!, width: kMainW, height: kMainH), color: UIColor.clear, imageView: CGRect(x: (kMainW - 34)/2, y: 180, width: 34, height: 34))
+        self.view.addSubview(_viewLoading)
+        _viewLoading.isHidden = true
+        
+//        self.tableView .register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "cell")
+        self.tableView.register(UINib.init(nibName: "IQCJYJGCell", bundle: nil), forCellReuseIdentifier: "iQCJYJGCell")
+        self.tableView.register(UINib.init(nibName: "IQCJYJGCell1", bundle: nil), forCellReuseIdentifier: "iQCJYJGCell1")
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        self.tableView.tableFooterView = UIView()
+        self.tableView.estimatedRowHeight = 44
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "iQCJYJGCell", for: indexPath) as! IQCJYJGCell
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.label0.text = "编号："+self.materialArrivedOrderDetailVo.materialCode
+            cell.label1.text = "物料名称："+self.materialArrivedOrderDetailVo.materialText
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "iQCJYJGCell1", for: indexPath) as! IQCJYJGCell1
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            
+            
+            
+            if self.materialArrivedOrderDetailVo.status.intValue == 1 {//已检验
+                if self.materialArrivedOrderDetailVo.planQuantity.doubleValue != 0 {
+                    cell.textField01.text = "\(NSNumber.init(value: self.materialArrivedOrderDetailVo.planQuantity.doubleValue))"
+                } else {
+                    cell.textField01.text = "0"
+                }
+                cell.textField01.isEnabled = false
+            } else {//待检验
+                if self.bool001 == true {
+                    if self.materialArrivedOrderDetailVo.planQuantity.doubleValue != 0 {
+                        cell.textField01.text = "\(NSNumber.init(value: self.materialArrivedOrderDetailVo.planQuantity.doubleValue))"
+                    } else {
+                        cell.textField01.text = "0"
+                    }
+                } else {
+                    cell.textField01.text = nil
+                }
+                cell.textField01.isEnabled = true
+            }
+            
+            cell.textField01.addTarget(self, action: #selector(textField0Click(sender:)), for: UIControlEvents.editingChanged)
+            cell.textField01.inputAccessoryView = self.addToolbar()
+            
+            //合格数
+            cell.label01.text = "\(self.materialArrivedOrderDetailVo.qualifiedQuantity.doubleValue)"
+            
+            if self.materialArrivedOrderDetailVo.status.intValue == 1 {//已检验
+                if self.materialArrivedOrderDetailVo.unQqualifiedQuantity.doubleValue != 0 {
+                    cell.textField02.text = "\(NSNumber.init(value: self.materialArrivedOrderDetailVo.unQqualifiedQuantity.doubleValue))"
+                } else {
+                    cell.textField02.text = "0"
+                }
+                cell.textField02.isEnabled = false
+            } else {//待检验
+                if self.bool002 == true {
+                    if self.materialArrivedOrderDetailVo.unQqualifiedQuantity.doubleValue != 0 {
+                        cell.textField02.text = "\(NSNumber.init(value: self.materialArrivedOrderDetailVo.unQqualifiedQuantity.doubleValue))"
+                    } else {
+                        cell.textField02.text = "0"
+                    }
+                } else {
+                    cell.textField02.text = nil
+                }
+                cell.textField02.isEnabled = true
+            }
+            
+            cell.textField02.addTarget(self, action: #selector(textField1Click(sender:)), for: UIControlEvents.editingChanged)
+            cell.textField02.inputAccessoryView = self.addToolbar()
+            
+            if self.materialArrivedOrderDetailVo.status.intValue == 1 {//已检验
+                cell.view3.isHidden = true
+            } else {//待检验
+                cell.view3.isHidden = true
+                if self.materialArrivedOrderDetailVo.unQqualifiedQuantity.doubleValue > 0 {
+                    cell.view3.isHidden = false
+                }
+            }
+            
+            cell.buttonQueXianYuanYing.isHidden = true
+            cell.buttonQueXianYuanYingXuanZe.isHidden = true
+            if (self.arrayCauseCode.count > 0) {
+                cell.buttonQueXianYuanYing.isHidden = false
+                cell.buttonQueXianYuanYing.setTitle("已选择\(self.arrayCauseCode.count)种", for: UIControlState.normal)
+            } else {
+                cell.buttonQueXianYuanYingXuanZe.isHidden = false
+            }
+            cell.buttonQueXianYuanYing.addTarget(self, action: #selector(buttonQueXianYuanYingQingXuanZe(sender:)), for: UIControlEvents.touchUpInside)
+            cell.buttonQueXianYuanYingXuanZe.addTarget(self, action: #selector(buttonQueXianYuanYingQingXuanZe(sender:)), for: UIControlEvents.touchUpInside)
+            
+            
+            if self.materialArrivedOrderDetailVo.status.intValue == 1 {//已检验
+                if self.materialArrivedOrderDetailVo.concessionQuantity.doubleValue != 0 {
+                    cell.textField04.text = "\(NSNumber.init(value: self.materialArrivedOrderDetailVo.concessionQuantity.doubleValue))"
+                } else {
+                    cell.textField04.text = "0"
+                }
+                cell.textField04.isEnabled = false
+            } else {//待检验
+                if self.bool003 == true {
+                    if self.materialArrivedOrderDetailVo.concessionQuantity.doubleValue != 0 {
+                        cell.textField04.text = "\(NSNumber.init(value: self.materialArrivedOrderDetailVo.concessionQuantity.doubleValue))"
+                    } else {
+                        cell.textField04.text = "0"
+                    }
+                } else {
+                    cell.textField04.text = nil
+                }
+                cell.textField04.isEnabled = true
+            }
+            
+            cell.textField04.addTarget(self, action: #selector(textField4Click(sender:)), for: UIControlEvents.editingChanged)
+            cell.textField04.inputAccessoryView = self.addToolbar()
+            
+            return cell
+        }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.01;
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 10
+        } else {
+            return 10
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        //不用设置大小，只设置颜色，就OK 只在plain下可以这样
+//        let view = UIView()
+//        view.backgroundColor = UIColor.clear
+//        return view;
+        return nil
+    }
+    
+    @objc func textField0Click(sender: UITextField) {
+        if sender.text?.count ?? 0 > 0 {
+            self.bool001 = true
+            self.materialArrivedOrderDetailVo.planQuantity = NSNumber.init(value: Double(sender.text!)!)
+        } else {
+            self.bool001 = false
+            self.materialArrivedOrderDetailVo.planQuantity = NSNumber.init(value: 0)
+        }
+        let double0: Double = self.materialArrivedOrderDetailVo.planQuantity.doubleValue - self.materialArrivedOrderDetailVo.unQqualifiedQuantity.doubleValue - self.materialArrivedOrderDetailVo.concessionQuantity.doubleValue
+        self.materialArrivedOrderDetailVo.qualifiedQuantity = NSNumber.init(value: double0)
+    }
+    @objc func textField1Click(sender: UITextField) {
+        
+        if sender.text?.count ?? 0 > 0 {
+            self.bool002 = true
+            self.materialArrivedOrderDetailVo.unQqualifiedQuantity = NSNumber.init(value: Double(sender.text!)!)
+        } else {
+            self.bool002 = false
+            self.materialArrivedOrderDetailVo.unQqualifiedQuantity = NSNumber.init(value: 0)
+        }
+        let double0: Double = self.materialArrivedOrderDetailVo.planQuantity.doubleValue - self.materialArrivedOrderDetailVo.unQqualifiedQuantity.doubleValue - self.materialArrivedOrderDetailVo.concessionQuantity.doubleValue
+        self.materialArrivedOrderDetailVo.qualifiedQuantity = NSNumber.init(value: double0)
+        
+        
+//        let cell = self.tableView.cellForRow(at: IndexPath.init(row: 0, section: 1)) as! IQCJYJGCell1
+//        if self.materialArrivedOrderDetailVo.unQqualifiedQuantity.doubleValue > 0 {
+//            cell.view3.isHidden = false
+//        } else {
+//            cell.view3.isHidden = true
+//        }
+//        self.tableView.reloadRows(at: [IndexPath.init(row: 0, section: 1)], with: UITableViewRowAnimation.none)
+//        Thread.sleep(forTimeInterval: 0.1)
+//        sender.becomeFirstResponder()
+    }
+    
+    @objc func buttonQueXianYuanYingQingXuanZe(sender: UIButton) {
+        let queXianYuanYinXuanZeViewController: QueXianYuanYinXuanZeViewController = QueXianYuanYinXuanZeViewController()
+        
+        queXianYuanYinXuanZeViewController.blockArrayString = {(arrayString: NSMutableArray?) in
+            self.arrayCauseCode = arrayString as! [String]
+            
+            self.tableView.reloadRows(at: [IndexPath.init(row: 0, section: 1)], with: UITableViewRowAnimation.none)
+        }
+        queXianYuanYinXuanZeViewController.blockDateImageView0 = {(arrayDateImage: NSMutableArray?) in
+            self.arrayDateImageView1 = arrayDateImage as! [Data]
+            
+        }
+        
+        queXianYuanYinXuanZeViewController.stage = "IQC"
+        queXianYuanYinXuanZeViewController.materialCode = self.materialArrivedOrderDetailVo.materialCode
+        
+        queXianYuanYinXuanZeViewController.arrayCauseCode = NSMutableArray.init(array: self.arrayCauseCode)
+        queXianYuanYinXuanZeViewController.arrayDateImageView0 = NSMutableArray.init(array: self.arrayDateImageView1)
+        
+        
+        self.navigationController?.pushViewController(queXianYuanYinXuanZeViewController, animated: true)
+    }
+    
+    @objc func textField4Click(sender: UITextField) {
+        if sender.text?.count ?? 0 > 0 {
+             self.bool003 = true
+            self.materialArrivedOrderDetailVo.concessionQuantity = NSNumber.init(value: Double(sender.text!)!)
+        } else {
+             self.bool003 = false
+            self.materialArrivedOrderDetailVo.concessionQuantity = NSNumber.init(value: 0)
+        }
+        let double0: Double = self.materialArrivedOrderDetailVo.planQuantity.doubleValue - self.materialArrivedOrderDetailVo.unQqualifiedQuantity.doubleValue - self.materialArrivedOrderDetailVo.concessionQuantity.doubleValue
+        self.materialArrivedOrderDetailVo.qualifiedQuantity = NSNumber.init(value: double0)
+    }
+    
+//    MARK: 提交
+    @IBAction func buttonCommit(_ sender: Any) {
+        if self.materialArrivedOrderDetailVo.unQqualifiedQuantity.doubleValue > self.materialArrivedOrderDetailVo.planQuantity.doubleValue {
+            MyAlertCenter.default().postAlert(withMessage: "不合格数不能大于到货数")
+            return;
+        }
+        if self.materialArrivedOrderDetailVo.concessionQuantity.doubleValue > self.materialArrivedOrderDetailVo.planQuantity.doubleValue {
+            MyAlertCenter.default().postAlert(withMessage: "让步数不能大于到货数")
+            return;
+        }
+        
+        _viewLoading.isHidden = false
+        let mesPostEntityBean: MesPostEntityBean = MesPostEntityBean()
+        let loginModel: LoginModel = DatabaseTool.getLoginModel()
+        let tpfUser = UserInfoVo.mj_object(withKeyValues: loginModel.tpfUser)
+        let userCode = tpfUser?.userCode
+        
+        self.materialArrivedOrderDetailVo.receivedQuantity = self.materialArrivedOrderDetailVo.planQuantity
+        self.materialArrivedOrderDetailVo.receivedUser = userCode
+        let materialArrivedOrderDetailVo: MaterialArrivedOrderDetailVo = self.materialArrivedOrderDetailVo
+        
+        if (self.arrayCauseCode.count > 0) {
+            materialArrivedOrderDetailVo.causeCodes = NSMutableArray.init(array: self.arrayCauseCode)
+        }
+        
+        mesPostEntityBean.entity = materialArrivedOrderDetailVo.mj_keyValues() as! [AnyHashable : Any]!
+        let dic1 = mesPostEntityBean.mj_keyValues() as! [AnyHashable : Any]
+
+        let dic = ["data":getJSONStringFromDictionary(dictionary: dic1 as NSDictionary)];
+        print(dic);
+        
+        
+        var uploadImageArray: [UploadImageBean] = []
+        for data in self.arrayDateImageView1 {
+            let uploadImageBean = UploadImageBean.init()
+            uploadImageBean.data = data
+            uploadImageBean.name = "defectCausePictureList"
+            
+            let formatter = DateFormatter.init()
+            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            let strDate = formatter.string(from: Date.init())
+            uploadImageBean.fileName = strDate+".png"
+            
+            uploadImageBean.mimeType = "image/png"
+            uploadImageArray.append(uploadImageBean)
+        }
+        
+        HttpMamager.postRequestImage(withURLString: DYZ_materialArrivedOrder_updateMaterialArrivedOrderDetailForCheck, parameters: dic, uploadImageBean: uploadImageArray, success: { (responseObjectModel: Any?) in
+            let returnMsgBean = responseObjectModel as! ReturnMsgBean
+            
+            self._viewLoading.isHidden = true
+            if returnMsgBean.status == "SUCCESS" {
+                MyAlertCenter.default().postAlert(withMessage: "提交成功")
+                self.materialArrivedOrderDetailVo.status = NSNumber.init(value: 1)
+                self.navigationController?.popViewController(animated: true)
+            } else {
+                MyAlertCenter.default().postAlert(withMessage: returnMsgBean.returnMsg)
+            }
+        }, fail: { (error: Error?) in
+            self._viewLoading.isHidden = true
+        }, isKindOfModelClass: NSClassFromString("ReturnMsgBean"))
+        
+    }
+    
+    func addToolbar() -> UIToolbar {
+        let toolbar = UIToolbar.init(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 38))
+        toolbar.tintColor = colorRGB(r: 0, g: 168, b: 255)
+        let space = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let bar = UIBarButtonItem.init(title: "完成", style: UIBarButtonItemStyle.plain, target: self, action: #selector(textFieldDone))
+        toolbar.items = [space, bar]
+        return toolbar
+    }
+    
+    @objc func textFieldDone() {
+        UIApplication.shared.sendAction(#selector(resignFirstResponder), to: nil, from: nil, for: nil)
+        self.tableView.reloadRows(at: [IndexPath.init(row: 0, section: 1)], with: UITableViewRowAnimation.none)
+    }
+    
+    func getJSONStringFromDictionary(dictionary:NSDictionary) -> String {
+        if (!JSONSerialization.isValidJSONObject(dictionary)) {
+            print("无法解析出JSONString")
+            return ""
+        }
+        let data : NSData! = try? JSONSerialization.data(withJSONObject: dictionary, options: []) as NSData!
+        let JSONString = NSString(data:data as Data,encoding: String.Encoding.utf8.rawValue)
+        return JSONString! as String
+    }
+    
+    @IBAction func back(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}

@@ -1,0 +1,42 @@
+//
+//  BatchWorkItemReportVo.h
+//  IMEFuture
+//
+//  Created by 邓亚洲 on 2018/12/6.
+//  Copyright © 2018年 Netease. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+#import "ProductionOperationVo.h"
+#import "AttachmentVo.h"
+
+@interface BatchWorkItemReportVo : NSObject
+
+
+/**
+ * 报工明细
+ */
+@property (nonatomic,strong)  ProductionOperationVo * productionOperationVo;
+
+/**
+ * 报废图片集合
+ */
+@property (nonatomic,strong) NSMutableArray <__kindof AttachmentVo *> *defectPictureAttachmentVoList;
+
+/**
+ * 返修数量
+ */
+@property (nonatomic,strong) NSNumber * repairQuantity;//Double
+
+/**
+ * 返修状态 0 不返修  1 返修
+ */
+@property (nonatomic,strong) NSNumber * reworkStatus;//int
+
+/**
+ * 缺陷原因
+ */
+@property (nonatomic,strong) NSMutableArray <__kindof NSString *> * causeList;
+
+@end

@@ -1,0 +1,95 @@
+//
+//  TemporaryTaskVo.h
+//  IMEFuture
+//
+//  Created by 邓亚洲 on 2019/7/18.
+//  Copyright © 2019 dengyazhou. All rights reserved.
+//
+
+#import "ImeCommonVo.h"
+#import <MJExtension.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface TemporaryTaskVo : ImeCommonVo
+
+/**
+ * ID
+ */
+@property (nonatomic,strong) NSNumber * idDYZ;//Long
+
+/**
+ * 临时任务类型ID
+ */
+@property (nonatomic,strong) NSNumber * temporaryTaskTypeId;//Long
+
+/**
+ * 任务说明
+ */
+@property (nonatomic,copy) NSString * taskSpecification;
+
+/**
+ * 临时任务状态 0 创建 1 进行中 2 暂停 3 完成
+ */
+@property (nonatomic,strong) NSNumber * status;//Integer
+
+/**
+ * 工作时间
+ */
+@property (nonatomic,strong) NSNumber * workTime;//Long
+
+/**
+ * 实际开始时间
+ */
+@property (nonatomic,copy) NSString * startDateTime;//Date
+
+/**
+ * 完工时间
+ */
+@property (nonatomic,copy) NSString * actualEndDateTime;//Date
+
+/**
+ * 确认人（操作者）
+ */
+@property (nonatomic,copy) NSString * confirmUser;
+
+/**
+ * 临时任务状态 0 现场确认 1 远程确认
+ */
+@property (nonatomic,strong) NSNumber * confirmType;//Integer
+
+/**
+ * 暂停次数
+ */
+@property (nonatomic,strong) NSNumber * shutdownCount;//Integer
+
+/**
+ * 暂停总时长
+ */
+@property (nonatomic,strong) NSNumber * shutdownTime;//Long
+
+
+/**
+ * 登录方式:PDA/WEB
+ */
+@property (nonatomic,copy) NSString * loginType;
+
+/**
+ * 用户名
+ */
+@property (nonatomic,copy) NSString * userName;
+
+/**
+ * 密码
+ */
+@property (nonatomic,copy) NSString * password;
+
+@property (nonatomic,copy) NSString *name;
+
+@property (nonatomic,copy) NSString *userText;
+
+@property (nonatomic,copy) NSString *createUserText;
+
+@end
+
+NS_ASSUME_NONNULL_END

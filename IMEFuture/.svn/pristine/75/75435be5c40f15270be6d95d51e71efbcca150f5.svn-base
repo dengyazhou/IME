@@ -1,0 +1,76 @@
+//
+//  GlobalSettingManager.m
+//  IMEFuture
+//
+//  Created by 邓亚洲 on 2019/7/2.
+//  Copyright © 2019 dengyazhou. All rights reserved.
+//
+
+#import "GlobalSettingManager.h"
+
+
+@implementation GlobalSettingManager
+
++ (instancetype)shareGlobalSettingManager {
+    static GlobalSettingManager *gsManager = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        gsManager = [[self alloc] init];
+    });
+    return gsManager;
+}
+
+- (void)requestPurchaseGlobalTemplate {
+    EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
+    postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+    GlobalTemplateBean *globalTemplateBean = [[GlobalTemplateBean alloc] init];
+    
+    postEntityBean.entity = globalTemplateBean.mj_keyValues;
+    
+    NSDictionary *dic = postEntityBean.mj_keyValues;
+
+    [HttpMamager postRequestWithURLString:DYZ_api_globalTemplate_purchase_getGlobalTemplateForTable parameters:dic success:^(id responseObjectModel) {
+        
+        ReturnListBean *returnListBean = responseObjectModel;
+        if ([returnListBean.status isEqualToString:@"SUCCESS"]) {
+            self.purchaseGlobalTemplateArray = [GlobalTemplateBean mj_objectArrayWithKeyValuesArray:returnListBean.list];
+        }
+        
+    } fail:^(NSError *error) {
+        
+    } isKindOfModel:NSClassFromString(@"ReturnListBean")];
+}
+
+- (void)requestSupplierGlobalTemplate {
+    EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
+    postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+    GlobalTemplateBean *globalTemplateBean = [[GlobalTemplateBean alloc] init];
+    
+    postEntityBean.entity = globalTemplateBean.mj_keyValues;
+    
+    NSDictionary *dic = postEntityBean.mj_keyValues;
+    
+    [HttpMamager postRequestWithURLString:DYZ_api_globalTemplate_supplier_getGlobalTemplateForTable parameters:dic success:^(id responseObjectModel) {
+        ReturnListBean *returnListBean = responseObjectModel;
+        if ([returnListBean.status isEqualToString:@"SUCCESS"]) {
+            self.supplierGlobalTemplateArray = [GlobalTemplateBean mj_objectArrayWithKeyValuesArray:returnListBean.list];
+        }
+        
+    } fail:^(NSError *error) {
+        
+    } isKindOfModel:NSClassFromString(@"ReturnListBean")];
+}
+
+- (void)setCompetenceTypeArrayWithLoginModel:(LoginModel *)loginModel {
+    NSString *member = loginModel.member;
+    Member *memberModel = [Member mj_objectWithKeyValues:member];
+    self.competenceTypeArray = [[NSMutableArray alloc] init];
+    for (NSDictionary *dic in memberModel.cpList) {
+        MemberCompetence *memberCompetence = [MemberCompetence mj_objectWithKeyValues:dic];
+        if (memberCompetence.competence.type) {
+            [self.competenceTypeArray addObject:memberCompetence.competence.type];
+        }
+    }
+}
+
+@end

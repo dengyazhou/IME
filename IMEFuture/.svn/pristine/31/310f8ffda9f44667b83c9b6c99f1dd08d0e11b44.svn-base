@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="KGk-i7-Jjw" customClass="ShengChangJinDuCell">
+            <rect key="frame" x="0.0" y="0.0" width="399" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="399" height="79.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s9s-8r-C9A">
+                        <rect key="frame" x="131" y="0.0" width="131.5" height="56"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.12549019607843137" green="0.12549019607843137" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                        <size key="shadowOffset" width="0.0" height="0.0"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8NE-5J-uMs">
+                        <rect key="frame" x="263" y="0.0" width="136" height="56"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.12549019607843137" green="0.12549019607843137" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="零件名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="89K-5t-0nk">
+                        <rect key="frame" x="0.0" y="0.0" width="131.5" height="56"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="56" id="Ic2-dH-czM"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.12549019607843137" green="0.12549019607843137" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="s9s-8r-C9A" firstAttribute="top" secondItem="89K-5t-0nk" secondAttribute="top" id="6vF-Mk-d1d"/>
+                    <constraint firstItem="8NE-5J-uMs" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="34:100" id="HBi-g2-iET"/>
+                    <constraint firstItem="89K-5t-0nk" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="33:100" id="PM8-4r-1Ma"/>
+                    <constraint firstItem="8NE-5J-uMs" firstAttribute="height" secondItem="s9s-8r-C9A" secondAttribute="height" id="QDX-YH-PUJ"/>
+                    <constraint firstItem="s9s-8r-C9A" firstAttribute="leading" secondItem="89K-5t-0nk" secondAttribute="trailing" id="a9J-Tf-cIj"/>
+                    <constraint firstItem="89K-5t-0nk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="aIs-WD-p5D"/>
+                    <constraint firstItem="8NE-5J-uMs" firstAttribute="leading" secondItem="s9s-8r-C9A" secondAttribute="trailing" id="br1-Gl-kuv"/>
+                    <constraint firstItem="8NE-5J-uMs" firstAttribute="top" secondItem="s9s-8r-C9A" secondAttribute="top" id="con-V7-FTL"/>
+                    <constraint firstItem="s9s-8r-C9A" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="33:100" id="haZ-Vn-RVB"/>
+                    <constraint firstItem="s9s-8r-C9A" firstAttribute="height" secondItem="89K-5t-0nk" secondAttribute="height" id="ikv-6D-xZq"/>
+                    <constraint firstItem="89K-5t-0nk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="m5U-Cv-J0M"/>
+                    <constraint firstAttribute="trailing" secondItem="8NE-5J-uMs" secondAttribute="trailing" id="tsW-HS-UJh"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="completedQuantity" destination="8NE-5J-uMs" id="XQc-4a-YJF"/>
+                <outlet property="materialText" destination="89K-5t-0nk" id="8Ac-Wd-c1U"/>
+                <outlet property="plannedQuantity" destination="s9s-8r-C9A" id="8re-fC-13f"/>
+            </connections>
+            <point key="canvasLocation" x="283.5" y="333"/>
+        </tableViewCell>
+    </objects>
+</document>

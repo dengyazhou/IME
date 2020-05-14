@@ -1,0 +1,102 @@
+//
+//  CompleteConfirmationCipherConfirmationView.m
+//  IMEFuture
+//
+//  Created by 邓亚洲 on 2019/7/19.
+//  Copyright © 2019 dengyazhou. All rights reserved.
+//
+
+#import "CompleteConfirmationCipherConfirmationView.h"
+#import "Header.h"
+#import "MyAlertCenter.h"
+
+
+@interface CompleteConfirmationCipherConfirmationView () <UIGestureRecognizerDelegate>
+
+
+@property (weak, nonatomic) IBOutlet UIView *viewBg;
+@property (weak, nonatomic) IBOutlet UILabel *mustWriteLabel;
+
+
+@end
+
+@implementation CompleteConfirmationCipherConfirmationView
+
++ (instancetype)loadXibView {
+    return [[[NSBundle mainBundle] loadNibNamed:@"CompleteConfirmationCipherConfirmationView" owner:self options:nil] firstObject];
+}
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    self.frame = CGRectMake(0, 0, kMainW, kMainH);
+    self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];
+    
+    self.viewBg.layer.cornerRadius = 10;
+    self.viewBg.clipsToBounds = YES;
+    
+    self.wrongPasswordView.hidden = true;
+    
+    [self.textField addTarget:self action:@selector(textFieldTextChange:) forControlEvents:UIControlEventEditingChanged];
+    self.textField.secureTextEntry = YES;
+    
+    UITapGestureRecognizer *singleFinger = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleFingerEvent:)];
+    singleFinger.numberOfTouchesRequired = 1; //手指数
+    singleFinger.numberOfTapsRequired = 1; //tap次数
+    singleFinger.delegate = self;
+    [self addGestureRecognizer:singleFinger];
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
+    if ([touch.view isDescendantOfView:self.viewBg]) {
+        return NO;
+    }
+    return YES;
+}
+
+- (void)handleSingleFingerEvent:(UITapGestureRecognizer *)tap{
+    [self removeFromSuperview];
+}
+
+- (void)initWithDataWithAffirmWithName:(NSString *)name ButtonClick:(void (^)(void))affrimBlock {
+    self.affrimBlock = affrimBlock;
+    
+    self.mustWriteLabel.text = [NSString stringWithFormat:@"%@ 请输入密码(必填)：",name];
+    NSMutableAttributedString *abs = [[NSMutableAttributedString alloc] initWithString:self.mustWriteLabel.text];
+    
+    [abs addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(self.mustWriteLabel.text.length-4, 2)];
+    self.mustWriteLabel.attributedText = abs;
+
+}
+
+- (void)textFieldTextChange:(UITextField *)sender {
+    self.wrongPasswordView.hidden = true;
+}
+
+- (IBAction)affirmBuutonClick:(id)sender {
+    if (self.textField.text.length > 0) {
+        
+    } else {
+        [[MyAlertCenter defaultCenter] postAlertWithMessage:@"请输入密码"];
+        return;
+    }
+    if (self.affrimBlock) {
+        self.affrimBlock();
+    }
+}
+
+- (IBAction)cancelBuutonClick:(id)sender {
+    [self removeFromSuperview];
+}
+
+
+
+/*
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect {
+    // Drawing code
+}
+*/
+
+@end

@@ -1,0 +1,27 @@
+//
+//  CompleteConfirmationCipherConfirmationView.h
+//  IMEFuture
+//
+//  Created by 邓亚洲 on 2019/7/19.
+//  Copyright © 2019 dengyazhou. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface CompleteConfirmationCipherConfirmationView : UIView
+
+@property (weak, nonatomic) IBOutlet UITextField *textField;
+
+@property (weak, nonatomic) IBOutlet UIView *wrongPasswordView;
+
+@property (nonatomic,copy) void(^affrimBlock)(void);
+
++ (instancetype)loadXibView;
+
+- (void)initWithDataWithAffirmWithName:(NSString *)name ButtonClick:(void (^)(void))affrimBlock;
+
+@end
+
+NS_ASSUME_NONNULL_END

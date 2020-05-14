@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HuoDongViewController">
+            <connections>
+                <outlet property="heightNavBar" destination="pX3-UT-78i" id="dxe-lz-XQ3"/>
+                <outlet property="tableView" destination="SiT-cX-Mis" id="ZK6-Zr-Tg7"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="raY-yG-sWR">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="活动" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VFd-xq-a6r">
+                            <rect key="frame" x="168.5" y="30" width="39" height="23"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.2901960784" green="0.6588235294" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="VFd-xq-a6r" firstAttribute="centerX" secondItem="raY-yG-sWR" secondAttribute="centerX" id="Aj5-UT-y97"/>
+                        <constraint firstAttribute="bottom" secondItem="VFd-xq-a6r" secondAttribute="bottom" constant="11" id="Hcp-UK-6Ul"/>
+                        <constraint firstAttribute="height" constant="64" id="pX3-UT-78i"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SiT-cX-Mis">
+                    <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="raY-yG-sWR" secondAttribute="trailing" id="1Y0-Iy-TaX"/>
+                <constraint firstAttribute="bottom" secondItem="SiT-cX-Mis" secondAttribute="bottom" id="80E-eR-3fA"/>
+                <constraint firstItem="SiT-cX-Mis" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="8wj-Rf-Xps"/>
+                <constraint firstItem="SiT-cX-Mis" firstAttribute="top" secondItem="raY-yG-sWR" secondAttribute="bottom" id="CE8-kR-AcS"/>
+                <constraint firstAttribute="trailing" secondItem="SiT-cX-Mis" secondAttribute="trailing" id="pv3-1U-mxM"/>
+                <constraint firstItem="raY-yG-sWR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="xLs-If-Bwg"/>
+                <constraint firstItem="raY-yG-sWR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ypj-G6-TFg"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

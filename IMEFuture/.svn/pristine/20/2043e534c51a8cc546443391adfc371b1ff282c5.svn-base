@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="OQCLabelAndTextFieldCell2" customModule="NIM" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44.5"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Gn-6k-baG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="检验数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sb-cb-ClJ">
+                                <rect key="frame" x="15.5" y="13" width="49" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Zx-te-vWJ">
+                                <rect key="frame" x="0.0" y="43.5" width="375" height="0.5"/>
+                                <color key="backgroundColor" red="0.86666666670000003" green="0.86666666670000003" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.5" id="WHx-BD-mbT"/>
+                                </constraints>
+                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入检验数" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wnp-Ls-KqR">
+                                <rect key="frame" x="120" y="14.5" width="240" height="17"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="45l-xE-JBu"/>
+                            <constraint firstItem="0Zx-te-vWJ" firstAttribute="leading" secondItem="8Gn-6k-baG" secondAttribute="leading" id="AIF-rG-hI7"/>
+                            <constraint firstItem="Wnp-Ls-KqR" firstAttribute="leading" secondItem="8Gn-6k-baG" secondAttribute="leading" constant="120" id="Go5-3M-WPE"/>
+                            <constraint firstItem="2sb-cb-ClJ" firstAttribute="centerY" secondItem="8Gn-6k-baG" secondAttribute="centerY" id="JWh-gu-NyV"/>
+                            <constraint firstAttribute="trailing" secondItem="Wnp-Ls-KqR" secondAttribute="trailing" constant="15" id="jF1-Y7-PtQ"/>
+                            <constraint firstAttribute="trailing" secondItem="0Zx-te-vWJ" secondAttribute="trailing" id="kD8-eS-1IN"/>
+                            <constraint firstAttribute="bottom" secondItem="0Zx-te-vWJ" secondAttribute="bottom" id="owi-OT-HZE"/>
+                            <constraint firstItem="Wnp-Ls-KqR" firstAttribute="centerY" secondItem="2sb-cb-ClJ" secondAttribute="centerY" id="vsf-cN-TkB"/>
+                            <constraint firstItem="2sb-cb-ClJ" firstAttribute="leading" secondItem="8Gn-6k-baG" secondAttribute="leading" constant="15" id="wR2-8d-0Df"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="8Gn-6k-baG" secondAttribute="bottom" id="NuH-o7-dIm"/>
+                    <constraint firstAttribute="trailing" secondItem="8Gn-6k-baG" secondAttribute="trailing" id="bWn-P2-HfI"/>
+                    <constraint firstItem="8Gn-6k-baG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="eFp-ou-Ru6"/>
+                    <constraint firstItem="8Gn-6k-baG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="za9-Fb-Wgn"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="label0" destination="2sb-cb-ClJ" id="feu-ID-fjT"/>
+                <outlet property="textField0" destination="Wnp-Ls-KqR" id="87l-Jr-Zh5"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

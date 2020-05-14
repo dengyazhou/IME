@@ -1,0 +1,293 @@
+//
+//  ScanMultiCompleteVC.swift
+//  IMEFuture
+//
+//  Created by 邓亚洲 on 2018/12/4.
+//  Copyright © 2018年 Netease. All rights reserved.
+//
+
+import UIKit
+
+class ScanMultiCompleteVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
+    private let _height_NavBar = Height_NavBar!
+    private let _height_BottomBar = Height_BottomBar!
+    
+    var batchWorkVo: BatchWorkVo!
+    
+    var list: NSMutableArray!
+    var listDataImage: NSMutableArray!
+    
+    var _viewLoading: UIView!
+    @IBOutlet weak var heightNavBar: NSLayoutConstraint!
+    @IBOutlet weak var heightBottomBar: NSLayoutConstraint!
+    @IBOutlet weak var tableView: UITableView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.heightNavBar.constant = _height_NavBar
+        self.heightBottomBar.constant = _height_BottomBar
+        _viewLoading = UIView.loading(withFrame: CGRect(x: 0, y: _height_NavBar, width: kMainW, height: kMainH), color: UIColor.clear, imageView: CGRect(x: (kMainW-34)/2, y: 180, width: 34, height: 34));
+        self.view.addSubview(_viewLoading);
+        _viewLoading.isHidden = true
+        
+        self.list = NSMutableArray.init()
+        self.listDataImage = NSMutableArray.init()
+        
+        for vv in self.batchWorkVo.batchWorkItemList {
+            let workTimeLogVo = vv as! WorkTimeLogVo
+            let batchWorkItemReportVo = BatchWorkItemReportVo.init()
+            let productionOperationVo = ProductionOperationVo.init()
+            productionOperationVo.siteCode = workTimeLogVo.siteCode
+            productionOperationVo.productionControlNum = workTimeLogVo.productionControlNum
+            productionOperationVo.unCompletedQuantity = workTimeLogVo.unfinishedQuantity//当前工序未报工数
+            productionOperationVo.processOperationId = workTimeLogVo.processOperationId
+            productionOperationVo.operationCode = workTimeLogVo.operationCode
+            if workTimeLogVo.unfinishedQuantity != nil && workTimeLogVo.unfinishedQuantity.doubleValue != 0{
+                productionOperationVo.completedQuantity = workTimeLogVo.unfinishedQuantity//当前工序已报工数
+            } else {
+                productionOperationVo.completedQuantity = NSNumber.init(value: 0)
+            }
+            productionOperationVo.scrappedQuantity = NSNumber.init(value: 0) //当前工序报废数
+            batchWorkItemReportVo.productionOperationVo = productionOperationVo
+            batchWorkItemReportVo.reworkStatus = NSNumber.init(value: 0)//返修状态 0 不返修  1 返修
+            
+            batchWorkItemReportVo.defectPictureAttachmentVoList = NSMutableArray.init()
+            batchWorkItemReportVo.causeList = NSMutableArray.init()
+            list.add(batchWorkItemReportVo)
+            
+            let arrImage = NSMutableArray.init()
+            listDataImage.add(arrImage)
+        }
+        
+        self.tableView.register(UINib.init(nibName: "ScanMultiCompleteCell", bundle: nil), forCellReuseIdentifier: "scanMultiCompleteCell")
+        self.tableView.register(UINib.init(nibName: "ScanMultiCompleteHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "scanMultiCompleteHeader")
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.separatorStyle = .none
+        self.tableView.tableFooterView = UIView.init()
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "scanMultiCompleteHeader") as! ScanMultiCompleteHeader
+        
+        return view
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.list.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "scanMultiCompleteCell", for: indexPath) as! ScanMultiCompleteCell
+        cell.selectionStyle = .none
+        
+        let batchWorkItemReportVo = self.list[indexPath.row] as! BatchWorkItemReportVo
+        
+        cell.label.text = batchWorkItemReportVo.productionOperationVo.productionControlNum
+        cell.label1.text = batchWorkItemReportVo.productionOperationVo.operatorCode
+        
+        cell.textField.text = batchWorkItemReportVo.productionOperationVo.completedQuantity.stringValue
+        cell.textField.addTarget(self, action: #selector(textField(sender:)), for: UIControlEvents.editingChanged)
+        cell.textField.tag = indexPath.row
+        cell.textField.inputAccessoryView = self.addToolbar()
+        
+        cell.textField1.text = batchWorkItemReportVo.productionOperationVo.scrappedQuantity.stringValue
+        cell.textField1.addTarget(self, action: #selector(textField1(sender:)), for: UIControlEvents.editingChanged)
+        cell.textField1.tag = indexPath.row
+        cell.textField1.inputAccessoryView = self.addToolbar()
+        
+        var image1: String!
+        if batchWorkItemReportVo.reworkStatus.intValue == 1 {
+            image1 = "bigcheck2"
+        } else {
+            image1 = "bigcheck1"
+        }
+        cell.button.setImage(UIImage.init(named: image1), for: UIControlState.normal)
+        cell.button.addTarget(self, action: #selector(buttonClick(_:)), for: UIControlEvents.touchUpInside)
+        cell.button.tag = indexPath.row
+        
+        var image2: String!
+        if batchWorkItemReportVo.defectPictureAttachmentVoList.count == 0 && batchWorkItemReportVo.causeList.count == 0{
+            image2 = "picture1"
+        } else {
+            image2 = "picture2"
+        }
+        cell.button1.setImage(UIImage.init(named: image2), for: UIControlState.normal)
+        cell.button1.addTarget(self, action: #selector(buttonClick1(_:)), for: UIControlEvents.touchUpInside)
+        cell.button1.tag = indexPath.row
+        return cell
+    }
+
+    @objc func textField(sender: UITextField) {
+        let batchWorkItemReportVo = self.list[sender.tag] as! BatchWorkItemReportVo
+        
+        if sender.text?.count ?? 0 > 0 {
+            batchWorkItemReportVo.productionOperationVo.completedQuantity = NSNumber.init(value: Double(sender.text!)!)
+        } else {
+            batchWorkItemReportVo.productionOperationVo.completedQuantity = NSNumber.init(value: 0)
+        }
+    }
+    
+    @objc func textField1(sender: UITextField) {
+        let batchWorkItemReportVo = self.list[sender.tag] as! BatchWorkItemReportVo
+        
+        if (sender.text?.count)! > 0 {
+            if sender.text != "0" {
+                batchWorkItemReportVo.productionOperationVo.scrappedQuantity = NSNumber.init(value: Double(sender.text!)!)
+                batchWorkItemReportVo.reworkStatus = NSNumber.init(value: 1);
+            } else {
+                batchWorkItemReportVo.productionOperationVo.scrappedQuantity = NSNumber.init(value: 0)
+                batchWorkItemReportVo.reworkStatus = NSNumber.init(value: 0);
+            }
+        } else {
+            batchWorkItemReportVo.productionOperationVo.scrappedQuantity = NSNumber.init(value: 0)
+            batchWorkItemReportVo.reworkStatus = NSNumber.init(value: 0);
+        }
+    }
+    
+    @objc func buttonClick(_ sender: UIButton) {
+        let batchWorkItemReportVo = self.list[sender.tag] as! BatchWorkItemReportVo
+        if batchWorkItemReportVo.productionOperationVo.scrappedQuantity.doubleValue > 0 {
+            batchWorkItemReportVo.reworkStatus = NSNumber.init(value: batchWorkItemReportVo.reworkStatus.intValue==1 ? 0:1)
+            self.tableView.reloadRows(at: [IndexPath.init(row: sender.tag, section: 0)], with: .none)
+        }
+    }
+    
+    @objc func buttonClick1(_ sender: UIButton) {
+        let batchWorkItemReportVo = self.list[sender.tag] as! BatchWorkItemReportVo
+        let vc = MuttiDefectCauseSelectVC.init()
+        vc.batchWorkItemReportVo = batchWorkItemReportVo
+        vc.defectPictureAttachmentVoList = self.listDataImage[sender.tag] as! NSMutableArray
+        vc.blockCallBack = {() in
+            self.tableView.reloadRows(at: [IndexPath.init(row: sender.tag, section: 0)], with: .none)
+        }
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func buttonCommit(_ sender: Any) {
+        _viewLoading.isHidden = false
+        
+        let mesPostEntityBean = MesPostEntityBean.init()
+        let batchConfirmPeportVo = BatchConfirmReportVo.init()
+        batchConfirmPeportVo.batchWorkVo = self.batchWorkVo
+        
+        for vv in self.list {
+            let batchWorkItemReportVo = vv as! BatchWorkItemReportVo
+            if batchWorkItemReportVo.productionOperationVo.completedQuantity.doubleValue > batchWorkItemReportVo.productionOperationVo.unCompletedQuantity.doubleValue{
+                MyAlertCenter.default().postAlert(withMessage: "报工数大于计划数")
+                _viewLoading.isHidden = true
+                return
+            }
+        }
+        
+        for i in 0..<self.list.count {
+            let batchWorkItemReportVo = self.list[i] as! BatchWorkItemReportVo
+            if batchWorkItemReportVo.productionOperationVo.scrappedQuantity == nil && batchWorkItemReportVo.productionOperationVo.scrappedQuantity.intValue == 0 {
+                batchWorkItemReportVo.causeList = NSMutableArray.init()
+                batchWorkItemReportVo.defectPictureAttachmentVoList = NSMutableArray.init()
+                self.listDataImage[i] = NSMutableArray.init()
+            }
+        }
+        
+        batchConfirmPeportVo.batchWorkItemReportVos = self.list
+        mesPostEntityBean.entity = batchConfirmPeportVo.mj_keyValues()
+        let dic1 = mesPostEntityBean.mj_keyValues()
+        let dic2 = ["data":String.toolSwiftGetJSONFromDictionary(dictionary: dic1!)]
+        print(dic2)
+        HttpMamager.postRequestDuoGongDanBaoGongString(DYZ_batchProductionOrderConfirm_doConfirmProduction, parameters: dic2, datasArrayFileName: self.list as! [Any]?, datasArrayImage:self.listDataImage as! [Any]?, success: { (responseObjectModel: Any?) in
+            let returnMsgBean: ReturnMsgBean! = ReturnMsgBean.mj_object(withKeyValues: responseObjectModel)
+            self._viewLoading.isHidden = true
+            if returnMsgBean.status == "SUCCESS" {
+                MyAlertCenter.default().postAlert(withMessage: "提交成功")
+                for vc in (self.navigationController?.viewControllers)! {
+                    if vc is ScanMYuanGongVC {
+                        self.navigationController?.popToViewController(vc, animated: true)
+                        return
+                    }
+                }
+                for vc in (self.navigationController?.viewControllers)! {
+                    if vc is ZaiZhiGongDanVC {
+                        self.navigationController?.popToViewController(vc, animated: true)
+                        return
+                    }
+                }
+            } else {
+                MyAlertCenter.default().postAlert(withMessage: returnMsgBean.returnMsg)
+            }
+        }) { (error: Error?) in
+            self._viewLoading.isHidden = true
+        }
+    }
+    
+    @IBAction func buttonGoHome(_ sender: Any) {
+        for vc in (self.navigationController?.viewControllers)! {
+            if vc is TpfMaiViewController {
+                self.navigationController?.popToViewController(vc, animated: true)
+                return
+            }
+        }
+    }
+    
+    @IBAction func back(_ sender: Any) {
+        
+        if self.batchWorkVo.status.intValue == 4 {
+            for temp in (self.navigationController?.viewControllers)! {
+                if temp is ZaiZhiGongDanVC {
+                    self.navigationController?.popToViewController(temp, animated: true)
+                    return
+                }
+            }
+            for temp in (self.navigationController?.viewControllers)! {
+                if temp is ScanMultiScanVC {
+                    self.navigationController?.popToViewController(temp, animated: true)
+                    return
+                }
+            }
+            for temp in (self.navigationController?.viewControllers)! {
+                if temp is ScanMTuZhiVC {
+                    self.navigationController?.popToViewController(temp, animated: true)
+                    return
+                }
+            }
+        } else {
+            self.navigationController?.popViewController(animated: true);
+        }
+        
+    }
+    
+    func addToolbar() -> UIToolbar {
+        let toolbar = UIToolbar.init(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 38))
+        toolbar.tintColor = colorRGB(r: 0, g: 168, b: 255)
+        let space = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let bar = UIBarButtonItem.init(title: "完成", style: UIBarButtonItemStyle.plain, target: self, action: #selector(textFieldDone))
+        toolbar.items = [space, bar]
+        return toolbar
+    }
+    
+    @objc func textFieldDone() {
+        UIApplication.shared.sendAction(#selector(resignFirstResponder), to: nil, from: nil, for: nil)
+        self.tableView.reloadData()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}

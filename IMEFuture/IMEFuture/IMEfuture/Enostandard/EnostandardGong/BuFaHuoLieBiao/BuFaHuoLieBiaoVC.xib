@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BuFaHuoLieBiaoVC">
+            <connections>
+                <outlet property="heightNavBar" destination="kFu-86-LR2" id="1SP-sy-dhF"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4J4-2F-gPd">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ruv-uB-Yfu">
+                            <rect key="frame" x="7" y="27" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="SED-c8-q4Y"/>
+                                <constraint firstAttribute="width" constant="30" id="VJL-Xk-m5t"/>
+                            </constraints>
+                            <state key="normal" image="icon_return_2t"/>
+                            <connections>
+                                <action selector="back:" destination="-1" eventType="touchUpInside" id="r4a-gY-lkb"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="补发货列表" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Na-rt-Bhp">
+                            <rect key="frame" x="137" y="30" width="102" height="24"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <color key="textColor" red="0.12549019610000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PVf-wF-OwA" userLabel="View Line Botton">
+                            <rect key="frame" x="0.0" y="63.5" width="375" height="0.5"/>
+                            <color key="backgroundColor" red="0.86666666670000003" green="0.86666666670000003" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="0.5" id="EhM-Uq-tKG"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="PVf-wF-OwA" secondAttribute="trailing" id="BHf-gW-HXP"/>
+                        <constraint firstItem="PVf-wF-OwA" firstAttribute="leading" secondItem="4J4-2F-gPd" secondAttribute="leading" id="U3n-fb-MwN"/>
+                        <constraint firstAttribute="bottom" secondItem="PVf-wF-OwA" secondAttribute="bottom" id="UjC-g4-WhK"/>
+                        <constraint firstItem="9Na-rt-Bhp" firstAttribute="centerY" secondItem="ruv-uB-Yfu" secondAttribute="centerY" id="bWT-wq-QAE"/>
+                        <constraint firstAttribute="bottom" secondItem="ruv-uB-Yfu" secondAttribute="bottom" constant="7" id="dVd-10-Yiu"/>
+                        <constraint firstItem="ruv-uB-Yfu" firstAttribute="leading" secondItem="4J4-2F-gPd" secondAttribute="leading" constant="7" id="iM2-nJ-oJ5"/>
+                        <constraint firstAttribute="height" constant="64" id="kFu-86-LR2"/>
+                        <constraint firstItem="9Na-rt-Bhp" firstAttribute="centerX" secondItem="4J4-2F-gPd" secondAttribute="centerX" id="zOF-XL-FXG"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="4J4-2F-gPd" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="2Pm-ry-Rlx"/>
+                <constraint firstAttribute="trailing" secondItem="4J4-2F-gPd" secondAttribute="trailing" id="KvR-1p-yli"/>
+                <constraint firstItem="4J4-2F-gPd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dgV-tb-QJR"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_return_2t" width="22" height="22"/>
+    </resources>
+</document>

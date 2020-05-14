@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="102" id="KGk-i7-Jjw" customClass="ECSupplierCell">
+            <rect key="frame" x="0.0" y="0.0" width="416" height="102"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="416" height="101.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ime_test_company" translatesAutoresizingMaskIntoConstraints="NO" id="E2d-FR-7Vm">
+                        <rect key="frame" x="10" y="10" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="7Ok-HO-Bac"/>
+                            <constraint firstAttribute="width" constant="50" id="VCD-JB-5Nu"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="广州明珞汽车装备有限公司" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6dr-Aq-hTC">
+                        <rect key="frame" x="128" y="15" width="208" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="17" id="4bk-gM-SY3"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.12549019607843137" green="0.12549019607843137" blue="0.12549019607843137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="广州省 广州市" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2e-rA-coH">
+                        <rect key="frame" x="68" y="40" width="89.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.69411764705882351" green="0.69411764705882351" blue="0.69411764705882351" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="label_factory" translatesAutoresizingMaskIntoConstraints="NO" id="Ft0-ZX-rpQ">
+                        <rect key="frame" x="106" y="15" width="17" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="17" id="YkD-z5-Wha"/>
+                            <constraint firstAttribute="height" constant="17" id="aCU-c4-v3C"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="label_offline" translatesAutoresizingMaskIntoConstraints="NO" id="COz-IY-oJw">
+                        <rect key="frame" x="68" y="15" width="33" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="33" id="JYu-Ap-KOW"/>
+                            <constraint firstAttribute="height" constant="17" id="KRi-dF-uQv"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Ft0-ZX-rpQ" firstAttribute="leading" secondItem="E2d-FR-7Vm" secondAttribute="trailing" constant="46" id="0L2-Ra-U0p"/>
+                    <constraint firstItem="COz-IY-oJw" firstAttribute="leading" secondItem="E2d-FR-7Vm" secondAttribute="trailing" constant="8" id="9jN-7g-LrX"/>
+                    <constraint firstItem="b2e-rA-coH" firstAttribute="top" secondItem="6dr-Aq-hTC" secondAttribute="bottom" constant="8" id="DGt-5b-fuX"/>
+                    <constraint firstItem="COz-IY-oJw" firstAttribute="centerY" secondItem="6dr-Aq-hTC" secondAttribute="centerY" id="MtS-VD-LWS"/>
+                    <constraint firstItem="E2d-FR-7Vm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Nuh-Qd-GHi"/>
+                    <constraint firstItem="b2e-rA-coH" firstAttribute="leading" secondItem="E2d-FR-7Vm" secondAttribute="trailing" constant="8" id="Wbp-Sg-0Wl"/>
+                    <constraint firstItem="6dr-Aq-hTC" firstAttribute="leading" secondItem="E2d-FR-7Vm" secondAttribute="trailing" constant="68" id="mDY-87-Ye3"/>
+                    <constraint firstItem="Ft0-ZX-rpQ" firstAttribute="centerY" secondItem="6dr-Aq-hTC" secondAttribute="centerY" id="n3G-iv-mZn"/>
+                    <constraint firstItem="6dr-Aq-hTC" firstAttribute="top" secondItem="E2d-FR-7Vm" secondAttribute="top" constant="5" id="rm9-Aa-dSb"/>
+                    <constraint firstItem="E2d-FR-7Vm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="vme-1B-Nch"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="enterpriseName" destination="6dr-Aq-hTC" id="GtO-LS-8Q4"/>
+                <outlet property="enterpriseNameConstraint" destination="mDY-87-Ye3" id="dl9-B9-7CZ"/>
+                <outlet property="isTemporaryImg" destination="COz-IY-oJw" id="Dnt-5j-xLF"/>
+                <outlet property="label_factoryImg" destination="Ft0-ZX-rpQ" id="osA-2h-1D2"/>
+                <outlet property="label_factoryImgConstraint" destination="0L2-Ra-U0p" id="8C8-u9-PSc"/>
+                <outlet property="logoImg" destination="E2d-FR-7Vm" id="htt-mR-l0Y"/>
+                <outlet property="provinceCity" destination="b2e-rA-coH" id="GOh-ZA-JDX"/>
+            </connections>
+            <point key="canvasLocation" x="17" y="183"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ime_test_company" width="68.5" height="68.5"/>
+        <image name="label_factory" width="15" height="15"/>
+        <image name="label_offline" width="32" height="17"/>
+    </resources>
+</document>

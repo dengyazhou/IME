@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="109" id="KGk-i7-Jjw" customClass="WoDeTongZhiCell">
+            <rect key="frame" x="0.0" y="0.0" width="422" height="109"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="422" height="108.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="85e-mQ-0qb">
+                        <rect key="frame" x="14" y="15" width="42" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="p3u-YM-lXn"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016-06-24 12:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ExB-C6-6q5">
+                        <rect key="frame" x="285" y="18" width="123" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13t-pA-DDn">
+                        <rect key="frame" x="14" y="51" width="394" height="43"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="red-image-notification" translatesAutoresizingMaskIntoConstraints="NO" id="LlA-nI-uym">
+                        <rect key="frame" x="60" y="22.5" width="6" height="6"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="6" id="nLi-MR-Sxf"/>
+                            <constraint firstAttribute="height" constant="6" id="tdC-dm-Sl0"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="3"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line-228-228-228" translatesAutoresizingMaskIntoConstraints="NO" id="xVr-2l-6mA">
+                        <rect key="frame" x="14" y="0.0" width="408" height="0.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="WJK-id-Y2i"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="85e-mQ-0qb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="14" id="3Od-Eo-8aI"/>
+                    <constraint firstItem="13t-pA-DDn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="14" id="BRL-zZ-c9c"/>
+                    <constraint firstItem="13t-pA-DDn" firstAttribute="top" secondItem="85e-mQ-0qb" secondAttribute="bottom" constant="15" id="CT2-vI-DEg"/>
+                    <constraint firstItem="xVr-2l-6mA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Evb-c0-aSj"/>
+                    <constraint firstItem="LlA-nI-uym" firstAttribute="leading" secondItem="85e-mQ-0qb" secondAttribute="trailing" constant="4" id="FFY-LB-IyC"/>
+                    <constraint firstItem="LlA-nI-uym" firstAttribute="centerY" secondItem="85e-mQ-0qb" secondAttribute="centerY" id="IGD-Xc-8v3"/>
+                    <constraint firstItem="ExB-C6-6q5" firstAttribute="centerY" secondItem="85e-mQ-0qb" secondAttribute="centerY" id="aHV-Ho-rO1"/>
+                    <constraint firstAttribute="trailing" secondItem="13t-pA-DDn" secondAttribute="trailing" constant="14" id="cCr-f4-VEV"/>
+                    <constraint firstAttribute="bottom" secondItem="13t-pA-DDn" secondAttribute="bottom" constant="15" id="ehi-u8-kN3"/>
+                    <constraint firstItem="85e-mQ-0qb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="g9E-Bi-sQL"/>
+                    <constraint firstItem="xVr-2l-6mA" firstAttribute="leading" secondItem="85e-mQ-0qb" secondAttribute="leading" id="iYe-aZ-f3Q"/>
+                    <constraint firstAttribute="trailing" secondItem="ExB-C6-6q5" secondAttribute="trailing" constant="14" id="qrR-lF-TUh"/>
+                    <constraint firstAttribute="trailing" secondItem="xVr-2l-6mA" secondAttribute="trailing" id="wFv-Xb-1NU"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="label1" destination="13t-pA-DDn" id="zXV-wY-vrs"/>
+                <outlet property="labelName" destination="85e-mQ-0qb" id="6kC-eZ-kMH"/>
+                <outlet property="labelTime" destination="ExB-C6-6q5" id="uEh-Bo-5Hr"/>
+                <outlet property="viewTap" destination="LlA-nI-uym" id="erM-Gb-hdZ"/>
+            </connections>
+            <point key="canvasLocation" x="69" y="146.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="line-228-228-228" width="180" height="1"/>
+        <image name="red-image-notification" width="10" height="10"/>
+    </resources>
+</document>

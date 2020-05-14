@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="EFBFaPanCell4">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qs0-Fi-ZxI">
+                        <rect key="frame" x="15" y="0.0" width="360" height="43"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目标价供应商可见X" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jyy-Bv-2pI">
+                                <rect key="frame" x="0.0" y="13.5" width="124" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eHi-gD-Vdv">
+                                <rect key="frame" x="299" y="5.5" width="51" height="31"/>
+                            </switch>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CeO-Ls-oxP" userLabel="ViewLine">
+                                <rect key="frame" x="0.0" y="42" width="360" height="1"/>
+                                <color key="backgroundColor" red="0.86666666670000003" green="0.86666666670000003" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.5" id="bdH-vC-25v"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="eHi-gD-Vdv" secondAttribute="trailing" constant="12" id="EQ5-0c-U9l"/>
+                            <constraint firstItem="Jyy-Bv-2pI" firstAttribute="centerY" secondItem="qs0-Fi-ZxI" secondAttribute="centerY" id="ICo-OP-PLX"/>
+                            <constraint firstAttribute="trailing" secondItem="CeO-Ls-oxP" secondAttribute="trailing" id="LrZ-pn-fFz"/>
+                            <constraint firstItem="CeO-Ls-oxP" firstAttribute="leading" secondItem="qs0-Fi-ZxI" secondAttribute="leading" id="QXd-iV-dAG"/>
+                            <constraint firstItem="eHi-gD-Vdv" firstAttribute="centerY" secondItem="qs0-Fi-ZxI" secondAttribute="centerY" id="RoB-Dd-Ezz"/>
+                            <constraint firstItem="Jyy-Bv-2pI" firstAttribute="leading" secondItem="qs0-Fi-ZxI" secondAttribute="leading" id="Uzn-yq-1Pt"/>
+                            <constraint firstAttribute="bottom" secondItem="CeO-Ls-oxP" secondAttribute="bottom" id="wQO-EC-8ax"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="qs0-Fi-ZxI" secondAttribute="bottom" id="CVv-Vc-Nbv"/>
+                    <constraint firstAttribute="trailing" secondItem="qs0-Fi-ZxI" secondAttribute="trailing" id="JA0-dm-sdz"/>
+                    <constraint firstItem="qs0-Fi-ZxI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="LxA-9v-6j3"/>
+                    <constraint firstItem="qs0-Fi-ZxI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Xoo-lg-vvV"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="label0" destination="Jyy-Bv-2pI" id="J7F-QI-cbQ"/>
+                <outlet property="switch0" destination="eHi-gD-Vdv" id="viq-ZE-kaV"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

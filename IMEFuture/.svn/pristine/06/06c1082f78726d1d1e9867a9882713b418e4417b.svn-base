@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="177" id="KGk-i7-Jjw" customClass="ConventionCenterSearchCell">
+            <rect key="frame" x="0.0" y="0.0" width="459" height="177"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="459" height="176"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chatroom_cover_page_4" translatesAutoresizingMaskIntoConstraints="NO" id="jgf-S5-oJZ">
+                        <rect key="frame" x="10" y="10" width="105" height="63"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="105" id="BPH-Qi-nIV"/>
+                            <constraint firstAttribute="height" constant="63" id="JbJ-3f-AQ4"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016年十六届DMC中国国际模具技术和设备展示等等等" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wqL-WQ-dQu">
+                        <rect key="frame" x="120" y="10" width="329" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="gjg-Yc-ZZr"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="0.12549019607843137" green="0.12549019607843137" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ime_information_icon_time" translatesAutoresizingMaskIntoConstraints="NO" id="PSu-kB-08w">
+                        <rect key="frame" x="120" y="54" width="14" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="9Nr-fp-pVi"/>
+                            <constraint firstAttribute="width" constant="14" id="B66-S2-F8X"/>
+                        </constraints>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Vk-yG-QcV">
+                        <rect key="frame" x="120" y="35" width="14" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="0Ev-1p-sND"/>
+                            <constraint firstAttribute="width" constant="14" id="R97-M6-7Ix"/>
+                        </constraints>
+                        <state key="normal" title="Button" image="ime_information_icon_address"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="北京新国际展览中心" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsf-cy-ap0">
+                        <rect key="frame" x="139" y="35" width="108" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="Wzw-hh-Qfs"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.69411764705882351" green="0.69411764705882351" blue="0.69411764705882351" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016.6.22－6.26" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgW-5a-5Bh">
+                        <rect key="frame" x="139" y="54" width="94" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="wiH-oJ-4kZ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.69411764705882351" green="0.69411764705882351" blue="0.69411764705882351" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="jgf-S5-oJZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="7Tf-30-kts"/>
+                    <constraint firstItem="rsf-cy-ap0" firstAttribute="leading" secondItem="5Vk-yG-QcV" secondAttribute="trailing" constant="5" id="8dc-5Q-APN"/>
+                    <constraint firstItem="rsf-cy-ap0" firstAttribute="centerY" secondItem="5Vk-yG-QcV" secondAttribute="centerY" id="HrO-dQ-XLL"/>
+                    <constraint firstItem="jgf-S5-oJZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="NxG-An-jvp"/>
+                    <constraint firstItem="PSu-kB-08w" firstAttribute="leading" secondItem="jgf-S5-oJZ" secondAttribute="trailing" constant="5" id="Vxm-Wn-8hw"/>
+                    <constraint firstItem="hgW-5a-5Bh" firstAttribute="centerY" secondItem="PSu-kB-08w" secondAttribute="centerY" id="cUW-xx-smm"/>
+                    <constraint firstItem="wqL-WQ-dQu" firstAttribute="leading" secondItem="jgf-S5-oJZ" secondAttribute="trailing" constant="5" id="exx-KI-uyy"/>
+                    <constraint firstAttribute="trailing" secondItem="wqL-WQ-dQu" secondAttribute="trailing" constant="10" id="gYS-pU-Rsb"/>
+                    <constraint firstItem="wqL-WQ-dQu" firstAttribute="top" secondItem="jgf-S5-oJZ" secondAttribute="top" id="nZG-1y-1pE"/>
+                    <constraint firstItem="hgW-5a-5Bh" firstAttribute="leading" secondItem="PSu-kB-08w" secondAttribute="trailing" constant="5" id="ozK-7V-IH1"/>
+                    <constraint firstItem="5Vk-yG-QcV" firstAttribute="top" secondItem="wqL-WQ-dQu" secondAttribute="bottom" constant="5" id="qFx-ue-j6F"/>
+                    <constraint firstItem="5Vk-yG-QcV" firstAttribute="leading" secondItem="jgf-S5-oJZ" secondAttribute="trailing" constant="5" id="uHl-5U-Mhf"/>
+                    <constraint firstItem="PSu-kB-08w" firstAttribute="top" secondItem="5Vk-yG-QcV" secondAttribute="bottom" constant="5" id="vdZ-Pz-sdF"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="address" destination="rsf-cy-ap0" id="6Ab-7A-F60"/>
+                <outlet property="begTm" destination="hgW-5a-5Bh" id="8MN-hD-l4H"/>
+                <outlet property="title" destination="wqL-WQ-dQu" id="8g3-Ex-amn"/>
+                <outlet property="urlPath" destination="jgf-S5-oJZ" id="3kN-sV-73M"/>
+            </connections>
+            <point key="canvasLocation" x="537.5" y="322.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="chatroom_cover_page_4" width="145" height="82"/>
+        <image name="ime_information_icon_address" width="15" height="15"/>
+        <image name="ime_information_icon_time" width="15" height="15"/>
+    </resources>
+</document>

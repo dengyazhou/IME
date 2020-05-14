@@ -1,0 +1,9 @@
+1.正式的url （UrlContant.h && UrlContant.Swift）
+2.JPush 证书 和 0 1
+
+4.百度统计 baiduModAppId
+
+
+5.Scheme -> Edit Scheme -> Run Debug换成Distribution
+
+6.Header.h -> 注销 #define DEBUGIME

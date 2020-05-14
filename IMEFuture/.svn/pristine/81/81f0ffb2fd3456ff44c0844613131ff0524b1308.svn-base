@@ -1,0 +1,351 @@
+//
+//  HttpMamager.m
+//  XiaChuFangDYZ
+//
+//  Created by Mac on 16/2/28.
+//  Copyright © 2016年 Syxdzybs. All rights reserved.
+//
+
+#import "HttpMamager.h"
+#import "MJExtension.h"
+#import "UrlContant.h"
+
+#import "AFNetworking.h"
+
+
+#import "UserBean.h"
+
+#import "ReturnEntityBean.h"
+#import "ReturnListBean.h"
+
+#import "UIViewController+Tool.h"
+#import "VoHeader.h"
+
+#import "UploadImageBean.h"
+
+static NSTimeInterval const defineTimeoutInterval = 30.0f;
+
+@implementation HttpMamager
+
++ (void)postRequestWithURLString:(NSString *)urlString parameters:(NSDictionary *)parameters success:(void(^)(id responseObjectModel))success fail:(void(^)(NSError *error))fail isKindOfModel:(Class)model {
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer=[AFJSONRequestSerializer serializer];
+    
+    
+    NSString * tokenId = [[NSUserDefaults standardUserDefaults] objectForKey:@"tokenId"];
+    if (tokenId) {
+        [manager.requestSerializer setValue:tokenId forHTTPHeaderField:@"tokenId"];
+    }
+    [manager.requestSerializer setValue:@"APP" forHTTPHeaderField:@"type"];
+    manager.responseSerializer.acceptableContentTypes = nil;//[NSSet setWithObject:@"text/ plain"];
+    
+    //设置超时时间
+    manager.requestSerializer.timeoutInterval = defineTimeoutInterval;
+    
+    manager.securityPolicy = [AFSecurityPolicy defaultPolicy];
+    manager.securityPolicy.allowInvalidCertificates = YES;//忽略https证书
+    manager.securityPolicy.validatesDomainName = NO;//是否验证域名
+    [manager setSecurityPolicy:[self customSecurityPolicy]];
+    
+    [manager POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSLog(@"%@",[responseObject mj_JSONString]);
+        
+        id responseModel = [model mj_objectWithKeyValues:responseObject];
+        
+        if ([responseModel isMemberOfClass:[ReturnMsgBean class]]) {
+            ReturnMsgBean *returnMsgBean = responseModel;
+            
+            if ([returnMsgBean.returnCode integerValue] == 999999999) {
+                UIViewController *viewController = [self getCurrentVC];
+                [viewController goHomepage];
+            }
+            
+        } else if ([responseModel isMemberOfClass:[ReturnEntityBean class]]) {
+
+            ReturnEntityBean *returnEntityBean = responseModel;
+            
+            if ([returnEntityBean.returnCode integerValue] == 999999999) {
+                UIViewController *viewController = [self getCurrentVC];
+                [viewController goHomepage];
+            }
+        } else if ([responseModel isMemberOfClass:[ReturnListBean class]]) {
+            
+            ReturnListBean *returnListBean = responseModel;
+            
+            if ([returnListBean.returnCode integerValue] == 999999999) {
+                UIViewController *viewController = [self getCurrentVC];
+                [viewController goHomepage];
+            }
+        } else {
+            NSDictionary *dic = responseObject;
+            
+            if ([dic[@"returnCode"] integerValue] == 999999999) {
+                
+                UIViewController *viewController = [self getCurrentVC];
+                [viewController goHomepage];
+            }
+        }
+        if (success) {
+            success(responseModel);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%@",error);
+        if (error.code == -1001) {
+            NSLog(@"=DYZ======================================请求超时");
+        }
+        if (error.code == -1004) {
+            NSLog(@"=DYZ======================================未能连接到服务器");
+        }
+        if (error.code == -1009) {
+            NSLog(@"=DYZ======================================断开互联网连接");
+        }
+        if (fail) {
+            fail(error);
+        }
+    }];
+}
+
+
++ (void)postRequestLoginWithURLString:(NSString *)urlString parameters:(NSDictionary *)parameters success:(void(^)(id responseObjectModel))success fail:(void(^)(NSError *error))fail {
+
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer=[AFJSONRequestSerializer serializer];
+    //设置超时时间
+    manager.requestSerializer.timeoutInterval = defineTimeoutInterval;
+    
+    if (![urlString isEqualToString:DYZ_user_login]) {
+        NSString * tokenId = [[NSUserDefaults standardUserDefaults] objectForKey:@"tokenId"];
+        if (tokenId) {
+            [manager.requestSerializer setValue:tokenId forHTTPHeaderField:@"tokenId"];
+        }
+    }
+    [manager.requestSerializer setValue:@"APP" forHTTPHeaderField:@"type"];
+    manager.responseSerializer.acceptableContentTypes = nil;//[NSSet setWithObject:@"text/plain"];
+    manager.securityPolicy = [AFSecurityPolicy defaultPolicy];
+    manager.securityPolicy.allowInvalidCertificates = YES;//忽略https证书
+    manager.securityPolicy.validatesDomainName = NO;//是否验证域名
+    [manager setSecurityPolicy:[self customSecurityPolicy]];
+    [manager POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"Login:%@",responseObject);
+        if (success) {
+            success(responseObject);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error:%@",error);
+        if (error.code == -1001) {
+            NSLog(@"=DYZ======================================请求超时");
+        }
+        if (error.code == -1004) {
+            NSLog(@"=DYZ======================================未能连接到服务器");
+        }
+        if (error.code == -1009) {
+            NSLog(@"=DYZ======================================断开互联网连接");
+        }
+        if (fail) {
+            fail(error);
+        }
+    }];
+
+}
+
++ (void)postRequestImageWithURLString:(NSString *)urlString parameters:(NSDictionary *)parameters UploadImageBean:(NSArray<UploadImageBean *> *)array success:(void (^)(id))success fail:(void (^)(NSError *))fail isKindOfModelClass:(Class)modelClass {
+    
+    AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
+    
+    manager.requestSerializer=[AFJSONRequestSerializer serializer];
+    
+    NSString * tokenId = [[NSUserDefaults standardUserDefaults] objectForKey:@"tokenId"];
+    if (tokenId) {
+        [manager.requestSerializer setValue:tokenId forHTTPHeaderField:@"tokenId"];
+    }
+    [manager.requestSerializer setValue:@"APP" forHTTPHeaderField:@"type"];
+    manager.responseSerializer.acceptableContentTypes = nil;
+    manager.securityPolicy = [AFSecurityPolicy defaultPolicy];
+    manager.securityPolicy.allowInvalidCertificates = YES;//忽略https证书
+    manager.securityPolicy.validatesDomainName = NO;//是否验证域名
+    [manager setSecurityPolicy:[self customSecurityPolicy]];
+    
+    [manager POST:urlString parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        if (array != nil && array.count > 0) {
+            for (UploadImageBean *uploadImageBean in array) {
+                [formData appendPartWithFileData:uploadImageBean.data name:uploadImageBean.name fileName:uploadImageBean.fileName mimeType:uploadImageBean.mimeType];
+            }
+        }
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        NSLog(@"%@",@(uploadProgress.fractionCompleted));
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"%@",responseObject);
+        id responseModel = [modelClass mj_objectWithKeyValues:responseObject];
+        if (success) {
+            success(responseModel);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%@",error);
+        if (fail) {
+            fail(error);
+        }
+    }];
+}
+
++ (void)postRequestImageWithURLString:(NSString *)urlString parameters:(NSDictionary *)parameters datas0:(NSArray *)dataArray datas1:(NSArray *)dataArray1 success:(void(^)(id responseObjectModel))success fail:(void(^)(NSError *error))fail withFileName:(NSString *)fileName fileName1:(NSString *)fileName1{
+    
+    AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
+    
+    manager.requestSerializer=[AFJSONRequestSerializer serializer];
+    
+    NSString * tokenId = [[NSUserDefaults standardUserDefaults] objectForKey:@"tokenId"];
+    if (tokenId) {
+        [manager.requestSerializer setValue:tokenId forHTTPHeaderField:@"tokenId"];
+    }
+    [manager.requestSerializer setValue:@"APP" forHTTPHeaderField:@"type"];
+    manager.responseSerializer.acceptableContentTypes = nil;//[NSSet setWithObject:@"text/plain"];
+    manager.securityPolicy = [AFSecurityPolicy defaultPolicy];
+    manager.securityPolicy.allowInvalidCertificates = YES;//忽略https证书
+    manager.securityPolicy.validatesDomainName = NO;//是否验证域名
+    [manager setSecurityPolicy:[self customSecurityPolicy]];
+    
+    [manager POST:urlString parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        if (dataArray.count > 0) {
+            for (NSData *data in dataArray) {
+//                [formData appendPartWithFileData:data name:@"confirmPictureFiles" fileName:@"headimage.png" mimeType:@"image/png"];
+                [formData appendPartWithFileData:data name:fileName fileName:@"headimage.png" mimeType:@"image/png"];
+            }
+        }
+        if (dataArray1.count > 0) {
+            for (NSData *data in dataArray1) {
+//                [formData appendPartWithFileData:data name:@"defectPictureFiles" fileName:@"headimage.png" mimeType:@"image/png"];
+                [formData appendPartWithFileData:data name:fileName1 fileName:@"headimage.png" mimeType:@"image/png"];
+            }
+        }
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        //上传的进度
+        NSLog(@"%@",@(uploadProgress.fractionCompleted));
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"%@",responseObject);
+        if (success) {
+            success(responseObject);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%@",error);
+        if (fail) {
+            fail(error);
+        }
+    }];
+}
+
++ (void)postRequestDuoGongDanBaoGongString:(NSString *)urlString parameters:(NSDictionary *)parameters datasArrayFileName:(NSArray *)dataArray datasArrayImage:(NSArray *)imageArray success:(void(^)(id responseObjectModel))success fail:(void(^)(NSError *error))fail {
+    
+    AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
+    
+    manager.requestSerializer=[AFJSONRequestSerializer serializer];
+    
+    NSString * tokenId = [[NSUserDefaults standardUserDefaults] objectForKey:@"tokenId"];
+    if (tokenId) {
+        [manager.requestSerializer setValue:tokenId forHTTPHeaderField:@"tokenId"];
+    }
+    [manager.requestSerializer setValue:@"APP" forHTTPHeaderField:@"type"];
+    manager.responseSerializer.acceptableContentTypes = nil;//[NSSet setWithObject:@"text/plain"];
+    manager.securityPolicy = [AFSecurityPolicy defaultPolicy];
+    manager.securityPolicy.allowInvalidCertificates = YES;//忽略https证书
+    manager.securityPolicy.validatesDomainName = NO;//是否验证域名
+    [manager setSecurityPolicy:[self customSecurityPolicy]];
+    
+    [manager POST:urlString parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        if (dataArray.count > 0) {
+            for (int i = 0; i<dataArray.count; i++) {
+                BatchWorkItemReportVo *batchWorkItemReportVo = dataArray[i];
+                NSMutableArray *arrayList = imageArray[i];
+                for (int j = 0; j<batchWorkItemReportVo.defectPictureAttachmentVoList.count; j++) {
+                    AttachmentVo *attachmentVo = batchWorkItemReportVo.defectPictureAttachmentVoList[j];
+                    NSLog(@"%@",attachmentVo.fileName);
+                    [formData appendPartWithFileData:arrayList[j] name:@"defectPictureFiles" fileName:attachmentVo.fileName mimeType:@"image/png"];
+                }
+            }
+//            for (BatchWorkItemReportVo *batchWorkItemReportVo in dataArray) {
+//                for (AttachmentVo *attachmentVo in batchWorkItemReportVo.defectPictureAttachmentVoList) {
+//                    [formData appendPartWithFileData:attachmentVo.data name:@"defectPictureFiles" fileName:attachmentVo.fileName mimeType:@"image/png"];
+//                }
+//            }
+        }
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        //上传的进度
+        NSLog(@"%@",@(uploadProgress.fractionCompleted));
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"%@",responseObject);
+        if (success) {
+            success(responseObject);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%@",error);
+        if (fail) {
+            fail(error);
+        }
+    }];
+}
+
+#pragma mark https 加密
++ (AFSecurityPolicy*)customSecurityPolicy
+{
+    
+//    NSString *cerPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingString:@"/all.imefuture.com.cer"];;
+    
+    //先导入证书
+    NSString *cerPath = [[NSBundle mainBundle] pathForResource:@"imefuture.com" ofType:@"cer"];//证书的路径
+    
+    
+//    NSLog(@"%@",cerPath);
+    
+    NSData *certData = [NSData dataWithContentsOfFile:cerPath];
+    
+    // AFSSLPinningModeCertificate 使用证书验证模式
+    AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];
+    
+    // allowInvalidCertificates 是否允许无效证书（也就是自建的证书），默认为NO
+    // 如果是需要验证自建证书，需要设置为YES
+    securityPolicy.allowInvalidCertificates = YES;
+    
+    //validatesDomainName 是否需要验证域名，默认为YES；
+    //假如证书的域名与你请求的域名不一致，需把该项设置为NO；如设成NO的话，即服务器使用其他可信任机构颁发的证书，也可以建立连接，这个非常危险，建议打开。
+    //置为NO，主要用于这种情况：客户端请求的是子域名，而证书上的是另外一个域名。因为SSL证书上的域名是独立的，假如证书上注册的域名是www.google.com，那么mail.google.com是无法验证通过的；当然，有钱可以注册通配符的域名*.google.com，但这个还是比较贵的。
+    //如置为NO，建议自己添加对应域名的校验逻辑。
+    securityPolicy.validatesDomainName = YES;
+    
+    securityPolicy.pinnedCertificates = [NSSet setWithObject:certData];
+//    securityPolicy.pinnedCertificates = @[certData];
+    return securityPolicy;
+}
+
+//获取当前屏幕显示的viewcontroller
++ (UIViewController *)getCurrentVC {
+    UIViewController *result = nil;
+    
+    UIWindow * window = [[UIApplication sharedApplication] keyWindow];
+    if (window.windowLevel != UIWindowLevelNormal)
+    {
+        NSArray *windows = [[UIApplication sharedApplication] windows];
+        for(UIWindow * tmpWin in windows)
+        {
+            if (tmpWin.windowLevel == UIWindowLevelNormal)
+            {
+                window = tmpWin;
+                break;
+            }
+        }
+    }
+    
+    UIView *frontView = [[window subviews] objectAtIndex:0];
+    id nextResponder = [frontView nextResponder];
+    
+    if ([nextResponder isKindOfClass:[UIViewController class]])
+        
+        result = nextResponder;
+    else
+        
+        result = window.rootViewController;
+    
+    return result;
+}
+
+@end

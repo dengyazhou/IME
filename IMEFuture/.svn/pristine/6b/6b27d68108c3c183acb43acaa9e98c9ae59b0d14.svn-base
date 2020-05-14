@@ -1,0 +1,46 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'IMEFuture' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for IMEFuture
+  pod 'SDWebImage', '~> 4.2.2'
+  pod 'Toast', '~> 3.0'
+
+  pod 'FMDB', '~> 2.7.2'
+
+  pod 'MJExtension'
+  pod 'AFNetworking', '~> 3.1.0'
+  pod 'Masonry', '~> 1.0.1'
+  pod 'MJRefresh'
+
+  pod 'JPush'
+  
+  # 主模块(必须)
+  pod 'ShareSDK3'
+  # Mob 公共库(必须) 如果同时集成SMSSDK iOS2.0:可看此注意事项：http://bbs.mob.com/thread-20051-1-1.html
+  pod 'MOBFoundation'
+  # UI模块(非必须，需要用到ShareSDK提供的分享菜单栏和分享编辑页面需要以下1行)
+  pod 'ShareSDK3/ShareSDKUI'
+  # 平台SDK模块(对照一下平台，需要的加上)
+  pod 'ShareSDK3/ShareSDKPlatforms/QQ'
+  pod 'ShareSDK3/ShareSDKPlatforms/SinaWeibo'
+  pod 'ShareSDK3/ShareSDKPlatforms/WeChat'# IM中有Classes\Vendors\WXChatSDK\WXSDK 所以这里注掉
+  # 百度移动统计
+  pod 'BaiduMobStat', '~> 4.5.0'
+  
+  
+
+  target 'IMEFutureTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'IMEFutureUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end

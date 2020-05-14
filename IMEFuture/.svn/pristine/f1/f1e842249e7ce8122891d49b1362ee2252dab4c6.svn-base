@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="OQCLabelAndTextFieldCell1" customModule="NIM" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44.5"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MVA-ZM-2Ve">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="不合格数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efd-iW-PCR">
+                                <rect key="frame" x="15.5" y="13" width="65.5" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YnS-Vs-Hvn">
+                                <rect key="frame" x="15.5" y="43.5" width="359.5" height="0.5"/>
+                                <color key="backgroundColor" red="0.86666666670000003" green="0.86666666670000003" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.5" id="rhD-ZY-75I"/>
+                                </constraints>
+                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入不合格数量" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fh1-7M-pWA">
+                                <rect key="frame" x="120" y="14" width="240" height="17"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="efd-iW-PCR" firstAttribute="leading" secondItem="MVA-ZM-2Ve" secondAttribute="leading" constant="15" id="ATg-sc-UF7"/>
+                            <constraint firstItem="YnS-Vs-Hvn" firstAttribute="leading" secondItem="MVA-ZM-2Ve" secondAttribute="leading" constant="15" id="MZs-Um-ab0"/>
+                            <constraint firstAttribute="bottom" secondItem="YnS-Vs-Hvn" secondAttribute="bottom" id="NFd-Un-Ig2"/>
+                            <constraint firstAttribute="trailing" secondItem="fh1-7M-pWA" secondAttribute="trailing" constant="15" id="X8B-Ki-BQT"/>
+                            <constraint firstItem="fh1-7M-pWA" firstAttribute="leading" secondItem="MVA-ZM-2Ve" secondAttribute="leading" constant="120" id="YlY-u4-3HZ"/>
+                            <constraint firstItem="efd-iW-PCR" firstAttribute="centerY" secondItem="MVA-ZM-2Ve" secondAttribute="centerY" id="gTZ-q6-XTc"/>
+                            <constraint firstItem="fh1-7M-pWA" firstAttribute="centerY" secondItem="efd-iW-PCR" secondAttribute="centerY" id="jah-dD-gfM"/>
+                            <constraint firstAttribute="trailing" secondItem="YnS-Vs-Hvn" secondAttribute="trailing" id="nNH-ga-bTK"/>
+                            <constraint firstAttribute="height" constant="44" id="ucQ-TW-fUa"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="MVA-ZM-2Ve" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="4Wq-2L-0JK"/>
+                    <constraint firstItem="MVA-ZM-2Ve" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="RXK-5K-4Bf"/>
+                    <constraint firstAttribute="trailing" secondItem="MVA-ZM-2Ve" secondAttribute="trailing" id="rP8-cw-Hnx"/>
+                    <constraint firstAttribute="bottom" secondItem="MVA-ZM-2Ve" secondAttribute="bottom" id="wF5-8H-7HE"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="label0" destination="efd-iW-PCR" id="3K3-X2-nYG"/>
+                <outlet property="textField0" destination="fh1-7M-pWA" id="iVZ-S4-s2c"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

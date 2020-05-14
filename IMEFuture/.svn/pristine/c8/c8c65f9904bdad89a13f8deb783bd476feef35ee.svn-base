@@ -1,0 +1,410 @@
+//
+//  OQCJianYanJieGuoVC.swift
+//  IMEFuture
+//
+//  Created by 邓亚洲 on 2018/7/31.
+//  Copyright © 2018年 Netease. All rights reserved.
+//
+
+import UIKit
+
+class OQCJianYanJieGuoVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    var materialOutgoingOrderDetailVo: MaterialOutgoingOrderDetailVo!
+    
+    private let _height_NavBar = Height_NavBar
+    private let _height_BottomBar = Height_BottomBar
+    
+    var _viewLoading: UIView!
+    
+    private var bool001: Bool = true
+    private var bool002: Bool = false
+    private var bool003: Bool = false
+    
+    var arrayCauseCode: [String]! = []
+    var arrayDateImageView1: [Data]! = []
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var viewBottom: UIView!
+    @IBOutlet weak var heightNavBar: NSLayoutConstraint!
+    @IBOutlet weak var heightBottomBar: NSLayoutConstraint!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if self.materialOutgoingOrderDetailVo.status.intValue == 1 {
+            self.viewBottom.isHidden = true
+        } else {
+            self.viewBottom.isHidden = false
+        }
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        self.heightNavBar.constant = _height_NavBar!
+        self.heightBottomBar.constant = _height_BottomBar!
+        self.materialOutgoingOrderDetailVo.causeCodes = []
+        
+        _viewLoading = UIView.loading(withFrame: CGRect(x: 0, y: _height_NavBar!, width: kMainW, height: kMainH), color: UIColor.clear, imageView: CGRect(x: (kMainW - 34)/2, y: 180, width: 34, height: 34))
+        self.view.addSubview(_viewLoading)
+        _viewLoading.isHidden = true
+        
+        
+        self.tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "cell")
+        self.tableView.register(UINib.init(nibName: "OQCJYJGCell", bundle: nil), forCellReuseIdentifier: "oQCJYJGCell")
+        self.tableView.register(UINib.init(nibName: "OQCJYJGCell1", bundle: nil), forCellReuseIdentifier: "oQCJYJGCell1")
+        self.tableView.register(UINib.init(nibName: "OQCLabelAndTextFieldCell", bundle: nil), forCellReuseIdentifier: "oQCLabelAndTextFieldCell")
+        self.tableView.register(UINib.init(nibName: "OQCLabelAndLabelCell", bundle: nil), forCellReuseIdentifier: "oQCLabelAndLabelCell")
+        self.tableView.register(UINib.init(nibName: "OQCLabelAndTextFieldCell1", bundle: nil), forCellReuseIdentifier: "oQCLabelAndTextFieldCell1")
+        self.tableView.register(UINib.init(nibName: "OQCLabelAndButtonCell", bundle: nil), forCellReuseIdentifier: "oQCLabelAndButtonCell")
+        self.tableView.register(UINib.init(nibName: "OQCLabelAndTextFieldCell2", bundle: nil), forCellReuseIdentifier: "oQCLabelAndTextFieldCell2")
+        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        self.tableView.tableFooterView = UIView()
+//        self.tableView.estimatedRowHeight = 44
+//        self.tableView.rowHeight = UITableViewAutomaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return 1
+        } else if section == 1 {
+            return 5
+        } else {
+            return 0
+        }
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if  indexPath.section == 0{
+            return 97
+        } else if indexPath.section == 1 {
+            if indexPath.row == 3 {
+                if self.materialOutgoingOrderDetailVo.status.intValue == 1 {//已检验
+                    return 0
+                } else {//待检验
+                    if self.materialOutgoingOrderDetailVo.unQualifiedQuantity.doubleValue > 0 {
+                        return 44
+                    } else {
+                        return 0
+                    }
+                }
+            } else {
+                return 44
+            }
+        } else {
+            return 0;
+        }
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            let cell: OQCJYJGCell = tableView.dequeueReusableCell(withIdentifier: "oQCJYJGCell", for: indexPath) as! OQCJYJGCell
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.label0.text = "项目编号：" + self.materialOutgoingOrderDetailVo.projectNum
+            cell.label1.text = "物料名称：" + self.materialOutgoingOrderDetailVo.materialText
+            cell.label2.text = "发货数量：" + self.materialOutgoingOrderDetailVo.planQuantity.stringValue
+            return cell
+        } else {
+            if indexPath.row == 0 {
+                let cell: OQCLabelAndTextFieldCell = tableView.dequeueReusableCell(withIdentifier: "oQCLabelAndTextFieldCell", for: indexPath) as! OQCLabelAndTextFieldCell
+                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.label0.text = "实发数"
+                cell.textField0.placeholder = "请输入实发数"
+                
+                if self.materialOutgoingOrderDetailVo.status.intValue == 1 {//已检验
+                    if self.materialOutgoingOrderDetailVo.actualQuantity.doubleValue != 0 {
+                        cell.textField0.text = "\(NSNumber.init(value: self.materialOutgoingOrderDetailVo.actualQuantity.intValue))"
+                    } else {
+                        cell.textField0.text = "0"
+                    }
+                    cell.textField0.isEnabled = false
+                } else {//待检验
+                    if self.bool001 == true {
+                        if self.materialOutgoingOrderDetailVo.actualQuantity.doubleValue != 0 {
+                            cell.textField0.text = "\(NSNumber.init(value: self.materialOutgoingOrderDetailVo.actualQuantity.intValue))"
+                        } else {
+                            cell.textField0.text = "0"
+                        }
+                    } else {
+                        cell.textField0.text = nil
+                    }
+                    cell.textField0.isEnabled = true
+                }
+                
+                cell.textField0.addTarget(self, action: #selector(textField0Click(sender:)), for: UIControlEvents.editingChanged)
+                cell.textField0.inputAccessoryView = self.addToolbar()
+                return cell
+            } else if indexPath.row == 1 {
+                let cell: OQCLabelAndLabelCell = tableView.dequeueReusableCell(withIdentifier: "oQCLabelAndLabelCell", for: indexPath) as! OQCLabelAndLabelCell
+                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.label0.text = "合格数"
+                cell.label1.text = "\(self.materialOutgoingOrderDetailVo.qualifiedQuantity.intValue)"
+                return cell
+            } else if indexPath.row == 2 {
+                let cell: OQCLabelAndTextFieldCell1 = tableView.dequeueReusableCell(withIdentifier: "oQCLabelAndTextFieldCell1", for: indexPath) as! OQCLabelAndTextFieldCell1
+                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.label0.text = "不合格数"
+                cell.textField0.placeholder = "请输入不合格数量"
+                
+                if self.materialOutgoingOrderDetailVo.status.intValue == 1 {//已检验
+                    if self.materialOutgoingOrderDetailVo.unQualifiedQuantity.doubleValue != 0 {
+                        cell.textField0.text = "\(NSNumber.init(value: self.materialOutgoingOrderDetailVo.unQualifiedQuantity.intValue))"
+                    } else {
+                        cell.textField0.text = "0"
+                    }
+                    cell.textField0.isEnabled = false
+                } else {//待检验
+                    if self.bool002 == true {
+                        if self.materialOutgoingOrderDetailVo.unQualifiedQuantity.doubleValue != 0 {
+                            cell.textField0.text = "\(NSNumber.init(value: self.materialOutgoingOrderDetailVo.unQualifiedQuantity.intValue))"
+                        } else {
+                            cell.textField0.text = "0"
+                        }
+                    } else {
+                        cell.textField0.text = nil
+                    }
+                    cell.textField0.isEnabled = true
+                }
+                
+                cell.textField0.addTarget(self, action: #selector(textField1Click(sender:)), for: UIControlEvents.editingChanged)
+                cell.textField0.inputAccessoryView = self.addToolbar()
+                return cell
+            } else if indexPath.row == 3 {
+                let cell: OQCLabelAndButtonCell = tableView.dequeueReusableCell(withIdentifier: "oQCLabelAndButtonCell", for: indexPath) as! OQCLabelAndButtonCell
+                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                
+                if self.materialOutgoingOrderDetailVo.status.intValue == 1 {//已检验
+                    cell.isHidden = true
+                } else {//待检验
+                    cell.isHidden = true
+                    if self.materialOutgoingOrderDetailVo.unQualifiedQuantity.doubleValue > 0 {
+                        cell.isHidden = false
+                    }
+                }
+                
+                cell.buttonQueXianYuanYing.isHidden = true
+                cell.buttonQueXianYuanYingXuanZe.isHidden = true
+                if (self.materialOutgoingOrderDetailVo.causeCodes.count > 0) {
+                    cell.buttonQueXianYuanYing.isHidden = false
+                    cell.buttonQueXianYuanYing.setTitle("已选择\(self.materialOutgoingOrderDetailVo.causeCodes.count)种", for: UIControlState.normal)
+                } else {
+                    cell.buttonQueXianYuanYingXuanZe.isHidden = false
+                }
+                cell.buttonQueXianYuanYing.addTarget(self, action: #selector(buttonQueXianYuanYingQingXuanZe(sender:)), for: UIControlEvents.touchUpInside)
+                cell.buttonQueXianYuanYingXuanZe.addTarget(self, action: #selector(buttonQueXianYuanYingQingXuanZe(sender:)), for: UIControlEvents.touchUpInside)
+
+                return cell
+            } else {
+                let cell: OQCLabelAndTextFieldCell2 = tableView.dequeueReusableCell(withIdentifier: "oQCLabelAndTextFieldCell2", for: indexPath) as! OQCLabelAndTextFieldCell2
+                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.label0.text = "检验数"
+                cell.textField0.placeholder = "请输入检验数"
+                
+                if self.materialOutgoingOrderDetailVo.status.intValue == 1 {//已检验
+                    if self.materialOutgoingOrderDetailVo.checkQuantity.doubleValue != 0 {
+                        cell.textField0.text = "\(NSNumber.init(value: self.materialOutgoingOrderDetailVo.checkQuantity.intValue))"
+                    } else {
+                        cell.textField0.text = "0"
+                    }
+                    cell.textField0.isEnabled = false
+                } else {//待检验
+                    if self.bool003 == true {
+                        if self.materialOutgoingOrderDetailVo.checkQuantity.doubleValue != 0 {
+                            cell.textField0.text = "\(NSNumber.init(value: self.materialOutgoingOrderDetailVo.checkQuantity.intValue))"
+                        } else {
+                            cell.textField0.text = "0"
+                        }
+                    } else {
+                        cell.textField0.text = nil
+                    }
+                    cell.textField0.isEnabled = true
+                }
+                
+                cell.textField0.addTarget(self, action: #selector(textField4Click(sender:)), for: UIControlEvents.editingChanged)
+                cell.textField0.inputAccessoryView = self.addToolbar()
+                return cell
+            }
+        }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.01;
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 10
+        } else {
+            return 10
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return nil
+    }
+    
+    @objc func textField0Click(sender: UITextField) {
+        if sender.text?.count ?? 0 > 0 {
+            self.bool001 = true
+            self.materialOutgoingOrderDetailVo.actualQuantity = NSNumber.init(value: Double(sender.text!)!)
+        } else {
+            self.bool001 = false
+            self.materialOutgoingOrderDetailVo.actualQuantity = NSNumber.init(value: 0)
+        }
+        let double0: Double = self.materialOutgoingOrderDetailVo.actualQuantity.doubleValue - self.materialOutgoingOrderDetailVo.unQualifiedQuantity.doubleValue - self.materialOutgoingOrderDetailVo.checkQuantity.doubleValue
+        self.materialOutgoingOrderDetailVo.qualifiedQuantity = NSNumber.init(value: double0)
+    }
+    
+    @objc func textField1Click(sender: UITextField) {
+        if sender.text?.count ?? 0 > 0 {
+            self.bool002 = true
+            self.materialOutgoingOrderDetailVo.unQualifiedQuantity = NSNumber.init(value: Double(sender.text!)!)
+        } else {
+            self.bool002 = false
+            self.materialOutgoingOrderDetailVo.unQualifiedQuantity = NSNumber.init(value: 0)
+        }
+        let double0: Double = self.materialOutgoingOrderDetailVo.actualQuantity.doubleValue - self.materialOutgoingOrderDetailVo.unQualifiedQuantity.doubleValue - self.materialOutgoingOrderDetailVo.checkQuantity.doubleValue
+        self.materialOutgoingOrderDetailVo.qualifiedQuantity = NSNumber.init(value: double0)
+        
+        self.tableView.reloadRows(at: [IndexPath.init(row: 3, section: 1)], with: UITableViewRowAnimation.none)
+    }
+    
+    @objc func buttonQueXianYuanYingQingXuanZe(sender: UIButton) {
+        let queXianYuanYinXuanZeViewController: QueXianYuanYinXuanZeViewController = QueXianYuanYinXuanZeViewController()
+        
+        queXianYuanYinXuanZeViewController.blockArrayString = {(arrayString: NSMutableArray?) in
+            
+            self.arrayCauseCode = arrayString as! [String]
+            self.materialOutgoingOrderDetailVo.causeCodes = arrayString
+            self.tableView.reloadRows(at: [IndexPath.init(row: 3, section: 1)], with: UITableViewRowAnimation.none)
+        }
+        queXianYuanYinXuanZeViewController.blockDateImageView0 = {(arrayDateImage: NSMutableArray?) in
+            self.arrayDateImageView1 = arrayDateImage as! [Data]
+            
+        }
+        
+        queXianYuanYinXuanZeViewController.stage = "OQC"
+        queXianYuanYinXuanZeViewController.materialCode = self.materialOutgoingOrderDetailVo.materialCode
+        
+        queXianYuanYinXuanZeViewController.arrayCauseCode = NSMutableArray.init(array: self.arrayCauseCode)
+        queXianYuanYinXuanZeViewController.arrayDateImageView0 = NSMutableArray.init(array: self.arrayDateImageView1)
+        
+        
+        self.navigationController?.pushViewController(queXianYuanYinXuanZeViewController, animated: true)
+    }
+    
+    @objc func textField4Click(sender: UITextField) {
+        if sender.text?.count ?? 0 > 0 {
+            self.bool003 = true
+            self.materialOutgoingOrderDetailVo.checkQuantity = NSNumber.init(value: Double(sender.text!)!)
+        } else {
+            self.bool003 = false
+            self.materialOutgoingOrderDetailVo.checkQuantity = NSNumber.init(value: 0)
+        }
+        let double0: Double = self.materialOutgoingOrderDetailVo.actualQuantity.doubleValue - self.materialOutgoingOrderDetailVo.unQualifiedQuantity.doubleValue - self.materialOutgoingOrderDetailVo.checkQuantity.doubleValue
+        self.materialOutgoingOrderDetailVo.qualifiedQuantity = NSNumber.init(value: double0)
+    }
+    
+    
+    
+//    MARK: 提交
+    @IBAction func buttonCommit(_ sender: Any) {
+        if self.materialOutgoingOrderDetailVo.unQualifiedQuantity.doubleValue > self.materialOutgoingOrderDetailVo.planQuantity.doubleValue {
+            MyAlertCenter.default().postAlert(withMessage: "不合格数不能大于发货数")
+            return;
+        }
+        if self.materialOutgoingOrderDetailVo.checkQuantity.doubleValue > self.materialOutgoingOrderDetailVo.planQuantity.doubleValue {
+            MyAlertCenter.default().postAlert(withMessage: "检验数不能大于发货数")
+            return;
+        }
+        
+        _viewLoading.isHidden = false
+        
+        let mesPostEntityBean: MesPostEntityBean = MesPostEntityBean.init()
+        var arrayTemp: [MaterialOutgoingOrderDetailVo] = []
+        
+        self.materialOutgoingOrderDetailVo.actualQuantity = NSNumber.init(value: floor(self.materialOutgoingOrderDetailVo.actualQuantity.doubleValue))
+        self.materialOutgoingOrderDetailVo.qualifiedQuantity = NSNumber.init(value: floor(self.materialOutgoingOrderDetailVo.qualifiedQuantity.doubleValue))
+        self.materialOutgoingOrderDetailVo.checkQuantity = NSNumber.init(value: floor(self.materialOutgoingOrderDetailVo.checkQuantity.doubleValue))
+        self.materialOutgoingOrderDetailVo.planQuantity = NSNumber.init(value: floor(self.materialOutgoingOrderDetailVo.planQuantity.doubleValue))
+        
+        arrayTemp.append(self.materialOutgoingOrderDetailVo)
+        mesPostEntityBean.entity = arrayTemp
+        
+        let jsonStr = mesPostEntityBean.mj_JSONString() //model - json
+        
+        let dic = ["data":jsonStr!]
+        
+        var uploadImageArray: [UploadImageBean] = []
+        for data in self.arrayDateImageView1 {
+            let uploadImageBean = UploadImageBean.init()
+            uploadImageBean.data = data
+            uploadImageBean.name = "defectFiles"
+            
+            let formatter = DateFormatter.init()
+            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            let strDate = formatter.string(from: Date.init())
+            uploadImageBean.fileName = strDate+".png"
+            
+            uploadImageBean.mimeType = "image/png"
+            uploadImageArray.append(uploadImageBean)
+        }
+        
+        HttpMamager.postRequestImage(withURLString: DYZ_materialOutgoingOrder_updateMaterialOutgoingOrderDetailForCheck, parameters: dic, uploadImageBean: uploadImageArray, success: { (responseObjectModel: Any?) in
+            
+            let returnMsgBean: ReturnMsgBean = ReturnMsgBean.mj_object(withKeyValues: responseObjectModel)
+            
+            self._viewLoading.isHidden = true
+            if returnMsgBean.status == "SUCCESS" {
+                MyAlertCenter.default().postAlert(withMessage: "提交成功")
+                self.materialOutgoingOrderDetailVo.status = NSNumber.init(value: 1)
+                self.navigationController?.popViewController(animated: true)
+            } else {
+                MyAlertCenter.default().postAlert(withMessage: returnMsgBean.returnMsg)
+            }
+        }, fail: { (error: Error?) in
+            self._viewLoading.isHidden = true
+        }, isKindOfModelClass: NSClassFromString("ReturnMsgBean"))
+    }
+    
+    func addToolbar() -> UIToolbar {
+        let toolbar = UIToolbar.init(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 38))
+        toolbar.tintColor = colorRGB(r: 0, g: 168, b: 255)
+        let space = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let bar = UIBarButtonItem.init(title: "完成", style: UIBarButtonItemStyle.plain, target: self, action: #selector(textFieldDone))
+        toolbar.items = [space, bar]
+        return toolbar
+    }
+    
+    @objc func textFieldDone() {
+        UIApplication.shared.sendAction(#selector(resignFirstResponder), to: nil, from: nil, for: nil)
+//        self.tableView.reloadRows(at: [IndexPath.init(row: 0, section: 1)], with: UITableViewRowAnimation.none)
+        self.tableView.reloadSections([1], with: UITableViewRowAnimation.none)
+    }
+    
+    @IBAction func back(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}

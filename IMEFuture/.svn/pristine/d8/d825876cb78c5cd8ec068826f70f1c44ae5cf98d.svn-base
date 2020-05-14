@@ -1,0 +1,16 @@
+//
+//  TgBalanceOrder.m
+//  IMEFuture
+//
+//  Created by 邓亚洲 on 2018/4/17.
+//  Copyright © 2018年 Netease. All rights reserved.
+//
+
+#import "TgBalanceOrder.h"
+#import "MJExtension.h"
+
+@implementation TgBalanceOrder
++ (NSDictionary *)mj_objectClassInArray {
+    return @{@"tgBalanceOrderItems":@"TgBalanceOrderItem"};
+}
+@end
