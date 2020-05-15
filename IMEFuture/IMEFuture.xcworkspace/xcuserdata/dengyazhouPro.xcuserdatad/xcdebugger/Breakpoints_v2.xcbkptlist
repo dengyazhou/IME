@@ -18,38 +18,6 @@
             endingLineNumber = "499"
             landmarkName = "requestDoConfirmProduction()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "586678DC-5570-493A-8530-A080B1AC119C - db9ce68e1819d99"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "IMEFuture.ScanMultiCompleteVC.requestDoConfirmProduction() -&gt; ()"
-                  moduleName = "IMEFuture"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dengyazhouPro/Desktop/Git/IME/IMEFuture/IMEFuture/IMEfuture/TransparentFactory/MultiBaoGong%20/ScanMultiComplete/ScanMultiCompleteVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "500"
-                  endingLineNumber = "500"
-                  offsetFromSymbolStart = "24722">
-               </Location>
-               <Location
-                  uuid = "586678DC-5570-493A-8530-A080B1AC119C - f52be49d0dc3db1e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Any&gt;) -&gt; () in IMEFuture.ScanMultiCompleteVC.requestDoConfirmProduction() -&gt; ()"
-                  moduleName = "IMEFuture"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dengyazhouPro/Desktop/Git/IME/IMEFuture/IMEFuture/IMEfuture/TransparentFactory/MultiBaoGong%20/ScanMultiComplete/ScanMultiCompleteVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "500"
-                  endingLineNumber = "500"
-                  offsetFromSymbolStart = "0">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -80,7 +48,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "269"
                   endingLineNumber = "269"
-                  offsetFromSymbolStart = "2840">
+                  offsetFromSymbolStart = "1820">
                </Location>
                <Location
                   uuid = "49192D01-A9D0-4AE4-8191-5023D58124E3 - fa32caa70ef390e8"

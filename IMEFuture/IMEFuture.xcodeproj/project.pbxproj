@@ -8916,7 +8916,7 @@
 					"$(PROJECT_DIR)/IMEFuture/IMEfuture/Jpush",
 					"$(PROJECT_DIR)/IMEFuture/imefuture/Jpush",
 				);
-				MARKETING_VERSION = 2.38.0;
+				MARKETING_VERSION = 2.40.0;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-isystem",
@@ -8978,7 +8978,7 @@
 					"$(PROJECT_DIR)/IMEFuture/IMEfuture/Jpush",
 					"$(PROJECT_DIR)/IMEFuture/imefuture/Jpush",
 				);
-				MARKETING_VERSION = 2.38.0;
+				MARKETING_VERSION = 2.40.0;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-isystem",

@@ -132,7 +132,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    NSLog(@"1233");
+    NSLog(@"123");
     
     _height_NavBar = Height_NavBar;
     self.heightNavBar.constant = _height_NavBar;
