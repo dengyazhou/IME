@@ -82,6 +82,7 @@
 
 #import "WoDeTongZhiViewController.h"
 #import "IMEProcessPool.h"
+#import "GlobalSettingManager.h"
 
 
 @interface ShouYeViewController () <UITabBarControllerDelegate,HJCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,WKNavigationDelegate> {
@@ -149,6 +150,7 @@
         self.viewVisitor.hidden = NO;
     } else if (userTpye == 1) {//个人
         LoginModel *loginModel = [DatabaseTool getLoginModel];
+        
         NSArray *array = [NSArray stringToJSON:loginModel.identityBeans];
         if (array.count == 1) {
             self.viewNormal.hidden = NO;
@@ -647,6 +649,62 @@
     [self webViewWithTitle:@"创建企业" withURL:IME_CreatEnterprise];
 }
 
+#pragma mark 获取非标token
+- (void)getUserEFEIBIAOToken:(NSString *)ucenterId callBack:(void(^)(void))block{
+    __block BOOL isSuccess = true;
+    _viewLoading1.hidden = false;
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(0, 0);
+    dispatch_group_t group = dispatch_group_create();
+    
+    dispatch_group_enter(group);
+    dispatch_async(queue, ^{
+        EfeibiaoPostEntityBean *efeibiaoPostEntityBean = [[EfeibiaoPostEntityBean alloc] init];
+        MemberReqBean *memberReqBean = [[MemberReqBean alloc] init];
+        memberReqBean.ucId = ucenterId;
+        efeibiaoPostEntityBean.entity = memberReqBean.mj_keyValues;
+        NSDictionary *dic = efeibiaoPostEntityBean.mj_keyValues;
+        [HttpMamager postRequestWithURLString:DYZ_ucenter_user_getUserEFEIBIAOToken parameters:dic success:^(id responseObjectModel) {
+            
+            NSLog(@"-responseObjectModel-%@",[responseObjectModel mj_JSONString]);
+            EfeibiaoReturnEntityBean * efeibiaoReturnEntityBean = responseObjectModel;
+            if ([efeibiaoReturnEntityBean.status isEqualToString:@"SUCCESS"]) {
+                [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken = efeibiaoReturnEntityBean.returnToken;
+                MemberResBean *member = [MemberResBean mj_objectWithKeyValues:efeibiaoReturnEntityBean.entity];
+                [GlobalSettingManager shareGlobalSettingManager].member = member;
+                [GlobalSettingManager shareGlobalSettingManager].memberId = member.idd;
+                [GlobalSettingManager shareGlobalSettingManager].manufacturerId = member.enterpriseInfoId;
+                
+
+                
+                NSLog(@"-----%@",[GlobalSettingManager shareGlobalSettingManager].memberId);
+                NSLog(@"----%@", [GlobalSettingManager shareGlobalSettingManager].manufacturerId);
+                
+                // 获取非标 权限数组
+                [[GlobalSettingManager shareGlobalSettingManager] requestfbCompetenceAllWithfbToken:[GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken];
+                isSuccess = true;
+                dispatch_group_leave(group);
+            } else {
+                [[MyAlertCenter defaultCenter] postAlertWithMessage:efeibiaoReturnEntityBean.returnMsg];
+                isSuccess = false;
+                dispatch_group_leave(group);
+            }
+            
+        } fail:^(NSError *error) {
+            isSuccess = false;
+            dispatch_group_leave(group);
+            
+            
+        } isKindOfModel:NSClassFromString(@"EfeibiaoReturnEntityBean")];
+    });
+    
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        self->_viewLoading1.hidden = true;
+        if (isSuccess) {
+            block();
+        }
+    });
+}
 
 #pragma mark 非标管家大 没有选择过
 - (void)buttonFeiBiaoGuanJia0:(UIButton *)sender {
@@ -655,48 +713,62 @@
     [_viewSelectIdentity.buttonSelectSupplier addTarget:self action:@selector(buttonSelectSupplier:) forControlEvents:UIControlEventTouchUpInside];
     [[UIApplication sharedApplication].keyWindow addSubview:_viewSelectIdentity];
 }
-
 #pragma mark 非标管家大 选择过 上部
 - (void)buttonFeiBiaoGuanJia1Shang:(UIButton *)sender {
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    NSInteger type = [DatabaseTool t_IdentityBeanGettypeWithUserId:loginModel.userId];
-    if (type == 1) {//采购商
-        [self goPurchaser];
-    } else if (type == 2) {//供应商
-        [self goSupplier];
-    }
+    [self getUserEFEIBIAOToken:loginModel.ucenterId callBack:^{
+//        NSLog(@"%@",[GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken);
+        
+        LoginModel *loginModel = [DatabaseTool getLoginModel];
+        NSInteger type = [DatabaseTool t_IdentityBeanGettypeWithUserId:loginModel.userId];
+
+        if (type == 1) {//采购商
+            [self goPurchaser];
+        } else if (type == 2) {//供应商
+            [self goSupplier];
+        }
+    }];
 }
 #pragma mark 非标管家大 选择过 下部
 - (void)buttonFeiBiaoGuanJia1Xia:(UIButton *)sender {
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    NSInteger type = [DatabaseTool t_IdentityBeanGettypeWithUserId:loginModel.userId];
-    if (type == 1) {//采购商
-        [DatabaseTool t_IdentityBeanUpdateWithUserId:loginModel.userId andType:2];
-        //进供应商
-        [self goSupplier];
-    } else if (type == 2) {//供应商
-        [DatabaseTool t_IdentityBeanUpdateWithUserId:loginModel.userId andType:1];
-        //进采购商
-        [self goPurchaser];
-    }
+    [self getUserEFEIBIAOToken:loginModel.ucenterId callBack:^{
+        NSInteger type = [DatabaseTool t_IdentityBeanGettypeWithUserId:loginModel.userId];
+        if (type == 1) {//采购商
+            [DatabaseTool t_IdentityBeanUpdateWithUserId:loginModel.userId andType:2];
+            //进供应商
+            [self goSupplier];
+        } else if (type == 2) {//供应商
+            [DatabaseTool t_IdentityBeanUpdateWithUserId:loginModel.userId andType:1];
+            //进采购商
+            [self goPurchaser];
+        }
+    }];
 }
 #pragma mark 非标管家 小
 - (void)buttonFeiBiaoGuanJia2:(UIButton *)sender {
-    [self goPurchaser];
+    LoginModel *loginModel = [DatabaseTool getLoginModel];
+    [self getUserEFEIBIAOToken:loginModel.ucenterId callBack:^{
+        [self goPurchaser];
+    }];
 }
 #pragma mark 选择采购商
 - (void)buttonSelectProcurer:(UIButton *)sender {
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    [DatabaseTool t_IdentityBeanUpdateWithUserId:loginModel.userId andType:1];
-    [self goPurchaser];
-    [_viewSelectIdentity removeFromSuperview];
+    [self getUserEFEIBIAOToken:loginModel.ucenterId callBack:^{
+        [DatabaseTool t_IdentityBeanUpdateWithUserId:loginModel.userId andType:1];
+        [self goPurchaser];
+        [self->_viewSelectIdentity removeFromSuperview];
+    }];
 }
 #pragma mark 选择供应商
 - (void)buttonSelectSupplier:(UIButton *)sender {
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    [DatabaseTool t_IdentityBeanUpdateWithUserId:loginModel.userId andType:2];
-    [self goSupplier];
-    [_viewSelectIdentity removeFromSuperview];
+    [self getUserEFEIBIAOToken:loginModel.ucenterId callBack:^{
+        [DatabaseTool t_IdentityBeanUpdateWithUserId:loginModel.userId andType:2];
+        [self goSupplier];
+        [self->_viewSelectIdentity removeFromSuperview];
+    }];
 }
 
 #pragma mark 透明工厂

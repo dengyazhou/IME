@@ -21,48 +21,46 @@
     return gsManager;
 }
 
-- (void)requestPurchaseGlobalTemplate {
-    EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
-    GlobalTemplateBean *globalTemplateBean = [[GlobalTemplateBean alloc] init];
-    
-    postEntityBean.entity = globalTemplateBean.mj_keyValues;
-    
-    NSDictionary *dic = postEntityBean.mj_keyValues;
+//- (void)requestPurchaseGlobalTemplate {
+//    EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
+//    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
+//    GlobalTemplateBean *globalTemplateBean = [[GlobalTemplateBean alloc] init];
+//
+//    postEntityBean.entity = globalTemplateBean.mj_keyValues;
+//
+//    NSDictionary *dic = postEntityBean.mj_keyValues;
+//
+//    [HttpMamager postRequestWithURLString:DYZ_api_globalTemplate_purchase_getGlobalTemplateForTable parameters:dic success:^(id responseObjectModel) {
+//
+//        ReturnListBean *returnListBean = responseObjectModel;
+//        if ([returnListBean.status isEqualToString:@"SUCCESS"]) {
+//            self.purchaseGlobalTemplateArray = [GlobalTemplateBean mj_objectArrayWithKeyValuesArray:returnListBean.list];
+//        }
+//
+//    } fail:^(NSError *error) {
+//
+//    } isKindOfModel:NSClassFromString(@"ReturnListBean")];
+//}
 
-    [HttpMamager postRequestWithURLString:DYZ_api_globalTemplate_purchase_getGlobalTemplateForTable parameters:dic success:^(id responseObjectModel) {
-        
-        ReturnListBean *returnListBean = responseObjectModel;
-        if ([returnListBean.status isEqualToString:@"SUCCESS"]) {
-            self.purchaseGlobalTemplateArray = [GlobalTemplateBean mj_objectArrayWithKeyValuesArray:returnListBean.list];
-        }
-        
-    } fail:^(NSError *error) {
-        
-    } isKindOfModel:NSClassFromString(@"ReturnListBean")];
-}
-
-- (void)requestSupplierGlobalTemplate {
-    EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
-    GlobalTemplateBean *globalTemplateBean = [[GlobalTemplateBean alloc] init];
-    
-    postEntityBean.entity = globalTemplateBean.mj_keyValues;
-    
-    NSDictionary *dic = postEntityBean.mj_keyValues;
-    
-    [HttpMamager postRequestWithURLString:DYZ_api_globalTemplate_supplier_getGlobalTemplateForTable parameters:dic success:^(id responseObjectModel) {
-        ReturnListBean *returnListBean = responseObjectModel;
-        if ([returnListBean.status isEqualToString:@"SUCCESS"]) {
-            self.supplierGlobalTemplateArray = [GlobalTemplateBean mj_objectArrayWithKeyValuesArray:returnListBean.list];
-        }
-        
-    } fail:^(NSError *error) {
-        
-    } isKindOfModel:NSClassFromString(@"ReturnListBean")];
-}
-
-
+//- (void)requestSupplierGlobalTemplate {
+//    EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
+//    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
+//    GlobalTemplateBean *globalTemplateBean = [[GlobalTemplateBean alloc] init];
+//
+//    postEntityBean.entity = globalTemplateBean.mj_keyValues;
+//
+//    NSDictionary *dic = postEntityBean.mj_keyValues;
+//
+//    [HttpMamager postRequestWithURLString:DYZ_api_globalTemplate_supplier_getGlobalTemplateForTable parameters:dic success:^(id responseObjectModel) {
+//        ReturnListBean *returnListBean = responseObjectModel;
+//        if ([returnListBean.status isEqualToString:@"SUCCESS"]) {
+//            self.supplierGlobalTemplateArray = [GlobalTemplateBean mj_objectArrayWithKeyValuesArray:returnListBean.list];
+//        }
+//
+//    } fail:^(NSError *error) {
+//
+//    } isKindOfModel:NSClassFromString(@"ReturnListBean")];
+//}
 
 - (void)requestfbCompetenceAllWithfbToken:(NSString *)token {
     if (token == nil) {
@@ -132,5 +130,7 @@
         } isKindOfModel:NSClassFromString(@"ReturnListBean")];
     });
 }
+
+
 
 @end

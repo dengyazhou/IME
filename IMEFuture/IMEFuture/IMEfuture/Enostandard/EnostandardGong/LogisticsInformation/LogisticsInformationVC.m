@@ -109,7 +109,7 @@
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
     LoginModel *loginModel = [DatabaseTool getLoginModel];
     
-    postEntityBean.memberId = loginModel.memberId;
+    postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
     TradeOrder *tradeOrder = [[TradeOrder alloc] init];
     tradeOrder.orderCode = self.orderCode;
     tradeOrder.supplierEnterpriseId = loginModel.enterpriseId;

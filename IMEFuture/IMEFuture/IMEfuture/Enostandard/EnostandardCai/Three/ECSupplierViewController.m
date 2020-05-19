@@ -207,7 +207,7 @@
         EnterpriseRelation *enterpriseRelationModel = _arrayEnterpriseRelationModel[indexPath.section];
         EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
         LoginModel *loginModel = [DatabaseTool getLoginModel];
-        postEntityBean.memberId = loginModel.memberId;
+        postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
         EnterpriseRelation *enterpriseRelation = [[EnterpriseRelation alloc] init];
         enterpriseRelation.initiatorId = enterpriseRelationModel.initiatorId;
         enterpriseRelation.passiveId = enterpriseRelationModel.passiveId;
@@ -310,7 +310,7 @@
 - (void)initRequest0WithTGSupplierTag:(TGSupplierTag *)tGSupplierTag se_temporaryEnterpriseName:(NSString *)se_temporaryEnterpriseName se_temporaryZoneStr:(NSString *)se_temporaryZoneStr{
     _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-        postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:EFeiBiaoToken];
+        postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
         
         PagerBean *pagerBean = [[PagerBean alloc] init];
         pagerBean.pageSize = [NSNumber numberWithInteger:[pageSizeDYZ integerValue]];
@@ -357,7 +357,7 @@
     
     _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-        postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:EFeiBiaoToken];
+        postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
         
         PagerBean *pagerBean = [[PagerBean alloc] init];
         pagerBean.pageSize = [NSNumber numberWithInteger:[pageSizeDYZ integerValue]];
@@ -403,7 +403,7 @@
     TGSupplierTag *tGSupplierTag = [[TGSupplierTag alloc] init];
     
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    tGSupplierTag.manufacturerId = loginModel.manufacturerId;
+    tGSupplierTag.manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
     
     postEntityBean.entity = tGSupplierTag.mj_keyValues;
     

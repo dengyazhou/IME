@@ -125,7 +125,7 @@ static NSInteger pageSize = 14;
     PurchaseProjectInfo *purchaseProjectInfo = [[PurchaseProjectInfo alloc] init];
     
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    purchaseProjectInfo.manufacturerId = loginModel.manufacturerId;
+    purchaseProjectInfo.manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
     
     purchaseProjectInfo.projectId = purchaseProjectModel.purchaseProjectId;
     purchaseProjectInfo.inquiryOrderId = self.inquiryOrderId;
@@ -165,12 +165,12 @@ static NSInteger pageSize = 14;
         PurchaseProject *purchaseProject = [[PurchaseProject alloc] init];
         
         LoginModel *loginModel = [DatabaseTool getLoginModel];
-        purchaseProject.manufacturerId = loginModel.manufacturerId;
+        purchaseProject.manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
         purchaseProject.purchasePorjectStatus = @"ING";
         
         postEntityBean.entity = purchaseProject.mj_keyValues;
         
-        postEntityBean.memberId = loginModel.memberId;
+        postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
         
         NSDictionary *dic = postEntityBean.mj_keyValues;
         
@@ -229,11 +229,11 @@ static NSInteger pageSize = 14;
         PurchaseProject *purchaseProject = [[PurchaseProject alloc] init];
         
         LoginModel *loginModel = [DatabaseTool getLoginModel];
-        purchaseProject.manufacturerId = loginModel.manufacturerId;
+        purchaseProject.manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
         
         postEntityBean.entity = purchaseProject.mj_keyValues;
         
-        postEntityBean.memberId = loginModel.memberId;
+        postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
         
         NSDictionary *dic = postEntityBean.mj_keyValues;
         

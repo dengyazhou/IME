@@ -318,7 +318,7 @@ static NSString *cellIdentifier = @"cellIdentifier";
         }];
         
         LoginModel *loginModel = [DatabaseTool getLoginModel];
-        if (![_inquiryOrderModel.manufacturerId isEqualToString:loginModel.manufacturerId]) {
+        if (![_inquiryOrderModel.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {
             label.backgroundColor = colorRGB(0, 168, 255);
             label1.textColor = colorRGB(0, 168, 255);
         }
@@ -389,7 +389,7 @@ static NSString *cellIdentifier = @"cellIdentifier";
         
         
         LoginModel *loginModel = [DatabaseTool getLoginModel];
-        if ([_inquiryOrderModel.manufacturerId isEqualToString:loginModel.manufacturerId]) {
+        if ([_inquiryOrderModel.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {
             //采购商
             [cell1 initDate:model with:indexPath isPurchaser:YES];
         } else {
@@ -495,7 +495,7 @@ static NSString *cellIdentifier = @"cellIdentifier";
     if (indexPath.section == 1) {
         LoginModel *loginModel = [DatabaseTool getLoginModel];
         NSString *sourceCaiOrGong;
-        if ([_inquiryOrderModel.manufacturerId isEqualToString:loginModel.manufacturerId]) {//采购商身份进来
+        if ([_inquiryOrderModel.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {//采购商身份进来
             sourceCaiOrGong = @"cai";
         } else {
             sourceCaiOrGong = @"gong";
@@ -534,7 +534,7 @@ static NSString *cellIdentifier = @"cellIdentifier";
 
 - (IBAction)buttonCaiGong:(UIButton *)sender {
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    if ([_inquiryOrderModel.manufacturerId isEqualToString:loginModel.manufacturerId]) {
+    if ([_inquiryOrderModel.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {
         //采购商 进来
 #pragma mark ----------采购商----------
         if ([self->_inquiryOrderModel.inquiryType isEqualToString:@"COM"] || [self->_inquiryOrderModel.inquiryType isEqualToString:@"ATG"]) {
@@ -911,7 +911,7 @@ static NSString *cellIdentifier = @"cellIdentifier";
         NSInteger row = [self.pickerView selectedRowInComponent:0];
         
         EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-        postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+        postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
         
         InquiryOrder *inquiryOrder = [[InquiryOrder alloc] init];
         inquiryOrder.inquiryOrderId = self.inquiryOrderId;//必填
@@ -964,8 +964,8 @@ static NSString *cellIdentifier = @"cellIdentifier";
     InquiryOrderEnterprise *inquiryOrderEnterprise = [[InquiryOrderEnterprise alloc] init];
     inquiryOrderEnterprise.inquiryOrderId = self.inquiryOrderId;
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    inquiryOrderEnterprise.manufacturerId = loginModel.manufacturerId;
-    inquiryOrderEnterprise.memberId = loginModel.memberId;
+    inquiryOrderEnterprise.manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
+    inquiryOrderEnterprise.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
     postEntityBean.entity = inquiryOrderEnterprise.mj_keyValues;
     NSDictionary *dic = postEntityBean.mj_keyValues;
     
@@ -988,7 +988,7 @@ static NSString *cellIdentifier = @"cellIdentifier";
     InquiryOrderEnterprise *inquiryOrderEnterprise = [[InquiryOrderEnterprise alloc] init];
     inquiryOrderEnterprise.inquiryOrderId = self.inquiryOrderId;
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    inquiryOrderEnterprise.manufacturerId = loginModel.manufacturerId;
+    inquiryOrderEnterprise.manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
     postEntityBean.entity = inquiryOrderEnterprise.mj_keyValues;
     NSDictionary *dic = postEntityBean.mj_keyValues;
     
@@ -1008,7 +1008,7 @@ static NSString *cellIdentifier = @"cellIdentifier";
 
 #pragma mark 询盘历史web端展示
 - (void)initRequestInquiryHistory{
-    NSString *fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+    NSString *fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
     NSDictionary *entity = @{@"id":self.inquiryOrderId};
 
     NSDictionary *dic = @{@"fbToken":fbToken,@"entity":entity};
@@ -1030,7 +1030,7 @@ static NSString *cellIdentifier = @"cellIdentifier";
 
 - (void)requestData:(void (^)(id))dataBlock {
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
     
     InquiryOrder *inquiryOrder = [[InquiryOrder alloc] init];
     inquiryOrder.inquiryOrderId = self.inquiryOrderId;
@@ -1056,7 +1056,7 @@ static NSString *cellIdentifier = @"cellIdentifier";
 #pragma mark 查询询盘详细接口
 - (void)initRequest {
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
     
     InquiryOrder *inquiryOrder = [[InquiryOrder alloc] init];
     inquiryOrder.inquiryOrderId = self.inquiryOrderId;
@@ -1084,7 +1084,7 @@ static NSString *cellIdentifier = @"cellIdentifier";
     
             LoginModel *loginModel = [DatabaseTool getLoginModel];
             
-            if ([self->_inquiryOrderModel.manufacturerId isEqualToString:loginModel.manufacturerId]) {
+            if ([self->_inquiryOrderModel.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {
                 //采购商 进来
                 self.viewPurchaseBG.hidden = NO;
                 self.buttonPurchase.hidden = YES;
@@ -1332,7 +1332,7 @@ static NSString *cellIdentifier = @"cellIdentifier";
     InquiryOrderEnterprise *inquiryOrderEnterprise = [[InquiryOrderEnterprise alloc] init];
     inquiryOrderEnterprise.inquiryOrderId = _inquiryOrderModel.inquiryOrderId;
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    inquiryOrderEnterprise.manufacturerId = loginModel.manufacturerId;
+    inquiryOrderEnterprise.manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
     postEntityBean.entity = inquiryOrderEnterprise.mj_keyValues;
     NSDictionary *dic = postEntityBean.mj_keyValues;
     
@@ -1367,7 +1367,7 @@ static NSString *cellIdentifier = @"cellIdentifier";
     }
     if ([sender.currentTitle isEqualToString:@"询盘议价"]) {
         LoginModel *loginModel = [DatabaseTool getLoginModel];
-        if ([_inquiryOrderModel.manufacturerId isEqualToString:loginModel.manufacturerId]) {//采
+        if ([_inquiryOrderModel.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {//采
             ECYiJiaViewController *eCYiJiaViewController = [[ECYiJiaViewController alloc] init];
             eCYiJiaViewController.quotationOrderId = _inquiryOrderModel.quotationOrderId;
             [self.navigationController pushViewController:eCYiJiaViewController animated:YES];
@@ -1387,15 +1387,15 @@ static NSString *cellIdentifier = @"cellIdentifier";
         NSInteger row = [self.pickerViewYiJia selectedRowInComponent:0];
         EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
         LoginModel *loginModel = [DatabaseTool getLoginModel];
-        postEntityBean.memberId = loginModel.memberId;
+        postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
         QuotationOrder *quotationOrder1 = [[QuotationOrder alloc] init];
         
         InquiryOrder *inquiryOrder = [[InquiryOrder alloc] init];
         inquiryOrder.inquiryOrderId = _inquiryOrderModel.inquiryOrderId;
         inquiryOrder.inquiryType = _inquiryOrderModel.inquiryType;
         inquiryOrder.quotationOrderId = _inquiryOrderModel.quotationOrderId;
-        inquiryOrder.manufacturerId = loginModel.manufacturerId;
-        inquiryOrder.cancelId = loginModel.memberId;
+        inquiryOrder.manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
+        inquiryOrder.cancelId = [GlobalSettingManager shareGlobalSettingManager].memberId;
         inquiryOrder.cancelMsg = _arrayJuJueShouPan[row];
         inquiryOrder.cancelName = loginModel.accountName;
         
@@ -1444,16 +1444,16 @@ static NSString *cellIdentifier = @"cellIdentifier";
         UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"确定接盘" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
             LoginModel *loginModel = [DatabaseTool getLoginModel];
-            postEntityBean.memberId = loginModel.memberId;
+            postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
             QuotationOrder *quotationOrder1 = [[QuotationOrder alloc] init];
             quotationOrder1.inquiryOrderId = _quotationOrderHttp.inquiryOrderId;
             quotationOrder1.quotationOrderId = _quotationOrderHttp.quotationOrderId;
-            quotationOrder1.manufacturerId = loginModel.manufacturerId;
+            quotationOrder1.manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
             InquiryOrder *inquiryOrder = [[InquiryOrder alloc] init];
             inquiryOrder.manufacturerId = _inquiryOrderModel.manufacturerId;
             inquiryOrder.inquiryOrderCode = _inquiryOrderModel.inquiryOrderCode;
             quotationOrder1.inquiryOrder = inquiryOrder;
-            quotationOrder1.acceptId = loginModel.memberId;
+            quotationOrder1.acceptId = [GlobalSettingManager shareGlobalSettingManager].memberId;
             quotationOrder1.acceptName = loginModel.accountName;
             
             quotationOrder1.isTemporary = _quotationOrderHttp.isTemporary;
@@ -1494,7 +1494,7 @@ static NSString *cellIdentifier = @"cellIdentifier";
     }
     if ([sender.currentTitle isEqualToString:@"进入订单"]) {
         LoginModel *loginModel = [DatabaseTool getLoginModel];
-        if ([_inquiryOrderModel.manufacturerId isEqualToString:loginModel.manufacturerId]) {
+        if ([_inquiryOrderModel.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {
             DingDanXiangQingCaiViewController *dingDanXiangQingCaiViewController = [[DingDanXiangQingCaiViewController alloc] init];
             dingDanXiangQingCaiViewController.stringResource = @"ECaiGouShangViewControllerL";
             dingDanXiangQingCaiViewController.orderId = _inquiryOrderModel.tradeOrderId;
@@ -1513,7 +1513,7 @@ static NSString *cellIdentifier = @"cellIdentifier";
 //    EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
 //    EnterpriseRelation *enterpriseRelation = [[EnterpriseRelation alloc] init];
 //    LoginModel *loginModel = [DatabaseTool getLoginModel];
-//    enterpriseRelation.initiatorId = loginModel.manufacturerId;
+//    enterpriseRelation.initiatorId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
 //    enterpriseRelation.passiveId = _inquiryOrderModel.manufacturerId;
 //    enterpriseRelation.relationType = @"A";
 //    postEntityBean.entity = enterpriseRelation.mj_keyValues;
@@ -1545,10 +1545,10 @@ static NSString *cellIdentifier = @"cellIdentifier";
 //    QuotationOrderItem *quotationOrderItem = [[QuotationOrderItem alloc] init];
 //    quotationOrderItem.q__quotationOrderId = _inquiryOrderModel.quotationOrder.quotationOrderId;
 //    LoginModel *loginModel = [DatabaseTool getLoginModel];
-//    if ([_inquiryOrderModel.manufacturerId isEqualToString:loginModel.manufacturerId]) {
-//        quotationOrderItem.i__manufacturerId = loginModel.manufacturerId;
+//    if ([_inquiryOrderModel.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {
+//        quotationOrderItem.i__manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
 //    } else {
-//        quotationOrderItem.qm__manufacturerId = loginModel.manufacturerId;
+//        quotationOrderItem.qm__manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
 //    }
 //
 //    postEntityBean.entity = quotationOrderItem.mj_keyValues;
@@ -1581,13 +1581,13 @@ static NSString *cellIdentifier = @"cellIdentifier";
 
 //DYZ_drawing_drawingCloud_drawingCloudUrl
 - (void)api_Image_drawingCloudUrl:(NSMutableArray <__kindof NSString *> *)strA {
-    EfeibiaoPostEntityBean *efeibiaoPostEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    efeibiaoPostEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+    EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
+    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
     DrawingCloudBean *drawingCloudBean = [[DrawingCloudBean alloc] init];
     drawingCloudBean.ids = strA;
     drawingCloudBean.type = [NSNumber numberWithInt:2];
-    efeibiaoPostEntityBean.entity = drawingCloudBean.mj_keyValues;
-    NSDictionary *dic = efeibiaoPostEntityBean.mj_keyValues;
+    postEntityBean.entity = drawingCloudBean.mj_keyValues;
+    NSDictionary *dic = postEntityBean.mj_keyValues;
     
 //    NSLog(@"%@",efeibiaoPostEntityBean.mj_JSONString);
     

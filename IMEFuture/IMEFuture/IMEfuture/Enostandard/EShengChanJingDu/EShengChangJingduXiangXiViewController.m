@@ -71,7 +71,7 @@
 - (void)initRequestProductionOrderInfo {
     
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
     
     TradeOrder *tradeOrder = [[TradeOrder alloc] init];
     tradeOrder.orderId = self.orderId;

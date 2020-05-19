@@ -218,7 +218,7 @@
 #pragma mark 修改订单
 - (IBAction)buttonXiuGaiDianDan:(UIButton *)sender {
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
     
     TradeOrder *trader = [[TradeOrder alloc] init];
     trader.orderId = self.orderId;
@@ -277,7 +277,7 @@
 #pragma mark 删除订单
 - (IBAction)buttonCheckConferInquiry:(id)sender {
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
     
     TradeOrder *trader = [[TradeOrder alloc] init];
     trader.orderId = self.orderId;
@@ -316,7 +316,7 @@
 #pragma mark 采购商订单明细查询接口
 - (void)initPurchaseOrderDetail {
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
     
     TradeOrder *tradeOrder = [[TradeOrder alloc] init];
     tradeOrder.orderId = self.orderId;
@@ -345,13 +345,13 @@
 }
 
 - (void)api_Image_drawingCloudUrl:(NSMutableArray <__kindof NSString *> *)strA {
-    EfeibiaoPostEntityBean *efeibiaoPostEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    efeibiaoPostEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+    EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
+    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
     DrawingCloudBean *drawingCloudBean = [[DrawingCloudBean alloc] init];
     drawingCloudBean.ids = strA;
     drawingCloudBean.type = [NSNumber numberWithInt:3];
-    efeibiaoPostEntityBean.entity = drawingCloudBean.mj_keyValues;
-    NSDictionary *dic = efeibiaoPostEntityBean.mj_keyValues;
+    postEntityBean.entity = drawingCloudBean.mj_keyValues;
+    NSDictionary *dic = postEntityBean.mj_keyValues;
     
     [HttpMamager postRequestWithURLString:DYZ_drawing_drawingCloud_drawingCloudUrl parameters:dic success:^(id responseObjectModel) {
         NSLog(@"%@",[responseObjectModel mj_JSONString]);

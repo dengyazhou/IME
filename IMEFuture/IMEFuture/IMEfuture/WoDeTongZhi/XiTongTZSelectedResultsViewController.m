@@ -476,7 +476,7 @@ static NSInteger pageSize = 14;
         if ([pmPageBean.statisticStr isEqualToString:@"N225"]) {
             _viewLoading1.hidden = NO;
             EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-            postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+            postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
             TradeOrder *tradeOrder = [[TradeOrder alloc] init];
             tradeOrder.orderId = _mutableDic[@"e"];
             postEntityBean.entity = tradeOrder.mj_keyValues;
@@ -501,7 +501,7 @@ static NSInteger pageSize = 14;
         if ([pmPageBean.statisticStr isEqualToString:@"N227"]) {
             _viewLoading1.hidden = NO;
             EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-            postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+            postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
             TradeOrder *tradeOrder = [[TradeOrder alloc] init];
             tradeOrder.orderId = _mutableDic[@"e"];
             postEntityBean.entity = tradeOrder.mj_keyValues;
@@ -532,7 +532,7 @@ static NSInteger pageSize = 14;
         if ([pmPageBean.statisticStr isEqualToString:@"N8"]) {
             _viewLoading1.hidden = false;
             EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-            postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+            postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
             
             InquiryOrder *inquiryOrder = [[InquiryOrder alloc] init];
             inquiryOrder.inquiryOrderId = _mutableDic[@"b"];
@@ -577,7 +577,7 @@ static NSInteger pageSize = 14;
     //        _mutableDic[@"b"];
             _viewLoading1.hidden = false;
             EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-            postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+            postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
             DeliverOrderReqBean *deliverOrderReqBean = [DeliverOrderReqBean new];
             deliverOrderReqBean.deliverCode = _mutableDic[@"b"];
             postEntityBean.entity = deliverOrderReqBean.mj_keyValues;
@@ -609,7 +609,7 @@ static NSInteger pageSize = 14;
         if ([pmPageBean.statisticStr isEqualToString:@"N16"]) {
             _viewLoading1.hidden = false;
             EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-            postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+            postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
             DeliverOrderReqBean *deliverOrderReqBean = [DeliverOrderReqBean new];
             deliverOrderReqBean.deliverCode = _mutableDic[@"a"];
             postEntityBean.entity = deliverOrderReqBean.mj_keyValues;

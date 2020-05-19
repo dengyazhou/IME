@@ -997,7 +997,7 @@
                 } else {
                     LoginModel *loginModel = [DatabaseTool getLoginModel];
                     NSString *sourceCaiOrGong;
-                    if ([_inquiryOrderModel.manufacturerId isEqualToString:loginModel.manufacturerId]) {//采购商身份进来
+                    if ([_inquiryOrderModel.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {//采购商身份进来
                         sourceCaiOrGong = @"cai";
                     } else {
                         sourceCaiOrGong = @"gong";
@@ -1016,7 +1016,7 @@
     } else {
         LoginModel *loginModel = [DatabaseTool getLoginModel];
         NSString *sourceCaiOrGong;
-        if ([_inquiryOrderModel.manufacturerId isEqualToString:loginModel.manufacturerId]) {//采购商身份进来
+        if ([_inquiryOrderModel.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {//采购商身份进来
             sourceCaiOrGong = @"cai";
         } else {
             sourceCaiOrGong = @"gong";
@@ -1034,7 +1034,7 @@
 - (void)buttonDetailClick:(UIButton *)sender {
     LoginModel *loginModel = [DatabaseTool getLoginModel];
     NSString *sourceCaiOrGong;
-    if ([_inquiryOrderModel.manufacturerId isEqualToString:loginModel.manufacturerId]) {//采购商身份进来
+    if ([_inquiryOrderModel.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {//采购商身份进来
         sourceCaiOrGong = @"cai";
     } else {
         sourceCaiOrGong = @"gong";
@@ -1080,16 +1080,15 @@
     }];
     UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-        postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
-        LoginModel *loginModel = [DatabaseTool getLoginModel];
-        NSString *member = loginModel.member;
-        Member *memberModel = [Member mj_objectWithKeyValues:member];
+        postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
         
-        postEntityBean.memberId = loginModel.memberId;
-        _quotationOrder.memberId = loginModel.memberId;
-        _quotationOrder.manufacturerId = loginModel.manufacturerId;
-        _quotationOrder.supplierAccountPeriod = memberModel.enterpriseInfo.accountPeriod;
-        _quotationOrder.supplierCommision = memberModel.enterpriseInfo.supplierCommision;
+        MemberResBean *member = [GlobalSettingManager shareGlobalSettingManager].member;
+        
+        postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
+        _quotationOrder.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
+        _quotationOrder.manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
+        _quotationOrder.supplierAccountPeriod = member.enterpriseInfo.accountPeriod;
+        _quotationOrder.supplierCommision = member.enterpriseInfo.supplierCommision;
         
         
         postEntityBean.entity = _quotationOrder.mj_keyValues;

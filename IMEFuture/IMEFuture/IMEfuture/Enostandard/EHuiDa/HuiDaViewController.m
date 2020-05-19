@@ -87,13 +87,13 @@
     if (_haveE == YES) {
         EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
         LoginModel *loginModel = [DatabaseTool getLoginModel];
-        postEntityBean.memberId = loginModel.memberId;
+        postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
         InquiryOrderQA *inquiryOrderQA = [[InquiryOrderQA alloc] init];
         inquiryOrderQA.inquiryOrderId = self.inquiryOrderQ.inquiryOrderId;
         inquiryOrderQA.inquiryOrderItemId = self.inquiryOrderQ.inquiryOrderItemId;//需要选择的
         inquiryOrderQA.partName = self.inquiryOrderQ.partName;//需要选择的
         inquiryOrderQA.lineNumber = self.inquiryOrderQ.lineNumber;//需要选择的
-        inquiryOrderQA.memberId = loginModel.memberId;
+        inquiryOrderQA.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
         inquiryOrderQA.content = _textViewHuiDa.text;
         inquiryOrderQA.qaType = [NSNumber numberWithInteger:1];
         inquiryOrderQA.relatedFlag = self.inquiryOrderQ.qaId;
@@ -118,13 +118,13 @@
         
         EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
         LoginModel *loginModel = [DatabaseTool getLoginModel];
-        postEntityBean.memberId = loginModel.memberId;
+        postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
         InquiryOrderQA *inquiryOrderQA = [[InquiryOrderQA alloc] init];
         inquiryOrderQA.inquiryOrderId = self.inquiryOrderQ.inquiryOrderId;
         inquiryOrderQA.inquiryOrderItemId = self.inquiryOrderQ.inquiryOrderItemId;//需要选择的
         inquiryOrderQA.partName = self.inquiryOrderQ.partName;//需要选择的
         inquiryOrderQA.lineNumber = self.inquiryOrderQ.lineNumber;//需要选择的
-        inquiryOrderQA.memberId = loginModel.memberId;
+        inquiryOrderQA.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
         inquiryOrderQA.content = _textViewHuiDa.text;
         inquiryOrderQA.qaType = [NSNumber numberWithInteger:1];
         inquiryOrderQA.relatedFlag = self.inquiryOrderQ.qaId;

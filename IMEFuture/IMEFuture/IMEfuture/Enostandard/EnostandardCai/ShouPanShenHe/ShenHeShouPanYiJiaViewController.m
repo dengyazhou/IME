@@ -130,8 +130,8 @@
     inquiryOrder.inquiryOrderId = self.inquiryOrder.inquiryOrderId;
     LoginModel *loginModel = [DatabaseTool getLoginModel];
     QuotationOrder *quotationOrder = [[QuotationOrder alloc] init];
-    quotationOrder.manufacturerId = loginModel.manufacturerId;
-    inquiryOrder.manufacturerId = loginModel.manufacturerId;
+    quotationOrder.manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
+    inquiryOrder.manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
     
     inquiryOrder.quotationOrder = quotationOrder;
     
@@ -1102,7 +1102,7 @@
                 } else {
                     LoginModel *loginModel = [DatabaseTool getLoginModel];
                     NSString *sourceCaiOrGong;
-                    if ([_inquiryOrderHttp.manufacturerId isEqualToString:loginModel.manufacturerId]) {//采购商身份进来
+                    if ([_inquiryOrderHttp.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {//采购商身份进来
                         sourceCaiOrGong = @"cai";
                     } else {
                         sourceCaiOrGong = @"gong";
@@ -1121,7 +1121,7 @@
     } else {
         LoginModel *loginModel = [DatabaseTool getLoginModel];
         NSString *sourceCaiOrGong;
-        if ([_inquiryOrderHttp.manufacturerId isEqualToString:loginModel.manufacturerId]) {//采购商身份进来
+        if ([_inquiryOrderHttp.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {//采购商身份进来
             sourceCaiOrGong = @"cai";
         } else {
             sourceCaiOrGong = @"gong";
@@ -1139,7 +1139,7 @@
 - (void)buttonDetailClick:(UIButton *)sender {
     LoginModel *loginModel = [DatabaseTool getLoginModel];
     NSString *sourceCaiOrGong;
-    if ([_inquiryOrderHttp.manufacturerId isEqualToString:loginModel.manufacturerId]) {//采购商身份进来
+    if ([_inquiryOrderHttp.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {//采购商身份进来
         sourceCaiOrGong = @"cai";
     } else {
         sourceCaiOrGong = @"gong";
@@ -1189,13 +1189,13 @@
     
     InquiryOrder *inquiryOrder = [[InquiryOrder alloc] init];
     inquiryOrder.inquiryOrderId = _inquiryOrderHttp.inquiryOrderId;
-    inquiryOrder.manufacturerId = loginModel.manufacturerId;
+    inquiryOrder.manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
     inquiryOrder.confirmStatus = [NSNumber numberWithInteger:0];
-    inquiryOrder.confirmId = loginModel.memberId;
+    inquiryOrder.confirmId = [GlobalSettingManager shareGlobalSettingManager].memberId;
     inquiryOrder.confirmName = loginModel.accountName;
     inquiryOrder.confirmMsg = string;
     
-    postEntityBean.memberId = loginModel.memberId;
+    postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
     
     postEntityBean.entity = inquiryOrder.mj_keyValues;
     NSDictionary *dic = postEntityBean.mj_keyValues;
@@ -1259,12 +1259,12 @@
     
     InquiryOrder *inquiryOrder = [[InquiryOrder alloc] init];
     inquiryOrder.inquiryOrderId = _inquiryOrderHttp.inquiryOrderId;
-    inquiryOrder.manufacturerId = loginModel.manufacturerId;
+    inquiryOrder.manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
     inquiryOrder.confirmStatus = [NSNumber numberWithInteger:1];
-    inquiryOrder.confirmId = loginModel.memberId;
+    inquiryOrder.confirmId = [GlobalSettingManager shareGlobalSettingManager].memberId;
     inquiryOrder.confirmName = loginModel.accountName;
     
-    postEntityBean.memberId = loginModel.memberId;
+    postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
     
     postEntityBean.entity = inquiryOrder.mj_keyValues;
     NSDictionary *dic = postEntityBean.mj_keyValues;

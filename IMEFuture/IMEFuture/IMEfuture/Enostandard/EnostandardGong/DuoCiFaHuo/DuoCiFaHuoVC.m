@@ -394,7 +394,7 @@
 - (void)initRequest {
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    postEntityBean.memberId = loginModel.memberId;
+    postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
     
     OrderOperate *orderOperate = [[OrderOperate alloc] init];
     orderOperate.orderOperateId = self.orderOperateId;
@@ -417,14 +417,14 @@
     _viewLoading.hidden = NO;
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    postEntityBean.memberId = loginModel.memberId;
+    postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
     
     OrderOperate *orderOperate = [[OrderOperate alloc] init];
     orderOperate.tradeOrderId = _orderOperate.tradeOrderId;
     orderOperate.orderCode = _orderOperate.orderCode;
     orderOperate.inquiryOrderId = _orderOperate.inquiryOrderId;
     orderOperate.inquiryOrderCode = _orderOperate.inquiryOrderCode;
-    orderOperate.memberId = loginModel.memberId;
+    orderOperate.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
     orderOperate.manufacturerId = _orderOperate.manufacturerId;
     orderOperate.platform = _orderOperate.platform;
     orderOperate.insideOrderCode = _orderOperate.insideOrderCode;

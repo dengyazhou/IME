@@ -817,8 +817,7 @@
         
         InquiryOrder *inquiryOrderModel = _inquiryOrderQuXiaoXunPan;
         EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-        LoginModel *loginModel = [DatabaseTool getLoginModel];
-        postEntityBean.memberId = loginModel.memberId;
+        postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
         InquiryOrder *inquiryOrder = [[InquiryOrder alloc] init];
         inquiryOrder.inquiryOrderId = inquiryOrderModel.inquiryOrderId;
         inquiryOrder.manufacturerId = inquiryOrderModel.manufacturerId;
@@ -849,7 +848,7 @@
     InquiryOrder *model = _arrayInquiryOrderModel[indexPath.row];
     
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
 
     InquiryOrder *inquiryOrder = [[InquiryOrder alloc] init];
     inquiryOrder.se_enterpriseOrderCode = model.enterpriseOrderCode;
@@ -879,7 +878,7 @@
 
 - (void)requestData:(void (^)(id))dataBlock {
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
     NSDictionary *dic = postEntityBean.mj_keyValues;
     [HttpMamager postRequestWithURLString:DYZ_inquiry_purchase_list parameters:dic success:^(id responseObjectModel) {
         dataBlock(responseObjectModel);
@@ -891,10 +890,10 @@
 - (void)initRequestWithTableView:(UITableView *)tableView WithInquiryType:(NSString *)inquiryType WithInquiryOrderStatus:(NSString *)inquiryOrderStatus WithTime0:(NSString *)time0 WithTime1:(NSString *)time1 WithNoContentView:(UIView *)viewNoContent{
     tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-        postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+        postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
         postEntityBean.isPurchase = [NSNumber numberWithInteger:1];
         
-        [[NSUserDefaults standardUserDefaults] objectForKey:EFeiBiaoToken];
+    
         
         OrderByBean *orderByBean = [[OrderByBean alloc] init];
         orderByBean.orderName = @"c.createTime";
@@ -910,8 +909,8 @@
         postEntityBean.pager = pagerBean;
         
         InquiryOrder *inquiryOrder = [[InquiryOrder alloc] init];
-        LoginModel *loginModel = [DatabaseTool getLoginModel];
-        inquiryOrder.manufacturerId = loginModel.manufacturerId;
+      
+        inquiryOrder.manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
         
         inquiryOrder.inquiryType = inquiryType;
         inquiryOrder.inquiryOrderStatus = inquiryOrderStatus;
@@ -921,7 +920,7 @@
         inquiryOrder.seb_endTm = time0;
         inquiryOrder.see_endTm = time1;
         
-        postEntityBean.memberId = loginModel.memberId;
+        postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;;
         postEntityBean.entity = inquiryOrder.mj_keyValues;
         
         NSDictionary *dic = postEntityBean.mj_keyValues;
@@ -967,7 +966,7 @@
     
     tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-        postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+        postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
         postEntityBean.isPurchase = [NSNumber numberWithInteger:1];
         OrderByBean *orderByBean = [[OrderByBean alloc] init];
         orderByBean.orderName = @"c.createTime";
@@ -984,7 +983,7 @@
         
         InquiryOrder *inquiryOrder = [[InquiryOrder alloc] init];
         LoginModel *loginModel = [DatabaseTool getLoginModel];
-        inquiryOrder.manufacturerId = loginModel.manufacturerId;
+        inquiryOrder.manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
         inquiryOrder.inquiryType = inquiryType;
         inquiryOrder.inquiryOrderStatus = inquiryOrderStatus;
         
@@ -993,7 +992,7 @@
         inquiryOrder.seb_endTm = time0;
         inquiryOrder.see_endTm = time1;
         
-        postEntityBean.memberId = loginModel.memberId;
+        postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
         postEntityBean.entity = inquiryOrder.mj_keyValues;
         
         NSDictionary *dic = postEntityBean.mj_keyValues;

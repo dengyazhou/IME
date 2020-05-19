@@ -63,7 +63,7 @@ static NSTimeInterval const defineTimeoutInterval = 30.0f;
     
     [manager POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-        NSLog(@">>>%@",[responseObject mj_JSONString]);
+//        NSLog(@">>>%@",[responseObject mj_JSONString]);
         
         id responseModel = [model mj_objectWithKeyValues:responseObject];
         
@@ -159,7 +159,7 @@ static NSTimeInterval const defineTimeoutInterval = 30.0f;
     manager.securityPolicy.validatesDomainName = NO;//是否验证域名
     [manager setSecurityPolicy:[self customSecurityPolicy]];
     [manager POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"Login:%@",responseObject);
+//        NSLog(@"Login:%@",responseObject);
         if (success) {
             success(responseObject);
         }

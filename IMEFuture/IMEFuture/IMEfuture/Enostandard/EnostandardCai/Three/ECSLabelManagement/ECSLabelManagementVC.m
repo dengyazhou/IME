@@ -292,7 +292,7 @@
     TGSupplierTag *tGSupplierTag = [[TGSupplierTag alloc] init];
     
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    tGSupplierTag.manufacturerId = loginModel.manufacturerId;
+    tGSupplierTag.manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
     tGSupplierTag.tagName = self.textfield.text;
     
     postEntityBean.entity = tGSupplierTag.mj_keyValues;
@@ -357,7 +357,7 @@
     TGSupplierTag *tGSupplierTag = [[TGSupplierTag alloc] init];
     
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    tGSupplierTag.manufacturerId = loginModel.manufacturerId;
+    tGSupplierTag.manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
     
     postEntityBean.entity = tGSupplierTag.mj_keyValues;
 

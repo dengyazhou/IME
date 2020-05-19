@@ -150,7 +150,7 @@
 
 - (void)initRequrst {
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
     QuotationOrder *quotationOrder = [[QuotationOrder alloc] init];
     quotationOrder.inquiryOrderId = self.inquiryOrderId;//必传
     quotationOrder.quotationOrderId = self.quotationOrderId;//必传
@@ -1266,9 +1266,9 @@
                     lingJianXiangQingViewController2.accDrawingInter = arrayAccDrawingInter[0];
                     [self.navigationController pushViewController:lingJianXiangQingViewController2 animated:YES];
                 } else {
-                    LoginModel *loginModel = [DatabaseTool getLoginModel];
+
                     NSString *sourceCaiOrGong;
-                    if ([_inquiryOrder.manufacturerId isEqualToString:loginModel.manufacturerId]) {//采购商身份进来
+                    if ([_inquiryOrder.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {//采购商身份进来
                         sourceCaiOrGong = @"cai";
                     } else {
                         sourceCaiOrGong = @"gong";
@@ -1287,7 +1287,7 @@
     } else {
         LoginModel *loginModel = [DatabaseTool getLoginModel];
         NSString *sourceCaiOrGong;
-        if ([_inquiryOrder.manufacturerId isEqualToString:loginModel.manufacturerId]) {//采购商身份进来
+        if ([_inquiryOrder.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {//采购商身份进来
             sourceCaiOrGong = @"cai";
         } else {
             sourceCaiOrGong = @"gong";
@@ -1305,7 +1305,7 @@
 - (void)buttonDetailClick:(UIButton *)sender {
     LoginModel *loginModel = [DatabaseTool getLoginModel];
     NSString *sourceCaiOrGong;
-    if ([_inquiryOrder.manufacturerId isEqualToString:loginModel.manufacturerId]) {//采购商身份进来
+    if ([_inquiryOrder.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {//采购商身份进来
         sourceCaiOrGong = @"cai";
     } else {
         sourceCaiOrGong = @"gong";
@@ -1355,7 +1355,7 @@
     }
     
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
     QuotationOrder *quotationOrder = [[QuotationOrder alloc] init];
     quotationOrder.sec_isDesignated = [NSNumber numberWithInteger:0];
     quotationOrder.quotationOrderId = _quotationOrder.quotationOrderId;

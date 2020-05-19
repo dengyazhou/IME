@@ -232,15 +232,15 @@
     
     
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    postEntityBean.memberId = loginModel.memberId;
-    self.inquiryOrder.manufacturerId =  loginModel.manufacturerId;
+    postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
+    self.inquiryOrder.manufacturerId =  [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
     postEntityBean.entity = self.inquiryOrder.mj_keyValues;
     
     JwtMember *jwtMember = [[JwtMember alloc] init];
-    jwtMember.memberId = loginModel.memberId;
-    jwtMember.manufacturerId = loginModel.manufacturerId;
+    jwtMember.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
+    jwtMember.manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
     postEntityBean.jwtMember = jwtMember;
     
     NSDictionary *dic = postEntityBean.mj_keyValues;

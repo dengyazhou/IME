@@ -226,7 +226,7 @@
 - (void)requestTemporaryStorageAndSubmit:(NSString *)url {
     _viewLoading.hidden = false;
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
     InspectOrderVo *inspectOrderVo = [InspectOrderVo new];
     inspectOrderVo.receiveCode = self.inspectOrderVo.receiveCode;
     inspectOrderVo.receiveTime = self.inspectOrderVo.receiveTime;
@@ -289,7 +289,7 @@
 
 - (void)initRequest{
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
     DeliverOrderReqBean *deliverOrderReqBean = [DeliverOrderReqBean new];
     deliverOrderReqBean.deliverCode = self.inspectOrderVo.deliverCode;
     postEntityBean.entity = deliverOrderReqBean.mj_keyValues;
@@ -410,9 +410,9 @@
     LoginModel *loginModel = [DatabaseTool getLoginModel];
     
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
     
-    postEntityBean.memberId = loginModel.memberId;
+    postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
     
     NSDictionary *dic1 = postEntityBean.mj_keyValues;
     

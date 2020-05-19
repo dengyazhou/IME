@@ -89,9 +89,8 @@
     _endTime = @"7天";
     self.inquiryOrder.inquiryDay = [NSNumber numberWithInteger:7];
     
-    LoginModel *loginModel = [DatabaseTool getLoginModel];
-    self.inquiryOrder.memberId = loginModel.memberId;
-    self.inquiryOrder.manufacturerId = loginModel.manufacturerId;
+    self.inquiryOrder.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
+    self.inquiryOrder.manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
     
     NSDate *date = [NSDate date];
     NSDateFormatter *pickerFormatter = [[NSDateFormatter alloc] init];// 创建一个日期格式器
@@ -102,14 +101,13 @@
     NSString *str1 = [NSString stringWithFormat:@"%.3d", num];
     self.inquiryOrder.insideOrderCode = [NSString stringWithFormat:@"%@%@",dateString,str1];
     
-    NSString *member = loginModel.member;
-    Member *memberModel = [Member mj_objectWithKeyValues:member];
-    self.inquiryOrder.purchaserAccountPeriod = memberModel.enterpriseInfo.accountPeriod;
+    MemberResBean *member = [GlobalSettingManager shareGlobalSettingManager].member;
+//    NSString *member = loginModel.member;
+    self.inquiryOrder.purchaserAccountPeriod = member.enterpriseInfo.accountPeriod;
     
-    self.inquiryOrder.member = memberModel;
+//    self.inquiryOrder.member = member;
     
-//    NSLog(@"%@",memberModel.enterpriseInfo.supplierTaxRate);
-    self.inquiryOrder.supplierTaxRate = memberModel.enterpriseInfo.supplierTaxRate;
+    self.inquiryOrder.supplierTaxRate = member.enterpriseInfo.supplierTaxRate;
     
     self.inquiryOrder.isUrgent = [NSNumber numberWithInteger:0];
     self.inquiryOrder.isPre = [NSNumber numberWithInteger:0];//一次0 多次1
@@ -668,7 +666,7 @@
     QuotationTemplate *quotationTemplate = [[QuotationTemplate alloc] init];
     
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    quotationTemplate.manufacturerId = loginModel.manufacturerId;
+    quotationTemplate.manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
     
     postEntityBean.entity = quotationTemplate.mj_keyValues;
     NSDictionary *dic = postEntityBean.mj_keyValues;

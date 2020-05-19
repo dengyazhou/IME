@@ -42,9 +42,8 @@
     UITapGestureRecognizer *tapCancel = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureCancel:)];
     [_viewPicker addGestureRecognizer:tapCancel];
     
-    LoginModel *loginModel = [DatabaseTool getLoginModel];
-    Member *memberModel = [Member mj_objectWithKeyValues:loginModel.member];
-    _arrayQualityComWeight = @[memberModel.enterpriseInfo.comWeight5?memberModel.enterpriseInfo.comWeight5:@"--"];
+    MemberResBean *member = [GlobalSettingManager shareGlobalSettingManager].member;
+    _arrayQualityComWeight = @[member.enterpriseInfo.comWeight5?member.enterpriseInfo.comWeight5:@"--"];
     _arrayPurchase = @[@"产品质量"];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"ECTGSPingJiaCell" bundle:nil] forCellReuseIdentifier:@"eCTGSPingJiaCell"];
@@ -161,12 +160,11 @@
     enterpriseComment.coMonth = [NSNumber numberWithInteger:[_stringMonth integerValue]];
     enterpriseComment.coYear = [NSNumber numberWithInteger:[_stringYear integerValue]];
     
-    LoginModel *loginModel = [DatabaseTool getLoginModel];
-    Member *member = [Member mj_objectWithKeyValues:loginModel.member];
+    MemberResBean *member = [GlobalSettingManager shareGlobalSettingManager].member;
     
-    enterpriseComment.srManufacturerId = loginModel.manufacturerId;
-    enterpriseComment.srEnterpriseName = member.enterpriseInfo.enterpriseName;
-    enterpriseComment.srMemberId = loginModel.memberId;
+    enterpriseComment.srManufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
+    enterpriseComment.srEnterpriseName = member.enterpriseInfo.epName;
+    enterpriseComment.srMemberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
     
     enterpriseComment.trManufacturerId = self.enterpriseRelationSuperSuper.passiveEnterprise.manufacturerId;
     enterpriseComment.trEnterpriseName = self.enterpriseRelationSuperSuper.passiveEnterprise.enterpriseName;

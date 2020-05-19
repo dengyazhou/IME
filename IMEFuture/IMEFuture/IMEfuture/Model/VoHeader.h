@@ -249,4 +249,11 @@
 #import "ParameterEntityVo.h"
 #import "ParameterValueVo.h"
 
+#import "MemberReqBean.h"
+
+#import "GlobalSettingManager.h"
+#import "EfeibiaoReturnEntityBean.h"
+#import "MemberResBean.h"
+#import "EnterpriseInfoResBean.h"
+
 #endif /* VoHeader_h */

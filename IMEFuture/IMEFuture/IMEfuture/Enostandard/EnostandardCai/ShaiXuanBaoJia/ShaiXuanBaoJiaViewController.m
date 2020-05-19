@@ -48,7 +48,7 @@
     //筛选报价
     LoginModel *loginModel = [DatabaseTool getLoginModel];
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
     InquiryOrder *inquiryOrder = [[InquiryOrder alloc] init];
     inquiryOrder.inquiryOrderId = self.inquiryOrder.inquiryOrderId;//必填
     postEntityBean.entity = inquiryOrder.mj_keyValues;

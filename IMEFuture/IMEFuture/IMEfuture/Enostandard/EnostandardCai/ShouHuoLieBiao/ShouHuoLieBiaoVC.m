@@ -256,12 +256,12 @@
     _viewLoading.hidden = NO;
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    postEntityBean.memberId = loginModel.memberId;
+    postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
     
     OrderOperate *orderOperate = [[OrderOperate alloc] init];
     orderOperate.orderOperateId = orderOperate1.orderOperateId;
-    orderOperate.memberId = loginModel.memberId;
-    orderOperate.manufacturerId = loginModel.manufacturerId;
+    orderOperate.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
+    orderOperate.manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
     postEntityBean.entity = orderOperate.mj_keyValues;
     NSDictionary *dic = postEntityBean.mj_keyValues;
     [HttpMamager postRequestWithURLString:DYZ_i_orderOperate_endReceive parameters:dic success:^(id responseObjectModel) {
@@ -277,7 +277,7 @@
 - (void)initRequest {
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    postEntityBean.memberId = loginModel.memberId;
+    postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
     
     OrderOperate *orderOperate = [[OrderOperate alloc] init];
     orderOperate.tradeOrderId = self.tradeOrderId;

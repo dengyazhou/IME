@@ -346,12 +346,11 @@
     _viewLoading1.hidden = NO;
     
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    LoginModel *loginModel = [DatabaseTool getLoginModel];
-    postEntityBean.memberId= loginModel.memberId;
+
+    postEntityBean.memberId= [GlobalSettingManager shareGlobalSettingManager].memberId;
     
     EnterpriseRelation *enterpriseRelation = [[EnterpriseRelation alloc] init];
-    enterpriseRelation.initiatorId = loginModel.manufacturerId;//必填
-//    enterpriseRelation.passiveId =
+    enterpriseRelation.initiatorId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;//必填
     enterpriseRelation.temporaryEnterpriseName = _textField0.text;
     enterpriseRelation.erpEnterpriseNo = _textField6.text;//必填
     enterpriseRelation.temporaryContacts = _textField1.text;//必填

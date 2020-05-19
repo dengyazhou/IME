@@ -109,7 +109,7 @@
 
 - (void)initRequest{
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
     PurchaseOrderReqBean *purchaseOrderReqBean = [PurchaseOrderReqBean new];
     purchaseOrderReqBean.orderCode = self.insideOrderCode;
     postEntityBean.entity = purchaseOrderReqBean.mj_keyValues;

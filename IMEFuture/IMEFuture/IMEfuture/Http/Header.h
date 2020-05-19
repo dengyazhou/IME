@@ -41,9 +41,6 @@
 #define NSLogDYZ( s, ... )
 #endif
 
-
-#define EFeiBiaoToken @"efeibiaoToken"
-
 #define DefaultPurchase @"Purchase"
 #define DefaultSupplier @"Supplier"
 #define DefaultCenter @"Center"

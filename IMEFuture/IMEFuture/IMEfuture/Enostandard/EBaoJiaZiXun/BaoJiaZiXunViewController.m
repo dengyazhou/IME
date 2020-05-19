@@ -73,7 +73,7 @@
             _inquiryOrder = [InquiryOrder mj_objectWithKeyValues:model.entity];
             
             LoginModel *loginModel = [DatabaseTool getLoginModel];
-            if (![_inquiryOrder.manufacturerId isEqualToString:loginModel.manufacturerId]) {
+            if (![_inquiryOrder.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {
                 NSLog(@"-->%@<",_inquiryOrder.inquiryOrderStatus);
                 
                 if ([_inquiryOrder.inquiryOrderStatus isEqualToString:@"IING"]||[_inquiryOrder.inquiryOrderStatus isEqualToString:@"SQ"]) {

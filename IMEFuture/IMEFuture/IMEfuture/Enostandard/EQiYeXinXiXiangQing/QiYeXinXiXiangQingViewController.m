@@ -458,7 +458,7 @@
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
     EnterpriseRelation *enterpriseRelation = [[EnterpriseRelation alloc] init];
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    enterpriseRelation.initiatorId = loginModel.manufacturerId;
+    enterpriseRelation.initiatorId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
     enterpriseRelation.passiveId = self.passiveId;
     enterpriseRelation.relationType = @"A";
     postEntityBean.entity = enterpriseRelation.mj_keyValues;
@@ -488,7 +488,7 @@
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
     EnterpriseRelation *enterpriseRelation = [[EnterpriseRelation alloc] init];
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    enterpriseRelation.initiatorId = loginModel.manufacturerId;
+    enterpriseRelation.initiatorId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
     enterpriseRelation.passiveId = self.passiveId;
     enterpriseRelation.relationType = @"A";
     postEntityBean.entity = enterpriseRelation.mj_keyValues;
@@ -510,7 +510,7 @@
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
     EnterpriseRelation *enterpriseRelation = [[EnterpriseRelation alloc] init];
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    enterpriseRelation.initiatorId = loginModel.manufacturerId;
+    enterpriseRelation.initiatorId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
     enterpriseRelation.passiveId = self.passiveId;
     enterpriseRelation.type = [NSNumber numberWithInteger:1];
     enterpriseRelation.relationType = @"A";

@@ -210,7 +210,7 @@
 - (void)initRequest {
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    postEntityBean.memberId = loginModel.memberId;
+    postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
     
     OrderOperate *orderOperate = [[OrderOperate alloc] init];
     orderOperate.orderOperateId = self.orderOperateId;

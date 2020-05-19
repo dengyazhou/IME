@@ -351,11 +351,11 @@
     
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    postEntityBean.memberId = loginModel.memberId;
+    postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
     
     OrderOperate *orderOperate = [[OrderOperate alloc] init];
-    orderOperate.memberId = loginModel.memberId;
-    orderOperate.manufacturerId = loginModel.manufacturerId;
+    orderOperate.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
+    orderOperate.manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
     orderOperate.orderOperateId = _orderOperate.orderOperateId;
     orderOperate.isInspect = [NSNumber numberWithInteger:1];
     
@@ -449,7 +449,7 @@
 - (void)initRequest {
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    postEntityBean.memberId = loginModel.memberId;
+    postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
     
     OrderOperate *orderOperate = [[OrderOperate alloc] init];
     orderOperate.orderOperateId = self.orderOperateId;

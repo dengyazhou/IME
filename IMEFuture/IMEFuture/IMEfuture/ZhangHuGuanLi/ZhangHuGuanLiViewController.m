@@ -223,13 +223,7 @@
         obj.regStatus = dic[@"regStatus"];
         obj.userId = dic[@"userId"];
         
-        @try {
-            [[NSUserDefaults standardUserDefaults] setObject:dic[@"efeibiaoToken"] forKey:@"efeibiaoToken"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-        } @catch (NSException * e)  {
-            [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"efeibiaoToken"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-        }
+
         [[NSUserDefaults standardUserDefaults] synchronize];
         if ([dic[@"userType"] isEqualToString:@"ENTERPRISE"]) {
             @try {
@@ -294,9 +288,6 @@
             if ([obj.regStatus isEqualToString:@"CONFIRM"]) {//已审核
             
                 [DatabaseTool updateLoginReturnWithLogin:obj];
-                
-                [[GlobalSettingManager shareGlobalSettingManager] requestPurchaseGlobalTemplate];
-                [[GlobalSettingManager shareGlobalSettingManager] requestfbCompetenceAllWithfbToken:[[NSUserDefaults standardUserDefaults] objectForKey:EFeiBiaoToken]];
                 
                 NSArray *array = [NSArray stringToJSON:obj.identityBeans];
                 for (NSDictionary *dic in array) {

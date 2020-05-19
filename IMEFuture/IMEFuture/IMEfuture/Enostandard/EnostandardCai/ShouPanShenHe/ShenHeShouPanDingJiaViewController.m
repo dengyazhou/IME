@@ -117,8 +117,8 @@
     inquiryOrder.inquiryOrderId = self.inquiryOrder.inquiryOrderId;
     LoginModel *loginModel = [DatabaseTool getLoginModel];
     QuotationOrder *quotationOrder = [[QuotationOrder alloc] init];
-    quotationOrder.manufacturerId = loginModel.manufacturerId;
-    inquiryOrder.manufacturerId = loginModel.manufacturerId;
+    quotationOrder.manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
+    inquiryOrder.manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
     
     inquiryOrder.quotationOrder = quotationOrder;
     
@@ -311,7 +311,7 @@
         
         LoginModel *loginModel = [DatabaseTool getLoginModel];
         UIColor *color;
-        if ([_quotationOrderHttp.manufacturerId isEqualToString:loginModel.manufacturerId]) {
+        if ([_quotationOrderHttp.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {
             color = colorGong;//蓝色
         } else {
             color = colorCai;
@@ -411,52 +411,7 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         return cell;
     } else if (indexPath.section == 1) {
-//        if (indexPath.row == 0) {
-//            MXBaoJiaCell02 *cell = [tableView dequeueReusableCellWithIdentifier:@"mXBaoJiaCell02" forIndexPath:indexPath];
-//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//            LoginModel *loginModel = [DatabaseTool getLoginModel];
-//            UIColor *color;
-//            if ([_quotationOrderHttp.manufacturerId isEqualToString:loginModel.manufacturerId]) {
-//                color = colorGong;//蓝色
-//            } else {
-//                color = colorCai;
-//            }
-//            cell.viewRight.backgroundColor = [color colorWithAlphaComponent:0.05];
-//            cell.labelRight.text = @"授盘价";
-//            return cell;
-//        } else if (indexPath.row < 1+1+2) {
-//            YiJiaEGChaKanShouPanCell00 *cell = [tableView dequeueReusableCellWithIdentifier:@"yiJiaEGChaKanShouPanCell00" forIndexPath:indexPath];
-//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//            if (indexPath.row == 1) {
-//
-//                cell.label0.text = [NSString stringWithFormat:@"小计\n(共%ld种零件)",_quotationOrderItems.count];;
-//                cell.label1.text = [NSString stringWithFormat:@"%.2f",[_quotationOrderHttp.subtotalPrice1 doubleValue]];
-//            } else if (indexPath.row < 1+1+1) {
-//                cell.label0.text = @"杂费";
-//                cell.label1.text = [NSString stringWithFormat:@"%.2f",[_quotationOrderHttp.cost1 doubleValue]];
-//            } else {
-//                cell.label0.text = @"运费";
-//                cell.label1.text = [NSString stringWithFormat:@"%.2f",[_quotationOrderHttp.shipPrice1 doubleValue]];
-//            }
-//            return cell;
-//        } else if (indexPath.row == 1+1+2) {
-//            MXBaoJiaCell05 *cell = [tableView dequeueReusableCellWithIdentifier:@"mXBaoJiaCell05" forIndexPath:indexPath];
-//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//            LoginModel *loginModel = [DatabaseTool getLoginModel];
-//            UIColor *color;
-//            if ([_quotationOrderHttp.manufacturerId isEqualToString:loginModel.manufacturerId]) {
-//                color = colorGong;//蓝色
-//            } else {
-//                color = colorCai;
-//            }
-//            cell.viewLeft.backgroundColor = [color colorWithAlphaComponent:0.05];
-//            NSString * stringTaxRate = [NSString stringWithFormat:@"%0.f",[_quotationOrderHttp.supplierTaxRate doubleValue]*100];
-//            cell.labelLeft.text = [NSString stringWithFormat:@"总计\n(含税价%@%@)",stringTaxRate,@"%"];
-//            cell.labelRight.text = [NSString stringWithFormat:@"%.2f",[_quotationOrderHttp.totalPrice1 doubleValue]];
-//            return cell;
-//        } else {
-//            return nil;
-//        }
+
         if (indexPath.row == 0) {
             MXBaoJiaCell111 *cell = [tableView dequeueReusableCellWithIdentifier:@"mXBaoJiaCell111" forIndexPath:indexPath];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -535,7 +490,7 @@
             
             LoginModel *loginModel = [DatabaseTool getLoginModel];
             UIColor *color;
-            if ([_quotationOrderHttp.manufacturerId isEqualToString:loginModel.manufacturerId]) {
+            if ([_quotationOrderHttp.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {
                 color = colorRGB(0, 168, 255);//蓝色
             } else {
                 color = colorRGB(255, 132, 0);
@@ -650,7 +605,7 @@
                 } else {
                     LoginModel *loginModel = [DatabaseTool getLoginModel];
                     NSString *sourceCaiOrGong;
-                    if ([_inquiryOrderHttp.manufacturerId isEqualToString:loginModel.manufacturerId]) {//采购商身份进来
+                    if ([_inquiryOrderHttp.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {//采购商身份进来
                         sourceCaiOrGong = @"cai";
                     } else {
                         sourceCaiOrGong = @"gong";
@@ -669,7 +624,7 @@
     } else {
         LoginModel *loginModel = [DatabaseTool getLoginModel];
         NSString *sourceCaiOrGong;
-        if ([_inquiryOrderHttp.manufacturerId isEqualToString:loginModel.manufacturerId]) {//采购商身份进来
+        if ([_inquiryOrderHttp.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {//采购商身份进来
             sourceCaiOrGong = @"cai";
         } else {
             sourceCaiOrGong = @"gong";
@@ -687,7 +642,7 @@
 - (void)buttonDetailClick:(UIButton *)sender {
     LoginModel *loginModel = [DatabaseTool getLoginModel];
     NSString *sourceCaiOrGong;
-    if ([_inquiryOrderHttp.manufacturerId isEqualToString:loginModel.manufacturerId]) {//采购商身份进来
+    if ([_inquiryOrderHttp.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {//采购商身份进来
         sourceCaiOrGong = @"cai";
     } else {
         sourceCaiOrGong = @"gong";
@@ -737,13 +692,13 @@
     
     InquiryOrder *inquiryOrder = [[InquiryOrder alloc] init];
     inquiryOrder.inquiryOrderId = _inquiryOrderHttp.inquiryOrderId;
-    inquiryOrder.manufacturerId = loginModel.manufacturerId;
+    inquiryOrder.manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
     inquiryOrder.confirmStatus = [NSNumber numberWithInteger:0];
-    inquiryOrder.confirmId = loginModel.memberId;
+    inquiryOrder.confirmId = [GlobalSettingManager shareGlobalSettingManager].memberId;
     inquiryOrder.confirmName = loginModel.accountName;
     inquiryOrder.confirmMsg = string;
     
-    postEntityBean.memberId = loginModel.memberId;
+    postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
     
     postEntityBean.entity = inquiryOrder.mj_keyValues;
     NSDictionary *dic = postEntityBean.mj_keyValues;
@@ -807,12 +762,12 @@
     
     InquiryOrder *inquiryOrder = [[InquiryOrder alloc] init];
     inquiryOrder.inquiryOrderId = _inquiryOrderHttp.inquiryOrderId;
-    inquiryOrder.manufacturerId = loginModel.manufacturerId;
+    inquiryOrder.manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
     inquiryOrder.confirmStatus = [NSNumber numberWithInteger:1];
-    inquiryOrder.confirmId = loginModel.memberId;
+    inquiryOrder.confirmId = [GlobalSettingManager shareGlobalSettingManager].memberId;
     inquiryOrder.confirmName = loginModel.accountName;
     
-    postEntityBean.memberId = loginModel.memberId;
+    postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
     
     postEntityBean.entity = inquiryOrder.mj_keyValues;
     NSDictionary *dic = postEntityBean.mj_keyValues;

@@ -56,7 +56,7 @@
 - (void)requestDeliverCode:(NSString *)deliverCode{
     _viewLoading.hidden = false;
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
     DeliverOrderReqBean *deliverOrderReqBean = [DeliverOrderReqBean new];
     deliverOrderReqBean.deliverCode = deliverCode;
     postEntityBean.entity = deliverOrderReqBean.mj_keyValues;

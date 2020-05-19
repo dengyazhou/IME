@@ -52,9 +52,8 @@
     UITapGestureRecognizer *tapCancel = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureCancel:)];
     [_viewPicker addGestureRecognizer:tapCancel];
     
-    LoginModel *loginModel = [DatabaseTool getLoginModel];
-    Member *memberModel = [Member mj_objectWithKeyValues:loginModel.member];
-    _arrayPurchaseComWeight = @[memberModel.enterpriseInfo.comWeight1?memberModel.enterpriseInfo.comWeight1:@"--",memberModel.enterpriseInfo.comWeight2?memberModel.enterpriseInfo.comWeight2:@"--",memberModel.enterpriseInfo.comWeight3?memberModel.enterpriseInfo.comWeight3:@"--",memberModel.enterpriseInfo.comWeight4?memberModel.enterpriseInfo.comWeight4:@"--"];
+    MemberResBean *member = [GlobalSettingManager shareGlobalSettingManager].member;
+    _arrayPurchaseComWeight = @[member.enterpriseInfo.comWeight1?member.enterpriseInfo.comWeight1:@"--",member.enterpriseInfo.comWeight2?member.enterpriseInfo.comWeight2:@"--",member.enterpriseInfo.comWeight3?member.enterpriseInfo.comWeight3:@"--",member.enterpriseInfo.comWeight4?member.enterpriseInfo.comWeight4:@"--"];
     _arrayPurchase = @[@"报价及时性及配合",@"报价专业性",@"加急事项的处理能力",@"交货及时率"];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"ECTGSPingJiaCell" bundle:nil] forCellReuseIdentifier:@"eCTGSPingJiaCell"];
@@ -213,12 +212,11 @@
     enterpriseComment.coMonth = [NSNumber numberWithInteger:[_stringMonth integerValue]];
     enterpriseComment.coYear = [NSNumber numberWithInteger:[_stringYear integerValue]];
     
-    LoginModel *loginModel = [DatabaseTool getLoginModel];
-    Member *member = [Member mj_objectWithKeyValues:loginModel.member];
+    MemberResBean *member = [GlobalSettingManager shareGlobalSettingManager].member;
     
-    enterpriseComment.srManufacturerId = loginModel.manufacturerId;
-    enterpriseComment.srEnterpriseName = member.enterpriseInfo.enterpriseName;
-    enterpriseComment.srMemberId = loginModel.memberId;
+    enterpriseComment.srManufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
+    enterpriseComment.srEnterpriseName = member.enterpriseInfo.epName;
+    enterpriseComment.srMemberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
     
     enterpriseComment.trManufacturerId = self.enterpriseRelationSuperSuper.passiveEnterprise.manufacturerId;
     enterpriseComment.trEnterpriseName = self.enterpriseRelationSuperSuper.passiveEnterprise.enterpriseName;

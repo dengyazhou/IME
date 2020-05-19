@@ -120,14 +120,14 @@
     if ([self.tradeOrder.supplierIsComment boolValue] == 0) {
         EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
         LoginModel *loginModel = [DatabaseTool getLoginModel];
-        postEntityBean.memberId = loginModel.memberId;
+        postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
         
         EnterpriseComment *enterpriseComment = [[EnterpriseComment alloc] init];
         enterpriseComment.orderId = self.tradeOrder.orderId;
         enterpriseComment.orderCode = self.tradeOrder.orderCode;
-        enterpriseComment.srManufacturerId = loginModel.manufacturerId;
+        enterpriseComment.srManufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
         enterpriseComment.srEnterpriseName = loginModel.enterpriseName;
-        enterpriseComment.srMemberId = loginModel.memberId;
+        enterpriseComment.srMemberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
         enterpriseComment.trManufacturerId = _enterpriseInfo.manufacturerId;
         enterpriseComment.trEnterpriseName = self.tradeOrder.supplierEnterpriseName;
         enterpriseComment.commentStatus = [NSNumber numberWithInteger:1];
@@ -187,7 +187,7 @@
     } else {
         EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
         LoginModel *loginModel = [DatabaseTool getLoginModel];
-        postEntityBean.memberId = loginModel.memberId;
+        postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
         
         EnterpriseComment *enterpriseComment = [[EnterpriseComment alloc] init];
         enterpriseComment.orderId = self.tradeOrder.orderId;

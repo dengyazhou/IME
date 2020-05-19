@@ -343,10 +343,10 @@
         _viewLoading.hidden = NO;
         EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
         LoginModel *loginModel = [DatabaseTool getLoginModel];
-        postEntityBean.memberId = loginModel.memberId;
+        postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
         
         OrderOperate *orderOperate = [[OrderOperate alloc] init];
-        orderOperate.memberId = loginModel.memberId;
+        orderOperate.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
         orderOperate.orderOperateId = _orderOperateQuHuo.orderOperateId;
         
         postEntityBean.entity = orderOperate.mj_keyValues;
@@ -377,11 +377,11 @@
     _viewLoading.hidden = NO;
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    postEntityBean.memberId = loginModel.memberId;
+    postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
     
     OrderOperate *orderOperate = [[OrderOperate alloc] init];
-    orderOperate.memberId = loginModel.memberId;
-    orderOperate.manufacturerId = loginModel.manufacturerId;
+    orderOperate.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
+    orderOperate.manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
     orderOperate.platform = [NSNumber numberWithInteger:1];
     orderOperate.linkOperateId = orderOperate1.orderOperateId;
     
@@ -419,7 +419,7 @@
 - (void)initRequestWithReceiveIndex:(NSInteger)receiveIndex {
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    postEntityBean.memberId = loginModel.memberId;
+    postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
     
     OrderOperate *orderOperate = [[OrderOperate alloc] init];
     orderOperate.tradeOrderId = self.tradeOrderId;

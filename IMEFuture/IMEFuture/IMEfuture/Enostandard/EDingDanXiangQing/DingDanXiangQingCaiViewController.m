@@ -703,7 +703,7 @@
         NSString *closeMsg = alertController.textFields[0].text;
         
         EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-        postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+        postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
         TradeOrder *tradeOrderReq = [[TradeOrder alloc] init];
         tradeOrderReq.orderId = tradeOrder.orderId;
         tradeOrderReq.closeMsg = closeMsg;
@@ -1040,172 +1040,6 @@
         }
     }
     
-
-    
-    
-//    TradeOrder *tradeOrder;
-//    tradeOrder = _tradeOrderHttp;
-//
-//    if ([tradeOrder.tradeOrderPurchaseStatus isEqualToString:@"waitingPaymentForPurchase"]) {
-//#pragma mark 待付款 付款
-//        if ([sender.currentTitle isEqualToString:@"付款"]) {
-//            EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-//            TradeOrder *tradeOrder1 = [[TradeOrder alloc] init];
-//            tradeOrder1.orderCode = tradeOrder.orderCode;
-//            postEntityBean.entity = tradeOrder1.mj_keyValues;
-//            postEntityBean.memberId = [DatabaseTool getLoginModel].memberId;
-//            NSDictionary *dic = postEntityBean.mj_keyValues;
-////            NSLog(@"%@",dic);
-//
-//            [HttpMamager postRequestWithURLString:DYZ_pay_createGuaranteeTrade parameters:dic success:^(id responseObjectModel) {
-//                ReturnMsgBean *model = responseObjectModel;
-//
-//                if ([model.status isEqualToString:@"SUCCESS"]) {
-//                    EH5FuKuanViewController *eH5FuKuanViewController = [[EH5FuKuanViewController alloc] init];
-//                    eH5FuKuanViewController.detailUrl = model.returnMsg;
-//                    [self.navigationController pushViewController:eH5FuKuanViewController animated:YES];
-//                } else {
-//                    [[MyAlertCenter defaultCenter] postAlertWithMessage:@"付款失败"];
-//                }
-//            } fail:^(NSError *error) {
-//
-//            } isKindOfModel:NSClassFromString(@"ReturnMsgBean")];
-//        }
-//    }
-
-//    if ([tradeOrder.tradeOrderPurchaseStatus isEqualToString:@"purchasePaid"]) {
-//#pragma mark 已付款 生产进度
-//        if ([sender.currentTitle isEqualToString:@"生产进度"]) {
-//            EShengChangJingduXiangXiViewController *eShengChangJingduXiangXiViewController = [[EShengChangJingduXiangXiViewController alloc] init];
-//            eShengChangJingduXiangXiViewController.factoryProductInfo = _factoryProductInfo;
-//            [self.navigationController pushViewController:eShengChangJingduXiangXiViewController animated:YES];
-//        }
-//    }
-//    if ([tradeOrder.tradeOrderPurchaseStatus isEqualToString:@"supplierDelivered"]) {
-//
-//
-//#pragma mark 待收货 查看物流
-//        if ([sender.currentTitle isEqualToString:@"查看物流"]) {
-//            ECCheckTheLogisticsViewController *eCCheckTheLogisticsViewController = [[ECCheckTheLogisticsViewController alloc] init];
-//            eCCheckTheLogisticsViewController.logisticsCompany = tradeOrder.logisticsCompany;
-//            eCCheckTheLogisticsViewController.logisticsNo = tradeOrder.logisticsNo;
-//            eCCheckTheLogisticsViewController.logisticsRemark = tradeOrder.logisticsRemark;
-//
-//            [self.navigationController pushViewController:eCCheckTheLogisticsViewController animated:YES];
-//        }
-//#pragma mark 待收货 确认收货
-//        if ([sender.currentTitle isEqualToString:@"确认收货"]) {
-//            UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"采购商收货" message:nil preferredStyle:UIAlertControllerStyleAlert];
-//            UIAlertAction *action = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-//
-//            }];
-//            UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"确定收货" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//                EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-//                LoginModel *loginModel = [DatabaseTool getLoginModel];
-//                postEntityBean.memberId = loginModel.memberId;
-//                TradeOrder *tradeOrder1 = [[TradeOrder alloc] init];
-//                tradeOrder1.orderCode = tradeOrder.orderCode;
-//                tradeOrder1.purchaseEnterpriseId = loginModel.enterpriseId;
-//                postEntityBean.entity = tradeOrder1.mj_keyValues;
-//                NSDictionary *dic = postEntityBean.mj_keyValues;
-//                [HttpMamager postRequestWithURLString:DYZ_tradeOrder_confirmSupplierDelivere parameters:dic success:^(id responseObjectModel) {
-//                    ReturnMsgBean *returnMsgBean = responseObjectModel;
-//                    if ([returnMsgBean.status isEqualToString:@"SUCCESS"]) {
-//                        [[MyAlertCenter defaultCenter] postAlertWithMessage:@"确认成功"];
-//                    } else {
-//                        [[MyAlertCenter defaultCenter] postAlertWithMessage:@"确认失败"];
-//                    }
-//                    [self viewWillAppear:YES];
-//                    [[NSNotificationCenter defaultCenter] postNotificationName:@"notificationRefreshECOrder" object:nil userInfo:nil];
-//                } fail:^(NSError *error) {
-//
-//                } isKindOfModel:NSClassFromString(@"ReturnMsgBean")];
-//
-//            }];
-//            [ac addAction:action];
-//            [ac addAction:action1];
-//            [self presentViewController:ac animated:YES completion:nil];
-//        }
-//    }
-//    if ([tradeOrder.tradeOrderPurchaseStatus isEqualToString:@"examineCargoForPurchase"]) {
-//#pragma mark 待验货 确认验货
-//        if ([sender.currentTitle isEqualToString:@"确认验货"]) {
-//
-//            EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-//            LoginModel *loginModel = [DatabaseTool getLoginModel];
-//            postEntityBean.memberId = loginModel.memberId;
-//            TradeOrder *tradeOrder1 = [[TradeOrder alloc] init];
-//            tradeOrder1.orderCode = tradeOrder.orderCode;
-//            tradeOrder1.purchaseEnterpriseId = loginModel.enterpriseId;
-//            postEntityBean.entity = tradeOrder1.mj_keyValues;
-//            NSDictionary *dic = postEntityBean.mj_keyValues;
-//
-//            //            NSLog(@"%@",dic);
-//
-//            [HttpMamager postRequestWithURLString:DYZ_tradeOrder_examineCargo parameters:dic success:^(id responseObjectModel) {
-//                ReturnMsgBean *returnMsgBean = responseObjectModel;
-//                if ([returnMsgBean.status isEqualToString:@"SUCCESS"]) {
-//                    [[MyAlertCenter defaultCenter] postAlertWithMessage:@"验货成功"];
-//                } else {
-//                    [[MyAlertCenter defaultCenter] postAlertWithMessage:@"验货失败"];
-//                }
-//                [self viewWillAppear:YES];
-//                [[NSNotificationCenter defaultCenter] postNotificationName:@"notificationRefreshECOrder" object:nil userInfo:nil];
-//            } fail:^(NSError *error) {
-//
-//            } isKindOfModel:NSClassFromString(@"ReturnMsgBean")];
-//
-//        }
-//    }
-//    if ([tradeOrder.tradeOrderPurchaseStatus isEqualToString:@"success"]) {
-//#pragma mark 交易成功 评价
-//        if ([tradeOrder.inquiryType isEqualToString:@"ATG"]||[tradeOrder.inquiryType isEqualToString:@"FTG"]||[tradeOrder.inquiryType isEqualToString:@"TTG"]) {//托管
-//            if ([tradeOrder.supplierIsComment boolValue] == 0) {
-//                if ([sender.currentTitle isEqualToString:@"去评价"]) {
-//                    FaBaoPingLunTuoGuanViewController *faBaoPingLunTuoGuanViewController = [[FaBaoPingLunTuoGuanViewController alloc] init];
-//                    faBaoPingLunTuoGuanViewController.tradeOrder = tradeOrder;
-//                    [self.navigationController pushViewController:faBaoPingLunTuoGuanViewController animated:YES];
-//                }
-//            } else {
-//                if ([sender.currentTitle isEqualToString:@"查看评价"]) {
-//                    FaBaoPingLunTuoGuanChaKanViewController *faBaoPingLunTuoGuanChaKanViewController = [[FaBaoPingLunTuoGuanChaKanViewController alloc] init];
-//                    faBaoPingLunTuoGuanChaKanViewController.tradeOrder = tradeOrder;
-//                    [self.navigationController pushViewController:faBaoPingLunTuoGuanChaKanViewController animated:YES];
-//                }
-//            }
-//        } else {
-//
-//            if ([tradeOrder.supplierIsComment boolValue] == 0) {
-//                if ([sender.currentTitle isEqualToString:@"去评价"]) {
-//                    FaBaoPingLunCaiViewController *faBaoPingLunViewController = [[FaBaoPingLunCaiViewController alloc] init];
-//                    faBaoPingLunViewController.tradeOrder = tradeOrder;//_tradeOrderHttp
-//                    [self.navigationController pushViewController:faBaoPingLunViewController animated:YES];
-//                }
-//            }
-//        }
-//    }
-
-//    //只要议价没结束，任何状态下都能议价
-//#pragma mark 查看议价
-//    if ([tradeOrder.inquiryType isEqualToString:@"TTG"]&&[tradeOrder.canEditPrice integerValue]==1) {
-//        if ([sender.currentTitle isEqualToString:@"查看议价"]) {
-//            ECYiJiaViewController *eCYiJiaViewController = [[ECYiJiaViewController alloc] init];
-//            eCYiJiaViewController.quotationOrderId = _inquiryOrderHttp.quotationOrderId;
-//            [self.navigationController pushViewController:eCYiJiaViewController animated:YES];
-//        }
-//    }
-//    if ([sender.currentTitle isEqualToString:@"去收货"]) {
-//        ShouHuoLieBiaoVC *shouHuoLieBiaoVC = [[ShouHuoLieBiaoVC alloc] init];
-//        shouHuoLieBiaoVC.tradeOrderId = tradeOrder.orderId;
-//        [self.navigationController pushViewController:shouHuoLieBiaoVC animated:YES];
-//        return;
-//    }
-//    if ([sender.currentTitle isEqualToString:@"去验货"]) {
-//        YanHuoLieBiaoVC *yanHuoLieBiaoVC = [[YanHuoLieBiaoVC alloc] init];
-//        yanHuoLieBiaoVC.tradeOrderId = tradeOrder.orderId;
-//        [self.navigationController pushViewController:yanHuoLieBiaoVC animated:YES];
-//        return;
-//    }
 }
 
 #pragma mark 收货列表
@@ -1225,7 +1059,7 @@
 //催发货
 - (void)initRequesrCuiFaHuo:(TradeOrder *)tradeOrder {
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
     PurchaseProjectInfo *purchasePI = [[PurchaseProjectInfo alloc] init];
     purchasePI.DYZid = tradeOrder.orderId;
     postEntityBean.entity = purchasePI.mj_keyValues;
@@ -1497,7 +1331,7 @@
 - (void)initRequest {
     
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
     
     TradeOrder *tradeOrder = [[TradeOrder alloc] init];
     tradeOrder.orderId = self.orderId;
@@ -1626,15 +1460,13 @@
 
 #pragma mark 采购清单，询盘，订单查询图纸信息
 - (void)api_Image_drawingCloudUrl:(NSMutableArray <__kindof NSString *> *)strA {
-    EfeibiaoPostEntityBean *efeibiaoPostEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    efeibiaoPostEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+    EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
+    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
     DrawingCloudBean *drawingCloudBean = [[DrawingCloudBean alloc] init];
     drawingCloudBean.ids = strA;
     drawingCloudBean.type = [NSNumber numberWithInt:3];
-    efeibiaoPostEntityBean.entity = drawingCloudBean.mj_keyValues;
-    NSDictionary *dic = efeibiaoPostEntityBean.mj_keyValues;
-    
-    NSLog(@"%@",efeibiaoPostEntityBean.mj_JSONString);
+    postEntityBean.entity = drawingCloudBean.mj_keyValues;
+    NSDictionary *dic = postEntityBean.mj_keyValues;
     
     [HttpMamager postRequestWithURLString:DYZ_drawing_drawingCloud_drawingCloudUrl parameters:dic success:^(id responseObjectModel) {
         NSLog(@"%@",[responseObjectModel mj_JSONString]);

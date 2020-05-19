@@ -232,7 +232,7 @@
     _viewLoading.hidden = false;
     
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
     ReceiveBean *receiveOrder = [ReceiveBean new];
     receiveOrder.deliverOrderId = self.deliverOrderDetailBean.deliverOrderId;
     receiveOrder.isOpenErp = self.deliverOrderDetailBean.isOpenErp;
@@ -273,9 +273,9 @@
     LoginModel *loginModel = [DatabaseTool getLoginModel];
     
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
     EnterpriseExpand *enterpriseExpand = [EnterpriseExpand new];
-    enterpriseExpand.manufacturerId = loginModel.manufacturerId;
+    enterpriseExpand.manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
     postEntityBean.entity = enterpriseExpand.mj_keyValues;
     NSDictionary *dic = postEntityBean.mj_keyValues;
     [HttpMamager postRequestWithURLString:DYZ_receiveOrder_areaList parameters:dic success:^(id responseObjectModel) {

@@ -570,4 +570,7 @@
 //获取模具接口
 #define DYZ_mes_material_getMouldByProductionControlNum [NSString stringWithFormat:@"%@/mes/material/getMouldByProductionControlNum",DYZBaseURLItem(@"/rs")]
 
+//获取非标token
+#define DYZ_ucenter_user_getUserEFEIBIAOToken [NSString stringWithFormat:@"%@/ucenter/user/getUserEFEIBIAOToken",DYZBaseURLItem(@"/rs")]
+
 #endif /* UrlContant_h */

@@ -354,7 +354,7 @@
     }
     
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
 
     DeliverOrderDetailBean *deliverOrderDetailBean = [DeliverOrderDetailBean new];
     deliverOrderDetailBean.deliverCode = [NSString stringWithFormat:@"%@%@",_operateCode0,_operateCode1];
@@ -443,7 +443,7 @@
     PurchaseOrderResBean *model = [self.dataArray firstObject];
     
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
     CreateDeliverOrderBean *createDeliverOrderBean = [CreateDeliverOrderBean new];
     createDeliverOrderBean.itemIds = [NSMutableArray arrayWithObjects:model.itemId, nil];
     postEntityBean.entity = createDeliverOrderBean.mj_keyValues;

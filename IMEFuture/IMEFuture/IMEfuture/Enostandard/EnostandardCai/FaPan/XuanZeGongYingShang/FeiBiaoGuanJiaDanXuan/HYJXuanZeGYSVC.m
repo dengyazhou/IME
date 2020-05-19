@@ -213,7 +213,7 @@
 - (void)initRequest0 {
     _tableView0.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-        postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:EFeiBiaoToken];
+        postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
         
         PagerBean *pagerBean = [[PagerBean alloc] init];
         pagerBean.pageSize = [NSNumber numberWithInteger:[pageSizeDYZ integerValue]];
@@ -272,7 +272,7 @@
     
     _tableView0.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-        postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:EFeiBiaoToken];
+        postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
         
         PagerBean *pagerBean = [[PagerBean alloc] init];
         pagerBean.pageSize = [NSNumber numberWithInteger:[pageSizeDYZ integerValue]];

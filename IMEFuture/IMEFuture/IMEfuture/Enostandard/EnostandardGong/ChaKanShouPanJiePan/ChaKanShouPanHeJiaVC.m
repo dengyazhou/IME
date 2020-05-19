@@ -1066,7 +1066,7 @@
                 } else {
                     LoginModel *loginModel = [DatabaseTool getLoginModel];
                     NSString *sourceCaiOrGong;
-                    if ([_inquiryOrderHttp.manufacturerId isEqualToString:loginModel.manufacturerId]) {//采购商身份进来
+                    if ([_inquiryOrderHttp.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {//采购商身份进来
                         sourceCaiOrGong = @"cai";
                     } else {
                         sourceCaiOrGong = @"gong";
@@ -1085,7 +1085,7 @@
     } else {
         LoginModel *loginModel = [DatabaseTool getLoginModel];
         NSString *sourceCaiOrGong;
-        if ([_inquiryOrderHttp.manufacturerId isEqualToString:loginModel.manufacturerId]) {//采购商身份进来
+        if ([_inquiryOrderHttp.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {//采购商身份进来
             sourceCaiOrGong = @"cai";
         } else {
             sourceCaiOrGong = @"gong";
@@ -1103,7 +1103,7 @@
 - (void)buttonDetailClick:(UIButton *)sender {
     LoginModel *loginModel = [DatabaseTool getLoginModel];
     NSString *sourceCaiOrGong;
-    if ([_inquiryOrderHttp.manufacturerId isEqualToString:loginModel.manufacturerId]) {//采购商身份进来
+    if ([_inquiryOrderHttp.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {//采购商身份进来
         sourceCaiOrGong = @"cai";
     } else {
         sourceCaiOrGong = @"gong";
@@ -1186,14 +1186,14 @@
     QuotationOrder *quotationOrder = _quotationOrderHttp;
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    postEntityBean.memberId =loginModel.memberId;
+    postEntityBean.memberId =[GlobalSettingManager shareGlobalSettingManager].memberId;
     QuotationOrder *quotationOrder1 = [[QuotationOrder alloc] init];
     quotationOrder1.inquiryOrderId = quotationOrder.inquiryOrderId;
     quotationOrder1.quotationOrderId = quotationOrder.quotationOrderId;
-    quotationOrder1.refuseId = loginModel.memberId;
+    quotationOrder1.refuseId = [GlobalSettingManager shareGlobalSettingManager].memberId;
     quotationOrder1.refuseName = loginModel.accountName;
     quotationOrder1.refuseMsg = string;
-    quotationOrder1.manufacturerId = loginModel.manufacturerId;
+    quotationOrder1.manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
     InquiryOrder *inquiryOrder = [[InquiryOrder alloc] init];
     inquiryOrder.inquiryOrderCode = _inquiryOrderHttp.inquiryOrderCode;
     inquiryOrder.manufacturerId = _inquiryOrderHttp.manufacturerId;
@@ -1233,16 +1233,16 @@
         QuotationOrder *quotationOrder = _quotationOrderHttp;
         EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
         LoginModel *loginModel = [DatabaseTool getLoginModel];
-        postEntityBean.memberId = loginModel.memberId;
+        postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
         QuotationOrder *quotationOrder1 = [[QuotationOrder alloc] init];
         quotationOrder1.inquiryOrderId = quotationOrder.inquiryOrderId;
         quotationOrder1.quotationOrderId = quotationOrder.quotationOrderId;
-        quotationOrder1.manufacturerId = loginModel.manufacturerId;
+        quotationOrder1.manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
         InquiryOrder *inquiryOrder = [[InquiryOrder alloc] init];
         inquiryOrder.manufacturerId = _inquiryOrderHttp.manufacturerId;
         inquiryOrder.inquiryOrderCode = _inquiryOrderHttp.inquiryOrderCode;
         quotationOrder1.inquiryOrder = inquiryOrder;
-        quotationOrder1.acceptId = loginModel.memberId;
+        quotationOrder1.acceptId = [GlobalSettingManager shareGlobalSettingManager].memberId;
         quotationOrder1.acceptName = loginModel.accountName;
         
         quotationOrder1.isTemporary = quotationOrder.isTemporary;
@@ -1298,7 +1298,7 @@
     QuotationOrderItem *quotationOrderItem = [[QuotationOrderItem alloc] init];
     quotationOrderItem.q__quotationOrderId = self.quotationOrderId;
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    quotationOrderItem.qm__manufacturerId = loginModel.manufacturerId;
+    quotationOrderItem.qm__manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
     postEntityBean.entity = quotationOrderItem.mj_keyValues;
     NSDictionary *dic = postEntityBean.mj_keyValues;
     
@@ -1347,8 +1347,8 @@
     inquiryOrder.inquiryOrderId = self.inquiryOrderId;
     LoginModel *loginModel = [DatabaseTool getLoginModel];
     QuotationOrder *quotationOrder = [[QuotationOrder alloc] init];
-    quotationOrder.manufacturerId = loginModel.manufacturerId;
-    inquiryOrder.manufacturerId = loginModel.manufacturerId;
+    quotationOrder.manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
+    inquiryOrder.manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
     
     inquiryOrder.quotationOrder = quotationOrder;
     

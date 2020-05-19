@@ -49,7 +49,7 @@
 - (void)initRequest {
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-        postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+        postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
         
         postEntityBean.isPurchase = [NSNumber numberWithInteger:0];
         
@@ -65,7 +65,7 @@
         postEntityBean.pager = pagerBean;
         
         LoginModel *loginModel = [DatabaseTool getLoginModel];
-        postEntityBean.memberId = loginModel.memberId;
+        postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
         NSDictionary *dic = postEntityBean.mj_keyValues;
         
          NSLog(@"%@",dic);
@@ -100,7 +100,7 @@
     
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-        postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+        postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
         
         postEntityBean.isPurchase = [NSNumber numberWithInteger:0];
         InquiryOrder *inquiryOrder = [[InquiryOrder alloc] init];
@@ -115,7 +115,7 @@
         postEntityBean.pager = pagerBean;
         
         LoginModel *loginModel = [DatabaseTool getLoginModel];
-        postEntityBean.memberId = loginModel.memberId;
+        postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
         
         NSDictionary *dic = postEntityBean.mj_keyValues;
         
@@ -221,7 +221,7 @@
         }
         if ([loginModel.userType isEqualToString:@"ENTERPRISE"]) {
             InquiryOrder *inquiryOrderModel = _arrayInquiryOrderModel[indexPath.row];
-            if ([loginModel.manufacturerId isEqualToString:inquiryOrderModel.manufacturerId]) {//采购商看询盘单
+            if ([[GlobalSettingManager shareGlobalSettingManager].manufacturerId isEqualToString:inquiryOrderModel.manufacturerId]) {//采购商看询盘单
                 XunPanXiangQingViewController *vc = [[XunPanXiangQingViewController alloc] init];
                 vc.inquiryOrderId = inquiryOrderModel.inquiryOrderId;
                 vc.isDefaultPurchase = DefaultSupplier;

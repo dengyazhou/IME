@@ -103,7 +103,7 @@
         comment.buStart2 = [NSNumber numberWithDouble:_buStart2];
         comment.buStart3 = [NSNumber numberWithDouble:_buStart3];
         LoginModel *loginModel = [DatabaseTool getLoginModel];
-        comment.sourceMemberId = loginModel.memberId;
+        comment.sourceMemberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
         comment.content = self.textView.text;
         postEntityBean.entity = comment.mj_keyValues;
         NSDictionary *dic = postEntityBean.mj_keyValues;

@@ -939,13 +939,7 @@ NSString *NTESNotificationLogout = @"NTESNotificationLogout";
         obj.regStatus = dic[@"regStatus"];
         obj.userId = dic[@"userId"];
         
-        @try {
-            [[NSUserDefaults standardUserDefaults] setObject:dic[@"efeibiaoToken"] forKey:@"efeibiaoToken"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-        } @catch (NSException * e)  {
-            [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"efeibiaoToken"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-        }
+
         
         if ([dic[@"userType"] isEqualToString:@"ENTERPRISE"]) {
             @try
@@ -1002,10 +996,6 @@ NSString *NTESNotificationLogout = @"NTESNotificationLogout";
                 
                 [DatabaseTool createLoginReturn];
                 [DatabaseTool updateLoginReturnWithLogin:obj];
-                [[GlobalSettingManager shareGlobalSettingManager] requestPurchaseGlobalTemplate];
-                
-                
-                [[GlobalSettingManager shareGlobalSettingManager] requestfbCompetenceAllWithfbToken:[[NSUserDefaults standardUserDefaults] objectForKey:EFeiBiaoToken]];
                 
                 NSArray *array = [NSArray stringToJSON:obj.identityBeans];
                 for (NSDictionary *dic in array) {

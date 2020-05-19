@@ -128,13 +128,7 @@
         obj.regStatus = dic[@"regStatus"];
         obj.userId = dic[@"userId"];
         
-        @try {
-            [[NSUserDefaults standardUserDefaults] setObject:dic[@"efeibiaoToken"] forKey:@"efeibiaoToken"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-        } @catch (NSException * e)  {
-            [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"efeibiaoToken"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-        }
+
         @try {
             [[NSUserDefaults standardUserDefaults] setObject:dic[@"apiTokenId"] forKey:@"tokenId"];
             [[NSUserDefaults standardUserDefaults] synchronize];
@@ -237,10 +231,8 @@
                 [DatabaseTool createLoginReturn];
                 
                 [DatabaseTool updateLoginReturnWithLogin:obj];
+ 
                 
-                [[GlobalSettingManager shareGlobalSettingManager] requestPurchaseGlobalTemplate];
-                
-                [[GlobalSettingManager shareGlobalSettingManager] requestfbCompetenceAllWithfbToken:[[NSUserDefaults standardUserDefaults] objectForKey:EFeiBiaoToken]];
                 
                 NSArray *array = [NSArray stringToJSON:obj.identityBeans];
                 

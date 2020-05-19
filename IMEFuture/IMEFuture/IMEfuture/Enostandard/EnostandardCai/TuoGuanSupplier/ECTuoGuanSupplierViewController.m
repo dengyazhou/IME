@@ -197,10 +197,9 @@
     self.enterpriseName.text = self.enterpriseRelationSuper.passiveEnterprise.enterpriseName;
     self.zoneStr.text = self.enterpriseRelationSuper.passiveEnterprise.zoneStr;
     
-    LoginModel *loginModel = [DatabaseTool getLoginModel];
-    Member *memberModel = [Member mj_objectWithKeyValues:loginModel.member];
-    _arrayPurchaseComWeight = @[memberModel.enterpriseInfo.comWeight1?memberModel.enterpriseInfo.comWeight1:@"--",memberModel.enterpriseInfo.comWeight2?memberModel.enterpriseInfo.comWeight2:@"--",memberModel.enterpriseInfo.comWeight3?memberModel.enterpriseInfo.comWeight3:@"--",memberModel.enterpriseInfo.comWeight4?memberModel.enterpriseInfo.comWeight4:@"--"];
-    _arrayQualityComWeight = @[memberModel.enterpriseInfo.comWeight5?memberModel.enterpriseInfo.comWeight5:@"--"];
+    MemberResBean *member = [GlobalSettingManager shareGlobalSettingManager].member;
+    _arrayPurchaseComWeight = @[member.enterpriseInfo.comWeight1?member.enterpriseInfo.comWeight1:@"--",member.enterpriseInfo.comWeight2?member.enterpriseInfo.comWeight2:@"--",member.enterpriseInfo.comWeight3?member.enterpriseInfo.comWeight3:@"--",member.enterpriseInfo.comWeight4?member.enterpriseInfo.comWeight4:@"--"];
+    _arrayQualityComWeight = @[member.enterpriseInfo.comWeight5?member.enterpriseInfo.comWeight5:@"--"];
     
     _arrayPurchase = @[@"报价及时性及配合",@"报价专业性",@"加急事项的处理能力",@"交货及时率"];
     
@@ -1536,7 +1535,7 @@
         
         InquiryOrder *inquiryOrder = [[InquiryOrder alloc] init];
         LoginModel *loginModel = [DatabaseTool getLoginModel];
-        inquiryOrder.manufacturerId = loginModel.manufacturerId;
+        inquiryOrder.manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
         
         inquiryOrder.sei_inquiryType = [NSMutableArray arrayWithArray:@[@"ATG",@"FTG",@"TTG"]];
         
@@ -1544,7 +1543,7 @@
         
         inquiryOrder.ioe__manufacturerId = self.enterpriseRelationSuper.passiveEnterprise.manufacturerId;
         
-        postEntityBean.memberId = loginModel.memberId;
+        postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
         
         postEntityBean.entity = inquiryOrder.mj_keyValues;
         
@@ -1606,14 +1605,14 @@
         
         InquiryOrder *inquiryOrder = [[InquiryOrder alloc] init];
         LoginModel *loginModel = [DatabaseTool getLoginModel];
-        inquiryOrder.manufacturerId = loginModel.manufacturerId;
+        inquiryOrder.manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
         inquiryOrder.sei_inquiryType = [NSMutableArray arrayWithArray:@[@"ATG",@"FTG",@"TTG"]];
     
         inquiryOrder.sec_hasSendQuo = [NSNumber numberWithBool:YES];
 
         inquiryOrder.ioe__manufacturerId = self.enterpriseRelationSuper.passiveEnterprise.manufacturerId;
         
-        postEntityBean.memberId = loginModel.memberId;
+        postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
         postEntityBean.entity = inquiryOrder.mj_keyValues;
         
         NSDictionary *dic = postEntityBean.mj_keyValues;
@@ -1667,7 +1666,7 @@
 
         postEntityBean.entity = tradeOrder.mj_keyValues;
         
-        postEntityBean.memberId = loginModel.memberId;
+        postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
         
         NSDictionary *dic = postEntityBean.mj_keyValues;
         
@@ -1734,7 +1733,7 @@
         
         postEntityBean.entity = tradeOrder.mj_keyValues;
         
-        postEntityBean.memberId = loginModel.memberId;
+        postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
         
         NSDictionary *dic = postEntityBean.mj_keyValues;
         
@@ -1765,7 +1764,7 @@
 - (void)initEpRelationTrustRelationDetail:(UITableView *)tableView WithNoContentView:(UIView *)viewNoContent{
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    postEntityBean.memberId = loginModel.memberId;
+    postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
     
     EnterpriseRelation *enterpriseRelation = [[EnterpriseRelation alloc] init];
     enterpriseRelation.reId = self.enterpriseRelationSuper.reId;

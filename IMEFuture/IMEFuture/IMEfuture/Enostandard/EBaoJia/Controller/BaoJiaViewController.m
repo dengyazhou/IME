@@ -83,9 +83,8 @@
         LoginModel *loginModel = [DatabaseTool getLoginModel];
         NSString *str = [dicM objectForKey:loginModel.enterpriseName];
         if ([str isEqualToString:@""]) {
-            NSString *member = loginModel.member;
-            Member *memberModel = [Member mj_objectWithKeyValues:member];
-            _quotationOrder.supplierTaxRate = memberModel.enterpriseInfo.supplierTaxRate;
+            MemberResBean * member = [GlobalSettingManager shareGlobalSettingManager].member;
+            _quotationOrder.supplierTaxRate = member.enterpriseInfo.supplierTaxRate;
             _supplierTaxRateTemp = [_quotationOrder.supplierTaxRate doubleValue];
             
             if ([_quotationOrder.supplierTaxRate doubleValue] == 0.13) {
@@ -1243,7 +1242,7 @@
                 } else {
                     LoginModel *loginModel = [DatabaseTool getLoginModel];
                     NSString *sourceCaiOrGong;
-                    if ([_inquiryOrderModel.manufacturerId isEqualToString:loginModel.manufacturerId]) {//采购商身份进来
+                    if ([_inquiryOrderModel.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {//采购商身份进来
                         sourceCaiOrGong = @"cai";
                     } else {
                         sourceCaiOrGong = @"gong";
@@ -1262,7 +1261,7 @@
     } else {
         LoginModel *loginModel = [DatabaseTool getLoginModel];
         NSString *sourceCaiOrGong;
-        if ([_inquiryOrderModel.manufacturerId isEqualToString:loginModel.manufacturerId]) {//采购商身份进来
+        if ([_inquiryOrderModel.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {//采购商身份进来
             sourceCaiOrGong = @"cai";
         } else {
             sourceCaiOrGong = @"gong";
@@ -1280,7 +1279,7 @@
 - (void)buttonDetailClick:(UIButton *)sender {
     LoginModel *loginModel = [DatabaseTool getLoginModel];
     NSString *sourceCaiOrGong;
-    if ([_inquiryOrderModel.manufacturerId isEqualToString:loginModel.manufacturerId]) {//采购商身份进来
+    if ([_inquiryOrderModel.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {//采购商身份进来
         sourceCaiOrGong = @"cai";
     } else {
         sourceCaiOrGong = @"gong";
@@ -1717,7 +1716,7 @@
         NSString *closeMsg = alertController.textFields[0].text;
 
         EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-        postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+        postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
         InquiryOrder *inquiryOrder = [[InquiryOrder alloc] init];
         inquiryOrder.inquiryOrderId = self.inquiryOrderModel.inquiryOrderId;
         inquiryOrder.refuseMsg = closeMsg;
@@ -1757,7 +1756,7 @@
 
 - (void)initRequestInquirySupplierDetail {
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:EFeiBiaoToken];
+    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
     InquiryOrder *inquiryOrder = [[InquiryOrder alloc] init];
     inquiryOrder.inquiryOrderId = self.inquiryOrderId;
     postEntityBean.entity = inquiryOrder.mj_keyValues;
@@ -1804,9 +1803,8 @@
             LoginModel *login = [DatabaseTool getLoginModel];
             NSString *str = [dicM objectForKey:login.enterpriseName];
             if ([str isEqualToString:@""]) {
-                NSString *member = login.member;
-                Member *memberModel = [Member mj_objectWithKeyValues:member];
-                _quotationOrder.supplierTaxRate = memberModel.enterpriseInfo.supplierTaxRate;
+                MemberResBean *member = [GlobalSettingManager shareGlobalSettingManager].member;
+                _quotationOrder.supplierTaxRate = member.enterpriseInfo.supplierTaxRate;
                 _supplierTaxRateTemp = [_quotationOrder.supplierTaxRate doubleValue];
             } else {
                 _quotationOrder.supplierTaxRate = [NSNumber numberWithDouble:[str doubleValue]];

@@ -65,6 +65,8 @@
 		9376949E23C30EB500FB696D /* ZuoYeDanYuanTiJiaoCollectionViewCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 9376949C23C30EB500FB696D /* ZuoYeDanYuanTiJiaoCollectionViewCell1.m */; };
 		9376949F23C30EB500FB696D /* ZuoYeDanYuanTiJiaoCollectionViewCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9376949D23C30EB500FB696D /* ZuoYeDanYuanTiJiaoCollectionViewCell1.xib */; };
 		937694A223C45DB400FB696D /* MaterialVo.m in Sources */ = {isa = PBXBuildFile; fileRef = 937694A123C45DB400FB696D /* MaterialVo.m */; };
+		937AC5752472A3E5007983A8 /* MemberResBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 937AC5742472A3E5007983A8 /* MemberResBean.m */; };
+		937AC5782472A4E2007983A8 /* EnterpriseInfoResBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 937AC5772472A4E2007983A8 /* EnterpriseInfoResBean.m */; };
 		9399D36A240CFFF000807975 /* SweepTheCodeReturnsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9399D368240CFFF000807975 /* SweepTheCodeReturnsVC.m */; };
 		9399D36B240CFFF000807975 /* SweepTheCodeReturnsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9399D369240CFFF000807975 /* SweepTheCodeReturnsVC.xib */; };
 		9399D36F240D112500807975 /* SweepTheCodeReturnsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9399D36D240D112500807975 /* SweepTheCodeReturnsCell.m */; };
@@ -1306,6 +1308,10 @@
 		9376949D23C30EB500FB696D /* ZuoYeDanYuanTiJiaoCollectionViewCell1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZuoYeDanYuanTiJiaoCollectionViewCell1.xib; sourceTree = "<group>"; };
 		937694A023C45DB400FB696D /* MaterialVo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MaterialVo.h; sourceTree = "<group>"; };
 		937694A123C45DB400FB696D /* MaterialVo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MaterialVo.m; sourceTree = "<group>"; };
+		937AC5732472A3E5007983A8 /* MemberResBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemberResBean.h; sourceTree = "<group>"; };
+		937AC5742472A3E5007983A8 /* MemberResBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemberResBean.m; sourceTree = "<group>"; };
+		937AC5762472A4E2007983A8 /* EnterpriseInfoResBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnterpriseInfoResBean.h; sourceTree = "<group>"; };
+		937AC5772472A4E2007983A8 /* EnterpriseInfoResBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EnterpriseInfoResBean.m; sourceTree = "<group>"; };
 		9399D367240CFFF000807975 /* SweepTheCodeReturnsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SweepTheCodeReturnsVC.h; sourceTree = "<group>"; };
 		9399D368240CFFF000807975 /* SweepTheCodeReturnsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SweepTheCodeReturnsVC.m; sourceTree = "<group>"; };
 		9399D369240CFFF000807975 /* SweepTheCodeReturnsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SweepTheCodeReturnsVC.xib; sourceTree = "<group>"; };
@@ -4713,6 +4719,10 @@
 				93F706B122B0D7B9000B2D9D /* Competence.m */,
 				93F706E822B0D7B9000B2D9D /* EfeibiaoPostEntityBean.h */,
 				93F7069D22B0D7B9000B2D9D /* EfeibiaoPostEntityBean.m */,
+				937AC5732472A3E5007983A8 /* MemberResBean.h */,
+				937AC5742472A3E5007983A8 /* MemberResBean.m */,
+				937AC5762472A4E2007983A8 /* EnterpriseInfoResBean.h */,
+				937AC5772472A4E2007983A8 /* EnterpriseInfoResBean.m */,
 				93F7067922B0D7B9000B2D9D /* InquiryOrderEnterprise.m */,
 				93F706E922B0D7B9000B2D9D /* JwtMember.h */,
 				93F7069E22B0D7B9000B2D9D /* JwtMember.m */,
@@ -8577,6 +8587,7 @@
 				93F70C4D22B0D7BA000B2D9D /* IQCChuKuCell.swift in Sources */,
 				935FE54B22BBA66500F8A602 /* ChaKanYuanYinViewController.m in Sources */,
 				93F70EF122B0D7BB000B2D9D /* XinZengShouHuoDiZhiVC.m in Sources */,
+				937AC5752472A3E5007983A8 /* MemberResBean.m in Sources */,
 				93F70D2722B0D7BA000B2D9D /* BaseCustomField.m in Sources */,
 				93F70FA622B0D7BB000B2D9D /* QiYeXinXiXiangQingViewController.m in Sources */,
 				93F70D1F22B0D7BA000B2D9D /* OperateFields.m in Sources */,
@@ -8660,6 +8671,7 @@
 				93F70DA022B0D7BA000B2D9D /* DuoCiFaHuoVC.m in Sources */,
 				93F70EE122B0D7BB000B2D9D /* UIViewXuanZeBaoJiaMoBan.m in Sources */,
 				93F70BDD22B0D7BA000B2D9D /* TpfSZViewController.m in Sources */,
+				937AC5782472A4E2007983A8 /* EnterpriseInfoResBean.m in Sources */,
 				93F70F1F22B0D7BB000B2D9D /* ShouHuoHuiZongVC.m in Sources */,
 				93F70EF522B0D7BB000B2D9D /* ShouHuoDiZhiCell.m in Sources */,
 				93F70FBC22B0D7BB000B2D9D /* MXBaoJiaCell011.m in Sources */,
@@ -8916,7 +8928,7 @@
 					"$(PROJECT_DIR)/IMEFuture/IMEfuture/Jpush",
 					"$(PROJECT_DIR)/IMEFuture/imefuture/Jpush",
 				);
-				MARKETING_VERSION = 2.40.0;
+				MARKETING_VERSION = 2.42.0;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-isystem",
@@ -8978,7 +8990,7 @@
 					"$(PROJECT_DIR)/IMEFuture/IMEfuture/Jpush",
 					"$(PROJECT_DIR)/IMEFuture/imefuture/Jpush",
 				);
-				MARKETING_VERSION = 2.40.0;
+				MARKETING_VERSION = 2.42.0;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-isystem",

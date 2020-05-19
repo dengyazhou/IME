@@ -601,7 +601,7 @@
             
             
             LoginModel *loginModel = [DatabaseTool getLoginModel];
-            if ([_quotationOrderHttp.manufacturerId isEqualToString:loginModel.manufacturerId]) {//采购商身份进来
+            if ([_quotationOrderHttp.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {//采购商身份进来
                 [imageViewH sd_setImageWithURL:[NSURL URLWithString:_inquiryOrderHttp.member.enterpriseInfo.logoImg] placeholderImage:[UIImage imageNamed:@"ime_test_company"]];
                 label2.text = [NSString stringWithFormat:@"%@ %@",_inquiryOrderHttp.member.enterpriseInfo.province?_inquiryOrderHttp.member.enterpriseInfo.province:@"",_inquiryOrderHttp.member.enterpriseInfo.city?_inquiryOrderHttp.member.enterpriseInfo.city:@""];
                 label1.text = _inquiryOrderHttp.member.enterpriseInfo.enterpriseName;
@@ -815,7 +815,7 @@
             
             
             LoginModel *loginModel = [DatabaseTool getLoginModel];
-            if ([_quotationOrderHttp.manufacturerId isEqualToString:loginModel.manufacturerId]) {//采购商身份进来
+            if ([_quotationOrderHttp.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {//采购商身份进来
                 [imageViewH sd_setImageWithURL:[NSURL URLWithString:_inquiryOrderHttp.member.enterpriseInfo.logoImg] placeholderImage:[UIImage imageNamed:@"ime_test_company"]];
                 label2.text = [NSString stringWithFormat:@"%@ %@",_inquiryOrderHttp.member.enterpriseInfo.province?_inquiryOrderHttp.member.enterpriseInfo.province:@"",_inquiryOrderHttp.member.enterpriseInfo.city?_inquiryOrderHttp.member.enterpriseInfo.city:@""];
                 label1.text = _inquiryOrderHttp.member.enterpriseInfo.enterpriseName;
@@ -1070,7 +1070,7 @@
                 } else {
                     LoginModel *loginModel = [DatabaseTool getLoginModel];
                     NSString *sourceCaiOrGong;
-                    if ([_inquiryOrderHttp.manufacturerId isEqualToString:loginModel.manufacturerId]) {//采购商身份进来
+                    if ([_inquiryOrderHttp.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {//采购商身份进来
                         sourceCaiOrGong = @"cai";
                     } else {
                         sourceCaiOrGong = @"gong";
@@ -1089,7 +1089,7 @@
     } else {
         LoginModel *loginModel = [DatabaseTool getLoginModel];
         NSString *sourceCaiOrGong;
-        if ([_inquiryOrderHttp.manufacturerId isEqualToString:loginModel.manufacturerId]) {//采购商身份进来
+        if ([_inquiryOrderHttp.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {//采购商身份进来
             sourceCaiOrGong = @"cai";
         } else {
             sourceCaiOrGong = @"gong";
@@ -1107,7 +1107,7 @@
 - (void)buttonDetailClick:(UIButton *)sender {
     LoginModel *loginModel = [DatabaseTool getLoginModel];
     NSString *sourceCaiOrGong;
-    if ([_inquiryOrderHttp.manufacturerId isEqualToString:loginModel.manufacturerId]) {//采购商身份进来
+    if ([_inquiryOrderHttp.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {//采购商身份进来
         sourceCaiOrGong = @"cai";
     } else {
         sourceCaiOrGong = @"gong";
@@ -1162,7 +1162,7 @@
 #pragma mark 供应商拒绝接单接口
         NSInteger row = [self.pickerView selectedRowInComponent:0];
         EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-        postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+        postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
         TradeOrder * tradeOrder = [[TradeOrder alloc] init];
         tradeOrder.orderId = self.orderId;
         tradeOrder.refuseMsg = _arrayJuJueShouPan[row];
@@ -1204,7 +1204,7 @@
     UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"确定接盘" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 #pragma mark 供应商接盘接口
         EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-        postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+        postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
         TradeOrder *tradeOrder = [[TradeOrder alloc] init];
         tradeOrder.orderId = self.orderId;
         tradeOrder.supplierTaxRate = self.tradeOrder.supplierTaxRate;
@@ -1250,7 +1250,7 @@
 - (void)initRequest {
 #pragma mark 查询询盘详细接口
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
     InquiryOrder *inquiryOrder = [[InquiryOrder alloc] init];
     inquiryOrder.inquiryOrderId = self.inquiryOrderId;
     postEntityBean.entity =  inquiryOrder.mj_keyValues;
@@ -1261,7 +1261,7 @@
         if ([returnEntityBean.status isEqualToString:@"SUCCESS"]) {
             InquiryOrder *inquiryOrderHttp = [InquiryOrder mj_objectWithKeyValues:returnEntityBean.entity];
             EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-            postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+            postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
             QuotationOrder *quotationOrder = [[QuotationOrder alloc] init];
             quotationOrder.inquiryOrderId = inquiryOrderHttp.inquiryOrderId;//必传
             quotationOrder.quotationOrderId = inquiryOrderHttp.inquiryOrderEnterprises[0].quotationOrderId;//必传
@@ -1305,7 +1305,7 @@
 - (void)initRequestOrderDetail {
 #pragma mark 获取供应商订单详情
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
     TradeOrder *tradeOrder = [[TradeOrder alloc] init];
     tradeOrder.orderId = self.orderId;
     postEntityBean.entity = tradeOrder.mj_keyValues;

@@ -661,7 +661,7 @@
     InquiryOrder *model = _arrayInquiryOrderModel[indexPath.row];
     
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:EFeiBiaoToken];
+    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
     
     InquiryOrder *inquiryOrder = [[InquiryOrder alloc] init];
     inquiryOrder.se_enterpriseOrderCode = model.enterpriseOrderCode;
@@ -697,7 +697,7 @@
 - (void)initRequestWithTableView:(UITableView *)tableView WithRecommendTypeArray:(NSArray *)seiIoeRecommendTypeArray WithNoContentView:(UIView *)viewNoContent{
     tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-        postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+        postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
         OrderByBean *orderByBean = [[OrderByBean alloc] init];
         orderByBean.orderName = @"c.createTime";
         orderByBean.orderSort = @"desc";
@@ -713,7 +713,7 @@
         
         InquiryOrder *inquiryOrder = [[InquiryOrder alloc] init];
         LoginModel *loginModel = [DatabaseTool getLoginModel];
-        inquiryOrder.ioe__manufacturerId = loginModel.manufacturerId;
+        inquiryOrder.ioe__manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
         inquiryOrder.sei_ioe__recommendType = [NSMutableArray arrayWithArray:seiIoeRecommendTypeArray];
         inquiryOrder.confirmStatus = [NSNumber numberWithInteger:0];
         
@@ -765,7 +765,7 @@
     
     tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-        postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+        postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
         OrderByBean *orderByBean = [[OrderByBean alloc] init];
         orderByBean.orderName = @"c.createTime";
         orderByBean.orderSort = @"desc";
@@ -781,7 +781,7 @@
         
         InquiryOrder *inquiryOrder = [[InquiryOrder alloc] init];
         LoginModel *loginModel = [DatabaseTool getLoginModel];
-        inquiryOrder.ioe__manufacturerId = loginModel.manufacturerId;
+        inquiryOrder.ioe__manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
         inquiryOrder.sei_ioe__recommendType = [NSMutableArray arrayWithArray:seiIoeRecommendTypeArray];
         inquiryOrder.confirmStatus = [NSNumber numberWithInteger:0];
         
@@ -824,7 +824,7 @@
 - (void)initRequestWithTableView:(UITableView *)tableView WithNoContentView:(UIView *)viewNoContent{
     tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-        postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+        postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
         postEntityBean.isPurchase = [NSNumber numberWithInteger:0];
         OrderByBean *orderByBean = [[OrderByBean alloc] init];
         orderByBean.orderName = @"c.createTime";
@@ -846,7 +846,7 @@
         inquiryOrder.confirmStatus = [NSNumber numberWithInteger:0];
         
         LoginModel *loginModel = [DatabaseTool getLoginModel];
-        postEntityBean.memberId = loginModel.memberId;
+        postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
         postEntityBean.entity = inquiryOrder.mj_keyValues;
         
         NSDictionary *dic = postEntityBean.mj_keyValues;
@@ -894,7 +894,7 @@
     
     tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-        postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+        postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
         postEntityBean.isPurchase = [NSNumber numberWithInteger:0];
         OrderByBean *orderByBean = [[OrderByBean alloc] init];
         orderByBean.orderName = @"c.createTime";
@@ -915,7 +915,7 @@
         inquiryOrder.confirmStatus = [NSNumber numberWithInteger:0];
         
         LoginModel *loginModel = [DatabaseTool getLoginModel];
-        postEntityBean.memberId = loginModel.memberId;
+        postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
         postEntityBean.entity = inquiryOrder.mj_keyValues;
         
         NSDictionary *dic = postEntityBean.mj_keyValues;

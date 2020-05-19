@@ -10,6 +10,8 @@
 
 #import "VoHeader.h"
 
+@class MemberResBean;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface GlobalSettingManager : NSObject
@@ -53,6 +55,22 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSInteger showMultiltask;
 
 
+@property (nonatomic, strong) MemberResBean *member;
+
+/**
+  非标的memberId
+ */
+@property (nonatomic,copy) NSString *memberId;
+
+/**
+    非标的manufacturerId
+ */
+@property (nonatomic,copy) NSString *manufacturerId;
+
+/**
+ 非标的token
+ */
+@property (nonatomic, copy) NSString *eFeiBiaoToken;
 
 
 + (instancetype)shareGlobalSettingManager;
@@ -60,9 +78,9 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  采购商企业全局配置Array 自定义字段 赋值
  */
-- (void)requestPurchaseGlobalTemplate;//没有做、2020.4.14
+//- (void)requestPurchaseGlobalTemplate;//没有做、2020.4.14
 
-- (void)requestSupplierGlobalTemplate;//没有做、2020.4.14
+//- (void)requestSupplierGlobalTemplate;//没有做、2020.4.14
 
 
 // 获取非标的权限列表 并且给权限数组competenceTypeArray 赋值

@@ -668,7 +668,7 @@
     TradeOrder *model = _arrayTradeOrderModel[indexPath.row];
     
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
     
     TradeOrder *tradeOrder = [[TradeOrder alloc] init];
     tradeOrder.se_insideOrderCode = model.insideOrderCode;
@@ -702,7 +702,7 @@
     tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
         EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-        postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+        postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
         postEntityBean.isPurchase = [NSNumber numberWithInteger:0];
         OrderByBean *orderByBean = [[OrderByBean alloc] init];
         orderByBean.orderName = @"c.createTime";
@@ -732,7 +732,7 @@
         postEntityBean.entity = tradeOrder.mj_keyValues;
         
 
-        postEntityBean.memberId = loginModel.memberId;
+        postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
         
         NSDictionary *dic = postEntityBean.mj_keyValues;
         
@@ -774,7 +774,7 @@
     
     tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-        postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+        postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
         postEntityBean.isPurchase = [NSNumber numberWithInteger:0];
         OrderByBean *orderByBean = [[OrderByBean alloc] init];
         orderByBean.orderName = @"c.createTime";
@@ -800,7 +800,7 @@
         
         postEntityBean.entity = tradeOrder.mj_keyValues;
         
-        postEntityBean.memberId = loginModel.memberId;
+        postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
         
         NSDictionary *dic = postEntityBean.mj_keyValues;
     

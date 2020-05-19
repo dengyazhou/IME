@@ -146,7 +146,7 @@
     inquiryOrderQA.partName = _partNameTmp;
     inquiryOrderQA.lineNumber = _inquiryOrderItems[row].lineNumber;//需要选择的
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    inquiryOrderQA.memberId = loginModel.memberId;
+    inquiryOrderQA.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
     inquiryOrderQA.content = _textViewTiWen.text;
     inquiryOrderQA.qaType = [NSNumber numberWithInteger:0];
     postEntityBean.entity = inquiryOrderQA.mj_keyValues;

@@ -644,92 +644,7 @@
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             return cell;
         } else if (indexPath.section == 1) {
-//            if (indexPath.row == 0) {
-//                MingXiQueRenBaoJia01 *cell = [tableView dequeueReusableCellWithIdentifier:@"mingXiQueRenBaoJia01" forIndexPath:indexPath];
-//                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//                cell.view1.backgroundColor = [colorRGB(255, 151, 0) colorWithAlphaComponent:0.05];
-//
-//
-//                for (UIView *view1 in cell.contentView.subviews) {
-//                    if ([view1 viewWithTag:1]||[view1 viewWithTag:2]||[view1 viewWithTag:3]||[view1 viewWithTag:4]) {
-//                        [view1 removeFromSuperview];
-//                    }
-//                }
-//
-//                cell.button1.enabled = NO;
-//
-//
-//                return cell;
-//            } else if (indexPath.row < 1+1+2) {
-//                MingXiQueRenBaoJia02 *cell = [tableView dequeueReusableCellWithIdentifier:@"mingXiQueRenBaoJia02" forIndexPath:indexPath];
-//                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//                if (indexPath.row == 1) {
-//                    cell.label0.text = [NSString stringWithFormat:@"小计\n(共%ld种零件)",_arrayInquiryOrderItemModel.count];
-//                    cell.label1.text = _quotationOrder.subtotalPrice1?[NSString stringWithFormat:@"%.2f",[_quotationOrder.subtotalPrice1 doubleValue]]:@"0.00";
-//                } else if (indexPath.row < 1+1+1) {
-//                    cell.label0.text = @"杂费";
-//                    cell.label1.text = _quotationOrder.cost1?[NSString stringWithFormat:@"%.2f",[_quotationOrder.cost1 doubleValue]]:@"0.00";
-//                } else {
-//                    cell.label0.text =  @"运费";
-//                    cell.label1.text = _quotationOrder.shipPrice1?[NSString stringWithFormat:@"%.2f",[_quotationOrder.shipPrice1 doubleValue]]:@"0.00";
-//                }
-//                for (UIView *view1 in cell.contentView.subviews) {
-//                    if ([view1 viewWithTag:1]) {
-//                        [view1 removeFromSuperview];
-//                    }
-//                    if ([view1 viewWithTag:2]) {
-//                        [view1 removeFromSuperview];
-//                    }
-//                }
-//
-//                cell.button1.enabled = NO;
-//
-//
-//                return cell;
-//            } else if (indexPath.row == 1+1+2) {
-//                MingXiQueRenBaoJia03 *cell = [tableView dequeueReusableCellWithIdentifier:@"mingXiQueRenBaoJia03" forIndexPath:indexPath];
-//                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//                cell.view0.backgroundColor = [colorRGB(255, 151, 0) colorWithAlphaComponent:0.05];
-//
-//                LoginModel *loginModel = [DatabaseTool getLoginModel];
-//                NSString * stringTaxRate = [NSString stringWithFormat:@"%0.f",[_quotationOrder.supplierTaxRate doubleValue]*100];
-//
-//                if ([_inquiryOrder.manufacturerId isEqualToString:loginModel.manufacturerId]) {
-//
-//                    if ([_inquiryOrder.inquiryType isEqualToString:@"COM"] || [_inquiryOrder.inquiryType isEqualToString:@"DIR"]) {
-//                        stringTaxRate = @"17";
-//                    }
-//                    if ([_inquiryOrder.inquiryType isEqualToString:@"ATG"]) {
-//                        stringTaxRate = [NSString stringWithFormat:@"%0.f",[_quotationOrder.supplierTaxRate doubleValue]*100];
-//                    }
-//                }
-//                cell.label0.text = [NSString stringWithFormat:@"总计\n(含税价%@%@)",stringTaxRate,@"%"];
-//                cell.label1.text = _quotationOrder.totalPrice1?[NSString stringWithFormat:@"%.2f",[_quotationOrder.totalPrice1 doubleValue]]:@"0.00";
-//
-//                cell.label1.textColor = colorRGB(51, 51, 51);
-//
-//
-//                for (UIView *view1 in cell.contentView.subviews) {
-//                    if ([view1 viewWithTag:1]) {
-//                        [view1 removeFromSuperview];
-//                    }
-//                    if ([view1 viewWithTag:2]) {
-//                        [view1 removeFromSuperview];
-//                    }
-//                    if ([view1 viewWithTag:3]) {
-//                        [view1 removeFromSuperview];
-//                    }
-//                }
-//
-//                cell.label1.textColor = colorCai;
-//
-//                cell.button1.enabled = NO;
-//
-//
-//                return cell;
-//            } else {
-//                return nil;
-//            }
+
             if (indexPath.row == 0) {
                 MXBaoJiaCell111 *cell = [tableView dequeueReusableCellWithIdentifier:@"mXBaoJiaCell111" forIndexPath:indexPath];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -952,96 +867,7 @@
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             return cell;
         } else if (indexPath.section == 1) {
-//            if (indexPath.row == 0) {
-//                MingXiQueRenBaoJia01 *cell = [tableView dequeueReusableCellWithIdentifier:@"mingXiQueRenBaoJia01" forIndexPath:indexPath];
-//                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//                cell.view1.backgroundColor = [colorRGB(255, 151, 0) colorWithAlphaComponent:0.05];
-//
-//                for (UIView *view1 in cell.contentView.subviews) {
-//                    if ([view1 viewWithTag:1]||[view1 viewWithTag:2]||[view1 viewWithTag:3]||[view1 viewWithTag:4]) {
-//                        [view1 removeFromSuperview];
-//                    }
-//                }
-//
-//                cell.button1.enabled = NO;
-//
-//
-//                return cell;
-//            } else if (indexPath.row < 1+1+[_inquiryOrder.tempCostDetailCount integerValue]+[_inquiryOrder.tempShipPriceDetailCount integerValue]) {
-//                MingXiQueRenBaoJia02 *cell = [tableView dequeueReusableCellWithIdentifier:@"mingXiQueRenBaoJia02" forIndexPath:indexPath];
-//                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//                if (indexPath.row == 1) {
-//                    cell.label0.text = [NSString stringWithFormat:@"小计\n(共%ld种零件)",_arrayInquiryOrderItemModel.count];
-//                    cell.label1.text = _quotationOrder.subtotalPrice1?[NSString stringWithFormat:@"%.2f",[_quotationOrder.subtotalPrice1 doubleValue]]:@"0.00";
-//
-//                } else if (indexPath.row < 1+1+[_inquiryOrder.tempCostDetailCount integerValue]) {
-//                    cell.label0.text = [_inquiryOrder valueForKey:[NSString stringWithFormat:@"tempCostDetailName%ld",indexPath.row-1]];
-//                    NSNumber *supplierTempCost1DetailValue = [_quotationOrder valueForKey:[NSString stringWithFormat:@"supplierTempCost1DetailValue%ld",indexPath.row-1]];
-//                    cell.label1.text = supplierTempCost1DetailValue?[NSString stringWithFormat:@"%.2f",[supplierTempCost1DetailValue doubleValue]]:@"0.00";
-//
-//                } else {
-//                    cell.label0.text = [_inquiryOrder valueForKey:[NSString stringWithFormat:@"tempShipPriceDetailName%ld",indexPath.row-1-[_inquiryOrder.tempCostDetailCount integerValue]]];
-//                    NSNumber *supplierTempShipPrice1DetailValue = [_quotationOrder valueForKey:[NSString stringWithFormat:@"supplierTempShipPrice1DetailValue%ld",indexPath.row-1-[_inquiryOrder.tempCostDetailCount integerValue]]];
-//                    cell.label1.text = supplierTempShipPrice1DetailValue?[NSString stringWithFormat:@"%.2f",[supplierTempShipPrice1DetailValue doubleValue]]:@"0.00";
-//
-//                }
-//                for (UIView *view1 in cell.contentView.subviews) {
-//                    if ([view1 viewWithTag:1]) {
-//                        [view1 removeFromSuperview];
-//                    }
-//                    if ([view1 viewWithTag:2]) {
-//                        [view1 removeFromSuperview];
-//                    }
-//                }
-//
-//                cell.button1.enabled = NO;
-//
-//
-//                return cell;
-//            } else if (indexPath.row == 1+1+[_inquiryOrder.tempCostDetailCount integerValue]+[_inquiryOrder.tempShipPriceDetailCount integerValue]) {
-//                MingXiQueRenBaoJia03 *cell = [tableView dequeueReusableCellWithIdentifier:@"mingXiQueRenBaoJia03" forIndexPath:indexPath];
-//                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//                cell.view0.backgroundColor = [colorRGB(255, 151, 0) colorWithAlphaComponent:0.05];
-//
-//                LoginModel *loginModel = [DatabaseTool getLoginModel];
-//                NSString * stringTaxRate = [NSString stringWithFormat:@"%0.f",[_quotationOrder.supplierTaxRate doubleValue]*100];
-//
-//                if ([_inquiryOrder.manufacturerId isEqualToString:loginModel.manufacturerId]) {
-//
-//                    if ([_inquiryOrder.inquiryType isEqualToString:@"COM"] || [_inquiryOrder.inquiryType isEqualToString:@"DIR"]) {
-//                        stringTaxRate = @"17";
-//                    }
-//                    if ([_inquiryOrder.inquiryType isEqualToString:@"ATG"]) {
-//                        stringTaxRate = [NSString stringWithFormat:@"%0.f",[_quotationOrder.supplierTaxRate doubleValue]*100];
-//                    }
-//                }
-//                cell.label0.text = [NSString stringWithFormat:@"总计\n(含税价%@%@)",stringTaxRate,@"%"];
-//                cell.label1.text = _quotationOrder.totalPrice1?[NSString stringWithFormat:@"%.2f",[_quotationOrder.totalPrice1 doubleValue]]:@"0.00";
-//
-//                cell.label1.textColor = colorRGB(51, 51, 51);
-//
-//
-//                for (UIView *view1 in cell.contentView.subviews) {
-//                    if ([view1 viewWithTag:1]) {
-//                        [view1 removeFromSuperview];
-//                    }
-//                    if ([view1 viewWithTag:2]) {
-//                        [view1 removeFromSuperview];
-//                    }
-//                    if ([view1 viewWithTag:3]) {
-//                        [view1 removeFromSuperview];
-//                    }
-//                }
-//
-//                cell.label1.textColor = colorCai;
-//
-//                cell.button1.enabled = NO;
-//
-//
-//                return cell;
-//            } else {
-//                return nil;
-//            }
+
             if (indexPath.row == 0) {
                 MXBaoJiaCell111 *cell = [tableView dequeueReusableCellWithIdentifier:@"mXBaoJiaCell111" forIndexPath:indexPath];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -1347,7 +1173,7 @@
                 } else {
                     LoginModel *loginModel = [DatabaseTool getLoginModel];
                     NSString *sourceCaiOrGong;
-                    if ([_inquiryOrder.manufacturerId isEqualToString:loginModel.manufacturerId]) {//采购商身份进来
+                    if ([_inquiryOrder.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {//采购商身份进来
                         sourceCaiOrGong = @"cai";
                     } else {
                         sourceCaiOrGong = @"gong";
@@ -1366,7 +1192,7 @@
     } else {
         LoginModel *loginModel = [DatabaseTool getLoginModel];
         NSString *sourceCaiOrGong;
-        if ([_inquiryOrder.manufacturerId isEqualToString:loginModel.manufacturerId]) {//采购商身份进来
+        if ([_inquiryOrder.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {//采购商身份进来
             sourceCaiOrGong = @"cai";
         } else {
             sourceCaiOrGong = @"gong";
@@ -1384,7 +1210,7 @@
 - (void)buttonDetailClick:(UIButton *)sender {
     LoginModel *loginModel = [DatabaseTool getLoginModel];
     NSString *sourceCaiOrGong;
-    if ([_inquiryOrder.manufacturerId isEqualToString:loginModel.manufacturerId]) {//采购商身份进来
+    if ([_inquiryOrder.manufacturerId isEqualToString:[GlobalSettingManager shareGlobalSettingManager].manufacturerId]) {//采购商身份进来
         sourceCaiOrGong = @"cai";
     } else {
         sourceCaiOrGong = @"gong";
@@ -1416,7 +1242,7 @@
 - (void)butongGuo:(NSString *)string {
 #pragma mark 采购商审批拒绝接口
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
     TradeOrder *tradeOrder = [[TradeOrder alloc] init];
     tradeOrder.orderId = self.orderId;
     tradeOrder.confirmMsg = string;
@@ -1455,7 +1281,7 @@
 - (void)tongGuo {
 #pragma mark 采购商审批通过接口
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
     TradeOrder *tradeOrder = [[TradeOrder alloc] init];
     tradeOrder.orderId = self.orderId;
     postEntityBean.entity = tradeOrder.mj_keyValues;
@@ -1481,7 +1307,7 @@
 - (void)initRequrst {
 #pragma mark 查询询盘详细接口
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-    postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
     InquiryOrder *inquiryOrder = [[InquiryOrder alloc] init];
     inquiryOrder.inquiryOrderId = self.inquiryOrderId;
     postEntityBean.entity =  inquiryOrder.mj_keyValues;
@@ -1492,7 +1318,7 @@
         if ([returnEntityBean.status isEqualToString:@"SUCCESS"]) {
             InquiryOrder *inquiryOrderHttp = [InquiryOrder mj_objectWithKeyValues:returnEntityBean.entity];
             EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
-            postEntityBean.fbToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"efeibiaoToken"];
+            postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
             QuotationOrder *quotationOrder = [[QuotationOrder alloc] init];
             quotationOrder.inquiryOrderId = inquiryOrderHttp.inquiryOrderId;//必传
             quotationOrder.quotationOrderId = inquiryOrderHttp.inquiryOrderEnterprises[0].quotationOrderId;//必传

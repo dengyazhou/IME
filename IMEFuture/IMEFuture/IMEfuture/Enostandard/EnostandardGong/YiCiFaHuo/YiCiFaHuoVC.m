@@ -421,15 +421,15 @@
     
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    postEntityBean.memberId = loginModel.memberId;
+    postEntityBean.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
     
     OrderOperate *orderOperate = [[OrderOperate alloc] init];
     orderOperate.tradeOrderId = _tradeOrder.orderId;
     orderOperate.orderCode = _tradeOrder.orderCode;
     orderOperate.inquiryOrderId = _tradeOrder.inquiryOrderId;
     orderOperate.inquiryOrderCode = _tradeOrder.inquiryOrderCode;
-    orderOperate.memberId = loginModel.memberId;
-    orderOperate.manufacturerId = loginModel.manufacturerId;
+    orderOperate.memberId = [GlobalSettingManager shareGlobalSettingManager].memberId;
+    orderOperate.manufacturerId = [GlobalSettingManager shareGlobalSettingManager].manufacturerId;
     orderOperate.platform = [NSNumber numberWithInteger:1];
     orderOperate.insideOrderCode = _tradeOrder.insideOrderCode;
 
