@@ -119,9 +119,11 @@
     PersonnelVo * personnelVo = [[PersonnelVo alloc] init];
     personnelVo.siteCode = siteCode;
     personnelVo.personnelCode = result;
+    personnelVo.productionControlNum = self.workUnitScanVo.productionControlNum;
+    personnelVo.operationCode = self.workUnitScanVo.operationCode;
     mesPostEntityBean.entity = personnelVo.mj_keyValues;
     NSDictionary *dic = mesPostEntityBean.mj_keyValues;
-    [HttpMamager postRequestWithURLString:DYZ_scanRest_personnelScan parameters:dic success:^(id responseObjectModel) {
+    [HttpMamager postRequestWithURLString:DYZ_scan_personnelScanByProductionControlNum parameters:dic success:^(id responseObjectModel) {
         ReturnEntityBean *returnEntityBean = responseObjectModel;
         
         _viewLoading.hidden = YES;

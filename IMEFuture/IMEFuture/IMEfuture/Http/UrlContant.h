@@ -358,7 +358,6 @@
 
 #define DYZ_scanRest_workUnitScan [NSString stringWithFormat:@"%@/mes/scan/workUnitScan",DYZBaseURLItem(@"/rs")]
 
-#define DYZ_scanRest_personnelScan [NSString stringWithFormat:@"%@/mes/scan/personnelScan",DYZBaseURLItem(@"/rs")]
 
 #define DYZ_scanRest_personnelScanCheck [NSString stringWithFormat:@"%@/mes/scan/personnelScanCheck",DYZBaseURLItem(@"/rs")]
 
@@ -371,6 +370,8 @@
 #define DYZ_workRest_continueWork [NSString stringWithFormat:@"%@/mes/workLog/continueWork",DYZBaseURLItem(@"/rs")]
 
 #define DYZ_scan_personnelScan [NSString stringWithFormat:@"%@/mes/scan/personnelScan",DYZBaseURLItem(@"/rs")]
+
+#define DYZ_scan_personnelScanByProductionControlNum [NSString stringWithFormat:@"%@/mes/scan/personnelScanByProductionControlNum",DYZBaseURLItem(@"/rs")]
 
 #define DYZ_scan_workUnitBindingScan [NSString stringWithFormat:@"%@/mes/scan/workUnitBindingScan",DYZBaseURLItem(@"/rs")]
 

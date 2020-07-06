@@ -165,7 +165,7 @@
             vc.filePath = model.filePath;
             vc.fileRealName = model.fileRealName;
             vc.bucketName = model.bucketName;
-            vc.fileName = model.fileName;
+            vc.fileName = model.fileRealName;
             
             [self.navigationController pushViewController:vc animated:true];
         }];
@@ -257,6 +257,8 @@
         } else {
             inspectOrderItemVo.qualityInspectType = @"S";
         }
+        
+        inspectOrderItemVo.realQualityQuantity = inspectOrderItemVo.qualityQuantity;
         
         item = inspectOrderItemVo;
         [dataArray addObject:item];

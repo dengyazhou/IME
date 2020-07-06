@@ -132,6 +132,8 @@ class IQCJianYanJieGuoVC: UIViewController, UITableViewDelegate, UITableViewData
             cell.viewRangBuReson.isHidden = true
             cell.viewBaoFeiShu.isHidden = true
             cell.viewBaoFeiReson.isHidden = true
+            cell.viewXuLieZhuiZong.isHidden = true
+            cell.viewGengGaiXuLieHao.isHidden = true
             
             if status == 0 {
                 //"质检入库"
@@ -302,6 +304,31 @@ class IQCJianYanJieGuoVC: UIViewController, UITableViewDelegate, UITableViewData
             cell.textFieldBaoFeiReson.inputAccessoryView = self.addToolbar()
             cell.textFieldBaoFeiReson.isEnabled = true
             
+            /**
+             0:收货质检入库
+             
+             1:收货质检
+             2:入库
+             
+             3:收货
+             4:质检
+             5:入库
+            */
+            if (status == 0 || status == 2 || status == 5) {
+                cell.viewXuLieZhuiZong.isHidden = false
+                if self.materialArrivedOrderDetailVo.hasModelSequence.intValue == 1 {
+                    cell.viewGengGaiXuLieHao.isHidden = false
+                } else {
+                    cell.viewGengGaiXuLieHao.isHidden = true
+                }
+            }
+            
+            let imageName = self.materialArrivedOrderDetailVo.hasModelSequence.intValue == 1 ? "multiselect_selected":"multiselect_unchecked"
+            cell.buttonCheck.setImage(UIImage.init(named: imageName), for: UIControl.State.normal)
+            cell.buttonCheck.addTarget(self, action: #selector(buttonCheckClick(sender:)), for: UIControl.Event.touchUpInside)
+            
+            cell.buttonGengGaiXuLieHao.addTarget(self, action: #selector(buttonGengGaiXuLieHao(sender:)), for: UIControl.Event.touchUpInside)
+            
             return cell
         }
     }
@@ -410,7 +437,6 @@ class IQCJianYanJieGuoVC: UIViewController, UITableViewDelegate, UITableViewData
     }
     
 
-    
     @objc func textFieldRangBuJieShouClick(sender: UITextField) {
         if sender.text?.count ?? 0 > 0 {
              self.boolRangBuJieShou = true
@@ -421,6 +447,27 @@ class IQCJianYanJieGuoVC: UIViewController, UITableViewDelegate, UITableViewData
         }
         let double0: Double = self.materialArrivedOrderDetailVo.planQuantity.doubleValue - self.materialArrivedOrderDetailVo.unQqualifiedQuantity.doubleValue - self.materialArrivedOrderDetailVo.concessionQuantity.doubleValue
         self.materialArrivedOrderDetailVo.qualifiedQuantity = NSNumber.init(value: double0)
+    }
+    
+    @objc func buttonCheckClick(sender: UIButton) {
+        self.materialArrivedOrderDetailVo.hasModelSequence = self.materialArrivedOrderDetailVo.hasModelSequence.intValue == 1 ? NSNumber.init(value: 0) : NSNumber.init(value: 1)
+        self.tableView.reloadRows(at: [IndexPath.init(row: 0, section: 1)], with: UITableViewRowAnimation.none)
+    }
+    
+    @objc func buttonGengGaiXuLieHao(sender: UIButton) {
+        let vc = XuLieHaoXiuGaiVC.init()
+        vc.materialCode = self.materialArrivedOrderDetailVo.materialCode
+        vc.materialText = self.materialArrivedOrderDetailVo.materialText
+        let quantity = self.materialArrivedOrderDetailVo.qualifiedQuantity.doubleValue + self.materialArrivedOrderDetailVo.concessionQuantity.doubleValue
+        vc.quantity = NSNumber.init(value: quantity)
+        
+        if (self.materialArrivedOrderDetailVo.modelSequenceList != nil) {
+            vc.arrayModelSequenceVo = self.materialArrivedOrderDetailVo.modelSequenceList.mutableCopy() as! [ModelSequenceVo]
+        }
+        vc.buttonSaveCallBack { (abc: [ModelSequenceVo]) in
+            self.materialArrivedOrderDetailVo.modelSequenceList = NSMutableArray.init(array: abc)
+        }
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 //    MARK: 提交

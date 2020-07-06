@@ -36,8 +36,6 @@ let DYZ_scanRest_chartScan = DYZBaseURL + "/rs" + "/mes/scan/chartScan"
 
 let DYZ_scanRest_workUnitScan = DYZBaseURL + "/rs" + "/mes/scan/workUnitScan"
 
-let DYZ_scanRest_personnelScan = DYZBaseURL + "/rs" + "/mes/scan/personnelScan"
-
 let DYZ_scanRest_personnelScanCheck = DYZBaseURL + "/rs" + "/mes/scan/personnelScanCheck"
 
 let DYZ_workRest_shutDownCauseList = DYZBaseURL + "/rs" + "/mes/workLog/shutDownCauseList"
@@ -134,3 +132,5 @@ let DYZ_mes_operationOutsourcing_getOperationOutsourcingSourceVosByControlNum = 
 let DYZ_mes_operationOutsourcing_saveOperationOutsourcingOrder = DYZBaseURL + "/rs" + "/mes/operationOutsourcing/saveOperationOutsourcingOrder" //保存委外单
 
 let DYZ_mes_supplier_getSupplierVoList = DYZBaseURL + "/rs" + "/mes/supplier/getSupplierVoList" //获得供应商列表接口
+
+let DYZ_mes_modelSequence_preGeneratedModelSequence = DYZBaseURL + "/rs" + "/mes/modelSequence/preGeneratedModelSequence" //预生成模具序列号接口

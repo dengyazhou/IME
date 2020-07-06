@@ -255,5 +255,6 @@
 #import "EfeibiaoReturnEntityBean.h"
 #import "MemberResBean.h"
 #import "EnterpriseInfoResBean.h"
+#import "ModelSequenceVo.h"
 
 #endif /* VoHeader_h */

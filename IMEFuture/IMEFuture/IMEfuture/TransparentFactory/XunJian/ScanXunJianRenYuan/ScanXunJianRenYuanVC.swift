@@ -92,7 +92,7 @@ class ScanXunJianRenYuanVC: UIViewController, UITextFieldDelegate {
         
         print(dic)
         
-        HttpMamager.postRequest(withURLString: DYZ_scanRest_personnelScan, parameters: dic, success: { (responseObjectModel: Any?) in
+        HttpMamager.postRequest(withURLString: DYZ_scan_personnelScan, parameters: dic, success: { (responseObjectModel: Any?) in
             let returnEntityBean: ReturnEntityBean  = responseObjectModel as! ReturnEntityBean
             
             self._viewLoading.isHidden = true

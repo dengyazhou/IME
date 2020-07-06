@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -78,6 +78,13 @@
 		9399D380240F95AD00807975 /* SelectScrapPictureVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9399D37E240F95AD00807975 /* SelectScrapPictureVC.m */; };
 		9399D381240F95AD00807975 /* SelectScrapPictureVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9399D37F240F95AD00807975 /* SelectScrapPictureVC.xib */; };
 		9399D384240FA49A00807975 /* CauseDetailVo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9399D383240FA49A00807975 /* CauseDetailVo.m */; };
+		939ADBAD24A841E9008BD1D2 /* ModelSequenceVo.m in Sources */ = {isa = PBXBuildFile; fileRef = 939ADBAC24A841E9008BD1D2 /* ModelSequenceVo.m */; };
+		939ADBB024A85FCB008BD1D2 /* XuLieHaoXiuGaiVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939ADBAE24A85FCB008BD1D2 /* XuLieHaoXiuGaiVC.swift */; };
+		939ADBB124A85FCB008BD1D2 /* XuLieHaoXiuGaiVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939ADBAF24A85FCB008BD1D2 /* XuLieHaoXiuGaiVC.xib */; };
+		939ADBB424A86E51008BD1D2 /* XuLieHaoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939ADBB224A86E51008BD1D2 /* XuLieHaoCell.swift */; };
+		939ADBB524A86E51008BD1D2 /* XuLieHaoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939ADBB324A86E51008BD1D2 /* XuLieHaoCell.xib */; };
+		939ADBB824A8709E008BD1D2 /* XuLieHao1Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939ADBB624A8709E008BD1D2 /* XuLieHao1Cell.swift */; };
+		939ADBB924A8709E008BD1D2 /* XuLieHao1Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939ADBB724A8709E008BD1D2 /* XuLieHao1Cell.xib */; };
 		93AEE0E922D3371E008A324E /* YunShuDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AEE0E722D3371E008A324E /* YunShuDetailVC.m */; };
 		93AEE0EA22D3371E008A324E /* YunShuDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93AEE0E822D3371E008A324E /* YunShuDetailVC.xib */; };
 		93AEE0F322D33ED0008A324E /* YunShuShouHuoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AEE0F122D33ED0008A324E /* YunShuShouHuoVC.m */; };
@@ -1329,6 +1336,14 @@
 		9399D37F240F95AD00807975 /* SelectScrapPictureVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectScrapPictureVC.xib; sourceTree = "<group>"; };
 		9399D382240FA49A00807975 /* CauseDetailVo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CauseDetailVo.h; sourceTree = "<group>"; };
 		9399D383240FA49A00807975 /* CauseDetailVo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CauseDetailVo.m; sourceTree = "<group>"; };
+		939ADBAB24A841E9008BD1D2 /* ModelSequenceVo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelSequenceVo.h; sourceTree = "<group>"; };
+		939ADBAC24A841E9008BD1D2 /* ModelSequenceVo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModelSequenceVo.m; sourceTree = "<group>"; };
+		939ADBAE24A85FCB008BD1D2 /* XuLieHaoXiuGaiVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XuLieHaoXiuGaiVC.swift; sourceTree = "<group>"; };
+		939ADBAF24A85FCB008BD1D2 /* XuLieHaoXiuGaiVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XuLieHaoXiuGaiVC.xib; sourceTree = "<group>"; };
+		939ADBB224A86E51008BD1D2 /* XuLieHaoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XuLieHaoCell.swift; sourceTree = "<group>"; };
+		939ADBB324A86E51008BD1D2 /* XuLieHaoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XuLieHaoCell.xib; sourceTree = "<group>"; };
+		939ADBB624A8709E008BD1D2 /* XuLieHao1Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XuLieHao1Cell.swift; sourceTree = "<group>"; };
+		939ADBB724A8709E008BD1D2 /* XuLieHao1Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XuLieHao1Cell.xib; sourceTree = "<group>"; };
 		93AEE0E622D3371E008A324E /* YunShuDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YunShuDetailVC.h; sourceTree = "<group>"; };
 		93AEE0E722D3371E008A324E /* YunShuDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YunShuDetailVC.m; sourceTree = "<group>"; };
 		93AEE0E822D3371E008A324E /* YunShuDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YunShuDetailVC.xib; sourceTree = "<group>"; };
@@ -3667,6 +3682,12 @@
 				93F7049022B0D7B8000B2D9D /* IQCJYJGCell1.xib */,
 				93F7049222B0D7B8000B2D9D /* IQCJianYanJieGuoVC.swift */,
 				93F7049322B0D7B8000B2D9D /* IQCJianYanJieGuoVC.xib */,
+				939ADBB224A86E51008BD1D2 /* XuLieHaoCell.swift */,
+				939ADBB324A86E51008BD1D2 /* XuLieHaoCell.xib */,
+				939ADBB624A8709E008BD1D2 /* XuLieHao1Cell.swift */,
+				939ADBB724A8709E008BD1D2 /* XuLieHao1Cell.xib */,
+				939ADBAE24A85FCB008BD1D2 /* XuLieHaoXiuGaiVC.swift */,
+				939ADBAF24A85FCB008BD1D2 /* XuLieHaoXiuGaiVC.xib */,
 			);
 			path = JianYanJieGuo;
 			sourceTree = "<group>";
@@ -4566,6 +4587,8 @@
 				93EF0C7622E0395D00182152 /* TemporaryTaskShutdownVo.m */,
 				93428D7F23A2404C0056E3D8 /* OperationOutsourcingSourceVo.h */,
 				93428D8023A2404C0056E3D8 /* OperationOutsourcingSourceVo.m */,
+				939ADBAB24A841E9008BD1D2 /* ModelSequenceVo.h */,
+				939ADBAC24A841E9008BD1D2 /* ModelSequenceVo.m */,
 			);
 			path = pp;
 			sourceTree = "<group>";
@@ -7554,6 +7577,7 @@
 				93F70F9322B0D7BB000B2D9D /* ProjectCell.xib in Resources */,
 				93F70D9822B0D7BA000B2D9D /* ShengChangJinDuCXiangQingCell1.xib in Resources */,
 				93F70DBD22B0D7BB000B2D9D /* CiPingChuLiFangShiCell0.xib in Resources */,
+				939ADBB124A85FCB008BD1D2 /* XuLieHaoXiuGaiVC.xib in Resources */,
 				937063D3231E6B0A00C659E9 /* YunShuHeader.xib in Resources */,
 				93F70D9622B0D7BA000B2D9D /* ESCJDXXTableViewSectionView.xib in Resources */,
 				93F70D7922B0D7BA000B2D9D /* LianXiRenViewController.xib in Resources */,
@@ -7610,6 +7634,7 @@
 				93F70F3F22B0D7BB000B2D9D /* ECOrderCell.xib in Resources */,
 				93F70C8722B0D7BA000B2D9D /* ViewSelectIdentity.xib in Resources */,
 				93F70FC922B0D7BB000B2D9D /* MXBaoJiaCell01.xib in Resources */,
+				939ADBB524A86E51008BD1D2 /* XuLieHaoCell.xib in Resources */,
 				93F70C1722B0D7BA000B2D9D /* ScanTuZhiViewController.xib in Resources */,
 				93F70EF422B0D7BB000B2D9D /* ShouHuoDiZhiCell.xib in Resources */,
 				93F70F1522B0D7BB000B2D9D /* ECSupplierAddLabelVC.xib in Resources */,
@@ -7866,6 +7891,7 @@
 				93F70D7522B0D7BA000B2D9D /* LianXiRenViewController1.xib in Resources */,
 				937579F3238F8EE7009EF9FC /* ScanXiaLiaoWorkUnitVC.xib in Resources */,
 				93F70FA422B0D7BB000B2D9D /* QiYeXinXiXiangQingViewController.xib in Resources */,
+				939ADBB924A8709E008BD1D2 /* XuLieHao1Cell.xib in Resources */,
 				93F70C1522B0D7BA000B2D9D /* ScanYuanGongMaViewController.xib in Resources */,
 				93F70C2A22B0D7BA000B2D9D /* ScanMultiScanVC.xib in Resources */,
 				93F70BE222B0D7BA000B2D9D /* BangDingYuanGongViewController.xib in Resources */,
@@ -7944,23 +7970,16 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-IMEFuture/Pods-IMEFuture-resources.sh",
-				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
-				"${PODS_ROOT}/ShareSDK3/SDK/ShareSDK/Support/Required/ShareSDK.bundle",
-				"${PODS_ROOT}/ShareSDK3/SDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WeiboSDK.bundle",
-				"${PODS_ROOT}/ShareSDK3/SDK/ShareSDK/Support/Optional/ShareSDKUI.bundle",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IMEFuture/Pods-IMEFuture-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ShareSDK.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/WeiboSDK.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ShareSDKUI.bundle",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IMEFuture/Pods-IMEFuture-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IMEFuture/Pods-IMEFuture-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IMEFuture/Pods-IMEFuture-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4B2BC82107C98487B814EC23 /* [CP] Check Pods Manifest.lock */ = {
@@ -8294,11 +8313,13 @@
 				93F70D0822B0D7BA000B2D9D /* InquiryOrderEnterprise.m in Sources */,
 				93F70C9322B0D7BA000B2D9D /* EChooseTaxRateView5Kind.m in Sources */,
 				93F70DA222B0D7BA000B2D9D /* FaHuoCell31.m in Sources */,
+				939ADBAD24A841E9008BD1D2 /* ModelSequenceVo.m in Sources */,
 				93F70FD822B0D7BB000B2D9D /* LingJianXiangQingDingDanViewController2.m in Sources */,
 				93F70CDF22B0D7BA000B2D9D /* OperationOutsourcingReceivingNoteVo.m in Sources */,
 				93F70D5022B0D7BA000B2D9D /* TpfProcess.m in Sources */,
 				93F70C0F22B0D7BA000B2D9D /* TpfBaoGongReasonView.m in Sources */,
 				9399D36F240D112500807975 /* SweepTheCodeReturnsCell.m in Sources */,
+				939ADBB024A85FCB008BD1D2 /* XuLieHaoXiuGaiVC.swift in Sources */,
 				93F70FBB22B0D7BB000B2D9D /* MXBaoJiaCell04.m in Sources */,
 				93F70E4622B0D7BB000B2D9D /* FenLeiSouSuoJieGuoViewController.m in Sources */,
 				93F70FE822B0D7BC000B2D9D /* FaBaoPingLunCaiViewController.m in Sources */,
@@ -8388,6 +8409,7 @@
 				93F70D0322B0D7BA000B2D9D /* FactoryDeliverInfoBean.m in Sources */,
 				93F70FF322B0D7BC000B2D9D /* EInquiryActionCell.m in Sources */,
 				93F70FFA22B0D7BC000B2D9D /* Cell1.m in Sources */,
+				939ADBB824A8709E008BD1D2 /* XuLieHao1Cell.swift in Sources */,
 				93F70FE122B0D7BB000B2D9D /* PartDetailsCell0.m in Sources */,
 				93F70CCE22B0D7BA000B2D9D /* EnterpriseBean.m in Sources */,
 				93F70DF022B0D7BB000B2D9D /* UIViewWuLiuShuoMing.m in Sources */,
@@ -8668,6 +8690,7 @@
 				93F70DDE22B0D7BB000B2D9D /* FaHuoLieBiaoViewController09.m in Sources */,
 				93F70E4922B0D7BB000B2D9D /* XunPanCell.m in Sources */,
 				93F70F8122B0D7BB000B2D9D /* ShouHuoXiangQingHeader.m in Sources */,
+				939ADBB424A86E51008BD1D2 /* XuLieHaoCell.swift in Sources */,
 				93F70DA022B0D7BA000B2D9D /* DuoCiFaHuoVC.m in Sources */,
 				93F70EE122B0D7BB000B2D9D /* UIViewXuanZeBaoJiaMoBan.m in Sources */,
 				93F70BDD22B0D7BA000B2D9D /* TpfSZViewController.m in Sources */,
@@ -8928,7 +8951,7 @@
 					"$(PROJECT_DIR)/IMEFuture/IMEfuture/Jpush",
 					"$(PROJECT_DIR)/IMEFuture/imefuture/Jpush",
 				);
-				MARKETING_VERSION = 2.42.0;
+				MARKETING_VERSION = 2.48.0;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-isystem",
@@ -8990,7 +9013,7 @@
 					"$(PROJECT_DIR)/IMEFuture/IMEfuture/Jpush",
 					"$(PROJECT_DIR)/IMEFuture/imefuture/Jpush",
 				);
-				MARKETING_VERSION = 2.42.0;
+				MARKETING_VERSION = 2.48.0;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-isystem",

@@ -39,6 +39,7 @@
 #import "WeiboSDK.h"
 
 #import "BaiduMobStat.h"
+#import <Bugly/Bugly.h>
 
 
 #import "EGOrderViewController.h"
@@ -150,6 +151,8 @@ NSString *NTESNotificationLogout = @"NTESNotificationLogout";
     }
     [JPUSHService setupWithOption:launchOptions appKey:appKey channel:channel apsForProduction:isProduction];
     
+    
+    
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
     [defaultCenter addObserver:self selector:@selector(networkDidReceiveMessage:) name:kJPFNetworkDidReceiveMessageNotification object:nil];
     
@@ -217,6 +220,8 @@ NSString *NTESNotificationLogout = @"NTESNotificationLogout";
     [[BaiduMobStat defaultStat] logEvent:@"open" eventLabel:@"打开APP"];
     
     
+#pragma mark 腾讯Bugly
+    [Bugly startWithAppId:@"cb8c4e3ace"];
     
 #pragma mark 后台自动登录
     NSString *stringPsw = [[NSUserDefaults standardUserDefaults] objectForKey:@"psw"];

@@ -130,7 +130,6 @@
                         }
                     }
                     
-
                     model.inspectOrderItems = inspectOrderItems;
                     
 //                    inspectOrderVo.deliverOrder.items = items;
@@ -140,6 +139,9 @@
                     YanHuoViewController09 *vc = [[YanHuoViewController09 alloc] init];
                     vc.inspectOrderVo = model;
                     
+                    //(realQualityQuantity + defaultQuantity + downgradeQuantity) 作为合格数
+                    //canInspectNum(可验货数) = （realQualityQuantity + defaultQuantity + downgradeQuantity)合格数 + defectiveQuantity(次品数)
+                
                     [self.navigationController pushViewController:vc animated:true];
                 }
             } else {
@@ -150,6 +152,7 @@
                     for (NSInteger i=0; i<inspectOrderVo.inspectOrderItems.count; i++) {
                         InspectOrderItemVo *model0 = inspectOrderVo.inspectOrderItems[i];
                         DeliverOrderItemBean *model1 = inspectOrderVo.deliverOrder.items[i];
+                        
                         if (model0.isReceiveMianjian.integerValue == 1) {
                             
                         } else {

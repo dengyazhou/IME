@@ -1,1 +1,0 @@
-../../../../MOBFoundation/MOBFoundation/MOBFoundation.framework/Headers/IMOBBaseUser.h

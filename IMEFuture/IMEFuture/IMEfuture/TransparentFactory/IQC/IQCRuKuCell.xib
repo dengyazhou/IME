@@ -3,7 +3,7 @@
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,7 +20,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A1000000002" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DL7-tb-h1s">
-                                <rect key="frame" x="14" y="14" width="174" height="17"/>
+                                <rect key="frame" x="14" y="14" width="146" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -32,7 +32,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="120" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lkG-KP-RNc">
-                                <rect key="frame" x="203" y="17.5" width="60" height="25"/>
+                                <rect key="frame" x="235" y="17.5" width="60" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="Dcc-fl-v3J"/>
                                     <constraint firstAttribute="width" constant="60" id="aWI-vv-UOt"/>
@@ -42,7 +42,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="待检验" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fpk-wL-EzK">
-                                <rect key="frame" x="305" y="17.5" width="55" height="25"/>
+                                <rect key="frame" x="310" y="17.5" width="55" height="25"/>
                                 <color key="backgroundColor" red="1" green="0.62352941176470589" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="55" id="AL8-q0-cfd"/>
@@ -59,6 +59,13 @@
                                     <constraint firstAttribute="height" constant="0.5" id="zym-Cp-7dz"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QBU-w3-oEb">
+                                <rect key="frame" x="165" y="19" width="60" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="mxi-GX-4ji"/>
+                                </constraints>
+                                <state key="normal" image="multiselect_unchecked"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -69,12 +76,14 @@
                             <constraint firstItem="AG8-wK-jDS" firstAttribute="leading" secondItem="iHa-gT-Lbc" secondAttribute="leading" id="O2c-w8-4uW"/>
                             <constraint firstItem="AMD-mD-Nsy" firstAttribute="leading" secondItem="DL7-tb-h1s" secondAttribute="leading" id="ROY-yj-TJJ"/>
                             <constraint firstItem="Fpk-wL-EzK" firstAttribute="centerY" secondItem="iHa-gT-Lbc" secondAttribute="centerY" id="S9f-Wj-wfi"/>
-                            <constraint firstItem="lkG-KP-RNc" firstAttribute="leading" secondItem="DL7-tb-h1s" secondAttribute="trailing" constant="15" id="Xob-wu-03S"/>
-                            <constraint firstItem="Fpk-wL-EzK" firstAttribute="leading" secondItem="lkG-KP-RNc" secondAttribute="trailing" constant="42" id="YHD-en-i1K"/>
+                            <constraint firstItem="Fpk-wL-EzK" firstAttribute="leading" secondItem="lkG-KP-RNc" secondAttribute="trailing" constant="15" id="YHD-en-i1K"/>
+                            <constraint firstItem="QBU-w3-oEb" firstAttribute="centerY" secondItem="lkG-KP-RNc" secondAttribute="centerY" id="gGe-Qb-M85"/>
                             <constraint firstItem="DL7-tb-h1s" firstAttribute="top" secondItem="iHa-gT-Lbc" secondAttribute="top" constant="14" id="hxp-Mx-qQc"/>
                             <constraint firstAttribute="bottom" secondItem="AG8-wK-jDS" secondAttribute="bottom" id="kIL-0o-oYF"/>
                             <constraint firstAttribute="height" constant="59.5" id="l7c-VA-gBz"/>
-                            <constraint firstAttribute="trailing" secondItem="Fpk-wL-EzK" secondAttribute="trailing" constant="15" id="reP-xs-MyN"/>
+                            <constraint firstAttribute="trailing" secondItem="Fpk-wL-EzK" secondAttribute="trailing" constant="10" id="reP-xs-MyN"/>
+                            <constraint firstItem="lkG-KP-RNc" firstAttribute="leading" secondItem="QBU-w3-oEb" secondAttribute="trailing" constant="10" id="tDr-R6-Qhd"/>
+                            <constraint firstItem="QBU-w3-oEb" firstAttribute="leading" secondItem="DL7-tb-h1s" secondAttribute="trailing" constant="5" id="xmX-iK-pIJ"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -86,6 +95,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="buttonCheck" destination="QBU-w3-oEb" id="NW7-Om-Xly"/>
                 <outlet property="label0" destination="DL7-tb-h1s" id="rEe-DL-BrN"/>
                 <outlet property="label1" destination="AMD-mD-Nsy" id="FgS-rM-yV2"/>
                 <outlet property="label2" destination="lkG-KP-RNc" id="kJ8-6u-yZK"/>
@@ -94,4 +104,7 @@
             <point key="canvasLocation" x="33.5" y="54"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="multiselect_unchecked" width="16" height="16"/>
+    </resources>
 </document>

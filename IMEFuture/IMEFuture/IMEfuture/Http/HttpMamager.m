@@ -63,7 +63,7 @@ static NSTimeInterval const defineTimeoutInterval = 30.0f;
     
     [manager POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-//        NSLog(@">>>%@",[responseObject mj_JSONString]);
+        NSLog(@">>>%@",[responseObject mj_JSONString]);
         
         id responseModel = [model mj_objectWithKeyValues:responseObject];
         

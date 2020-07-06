@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "AttachmentVo.h"
 #import "CauseDetailVo.h"
+#import "ModelSequenceVo.h"
 
 @interface MaterialArrivedOrderDetailVo : NSObject
 
@@ -209,7 +210,12 @@
 
 @property (nonatomic, strong) NSMutableArray <__kindof CauseDetailVo *>*scrappedCauseDetailVos;//报废 //CauseDetailVo
 
+@property (nonatomic, strong) NSNumber * hasModelSequence; //是否有模具序列 0 无  1 有
+
+@property (nonatomic, strong) NSMutableArray <ModelSequenceVo *> * modelSequenceList; //模具序列号列表
+
 // 自定义类实现 mutableCopy
 - (id)mutableCopyWithZone:(struct _NSZone *)zone;
+
 
 @end

@@ -130,6 +130,8 @@
 //登录类型 (PDA/WEB)
 @property (nonatomic,copy) NSString * loginType;
 
+@property (nonatomic,copy) NSString * sequenceNum;
+
 
 
 @property (nonatomic, strong) NSMutableArray <__kindof CauseDetailVo *>*repairCauseDetailVos;// 不良 //CauseDetailVo

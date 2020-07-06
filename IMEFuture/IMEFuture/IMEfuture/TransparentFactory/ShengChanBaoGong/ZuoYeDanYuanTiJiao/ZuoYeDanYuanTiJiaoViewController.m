@@ -229,7 +229,7 @@
         //模具
 //        cell.materialArray = self.materialArray;
 //        [cell.tableView reloadData];
-        cell.labelMoJu.text = self.materialModel.materialText;
+        cell.labelMoJu.text = self.materialModel.sequenceNum;
 //        cell.labelMoJu.text = @"123";
 //        [cell tableViewDidSelectBlock:^(NSInteger rowYZ) {
 //            self.materialModel = self.materialArray[rowYZ];
@@ -322,7 +322,9 @@
 
 - (void)requestCheckMoldMaterial:(NSString *)str {
     NSData *jsonData = [str dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary *dic123 = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
+    NSError *error = [[NSError alloc] init];
+    NSDictionary *dic123 = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
+    
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         LoginModel *loginModel = [DatabaseTool getLoginModel];
@@ -333,7 +335,7 @@
         
         MaterialVo *material = [[MaterialVo alloc] init];
         material.siteCode = siteCode;
-        material.materialCode = dic123[@"materialCode"];;
+        material.materialCode = dic123[@"modelCode"];;
         material.productionControlNum = self.productionControlNum;
         
         mesPostEntityBean.entity = material.mj_keyValues;
@@ -344,8 +346,9 @@
             if ([returnMsgBean.status isEqualToString:@"SUCCESS"]) {
                 
                 Material *material = [[Material alloc] init];
-                material.materialCode = dic123[@"materialCode"];
-                material.materialText = dic123[@"materialText"];
+                material.materialCode = dic123[@"modelCode"];
+                material.materialText = dic123[@"modelName"];
+                material.sequenceNum = dic123[@"sequenceNum"];
                 self.materialModel = material;
 
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -711,6 +714,7 @@
     productionOrderConfirmVo.roughWeight = self.roughWeight;
     productionOrderConfirmVo.netweight = self.netweight;
     productionOrderConfirmVo.moldmaterial = self.materialModel.materialCode;
+    productionOrderConfirmVo.sequenceNum = self.materialModel.sequenceNum;
     
     NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:0];
     for (UploadImageBean *bean in _arrayDateImageView0) {

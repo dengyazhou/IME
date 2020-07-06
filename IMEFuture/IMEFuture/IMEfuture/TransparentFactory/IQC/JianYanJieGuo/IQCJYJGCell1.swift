@@ -22,7 +22,8 @@ class IQCJYJGCell1: UITableViewCell {
     @IBOutlet weak var viewRangBuReson: UIView!//让步原因
     @IBOutlet weak var viewBaoFeiShu: UIView!//报废数量
     @IBOutlet weak var viewBaoFeiReson: UIView!//报废原因
-    
+    @IBOutlet weak var viewXuLieZhuiZong: UIView!//序列追踪
+    @IBOutlet weak var viewGengGaiXuLieHao: UIView!//更改序列号
     
     
 
@@ -39,7 +40,11 @@ class IQCJYJGCell1: UITableViewCell {
     @IBOutlet weak var textFieldRangBuReson: UITextField!//让步原因
     @IBOutlet weak var textFieldBaoFeiShu: UITextField!//报废数量
     @IBOutlet weak var textFieldBaoFeiReson: UITextField!//报废原因
-
+    
+    @IBOutlet weak var buttonCheck: UIButton!//序列追踪勾选
+    
+    @IBOutlet weak var buttonGengGaiXuLieHao: UIButton!//更改序列号
+    
     
 
     override func awakeFromNib() {

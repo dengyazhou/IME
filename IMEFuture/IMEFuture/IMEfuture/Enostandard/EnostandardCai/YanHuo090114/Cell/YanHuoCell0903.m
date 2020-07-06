@@ -43,7 +43,7 @@
         self.buttonSelectImage.hidden = false;
     }
     
-    [self.iamgeView1 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?filePath=%@&fileRealName=%@&fileBucketName=%@&filename=%@",DYZ_efeibiao_uploadfile_downloadInspectFile,model.filePath,model.fileRealName,model.bucketName,model.fileName]] placeholderImage:nil];
+    [self.iamgeView1 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?filePath=%@&fileRealName=%@&fileBucketName=%@&filename=%@",DYZ_efeibiao_uploadfile_downloadInspectFile,model.filePath,model.fileRealName,model.bucketName,model.fileRealName]] placeholderImage:nil];
     
     NSInteger count = 0;
     for (NSInteger i=0; i<5; i++) {

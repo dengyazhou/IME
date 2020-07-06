@@ -11,6 +11,9 @@ import UIKit
 class IQCRuKuCell: UITableViewCell {
     @IBOutlet weak var label0: UILabel!
     @IBOutlet weak var label1: UILabel!
+    
+    @IBOutlet weak var buttonCheck: UIButton!
+    
     @IBOutlet weak var label2: UILabel!
     @IBOutlet weak var label3: UILabel!
    

@@ -27,4 +27,13 @@
  */
 @property (nonatomic,strong) NSNumber * needPassword;
 
+/**
+* 作业工单号
+*/
+@property (nonatomic, copy) NSString *productionControlNum;
+/**
+* 工序编号
+*/
+@property (nonatomic, copy) NSString *operationCode;
+
 @end

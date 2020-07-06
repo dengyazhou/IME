@@ -99,6 +99,13 @@ class IQCRuKuViewController: UIViewController, UITextFieldDelegate, UITableViewD
         let materialArrivedOrderDetailVo = self.arrayMaterialArrivedOrderDetailVo[indexPath.row]
         cell.label0.text = materialArrivedOrderDetailVo.materialCode
         cell.label1.text = materialArrivedOrderDetailVo.materialText
+        
+        let imageName = materialArrivedOrderDetailVo.hasModelSequence.intValue == 1 ? "multiselect_selected":"multiselect_unchecked"
+        cell.buttonCheck.setImage(UIImage.init(named: imageName), for: UIControl.State.normal)
+        cell.buttonCheck.addTarget(self, action: #selector(buttonCheckClick(sender:)), for: UIControl.Event.touchUpInside)
+        cell.buttonCheck.tag = indexPath.row
+        cell.buttonCheck.isEnabled = self.initButtonCanClickWithStatus(status: materialArrivedOrderDetailVo.status.intValue)
+        
         cell.label2.text = materialArrivedOrderDetailVo.planQuantity.stringValue
         
         cell.label3.text = self.initCellLabelWithStatus(status: materialArrivedOrderDetailVo.status.intValue)
@@ -114,6 +121,12 @@ class IQCRuKuViewController: UIViewController, UITextFieldDelegate, UITableViewD
             vc.status = statusTemp
             self.navigationController?.pushViewController(vc, animated: true)
         }
+    }
+    
+    @objc func buttonCheckClick(sender: UIButton) {
+        let materialArrivedOrderDetailVo = self.arrayMaterialArrivedOrderDetailVo[sender.tag]
+        materialArrivedOrderDetailVo.hasModelSequence = materialArrivedOrderDetailVo.hasModelSequence.intValue == 1 ? NSNumber.init(value: 0) : NSNumber.init(value: 1)
+        self.tableView.reloadRows(at: [IndexPath.init(row: sender.tag, section: 0)], with: UITableViewRowAnimation.none)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -165,6 +178,11 @@ class IQCRuKuViewController: UIViewController, UITextFieldDelegate, UITableViewD
                 self.arrayMaterialArrivedOrderDetailVo = [];
                 for value in returnEntityBean.list{
                     let materialArrivedOrderDetailVo:MaterialArrivedOrderDetailVo = MaterialArrivedOrderDetailVo.mj_object(withKeyValues: value)
+                    
+                    if materialArrivedOrderDetailVo.hasModelSequence == nil {
+                        materialArrivedOrderDetailVo.hasModelSequence = NSNumber.init(value: 0)
+                    }
+                    
                     self.arrayMaterialArrivedOrderDetailVo.append(materialArrivedOrderDetailVo)
                     if let supplierText = materialArrivedOrderDetailVo.supplierText  {
                         self.labelGongYingShang.text = "供应商-"+supplierText
@@ -305,6 +323,36 @@ class IQCRuKuViewController: UIViewController, UITextFieldDelegate, UITableViewD
             }
         }
         return str
+    }
+    
+    func initButtonCanClickWithStatus(status: NSInteger) -> Bool {
+        var isCan: Bool!
+        if GlobalSettingManager.share().iQCPattern == 1 {
+            if status == 0 || status == 1 || status == 2 {
+                isCan = true
+            } else if status == 3 {
+                isCan = false
+            }
+        } else if GlobalSettingManager.share().iQCPattern == 2 {
+            if status == 0 || status == 1 {
+                isCan = false
+            } else if status == 2 {
+                isCan = true
+            } else if status == 3 {
+                isCan = false
+            }
+        } else if GlobalSettingManager.share().iQCPattern == 3 {
+            if status == 0 {
+                isCan = false
+            } else if status == 1 {
+                isCan = false
+            } else if status == 2 {
+                isCan = true
+            } else if status == 3 {
+                isCan = false
+            }
+        }
+        return isCan
     }
     
     
@@ -526,9 +574,9 @@ class IQCRuKuViewController: UIViewController, UITextFieldDelegate, UITableViewD
         
         let dic = mesPostEntityBean.mj_keyValues() as! [AnyHashable : Any]
         
-//        let data : NSData! = try? JSONSerialization.data(withJSONObject: dic, options: []) as NSData!
-//        let JSONString = NSString(data:data as Data,encoding: String.Encoding.utf8.rawValue)
-//        print(JSONString)
+        let data : NSData! = try? JSONSerialization.data(withJSONObject: dic, options: []) as NSData!
+        let JSONString = NSString(data:data as Data,encoding: String.Encoding.utf8.rawValue)
+        print(JSONString)
 
         HttpMamager.postRequest(withURLString: DYZ_materialArrivedOrder_updateMaterialArrivedOrderDetails, parameters: dic, success: { (responseObjectModel: Any?) in
             let returnMsgBean =  responseObjectModel as! ReturnMsgBean

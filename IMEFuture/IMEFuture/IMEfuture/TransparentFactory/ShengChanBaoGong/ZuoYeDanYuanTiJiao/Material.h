@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,copy) NSString *materialCode;
 @property (nonatomic,copy) NSString *materialText;
+@property (nonatomic,copy) NSString *sequenceNum;
 
 @end
 
