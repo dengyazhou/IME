@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PersonnelVo : NSObject
+@interface PersonnelVo : NSObject <NSSecureCoding>
 
 /**
  * 工厂编号

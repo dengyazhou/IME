@@ -947,13 +947,13 @@ NSString *NTESNotificationLogout = @"NTESNotificationLogout";
 
         
         if ([dic[@"userType"] isEqualToString:@"ENTERPRISE"]) {
-            @try
-            {
-                NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic[@"member"] options:NSJSONWritingPrettyPrinted error:nil];
-                obj.member = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-            } @catch (NSException * e) {
-                obj.member = nil;
-            }
+//            @try
+//            {
+//                NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic[@"member"] options:NSJSONWritingPrettyPrinted error:nil];
+//                obj.member = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+//            } @catch (NSException * e) {
+//                obj.member = nil;
+//            }
         }
         @try
         {
@@ -974,8 +974,8 @@ NSString *NTESNotificationLogout = @"NTESNotificationLogout";
             NSData *jsonTpfUser = [NSJSONSerialization dataWithJSONObject:dic[@"tpfUser"] options:NSJSONWritingPrettyPrinted error:nil];
             obj.tpfUser = [[NSString alloc] initWithData:jsonTpfUser encoding:NSUTF8StringEncoding];
             
-            UserInfoVo *userInfo = [UserInfoVo mj_objectWithKeyValues:obj.tpfUser];
-            [[GlobalSettingManager shareGlobalSettingManager] requesttpfGetparameterlistWithSiteCode:userInfo.siteCode];
+//            UserInfoVo *userInfo = [UserInfoVo mj_objectWithKeyValues:obj.tpfUser];
+//            [[GlobalSettingManager shareGlobalSettingManager] requesttpfGetparameterlistWithSiteCode:userInfo.siteCode];
         } else {
             obj.tpfUser = nil;
         }

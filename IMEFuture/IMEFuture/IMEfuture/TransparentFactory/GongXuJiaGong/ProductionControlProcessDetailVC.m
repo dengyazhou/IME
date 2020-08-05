@@ -62,8 +62,8 @@
     
     _viewLoading.hidden = NO;
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    UserBean *userBean = [UserBean mj_objectWithKeyValues:loginModel.ucenterUser];
-    NSString * siteCode = userBean.enterpriseInfo.serialNo;
+    UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
+    NSString *siteCode = tpfUser.siteCode;
     
     MesPostEntityBean *mesPostEntityBean = [[MesPostEntityBean alloc] init];
     ProcessOperationConfirmDetailVo *processOperationConfirmDetailVo = [[ProcessOperationConfirmDetailVo alloc] init];

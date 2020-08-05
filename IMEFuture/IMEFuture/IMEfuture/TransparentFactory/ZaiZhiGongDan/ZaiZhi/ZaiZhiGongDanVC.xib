@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZaiZhiGongDanVC" customModule="NIM" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZaiZhiGongDanVC" customModule="IMEFuture" customModuleProvider="target">
             <connections>
+                <outlet property="buttonMultiUserWork" destination="lOx-Z3-dz7" id="p49-Tr-Raq"/>
                 <outlet property="buttonMultipleWork" destination="Jtf-4d-MiN" id="6BP-cO-IJC"/>
                 <outlet property="buttonPiLiangMultiple" destination="jcI-4h-mDi" id="cGd-5V-Mhu"/>
                 <outlet property="buttonPiLiangSingle" destination="MjI-fa-U5c" id="LDS-2G-0bR"/>
@@ -19,6 +18,7 @@
                 <outlet property="heightBottomBar1" destination="2xk-6b-Oy9" id="RBR-g8-gPr"/>
                 <outlet property="heightBottomBar2" destination="pbZ-wB-X9S" id="u5B-Eb-Ksl"/>
                 <outlet property="heightNavBar" destination="YLQ-Wf-rfE" id="Oc0-wq-AhA"/>
+                <outlet property="tableViewMultiUser" destination="xGx-w2-Ifx" id="SZW-FD-Pdq"/>
                 <outlet property="tableViewMultiple" destination="ard-YQ-sQz" id="UZ6-Lm-Ypl"/>
                 <outlet property="tableViewSingle" destination="0GM-eD-zDp" id="k9Z-jF-eTU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -47,13 +47,13 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="在制工单" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kl2-5w-oVk">
-                            <rect key="frame" x="147" y="30" width="82" height="24"/>
+                            <rect key="frame" x="146.5" y="30" width="82" height="24"/>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jq8-Ok-X1H" userLabel="View Line Botton">
-                            <rect key="frame" x="0.0" y="64" width="375" height="0.0"/>
+                            <rect key="frame" x="0.0" y="63.5" width="375" height="0.5"/>
                             <color key="backgroundColor" red="0.86666666670000003" green="0.86666666670000003" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="0.5" id="blv-Re-6HP"/>
@@ -76,10 +76,10 @@
                     <rect key="frame" x="0.0" y="64" width="375" height="44"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ag-8O-dao">
-                            <rect key="frame" x="0.0" y="0.0" width="187" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="125.5" height="44"/>
                             <inset key="titleEdgeInsets" minX="3" minY="0.0" maxX="-3" maxY="0.0"/>
                             <inset key="imageEdgeInsets" minX="-3" minY="0.0" maxX="3" maxY="0.0"/>
-                            <state key="normal" title="单工单" image="single_work1">
+                            <state key="normal" title="单人工单" image="single_work2">
                                 <color key="titleColor" red="0.078431372549019607" green="0.078431372549019607" blue="0.078431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
@@ -87,7 +87,7 @@
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EPl-21-KzH">
-                            <rect key="frame" x="187" y="10" width="1" height="23"/>
+                            <rect key="frame" x="125.5" y="10.5" width="1" height="23"/>
                             <color key="backgroundColor" red="0.8666666666666667" green="0.8666666666666667" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="23" id="IGe-AZ-mUn"/>
@@ -95,7 +95,7 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jtf-4d-MiN">
-                            <rect key="frame" x="188" y="0.0" width="187" height="44"/>
+                            <rect key="frame" x="126.5" y="0.0" width="123.5" height="44"/>
                             <inset key="titleEdgeInsets" minX="3" minY="0.0" maxX="-3" maxY="0.0"/>
                             <inset key="imageEdgeInsets" minX="-3" minY="0.0" maxX="3" maxY="0.0"/>
                             <state key="normal" title="多工单" image="multiple_work1">
@@ -103,6 +103,25 @@
                             </state>
                             <connections>
                                 <action selector="buttonMultipleWork:" destination="-1" eventType="touchUpInside" id="AlH-Zs-EAy"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="APL-wS-3tS">
+                            <rect key="frame" x="250" y="10.5" width="1" height="23"/>
+                            <color key="backgroundColor" red="0.86666666670000003" green="0.86666666670000003" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="1" id="FzI-yQ-uOq"/>
+                                <constraint firstAttribute="height" constant="23" id="sbQ-Mv-3oG"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lOx-Z3-dz7">
+                            <rect key="frame" x="251" y="0.0" width="124" height="44"/>
+                            <inset key="titleEdgeInsets" minX="3" minY="0.0" maxX="-3" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="-3" minY="0.0" maxX="3" maxY="0.0"/>
+                            <state key="normal" title="多人工单" image="multiple_work1">
+                                <color key="titleColor" red="0.078431372550000003" green="0.078431372550000003" blue="0.078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="buttonMultiUserWork:" destination="-1" eventType="touchUpInside" id="vnZ-L8-Be6"/>
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ud2-LH-U4v">
@@ -115,20 +134,26 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="lOx-Z3-dz7" firstAttribute="top" secondItem="HW2-AV-UtZ" secondAttribute="top" id="1G5-Od-b62"/>
                         <constraint firstItem="Jtf-4d-MiN" firstAttribute="top" secondItem="HW2-AV-UtZ" secondAttribute="top" id="3Gb-xP-TG3"/>
                         <constraint firstAttribute="bottom" secondItem="2Ag-8O-dao" secondAttribute="bottom" id="3pT-Yb-NsA"/>
+                        <constraint firstItem="APL-wS-3tS" firstAttribute="leading" secondItem="Jtf-4d-MiN" secondAttribute="trailing" id="5yi-fX-QzU"/>
+                        <constraint firstItem="lOx-Z3-dz7" firstAttribute="leading" secondItem="APL-wS-3tS" secondAttribute="trailing" id="9gF-F9-LrO"/>
                         <constraint firstAttribute="height" constant="44" id="H4d-BA-L9i"/>
                         <constraint firstItem="ud2-LH-U4v" firstAttribute="leading" secondItem="HW2-AV-UtZ" secondAttribute="leading" id="Hob-aR-4wd"/>
                         <constraint firstItem="Jtf-4d-MiN" firstAttribute="leading" secondItem="EPl-21-KzH" secondAttribute="trailing" id="KUf-1H-evZ"/>
                         <constraint firstItem="EPl-21-KzH" firstAttribute="leading" secondItem="2Ag-8O-dao" secondAttribute="trailing" id="PHr-es-3cp"/>
+                        <constraint firstAttribute="bottom" secondItem="lOx-Z3-dz7" secondAttribute="bottom" id="QNh-7f-YCJ"/>
+                        <constraint firstItem="2Ag-8O-dao" firstAttribute="width" secondItem="lOx-Z3-dz7" secondAttribute="width" multiplier="1.01408" id="U6l-pj-fnb"/>
                         <constraint firstItem="2Ag-8O-dao" firstAttribute="top" secondItem="HW2-AV-UtZ" secondAttribute="top" id="VIM-mB-Rpz"/>
-                        <constraint firstItem="EPl-21-KzH" firstAttribute="centerX" secondItem="HW2-AV-UtZ" secondAttribute="centerX" id="X0r-eP-70e"/>
+                        <constraint firstItem="2Ag-8O-dao" firstAttribute="width" secondItem="Jtf-4d-MiN" secondAttribute="width" multiplier="1.01408" id="Wb8-lE-WRl"/>
+                        <constraint firstItem="APL-wS-3tS" firstAttribute="centerY" secondItem="HW2-AV-UtZ" secondAttribute="centerY" id="ZEL-Xh-jiE"/>
                         <constraint firstAttribute="bottom" secondItem="ud2-LH-U4v" secondAttribute="bottom" id="Zwl-ZN-KFs"/>
-                        <constraint firstAttribute="trailing" secondItem="Jtf-4d-MiN" secondAttribute="trailing" id="gbQ-dB-UMW"/>
                         <constraint firstAttribute="trailing" secondItem="ud2-LH-U4v" secondAttribute="trailing" id="kyK-bw-lTa"/>
                         <constraint firstItem="EPl-21-KzH" firstAttribute="centerY" secondItem="HW2-AV-UtZ" secondAttribute="centerY" id="rni-dW-tS7"/>
                         <constraint firstAttribute="bottom" secondItem="Jtf-4d-MiN" secondAttribute="bottom" id="tCg-c6-aN4"/>
                         <constraint firstItem="2Ag-8O-dao" firstAttribute="leading" secondItem="HW2-AV-UtZ" secondAttribute="leading" id="x7i-u6-W0Y"/>
+                        <constraint firstAttribute="trailing" secondItem="lOx-Z3-dz7" secondAttribute="trailing" id="ynx-cw-3tp"/>
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0GM-eD-zDp">
@@ -138,6 +163,10 @@
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ard-YQ-sQz">
                     <rect key="frame" x="0.0" y="118" width="375" height="487"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xGx-w2-Ifx">
+                    <rect key="frame" x="0.0" y="118" width="375" height="549"/>
+                    <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cQ6-OJ-ah3">
                     <rect key="frame" x="0.0" y="605" width="375" height="62"/>
@@ -319,6 +348,7 @@
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="xQd-MU-l1c" secondAttribute="bottom" id="2xk-6b-Oy9"/>
                 <constraint firstItem="0GM-eD-zDp" firstAttribute="top" secondItem="HW2-AV-UtZ" secondAttribute="bottom" constant="10" id="3g1-a4-6E8"/>
+                <constraint firstAttribute="trailing" secondItem="xGx-w2-Ifx" secondAttribute="trailing" id="3ok-KJ-OzS"/>
                 <constraint firstAttribute="trailing" secondItem="ard-YQ-sQz" secondAttribute="trailing" id="4Cn-CL-veT"/>
                 <constraint firstItem="xQd-MU-l1c" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="CmA-Uq-rcE"/>
                 <constraint firstItem="ard-YQ-sQz" firstAttribute="top" secondItem="HW2-AV-UtZ" secondAttribute="bottom" constant="10" id="IBI-w6-ZJz"/>
@@ -330,8 +360,11 @@
                 <constraint firstItem="cQ6-OJ-ah3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="VUy-k6-Vyl"/>
                 <constraint firstAttribute="bottom" secondItem="cQ6-OJ-ah3" secondAttribute="bottom" id="cXZ-ME-kCf"/>
                 <constraint firstItem="HW2-AV-UtZ" firstAttribute="top" secondItem="uvu-Kv-86V" secondAttribute="bottom" id="crI-61-Eey"/>
+                <constraint firstAttribute="bottom" secondItem="xGx-w2-Ifx" secondAttribute="bottom" id="edF-ST-g5b"/>
+                <constraint firstItem="xGx-w2-Ifx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="fip-AI-cFz"/>
                 <constraint firstAttribute="trailing" secondItem="xQd-MU-l1c" secondAttribute="trailing" id="gzV-aG-FCW"/>
                 <constraint firstAttribute="trailing" secondItem="uvu-Kv-86V" secondAttribute="trailing" id="jFH-tW-5Sm"/>
+                <constraint firstItem="xGx-w2-Ifx" firstAttribute="top" secondItem="HW2-AV-UtZ" secondAttribute="bottom" constant="10" id="jKi-9R-Hbt"/>
                 <constraint firstItem="uvu-Kv-86V" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="k2w-Dp-5Bx"/>
                 <constraint firstItem="cQ6-OJ-ah3" firstAttribute="top" secondItem="ard-YQ-sQz" secondAttribute="bottom" id="lqO-Vo-J5V"/>
                 <constraint firstAttribute="trailing" secondItem="HW2-AV-UtZ" secondAttribute="trailing" id="lxH-Zm-Eta"/>
@@ -341,12 +374,12 @@
                 <constraint firstAttribute="trailing" secondItem="cQ6-OJ-ah3" secondAttribute="trailing" id="qgF-6E-dK2"/>
                 <constraint firstItem="cQ6-OJ-ah3" firstAttribute="top" secondItem="0GM-eD-zDp" secondAttribute="bottom" id="tLW-QF-Wae"/>
             </constraints>
-            <point key="canvasLocation" x="33.5" y="53.5"/>
+            <point key="canvasLocation" x="32.799999999999997" y="52.623688155922046"/>
         </view>
     </objects>
     <resources>
         <image name="icon_return" width="22" height="22"/>
         <image name="multiple_work1" width="15" height="16"/>
-        <image name="single_work1" width="16" height="16"/>
+        <image name="single_work2" width="16" height="16"/>
     </resources>
 </document>

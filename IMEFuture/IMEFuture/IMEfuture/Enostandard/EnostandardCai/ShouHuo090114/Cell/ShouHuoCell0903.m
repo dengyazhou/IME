@@ -34,7 +34,7 @@
 - (void)setModel:(DeliverOrderItemBean *)model {
     _model = model;
     
-    self.labelPartNumber.text = [NSString stringWithFormat:@"零件号/规格：%@",model.partNumber!=nil?model.partNumber:@"--"];//model.specifications
+    self.labelPartNumber.text = [NSString stringWithFormat:@"%@、零件号/规格：%@",model.itemNo!=nil?model.itemNo:@"",model.partNumber!=nil?model.partNumber:@"--"];//model.specifications
     self.labelDeliverNum.text = [NSString stringWithFormat:@"发货数量：%@",model.deliverNum];
     self.textFieldReceiveQuantity.text = model.receiveQuantity.stringValue;
     self.textField1.text = model.receivingArea;

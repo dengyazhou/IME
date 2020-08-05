@@ -9,10 +9,10 @@
 import Foundation
 
 //正式环境
-let DYZBaseURL = "https://mgateway.imefuture.com"
+//let DYZBaseURL = "https://mgateway.imefuture.com"
 
 //测试环境
-//let DYZBaseURL = "https://betamapi.imefuture.com"
+let DYZBaseURL = "https://betamapi.imefuture.com"
 
 //本地
 //let DYZBaseURL = "http://192.168.255.196:9090/gateway"
@@ -134,3 +134,17 @@ let DYZ_mes_operationOutsourcing_saveOperationOutsourcingOrder = DYZBaseURL + "/
 let DYZ_mes_supplier_getSupplierVoList = DYZBaseURL + "/rs" + "/mes/supplier/getSupplierVoList" //获得供应商列表接口
 
 let DYZ_mes_modelSequence_preGeneratedModelSequence = DYZBaseURL + "/rs" + "/mes/modelSequence/preGeneratedModelSequence" //预生成模具序列号接口
+
+let DYZ_multiUserWork_getMultiWorkingOrders = DYZBaseURL + "/rs" + "/mes/multiUserWork/getMultiWorkingOrders"
+
+ 
+let DYZ_multiUserWork_createMultiUserWork = DYZBaseURL + "/rs" + "/mes/multiUserWork/createMultiUserWork" //创建多人报工单
+
+let DYZ_multiUserWork_getWorkTime = DYZBaseURL + "/rs" + "/mes/multiUserWork/getWorkTime" //扫描完成获得开工界面
+
+let DYZ_multiUserWork_workLog = DYZBaseURL + "/rs" + "/mes/multiUserWork/workLog" //开始-暂停-完工接口
+
+let DYZ_multiUserWork_continueWork = DYZBaseURL + "/rs" + "/mes/multiUserWork/continueWork" //继续接口
+
+let DYZ_multiUserWork_doMultiUserConfirmProduction = DYZBaseURL + "/rs" + "/mes/multiUserWork/doMultiUserConfirmProduction" //多人报工完成提交
+

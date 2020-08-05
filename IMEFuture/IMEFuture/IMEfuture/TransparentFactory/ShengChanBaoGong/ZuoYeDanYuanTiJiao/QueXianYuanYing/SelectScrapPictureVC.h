@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,copy) NSString *productionControlNumAndprocessOperationId;
 
+@property (nonatomic,copy) NSString *confirmUser;
+
 @property (nonatomic,strong) NSMutableArray <UploadImageBean *> * arrayUploadImageBean;//传入
 
 @property (nonatomic,copy) void(^blockArrayUploadImageBean)(NSMutableArray <UploadImageBean *>*arrayUploadImageBean);//传出

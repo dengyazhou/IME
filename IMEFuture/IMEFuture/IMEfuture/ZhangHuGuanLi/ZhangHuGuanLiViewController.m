@@ -253,8 +253,8 @@
             obj.tpfUser = [[NSString alloc] initWithData:jsonTpfUser encoding:NSUTF8StringEncoding];
             
             
-            UserInfoVo *userInfo = [UserInfoVo mj_objectWithKeyValues:obj.tpfUser];
-            [[GlobalSettingManager shareGlobalSettingManager] requesttpfGetparameterlistWithSiteCode:userInfo.siteCode];
+//            UserInfoVo *userInfo = [UserInfoVo mj_objectWithKeyValues:obj.tpfUser];
+//            [[GlobalSettingManager shareGlobalSettingManager] requesttpfGetparameterlistWithSiteCode:userInfo.siteCode];
         } else {
             obj.tpfUser = nil;
         }

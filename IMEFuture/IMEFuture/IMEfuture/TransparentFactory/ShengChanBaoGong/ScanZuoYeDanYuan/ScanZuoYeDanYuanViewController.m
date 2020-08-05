@@ -14,6 +14,8 @@
 #import "TpfMaiViewController.h"
 #import "ZuoYeDanYuanLieBiaoViewController.h"
 
+#import "IMEFuture-swift.h"
+
 @interface ScanZuoYeDanYuanViewController () <UITextFieldDelegate> {
     CGFloat _height_NavBar;
     CGFloat _height_BottomBar;
@@ -42,8 +44,8 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    UserBean *userBean = [UserBean mj_objectWithKeyValues:loginModel.ucenterUser];
-    NSString * siteCode = userBean.enterpriseInfo.serialNo;
+    UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
+    NSString *siteCode = tpfUser.siteCode;
     NSString *workUnitCode = [DatabaseTool t_TpfPWTableGetWorkUnitCodeWithSiteCode:siteCode];
     if (![workUnitCode isEqualToString:@"(null)"]) {
         NSLog(@"(null):存在");
@@ -101,8 +103,8 @@
     
     _viewLoading.hidden = NO;
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    UserBean *userBean = [UserBean mj_objectWithKeyValues:loginModel.ucenterUser];
-    NSString * siteCode = userBean.enterpriseInfo.serialNo;
+    UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
+    NSString *siteCode = tpfUser.siteCode;
     
     MesPostEntityBean *mesPostEntityBean = [[MesPostEntityBean alloc] init];
     ReportWorkWorkUnitScanVo *workUnitScanVo = [[ReportWorkWorkUnitScanVo alloc] init];
@@ -121,22 +123,12 @@
                 [dataArray addObject:scanVo];
             }
             if (returnListBean.list.count == 1) {
-                ScanYuanGongMaViewController *scanYuanGongMaViewController = [[ScanYuanGongMaViewController alloc] init];
-                scanYuanGongMaViewController.workUnitScanVo = [dataArray firstObject];
-                scanYuanGongMaViewController.productionOrderNum = self.productionOrderNum;
-                scanYuanGongMaViewController.requirementDate = self.requirementDate;
-                scanYuanGongMaViewController.workRecordType = self.workRecordType;
-                [self.navigationController pushViewController:scanYuanGongMaViewController animated:YES];
+                [self gointoScanYuanGongMaViewController:[dataArray firstObject]];
             } else {
                 ZuoYeDanYuanLieBiaoViewController *zuoYeDanYuanLieBiaoViewController = [[ZuoYeDanYuanLieBiaoViewController alloc] init];
                 zuoYeDanYuanLieBiaoViewController.dataArray = dataArray;
                 [zuoYeDanYuanLieBiaoViewController setResultBlock:^(NSString *result) {
-                    ScanYuanGongMaViewController *scanYuanGongMaViewController = [[ScanYuanGongMaViewController alloc] init];
-                    scanYuanGongMaViewController.workUnitScanVo = [dataArray objectAtIndex:[result integerValue]];
-                    scanYuanGongMaViewController.productionOrderNum = self.productionOrderNum;
-                    scanYuanGongMaViewController.requirementDate = self.requirementDate;
-                    scanYuanGongMaViewController.workRecordType = self.workRecordType;
-                    [self.navigationController pushViewController:scanYuanGongMaViewController animated:YES];
+                    [self gointoScanYuanGongMaViewController:[dataArray objectAtIndex:[result integerValue]]];
                 }];
                 [self.navigationController pushViewController:zuoYeDanYuanLieBiaoViewController animated:YES];
             }
@@ -147,6 +139,84 @@
     } fail:^(NSError *error) {
         
     } isKindOfModel:NSClassFromString(@"ReturnListBean")];
+}
+
+#pragma mark 进入员工扫码界面
+- (void)gointoScanYuanGongMaViewController:(ReportWorkWorkUnitScanVo *)model {
+    NSLog(@"productionControlNum:%@",model.productionControlNum);
+    NSLog(@"operationCode:%@",model.operationCode);
+    NSLog(@"workUnitCode:%@",model.workUnitCode);
+    
+    LoginModel *loginModel = [DatabaseTool getLoginModel];
+    UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
+    NSString *siteCode = tpfUser.siteCode;
+    
+    NSString * path = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:[NSString stringWithFormat:@"Array_PersonnelVo_%@.data",siteCode]];
+    NSMutableArray *array = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+//    if (!array) {
+//        //进入、扫描员工二维码
+//    } else if (array.count == 0) {
+//        //进入、扫描员工二维码
+//    } else if (array.count == 1) {
+//        //进入、跳过扫描员工二维码
+//    } else if (array.count > 1) {
+//        //进入多人报工界面
+//    }
+    
+    if (!array || array.count == 0 || array.count == 1) {
+        //进入、扫描员工二维码
+        ScanYuanGongMaViewController *scanYuanGongMaViewController = [[ScanYuanGongMaViewController alloc] init];
+        scanYuanGongMaViewController.workUnitScanVo = model;
+        scanYuanGongMaViewController.productionOrderNum = self.productionOrderNum;
+        scanYuanGongMaViewController.requirementDate = self.requirementDate;
+        scanYuanGongMaViewController.workRecordType = self.workRecordType;
+        [self.navigationController pushViewController:scanYuanGongMaViewController animated:YES];
+    } else if (array.count > 1) {
+        //进入多人报工界面
+        //先调用 创建多人报工接口 createMultiUserWork
+        
+        _viewLoading.hidden = NO;
+        LoginModel *loginModel = [DatabaseTool getLoginModel];
+        UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
+        NSString *siteCode = tpfUser.siteCode;
+        
+        MesPostEntityBean *mesPostEntityBean = [[MesPostEntityBean alloc] init];
+        MultiUserWorkVo *multiUserWorkVo = [[MultiUserWorkVo alloc] init];
+        multiUserWorkVo.siteCode = siteCode;
+        multiUserWorkVo.createUser = tpfUser.userCode;
+        multiUserWorkVo.productionControlNum = model.productionControlNum;
+        multiUserWorkVo.operationCode = model.operationCode;
+        multiUserWorkVo.workUnitCode = model.workUnitCode;
+        
+        NSMutableArray *arrTmp = [[NSMutableArray alloc] initWithCapacity:0];
+        for (PersonnelVo *personnelVo in array) {
+            WorkTimeLogVo *workTimeLogVo = [[WorkTimeLogVo alloc] init];
+            workTimeLogVo.confirmUser = personnelVo.personnelCode;
+            [arrTmp addObject:workTimeLogVo];
+        }
+        
+        multiUserWorkVo.multiUserWorkItemList = arrTmp;
+        
+        mesPostEntityBean.entity = multiUserWorkVo.mj_keyValues;
+        NSDictionary *dic = mesPostEntityBean.mj_keyValues;
+
+        [HttpMamager postRequestWithURLString:DYZ_multiUserWork_createMultiUserWork parameters:dic success:^(id responseObjectModel) {
+            ReturnMsgBean *returnMsgBean = responseObjectModel;
+            _viewLoading.hidden = YES;
+            if ([returnMsgBean.status isEqualToString:@"SUCCESS"]) {
+                
+                NSLog(@"进入 多人报工 哈哈哈 --%@",returnMsgBean.returnMsg);
+                MultiUserWorkViewController *vc = [[MultiUserWorkViewController alloc] init];
+                vc.multiUserWorkNum = returnMsgBean.returnMsg;
+                [self.navigationController pushViewController:vc animated:true];
+            } else {
+                _viewLoading.hidden = YES;
+                [[MyAlertCenter defaultCenter] postAlertWithMessage:returnMsgBean.returnMsg];
+            }
+        } fail:^(NSError *error) {
+            
+        } isKindOfModel:NSClassFromString(@"ReturnMsgBean")];
+    }
 }
 
 #pragma mark 回到首页

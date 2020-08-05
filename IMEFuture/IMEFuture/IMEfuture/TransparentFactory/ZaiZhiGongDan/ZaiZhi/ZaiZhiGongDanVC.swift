@@ -11,11 +11,13 @@ import UIKit
 enum TableViewType: Int {
     case SingleWork = 100
     case MultipleWork
+    case MultiUserWork
 }
 
 enum WorkType: Int {
     case Single = 10
     case Multiple
+    case MultiUser
 }
 
 class ZaiZhiGongDanVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -23,6 +25,8 @@ class ZaiZhiGongDanVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     var arrayWorkingOrderVO: [WorkingOrderVO]! = []
     var arrayBatchWorkVo: [BatchWorkVo]! = []
+    var arrayMultiUserWorkVo: [MultiUserWorkVo]! = []
+    
     
     private let _height_NavBar = Height_NavBar!
     private let _height_BottomBar = Height_BottomBar!
@@ -31,6 +35,7 @@ class ZaiZhiGongDanVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     @IBOutlet weak var buttonSingleWork: UIButton!//单工单
     @IBOutlet weak var buttonMultipleWork: UIButton!//多工单
+    @IBOutlet weak var buttonMultiUserWork: UIButton!//多人工单
     
     @IBOutlet weak var viewBottom: UIView!//批量开始 和 批量暂停
     @IBOutlet weak var viewBottom1: UIView!//单工单 批量 和 取消
@@ -45,7 +50,8 @@ class ZaiZhiGongDanVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     @IBOutlet weak var tableViewSingle: UITableView!
     @IBOutlet weak var tableViewMultiple: UITableView!
-   
+    @IBOutlet weak var tableViewMultiUser: UITableView!
+    
     @IBOutlet weak var heightNavBar: NSLayoutConstraint!
     @IBOutlet weak var heightBottomBar: NSLayoutConstraint!
     @IBOutlet weak var heightBottomBar1: NSLayoutConstraint!
@@ -55,6 +61,7 @@ class ZaiZhiGongDanVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         super.viewWillAppear(animated)
         self.requestRefeshSingleWork()
         self.requestRefeshMultipleWork()
+        self.requestRefeshMultiUserWork()
     }
     
     override func viewDidLoad() {
@@ -89,6 +96,15 @@ class ZaiZhiGongDanVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         self.tableViewMultiple.rowHeight = UITableViewAutomaticDimension
         self.tableViewMultiple.tag = TableViewType.MultipleWork.rawValue
         
+        self.tableViewMultiUser.register(UINib.init(nibName: "ZaiZhiGongDanCell", bundle: nil), forCellReuseIdentifier: "zaiZhiGongDanCellMultiUser")
+        self.tableViewMultiUser.delegate = self
+        self.tableViewMultiUser.dataSource = self
+        self.tableViewMultiUser.separatorStyle = UITableViewCellSeparatorStyle.none
+        self.tableViewMultiUser.tableFooterView = UIView()
+        self.tableViewMultiUser.estimatedRowHeight = 60
+        self.tableViewMultiUser.rowHeight = UITableViewAutomaticDimension
+        self.tableViewMultiUser.tag = TableViewType.MultiUserWork.rawValue
+        
         showTableViewAndChangeButtonColorWithTableViewType(type: workType)
         
         _viewLoading = UIView.loading(withFrame: CGRect(x: 0, y: _height_NavBar, width: kMainW, height: kMainH), color: UIColor.clear, imageView: CGRect(x: (kMainW - 34)/2, y: 180, width: 34, height: 34))
@@ -106,6 +122,8 @@ class ZaiZhiGongDanVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             return self.arrayWorkingOrderVO.count
         } else if tableView.tag == TableViewType.MultipleWork.rawValue {
             return self.arrayBatchWorkVo.count
+        } else if tableView.tag == TableViewType.MultiUserWork.rawValue {
+            return self.arrayMultiUserWorkVo.count
         } else {
             return 0
         }
@@ -268,12 +286,33 @@ class ZaiZhiGongDanVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                 }
                 return cell
             }
+        } else if tableView.tag == TableViewType.MultiUserWork.rawValue {
+            let multiUserWorkVo = self.arrayMultiUserWorkVo[indexPath.row]
+            
+            let cell: ZaiZhiGongDanCell = tableView.dequeueReusableCell(withIdentifier: "zaiZhiGongDanCellMultiUser", for: indexPath) as! ZaiZhiGongDanCell
+            cell.label0.text = multiUserWorkVo.productionControlNum
+            cell.label1.text = multiUserWorkVo.workUnitCode
+            cell.label2.text = multiUserWorkVo.materialText
+            cell.label3.isHidden = true
+            cell.label4.isHidden = true
+            cell.label5.isHidden = true
+            if multiUserWorkVo.status.intValue == 1 || multiUserWorkVo.status.intValue == 3{
+                cell.label3.isHidden = false//生产中
+            } else if multiUserWorkVo.status.intValue == 2 {
+                cell.label4.isHidden = false//暂停
+            } else if multiUserWorkVo.status.intValue == 4 {
+                cell.label5.isHidden = false//完工未提交
+            } else if multiUserWorkVo.status.intValue == 5 {
+                
+            }
+            return cell
         } else {
             let cell = UITableViewCell.init()
             return cell
         }
         
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if tableView.tag == TableViewType.SingleWork.rawValue {
@@ -345,6 +384,11 @@ class ZaiZhiGongDanVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                 vc.batchWorkNum = batchWorkVo.batchWorkNum
                 self.navigationController?.pushViewController(vc, animated: true)
             }
+        } else if tableView.tag == TableViewType.MultiUserWork.rawValue {
+            let multiUserWorkVo = self.arrayMultiUserWorkVo[indexPath.row]
+            let vc = MultiUserWorkViewController.init()
+            vc.multiUserWorkNum = multiUserWorkVo.multiUserWorkNum
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
@@ -430,6 +474,18 @@ class ZaiZhiGongDanVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         workType = WorkType.Multiple.rawValue
         showTableViewAndChangeButtonColorWithTableViewType(type: workType)
     }
+
+//    MARK:多人工单
+    @IBAction func buttonMultiUserWork(_ sender: Any) {
+
+        self.viewBottom.isHidden = true
+        self.viewBottom1.isHidden = true
+        self.viewBottom2.isHidden = true
+        workType = WorkType.MultiUser.rawValue
+        showTableViewAndChangeButtonColorWithTableViewType(type: workType)
+    }
+    
+    
     //MARK:批量开始->(批量开始 取消)
     @IBAction func buttonStart(_ sender: Any) {
         self.viewBottom.isHidden = true
@@ -738,17 +794,33 @@ class ZaiZhiGongDanVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         if type == WorkType.Single.rawValue {
             self.tableViewSingle.isHidden = false
             self.tableViewMultiple.isHidden = true
+            self.tableViewMultiUser.isHidden = true
             self.buttonSingleWork.setImage(UIImage.init(named: "single_work2"), for: UIControlState.normal)
             self.buttonSingleWork.setTitleColor(colorRGB(r: 0, g: 122, b: 254), for: UIControlState.normal)
             self.buttonMultipleWork.setImage(UIImage.init(named: "multiple_work1"), for: UIControlState.normal)
             self.buttonMultipleWork.setTitleColor(colorRGB(r: 20, g: 20, b: 20), for: UIControlState.normal)
+            self.buttonMultiUserWork.setImage(UIImage.init(named: "multiple_work1"), for: UIControlState.normal)
+            self.buttonMultiUserWork.setTitleColor(colorRGB(r: 20, g: 20, b: 20), for: UIControlState.normal)
         } else if type == WorkType.Multiple.rawValue {
             self.tableViewSingle.isHidden = true
             self.tableViewMultiple.isHidden = false
+            self.tableViewMultiUser.isHidden = true
             self.buttonSingleWork.setImage(UIImage.init(named: "single_work1"), for: UIControlState.normal)
             self.buttonSingleWork.setTitleColor(colorRGB(r: 20, g: 20, b: 20), for: UIControlState.normal)
             self.buttonMultipleWork.setImage(UIImage.init(named: "multiple_work2"), for: UIControlState.normal)
             self.buttonMultipleWork.setTitleColor(colorRGB(r: 0, g: 122, b: 254), for: UIControlState.normal)
+            self.buttonMultiUserWork.setImage(UIImage.init(named: "multiple_work1"), for: UIControlState.normal)
+            self.buttonMultiUserWork.setTitleColor(colorRGB(r: 20, g: 20, b: 20), for: UIControlState.normal)
+        } else if type == WorkType.MultiUser.rawValue {
+            self.tableViewSingle.isHidden = true
+            self.tableViewMultiple.isHidden = true
+            self.tableViewMultiUser.isHidden = false
+            self.buttonSingleWork.setImage(UIImage.init(named: "single_work1"), for: UIControlState.normal)
+            self.buttonSingleWork.setTitleColor(colorRGB(r: 20, g: 20, b: 20), for: UIControlState.normal)
+            self.buttonMultipleWork.setImage(UIImage.init(named: "multiple_work1"), for: UIControlState.normal)
+            self.buttonMultipleWork.setTitleColor(colorRGB(r: 20, g: 20, b: 20), for: UIControlState.normal)
+            self.buttonMultiUserWork.setImage(UIImage.init(named: "multiple_work2"), for: UIControlState.normal)
+            self.buttonMultiUserWork.setTitleColor(colorRGB(r: 0, g: 122, b: 254), for: UIControlState.normal)
         }
     }
     
@@ -811,9 +883,6 @@ class ZaiZhiGongDanVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                 
                 self.showTableViewAndChangeButtonColorWithTableViewType(type: self.workType)
                 
-                
-                self.viewBottom.isHidden = false
-                self.viewBottom1.isHidden = true
                 self.buttonPiLiangSingle.setTitle("0", for: UIControlState.normal)
             } else {
                 MyAlertCenter.default().postAlert(withMessage: returnListBean.returnMsg)
@@ -852,15 +921,59 @@ class ZaiZhiGongDanVC: UIViewController, UITableViewDelegate, UITableViewDataSou
 //                    MyAlertCenter.default().postAlert(withMessage: "多工单没有相关数据")
                 }
                 
+                self.tableViewMultiple.reloadData()
                 self.showTableViewAndChangeButtonColorWithTableViewType(type: self.workType)
                 
-                self.tableViewMultiple.reloadData()
-                self.viewBottom.isHidden = false
-                self.viewBottom2.isHidden = true
                 self.buttonPiLiangMultiple.setTitle("0", for: UIControlState.normal)
             }
         }, fail: { (error: Error?) in
             
+        }, isKindOfModel: NSClassFromString("ReturnListBean"))
+    }
+    
+    //MARK:多人工单获取列表
+    func requestRefeshMultiUserWork() {
+        _viewLoading.isHidden = false
+        let loginModel: LoginModel = DatabaseTool.getLoginModel()
+        let tpfUser = UserInfoVo.mj_object(withKeyValues: loginModel.tpfUser)
+        let siteCode = tpfUser?.siteCode
+            
+        let mesPostEntityBean: MesPostEntityBean = MesPostEntityBean.init()
+        
+        let pager = PagerBean.init()
+        pager.page = NSNumber.init(value: 1)
+        pager.pageSize = NSNumber.init(value: 10)
+        mesPostEntityBean.pager = pager
+        
+        let workTimeLogVo: WorkTimeLogVo = WorkTimeLogVo.init()
+        workTimeLogVo.siteCode = siteCode
+        workTimeLogVo.confirmUser = self.confirmUser
+        mesPostEntityBean.entity = workTimeLogVo.mj_keyValues()
+        
+        let dic = mesPostEntityBean.mj_keyValues()
+        
+        HttpMamager.postRequest(withURLString: DYZ_multiUserWork_getMultiWorkingOrders, parameters: dic as! [AnyHashable : Any], success: { (responseObjectModel: Any?) in
+                let returnListBean = responseObjectModel as! ReturnListBean
+                self._viewLoading.isHidden = true
+                if returnListBean.status == "SUCCESS" {
+                    self.arrayMultiUserWorkVo = [];
+                    for value in returnListBean.list {
+                        let multiUserWorkVo = MultiUserWorkVo.mj_object(withKeyValues: value)
+                        self.arrayMultiUserWorkVo.append(multiUserWorkVo!)
+                    }
+                    if self.arrayMultiUserWorkVo.count == 0 {
+    //                    MyAlertCenter.default().postAlert(withMessage: "多人工单没有相关数据")
+                    }
+                    self.tableViewMultiUser.reloadData()
+                    
+                    self.showTableViewAndChangeButtonColorWithTableViewType(type: self.workType)
+                    
+                } else {
+                    MyAlertCenter.default().postAlert(withMessage: returnListBean.returnMsg)
+                }
+                
+        }, fail: { (error: Error?) in
+                
         }, isKindOfModel: NSClassFromString("ReturnListBean"))
     }
     

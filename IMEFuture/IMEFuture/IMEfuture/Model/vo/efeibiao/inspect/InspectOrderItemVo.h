@@ -233,6 +233,10 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property(nonatomic,copy) NSString *  unReason5;
 
+@property(nonatomic, strong) NSNumber *spotCheckNum;
+
+@property(nonatomic, strong) NSNumber *realInspectQuantity;
+
 
 @property(nonatomic,strong) NSNumber *defaultQuantity;
 @property(nonatomic,strong) NSNumber *realQualityQuantity;

@@ -32,7 +32,7 @@
     self.button4.layer.borderColor = colorLine.CGColor;
     self.view3.hidden = NO;
     
-    self.orderCode.text = [NSString stringWithFormat:@"流水号：%@",tradeOrder.orderCode];
+    self.orderCode.text = [NSString stringWithFormat:@"订单号：%@",tradeOrder.insideOrderCode];
     
     NSArray *createTimeArr = [[[tradeOrder.createTime componentsSeparatedByString:@" "] firstObject] componentsSeparatedByString:@"-"];
     NSString *createTime = [NSString stringWithFormat:@"%@-%@-%@",createTimeArr[0],createTimeArr[1],createTimeArr[2]];

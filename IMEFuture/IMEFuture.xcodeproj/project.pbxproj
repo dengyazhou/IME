@@ -37,6 +37,7 @@
 		93471C42230BE8140052145A /* TpfCheckBigPictureAndDeletePictureVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93471C3F230BE8140052145A /* TpfCheckBigPictureAndDeletePictureVC.xib */; };
 		93471C4B230BF0E30052145A /* SelectScrapReasonVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93471C48230BF0E30052145A /* SelectScrapReasonVC.xib */; };
 		93471C4C230BF0E30052145A /* SelectScrapReasonVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 93471C49230BF0E30052145A /* SelectScrapReasonVC.m */; };
+		934B5A5A24B59E2100AC1C96 /* EChooseViewCaiDingDan.m in Sources */ = {isa = PBXBuildFile; fileRef = 934B5A5824B59E2000AC1C96 /* EChooseViewCaiDingDan.m */; };
 		9359DD5A236835DD00811564 /* SongDaSearchViewController09.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9359DD57236835DD00811564 /* SongDaSearchViewController09.xib */; };
 		9359DD5B236835DD00811564 /* SongDaSearchViewController09.m in Sources */ = {isa = PBXBuildFile; fileRef = 9359DD59236835DD00811564 /* SongDaSearchViewController09.m */; };
 		935AF99222C207F900729D60 /* ECInquiryViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 935AF99122C207F900729D60 /* ECInquiryViewControllerTest.m */; };
@@ -67,6 +68,7 @@
 		937694A223C45DB400FB696D /* MaterialVo.m in Sources */ = {isa = PBXBuildFile; fileRef = 937694A123C45DB400FB696D /* MaterialVo.m */; };
 		937AC5752472A3E5007983A8 /* MemberResBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 937AC5742472A3E5007983A8 /* MemberResBean.m */; };
 		937AC5782472A4E2007983A8 /* EnterpriseInfoResBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 937AC5772472A4E2007983A8 /* EnterpriseInfoResBean.m */; };
+		93947D3A24C930140010C5FD /* MultiUserWorkVo.m in Sources */ = {isa = PBXBuildFile; fileRef = 93947D3924C930140010C5FD /* MultiUserWorkVo.m */; };
 		9399D36A240CFFF000807975 /* SweepTheCodeReturnsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9399D368240CFFF000807975 /* SweepTheCodeReturnsVC.m */; };
 		9399D36B240CFFF000807975 /* SweepTheCodeReturnsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9399D369240CFFF000807975 /* SweepTheCodeReturnsVC.xib */; };
 		9399D36F240D112500807975 /* SweepTheCodeReturnsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9399D36D240D112500807975 /* SweepTheCodeReturnsCell.m */; };
@@ -85,6 +87,8 @@
 		939ADBB524A86E51008BD1D2 /* XuLieHaoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939ADBB324A86E51008BD1D2 /* XuLieHaoCell.xib */; };
 		939ADBB824A8709E008BD1D2 /* XuLieHao1Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939ADBB624A8709E008BD1D2 /* XuLieHao1Cell.swift */; };
 		939ADBB924A8709E008BD1D2 /* XuLieHao1Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939ADBB724A8709E008BD1D2 /* XuLieHao1Cell.xib */; };
+		93A43D0024C9A179009C33C5 /* BangDingYuanGongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A43CFE24C9A179009C33C5 /* BangDingYuanGongCell.m */; };
+		93A43D0124C9A179009C33C5 /* BangDingYuanGongCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93A43CFF24C9A179009C33C5 /* BangDingYuanGongCell.xib */; };
 		93AEE0E922D3371E008A324E /* YunShuDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AEE0E722D3371E008A324E /* YunShuDetailVC.m */; };
 		93AEE0EA22D3371E008A324E /* YunShuDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93AEE0E822D3371E008A324E /* YunShuDetailVC.xib */; };
 		93AEE0F322D33ED0008A324E /* YunShuShouHuoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AEE0F122D33ED0008A324E /* YunShuShouHuoVC.m */; };
@@ -111,6 +115,15 @@
 		93C33EF3239A01540026D9EB /* WeiWaiSelectSupplierVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C33EF1239A01540026D9EB /* WeiWaiSelectSupplierVC.xib */; };
 		93C33EFA239A21BE0026D9EB /* WeiWaiSelectSupplierCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C33EF8239A21BE0026D9EB /* WeiWaiSelectSupplierCell.swift */; };
 		93C33EFB239A21BE0026D9EB /* WeiWaiSelectSupplierCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C33EF9239A21BE0026D9EB /* WeiWaiSelectSupplierCell.xib */; };
+		93CAE08424BD92800063965E /* server.cer in Resources */ = {isa = PBXBuildFile; fileRef = 93CAE08324BD92800063965E /* server.cer */; };
+		93DEBA0824CA7A6600209063 /* MultiUserWorkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA0624CA7A6600209063 /* MultiUserWorkViewController.swift */; };
+		93DEBA0924CA7A6600209063 /* MultiUserWorkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93DEBA0724CA7A6600209063 /* MultiUserWorkViewController.xib */; };
+		93DEBA1024CAAA0F00209063 /* MultiUserWorkCompleteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA0E24CAAA0E00209063 /* MultiUserWorkCompleteVC.swift */; };
+		93DEBA1124CAAA0F00209063 /* MultiUserWorkCompleteVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93DEBA0F24CAAA0F00209063 /* MultiUserWorkCompleteVC.xib */; };
+		93DEBA1424CAB1BD00209063 /* MultiUserConfirmReportVo.m in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA1324CAB1BD00209063 /* MultiUserConfirmReportVo.m */; };
+		93DEBA1724CAB24600209063 /* MultiUserConfirmReportItemVo.m in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA1624CAB24600209063 /* MultiUserConfirmReportItemVo.m */; };
+		93DEBA1E24CAC70400209063 /* MultiUserWorkCompleteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA1C24CAC70400209063 /* MultiUserWorkCompleteCell.swift */; };
+		93DEBA1F24CAC70400209063 /* MultiUserWorkCompleteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93DEBA1D24CAC70400209063 /* MultiUserWorkCompleteCell.xib */; };
 		93E27BE622C4699D005EE620 /* RefreshManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 93E27BE522C4699D005EE620 /* RefreshManager.m */; };
 		93E27BEC22C4A6E4005EE620 /* UploadImageBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 93E27BEB22C4A6E4005EE620 /* UploadImageBean.m */; };
 		93E3FBDA229CCF3400693CFC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93E3FBD9229CCF3400693CFC /* AppDelegate.m */; };
@@ -1274,6 +1287,8 @@
 		93471C48230BF0E30052145A /* SelectScrapReasonVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectScrapReasonVC.xib; sourceTree = "<group>"; };
 		93471C49230BF0E30052145A /* SelectScrapReasonVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectScrapReasonVC.m; sourceTree = "<group>"; };
 		93471C4A230BF0E30052145A /* SelectScrapReasonVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectScrapReasonVC.h; sourceTree = "<group>"; };
+		934B5A5824B59E2000AC1C96 /* EChooseViewCaiDingDan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EChooseViewCaiDingDan.m; sourceTree = "<group>"; };
+		934B5A5924B59E2000AC1C96 /* EChooseViewCaiDingDan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EChooseViewCaiDingDan.h; sourceTree = "<group>"; };
 		9359DD57236835DD00811564 /* SongDaSearchViewController09.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongDaSearchViewController09.xib; sourceTree = "<group>"; };
 		9359DD58236835DD00811564 /* SongDaSearchViewController09.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongDaSearchViewController09.h; sourceTree = "<group>"; };
 		9359DD59236835DD00811564 /* SongDaSearchViewController09.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongDaSearchViewController09.m; sourceTree = "<group>"; };
@@ -1319,6 +1334,8 @@
 		937AC5742472A3E5007983A8 /* MemberResBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemberResBean.m; sourceTree = "<group>"; };
 		937AC5762472A4E2007983A8 /* EnterpriseInfoResBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnterpriseInfoResBean.h; sourceTree = "<group>"; };
 		937AC5772472A4E2007983A8 /* EnterpriseInfoResBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EnterpriseInfoResBean.m; sourceTree = "<group>"; };
+		93947D3824C930140010C5FD /* MultiUserWorkVo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MultiUserWorkVo.h; sourceTree = "<group>"; };
+		93947D3924C930140010C5FD /* MultiUserWorkVo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MultiUserWorkVo.m; sourceTree = "<group>"; };
 		9399D367240CFFF000807975 /* SweepTheCodeReturnsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SweepTheCodeReturnsVC.h; sourceTree = "<group>"; };
 		9399D368240CFFF000807975 /* SweepTheCodeReturnsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SweepTheCodeReturnsVC.m; sourceTree = "<group>"; };
 		9399D369240CFFF000807975 /* SweepTheCodeReturnsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SweepTheCodeReturnsVC.xib; sourceTree = "<group>"; };
@@ -1344,6 +1361,9 @@
 		939ADBB324A86E51008BD1D2 /* XuLieHaoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XuLieHaoCell.xib; sourceTree = "<group>"; };
 		939ADBB624A8709E008BD1D2 /* XuLieHao1Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XuLieHao1Cell.swift; sourceTree = "<group>"; };
 		939ADBB724A8709E008BD1D2 /* XuLieHao1Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XuLieHao1Cell.xib; sourceTree = "<group>"; };
+		93A43CFD24C9A179009C33C5 /* BangDingYuanGongCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BangDingYuanGongCell.h; sourceTree = "<group>"; };
+		93A43CFE24C9A179009C33C5 /* BangDingYuanGongCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BangDingYuanGongCell.m; sourceTree = "<group>"; };
+		93A43CFF24C9A179009C33C5 /* BangDingYuanGongCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BangDingYuanGongCell.xib; sourceTree = "<group>"; };
 		93AEE0E622D3371E008A324E /* YunShuDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YunShuDetailVC.h; sourceTree = "<group>"; };
 		93AEE0E722D3371E008A324E /* YunShuDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YunShuDetailVC.m; sourceTree = "<group>"; };
 		93AEE0E822D3371E008A324E /* YunShuDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YunShuDetailVC.xib; sourceTree = "<group>"; };
@@ -1382,6 +1402,17 @@
 		93C33EF1239A01540026D9EB /* WeiWaiSelectSupplierVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeiWaiSelectSupplierVC.xib; sourceTree = "<group>"; };
 		93C33EF8239A21BE0026D9EB /* WeiWaiSelectSupplierCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeiWaiSelectSupplierCell.swift; sourceTree = "<group>"; };
 		93C33EF9239A21BE0026D9EB /* WeiWaiSelectSupplierCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeiWaiSelectSupplierCell.xib; sourceTree = "<group>"; };
+		93CAE08324BD92800063965E /* server.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = server.cer; sourceTree = "<group>"; };
+		93DEBA0624CA7A6600209063 /* MultiUserWorkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiUserWorkViewController.swift; sourceTree = "<group>"; };
+		93DEBA0724CA7A6600209063 /* MultiUserWorkViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MultiUserWorkViewController.xib; sourceTree = "<group>"; };
+		93DEBA0E24CAAA0E00209063 /* MultiUserWorkCompleteVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiUserWorkCompleteVC.swift; sourceTree = "<group>"; };
+		93DEBA0F24CAAA0F00209063 /* MultiUserWorkCompleteVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MultiUserWorkCompleteVC.xib; sourceTree = "<group>"; };
+		93DEBA1224CAB1BD00209063 /* MultiUserConfirmReportVo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MultiUserConfirmReportVo.h; sourceTree = "<group>"; };
+		93DEBA1324CAB1BD00209063 /* MultiUserConfirmReportVo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MultiUserConfirmReportVo.m; sourceTree = "<group>"; };
+		93DEBA1524CAB24600209063 /* MultiUserConfirmReportItemVo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MultiUserConfirmReportItemVo.h; sourceTree = "<group>"; };
+		93DEBA1624CAB24600209063 /* MultiUserConfirmReportItemVo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MultiUserConfirmReportItemVo.m; sourceTree = "<group>"; };
+		93DEBA1C24CAC70400209063 /* MultiUserWorkCompleteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiUserWorkCompleteCell.swift; sourceTree = "<group>"; };
+		93DEBA1D24CAC70400209063 /* MultiUserWorkCompleteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MultiUserWorkCompleteCell.xib; sourceTree = "<group>"; };
 		93E27BE422C4699D005EE620 /* RefreshManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshManager.h; sourceTree = "<group>"; };
 		93E27BE522C4699D005EE620 /* RefreshManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshManager.m; sourceTree = "<group>"; };
 		93E27BEA22C4A6E4005EE620 /* UploadImageBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UploadImageBean.h; sourceTree = "<group>"; };
@@ -3293,6 +3324,19 @@
 			path = Cell1;
 			sourceTree = "<group>";
 		};
+		93DEBA0124CA798F00209063 /* MultiUserWork */ = {
+			isa = PBXGroup;
+			children = (
+				93DEBA0624CA7A6600209063 /* MultiUserWorkViewController.swift */,
+				93DEBA0724CA7A6600209063 /* MultiUserWorkViewController.xib */,
+				93DEBA1C24CAC70400209063 /* MultiUserWorkCompleteCell.swift */,
+				93DEBA1D24CAC70400209063 /* MultiUserWorkCompleteCell.xib */,
+				93DEBA0E24CAAA0E00209063 /* MultiUserWorkCompleteVC.swift */,
+				93DEBA0F24CAAA0F00209063 /* MultiUserWorkCompleteVC.xib */,
+			);
+			path = MultiUserWork;
+			sourceTree = "<group>";
+		};
 		93E27BE322C46979005EE620 /* SingleClass */ = {
 			isa = PBXGroup;
 			children = (
@@ -3492,6 +3536,7 @@
 				93F7046F22B0D7B8000B2D9D /* TpfMaiViewController.h */,
 				93F7050322B0D7B9000B2D9D /* TpfMaiViewController.m */,
 				93F7052922B0D7B9000B2D9D /* TpfMaiViewController.xib */,
+				93DEBA0124CA798F00209063 /* MultiUserWork */,
 				93F7049522B0D7B8000B2D9D /* ShengChanBaoGong */,
 				93F704CB22B0D7B9000B2D9D /* MultiBaoGong  */,
 				93F704F422B0D7B9000B2D9D /* BaitingBaoGong */,
@@ -3560,6 +3605,9 @@
 		93F7046222B0D7B8000B2D9D /* BangDingYuanGong */ = {
 			isa = PBXGroup;
 			children = (
+				93A43CFD24C9A179009C33C5 /* BangDingYuanGongCell.h */,
+				93A43CFE24C9A179009C33C5 /* BangDingYuanGongCell.m */,
+				93A43CFF24C9A179009C33C5 /* BangDingYuanGongCell.xib */,
 				93F7046322B0D7B8000B2D9D /* BangDingYuanGongViewController.h */,
 				93F7046522B0D7B8000B2D9D /* BangDingYuanGongViewController.m */,
 				93F7046422B0D7B8000B2D9D /* BangDingYuanGongViewController.xib */,
@@ -4272,6 +4320,8 @@
 				93F7058822B0D7B9000B2D9D /* DatabaseTool.m */,
 				93F7058922B0D7B9000B2D9D /* EChooseView.h */,
 				93F7057722B0D7B9000B2D9D /* EChooseView.m */,
+				934B5A5924B59E2000AC1C96 /* EChooseViewCaiDingDan.h */,
+				934B5A5824B59E2000AC1C96 /* EChooseViewCaiDingDan.m */,
 				93F7058722B0D7B9000B2D9D /* IMEProcessPool.h */,
 				93F7057822B0D7B9000B2D9D /* IMEProcessPool.m */,
 				93F7056C22B0D7B9000B2D9D /* ScrollView */,
@@ -4382,6 +4432,7 @@
 			children = (
 				93F705B822B0D7B9000B2D9D /* testuc.imefuture.com.cer */,
 				9337FEA422FD522400E3AA89 /* imefuture.com.cer */,
+				93CAE08324BD92800063965E /* server.cer */,
 				93F705BD22B0D7B9000B2D9D /* HttpMamager.h */,
 				93F705C322B0D7B9000B2D9D /* HttpMamager.m */,
 				93F705BC22B0D7B9000B2D9D /* UIViewController+Tool.h */,
@@ -4589,6 +4640,8 @@
 				93428D8023A2404C0056E3D8 /* OperationOutsourcingSourceVo.m */,
 				939ADBAB24A841E9008BD1D2 /* ModelSequenceVo.h */,
 				939ADBAC24A841E9008BD1D2 /* ModelSequenceVo.m */,
+				93947D3824C930140010C5FD /* MultiUserWorkVo.h */,
+				93947D3924C930140010C5FD /* MultiUserWorkVo.m */,
 			);
 			path = pp;
 			sourceTree = "<group>";
@@ -4635,12 +4688,16 @@
 		93F7063C22B0D7B9000B2D9D /* BatchWorkItemReportVo */ = {
 			isa = PBXGroup;
 			children = (
-				93F7063D22B0D7B9000B2D9D /* BatchWorkItemReportVo.h */,
+				93F7064122B0D7B9000B2D9D /* BlankingConfirmReportVo.h */,
 				93F7063E22B0D7B9000B2D9D /* BlankingConfirmReportVo.m */,
 				93F7063F22B0D7B9000B2D9D /* BatchConfirmReportVo.h */,
-				93F7064022B0D7B9000B2D9D /* BatchWorkItemReportVo.m */,
-				93F7064122B0D7B9000B2D9D /* BlankingConfirmReportVo.h */,
 				93F7064222B0D7B9000B2D9D /* BatchConfirmReportVo.m */,
+				93F7063D22B0D7B9000B2D9D /* BatchWorkItemReportVo.h */,
+				93F7064022B0D7B9000B2D9D /* BatchWorkItemReportVo.m */,
+				93DEBA1224CAB1BD00209063 /* MultiUserConfirmReportVo.h */,
+				93DEBA1324CAB1BD00209063 /* MultiUserConfirmReportVo.m */,
+				93DEBA1524CAB24600209063 /* MultiUserConfirmReportItemVo.h */,
+				93DEBA1624CAB24600209063 /* MultiUserConfirmReportItemVo.m */,
 			);
 			path = BatchWorkItemReportVo;
 			sourceTree = "<group>";
@@ -7601,6 +7658,7 @@
 				93F70FB722B0D7BB000B2D9D /* BaoJiaHeaderView01.xib in Resources */,
 				93F70C8322B0D7BA000B2D9D /* ShouYeCell40.xib in Resources */,
 				93F70C5C22B0D7BA000B2D9D /* OQCLabelAndLabelCell.xib in Resources */,
+				93DEBA0924CA7A6600209063 /* MultiUserWorkViewController.xib in Resources */,
 				93F48BE223703A010041E8BD /* ProcessDetailCellTableViewCell.xib in Resources */,
 				93F70E8222B0D7BB000B2D9D /* ShaiXuanBaoJiaCell0.xib in Resources */,
 				93F70E0222B0D7BB000B2D9D /* FaHuoCell090500.xib in Resources */,
@@ -7612,6 +7670,7 @@
 				93F70DD622B0D7BB000B2D9D /* ECChakanWuliuCell1.xib in Resources */,
 				93F70E5622B0D7BB000B2D9D /* ECPingJiaCell.xib in Resources */,
 				93F70CB022B0D7BA000B2D9D /* HuoDongTableViewCell.xib in Resources */,
+				93A43D0124C9A179009C33C5 /* BangDingYuanGongCell.xib in Resources */,
 				93F70DF822B0D7BB000B2D9D /* FaHuoCell0903.xib in Resources */,
 				93F70F3922B0D7BB000B2D9D /* YanHuoLieBiaoCell.xib in Resources */,
 				93F70C1222B0D7BA000B2D9D /* ScanZuoYeDanYuanViewController.xib in Resources */,
@@ -7866,6 +7925,7 @@
 				93F70C5A22B0D7BA000B2D9D /* OQCJYJGCell1.xib in Resources */,
 				93AEE0FF22D345EE008A324E /* YunShuShouHuoHeader.xib in Resources */,
 				93F70F1222B0D7BB000B2D9D /* ECAddSupplierVC.xib in Resources */,
+				93CAE08424BD92800063965E /* server.cer in Resources */,
 				93F70E3A22B0D7BB000B2D9D /* DingDanXiangQingHeaderView.xib in Resources */,
 				93F70EA922B0D7BB000B2D9D /* XuanZeXunPanGongYiVC.xib in Resources */,
 				93F70BEC22B0D7BA000B2D9D /* XunJianTJCell.xib in Resources */,
@@ -7881,6 +7941,7 @@
 				93EF0C8222E04DE200182152 /* TemporaryTaskDetailedListCell.xib in Resources */,
 				93F70F5222B0D7BB000B2D9D /* ShouHuoCell1.xib in Resources */,
 				93F70D8E22B0D7BA000B2D9D /* CompanyViewController.xib in Resources */,
+				93DEBA1F24CAC70400209063 /* MultiUserWorkCompleteCell.xib in Resources */,
 				93EF0C7D22E0456B00182152 /* TemporaryTaskDetailedListVC.xib in Resources */,
 				93F70F5C22B0D7BB000B2D9D /* YiJiaECZongCell02.xib in Resources */,
 				93F70C0822B0D7BA000B2D9D /* ZuoYeDanYuanLBCell.xib in Resources */,
@@ -7941,6 +8002,7 @@
 				93F70F9F22B0D7BB000B2D9D /* icon_Private_letter_orange.gif in Resources */,
 				93F70EDF22B0D7BB000B2D9D /* EFBFaPanCell3.xib in Resources */,
 				93F70FE222B0D7BB000B2D9D /* ShengChangJinDuTableViewCell2.xib in Resources */,
+				93DEBA1124CAAA0F00209063 /* MultiUserWorkCompleteVC.xib in Resources */,
 				9337FEA522FD522400E3AA89 /* imefuture.com.cer in Resources */,
 				93F70E8922B0D7BB000B2D9D /* YanHuoXiangQingVC.xib in Resources */,
 				93F70F7C22B0D7BB000B2D9D /* UIViewTuiHou.xib in Resources */,
@@ -8078,6 +8140,7 @@
 				9399D36A240CFFF000807975 /* SweepTheCodeReturnsVC.m in Sources */,
 				93F70FB622B0D7BB000B2D9D /* MingXiQueRenBaoJia03.m in Sources */,
 				93F70EEE22B0D7BB000B2D9D /* EFBFaPanViewController1.m in Sources */,
+				934B5A5A24B59E2100AC1C96 /* EChooseViewCaiDingDan.m in Sources */,
 				93F70C9422B0D7BA000B2D9D /* EChooseView.m in Sources */,
 				93F70CF622B0D7BA000B2D9D /* ProcessOperationVo.m in Sources */,
 				93F70C5D22B0D7BA000B2D9D /* OQCLabelAndTextFieldCell.swift in Sources */,
@@ -8114,6 +8177,7 @@
 				93F70C8622B0D7BA000B2D9D /* ShouYeCell30.m in Sources */,
 				93F70E6422B0D7BB000B2D9D /* ShouHuoCell090102.m in Sources */,
 				93F70D5C22B0D7BA000B2D9D /* TpfOrderBean.m in Sources */,
+				93DEBA0824CA7A6600209063 /* MultiUserWorkViewController.swift in Sources */,
 				93F70ECB22B0D7BB000B2D9D /* BJFaPanLingJianCell.m in Sources */,
 				93F70CCB22B0D7BA000B2D9D /* AppInfoBean.m in Sources */,
 				93F70CE422B0D7BA000B2D9D /* OperationOutsourcingOrderVo.m in Sources */,
@@ -8312,11 +8376,13 @@
 				93F70CAC22B0D7BA000B2D9D /* HuoDongViewController.m in Sources */,
 				93F70D0822B0D7BA000B2D9D /* InquiryOrderEnterprise.m in Sources */,
 				93F70C9322B0D7BA000B2D9D /* EChooseTaxRateView5Kind.m in Sources */,
+				93947D3A24C930140010C5FD /* MultiUserWorkVo.m in Sources */,
 				93F70DA222B0D7BA000B2D9D /* FaHuoCell31.m in Sources */,
 				939ADBAD24A841E9008BD1D2 /* ModelSequenceVo.m in Sources */,
 				93F70FD822B0D7BB000B2D9D /* LingJianXiangQingDingDanViewController2.m in Sources */,
 				93F70CDF22B0D7BA000B2D9D /* OperationOutsourcingReceivingNoteVo.m in Sources */,
 				93F70D5022B0D7BA000B2D9D /* TpfProcess.m in Sources */,
+				93DEBA1024CAAA0F00209063 /* MultiUserWorkCompleteVC.swift in Sources */,
 				93F70C0F22B0D7BA000B2D9D /* TpfBaoGongReasonView.m in Sources */,
 				9399D36F240D112500807975 /* SweepTheCodeReturnsCell.m in Sources */,
 				939ADBB024A85FCB008BD1D2 /* XuLieHaoXiuGaiVC.swift in Sources */,
@@ -8405,6 +8471,7 @@
 				93EF0CAE22E18F9200182152 /* TemporaryTaskSuspendView.m in Sources */,
 				93F70DC722B0D7BB000B2D9D /* YiJiaEGMingXiXiuGaiCell10.m in Sources */,
 				93F70C5122B0D7BA000B2D9D /* OQCJYJGCell1.swift in Sources */,
+				93DEBA1724CAB24600209063 /* MultiUserConfirmReportItemVo.m in Sources */,
 				93F70EB822B0D7BB000B2D9D /* ShanChuTuPianVC.m in Sources */,
 				93F70D0322B0D7BA000B2D9D /* FactoryDeliverInfoBean.m in Sources */,
 				93F70FF322B0D7BC000B2D9D /* EInquiryActionCell.m in Sources */,
@@ -8621,6 +8688,7 @@
 				93F70DB422B0D7BB000B2D9D /* BuFaHuoLieBiaoFooter.m in Sources */,
 				93F70C9522B0D7BA000B2D9D /* IMEProcessPool.m in Sources */,
 				93F70E0522B0D7BB000B2D9D /* FaHuoCell0904.m in Sources */,
+				93DEBA1424CAB1BD00209063 /* MultiUserConfirmReportVo.m in Sources */,
 				93F70C9822B0D7BA000B2D9D /* JHCollectionViewFlowLayout.m in Sources */,
 				93F70F1922B0D7BB000B2D9D /* PickerViewBG.m in Sources */,
 				93F70D1E22B0D7BA000B2D9D /* MemberReqBean.m in Sources */,
@@ -8705,6 +8773,8 @@
 				93F70C8C22B0D7BA000B2D9D /* ShQYSHCHKRView.m in Sources */,
 				93F70CE322B0D7BA000B2D9D /* ProductionOperationVo.m in Sources */,
 				93E3FBDA229CCF3400693CFC /* AppDelegate.m in Sources */,
+				93DEBA1E24CAC70400209063 /* MultiUserWorkCompleteCell.swift in Sources */,
+				93A43D0024C9A179009C33C5 /* BangDingYuanGongCell.m in Sources */,
 				93F70C7B22B0D7BA000B2D9D /* WebDatailURL.m in Sources */,
 				93F70C3D22B0D7BA000B2D9D /* ScanMultiCompleteCell.swift in Sources */,
 				93F70DC622B0D7BB000B2D9D /* EGYiJiaViewController.m in Sources */,
@@ -8951,7 +9021,7 @@
 					"$(PROJECT_DIR)/IMEFuture/IMEfuture/Jpush",
 					"$(PROJECT_DIR)/IMEFuture/imefuture/Jpush",
 				);
-				MARKETING_VERSION = 2.48.0;
+				MARKETING_VERSION = 2.70.0;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-isystem",
@@ -9013,7 +9083,7 @@
 					"$(PROJECT_DIR)/IMEFuture/IMEfuture/Jpush",
 					"$(PROJECT_DIR)/IMEFuture/imefuture/Jpush",
 				);
-				MARKETING_VERSION = 2.48.0;
+				MARKETING_VERSION = 2.70.0;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-isystem",

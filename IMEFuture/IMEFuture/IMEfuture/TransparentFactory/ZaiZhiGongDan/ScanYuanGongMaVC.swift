@@ -76,40 +76,47 @@ class ScanYuanGongMaVC: UIViewController, UITextFieldDelegate{
     }
     
     func request(result: String?) {
-        _viewLoading.isHidden = false
-        let loginModel: LoginModel = DatabaseTool.getLoginModel()
-        let userBean = UserBean.mj_object(withKeyValues: loginModel.ucenterUser)
-        let siteCode = userBean?.enterpriseInfo.serialNo
         
-        let mesPostEntityBean: MesPostEntityBean = MesPostEntityBean.init()
-        let workTimeLogVo: WorkTimeLogVo = WorkTimeLogVo.init()
-        workTimeLogVo.siteCode = siteCode
-        workTimeLogVo.confirmUser = result
-        workTimeLogVo.workTimeLogType = NSNumber.init(value: 1)
-        mesPostEntityBean.entity = workTimeLogVo.mj_keyValues()
-        let dic = mesPostEntityBean.mj_keyValues()
+        let vc: ZaiZhiGongDanVC = ZaiZhiGongDanVC()
+        vc.confirmUser = result
+        self.navigationController?.pushViewController(vc, animated: true)
         
-        HttpMamager.postRequest(withURLString: DYZ_workingOrder_getWorkingOrderList, parameters: dic as! [AnyHashable : Any], success: { (responseObjectModel: Any?) in
-            let returnListBean = responseObjectModel as! ReturnListBean
-            self._viewLoading.isHidden = true
-            if returnListBean.status == "SUCCESS" {
-                
-                self.arrayWorkingOrderVO = [];
-                for value in returnListBean.list {
-                    let workingOrderVO = WorkingOrderVO.mj_object(withKeyValues: value)
-                    workingOrderVO?.isNO = "NO"
-                    self.arrayWorkingOrderVO.append(workingOrderVO!)
-                }
-                let vc: ZaiZhiGongDanVC = ZaiZhiGongDanVC()
-                vc.confirmUser = result
-                self.navigationController?.pushViewController(vc, animated: true)
-            } else {
-                MyAlertCenter.default().postAlert(withMessage: returnListBean.returnMsg)
-            }
-
-        }, fail: { (error: Error?) in
-            self._viewLoading.isHidden = true
-        }, isKindOfModel: NSClassFromString("ReturnListBean"))
+        
+        
+//        _viewLoading.isHidden = false
+//        let loginModel: LoginModel = DatabaseTool.getLoginModel()
+//        let userBean = UserBean.mj_object(withKeyValues: loginModel.ucenterUser)
+//        let siteCode = userBean?.enterpriseInfo.serialNo
+//
+//        let mesPostEntityBean: MesPostEntityBean = MesPostEntityBean.init()
+//        let workTimeLogVo: WorkTimeLogVo = WorkTimeLogVo.init()
+//        workTimeLogVo.siteCode = siteCode
+//        workTimeLogVo.confirmUser = result
+//        workTimeLogVo.workTimeLogType = NSNumber.init(value: 1)
+//        mesPostEntityBean.entity = workTimeLogVo.mj_keyValues()
+//        let dic = mesPostEntityBean.mj_keyValues()
+//
+//        HttpMamager.postRequest(withURLString: DYZ_workingOrder_getWorkingOrderList, parameters: dic as! [AnyHashable : Any], success: { (responseObjectModel: Any?) in
+//            let returnListBean = responseObjectModel as! ReturnListBean
+//            self._viewLoading.isHidden = true
+//            if returnListBean.status == "SUCCESS" {
+//
+//                self.arrayWorkingOrderVO = [];
+//                for value in returnListBean.list {
+//                    let workingOrderVO = WorkingOrderVO.mj_object(withKeyValues: value)
+//                    workingOrderVO?.isNO = "NO"
+//                    self.arrayWorkingOrderVO.append(workingOrderVO!)
+//                }
+//                let vc: ZaiZhiGongDanVC = ZaiZhiGongDanVC()
+//                vc.confirmUser = result
+//                self.navigationController?.pushViewController(vc, animated: true)
+//            } else {
+//                MyAlertCenter.default().postAlert(withMessage: returnListBean.returnMsg)
+//            }
+//
+//        }, fail: { (error: Error?) in
+//            self._viewLoading.isHidden = true
+//        }, isKindOfModel: NSClassFromString("ReturnListBean"))
     }
     
 //    MARK: back

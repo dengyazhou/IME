@@ -257,4 +257,8 @@
 #import "EnterpriseInfoResBean.h"
 #import "ModelSequenceVo.h"
 
+#import "MultiUserWorkVo.h"
+#import "MultiUserConfirmReportVo.h"
+#import "MultiUserConfirmReportItemVo.h"
+
 #endif /* VoHeader_h */

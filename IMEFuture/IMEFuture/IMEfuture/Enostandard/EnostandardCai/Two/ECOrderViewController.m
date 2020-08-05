@@ -9,7 +9,7 @@
 #import "ECOrderViewController.h"
 #import "VoHeader.h"
 
-#import "EChooseView.h"
+#import "EChooseViewCaiDingDan.h"
 #import "ECOrderCell.h"
 
 #import "EH5FuKuanViewController.h"
@@ -44,7 +44,7 @@
 #import "ShenHeShouPanHeJiaVC.h"
 
 
-@interface ECOrderViewController () <UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,EChooseViewDelegate> {
+@interface ECOrderViewController () <UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,EChooseViewCaiDingDanDelegate> {
     NSArray *_arrayButton;
     UITableView *_tableView0;
     
@@ -55,7 +55,7 @@
     NSMutableArray *_arrayStateNoOrYes0;
     NSMutableArray *_arrayTimeNoOrYes;
     
-    EChooseView *_eChooseView0;
+    EChooseViewCaiDingDan *_eChooseView0;
     ShenQingYSHView *_shenQingYSHView;
     
     NSMutableArray *_arrayTradeOrderModel;
@@ -65,6 +65,9 @@
     NSString *_tradeOrderPurchaseStatusSelect0;
     NSString *_timeSelect0;
     NSString *_timeSelect1;
+    
+    NSString *_strSuoShuXiangMu;
+    NSString *_strGongYingShang;
     
     
     
@@ -141,7 +144,7 @@
     
     [self initUI];
     
-    [self initRequestWithTableView:_tableView0 WithInquiryType:nil WithInquiryOrderStatus:nil WithTime0:nil WithTime1:nil WithNoContentView:_viewNoContent0];
+    [self initRequestWithTableView:_tableView0 WithInquiryType:nil WithInquiryOrderStatus:nil WithTime0:nil WithTime1:nil withstrSuoShuXiangMu:nil withstrGongYingShang:nil WithNoContentView:_viewNoContent0];
     
     
 }
@@ -214,7 +217,8 @@
         [_arrayButtonUp addObject:button];
     }
 
-    _arrayType0 = @[@"e非标",@"标准",@"指定价",@"后议价"];
+//    _arrayType0 = @[@"e非标",@"标准",@"指定价",@"后议价"];
+    _arrayType0 = @[@"非标件",@"标准件",@"生产原料",@"工序外协",@"服务件",@"混合"];
     _arrayTypeNoOrYes0 = [[NSMutableArray alloc] init];
     for (int i = 0; i < _arrayType0.count; i++) {
         [_arrayTypeNoOrYes0 addObject:@"NO"];
@@ -241,7 +245,7 @@
     _viewNoNet.hidden = YES;
     
 
-    _eChooseView0 = [[EChooseView alloc] initWithFrame:CGRectMake(0, 0, kMainW, kMainH) withTitleState:@"询盘类型" withState:_arrayType0 withArrayTypeNoOrYes:_arrayTypeNoOrYes0 withTitleState:@"订单状态" withState:_arrayState withArrayStateNoOrYes:_arrayStateNoOrYes0 withTitleTime:@"询盘截止日期" withTime0:nil withTime1:nil with:@[@"重置",@"确认"] withColor:colorCai];
+    _eChooseView0 = [[EChooseViewCaiDingDan alloc] initWithFrame:CGRectMake(0, 0, kMainW, kMainH) withTitleState:@"零件类型" withState:_arrayType0 withArrayTypeNoOrYes:_arrayTypeNoOrYes0 withTitleState:@"订单状态" withState:_arrayState withArrayStateNoOrYes:_arrayStateNoOrYes0 withTitleTime:@"询盘截止日期" withTime0:nil withTime1:nil with:@[@"重置",@"确认"] withColor:colorCai];
     _eChooseView0.delegate = self;
     _eChooseView0.tag = 0;
     [[UIApplication sharedApplication].keyWindow addSubview:_eChooseView0];
@@ -318,7 +322,7 @@
     }
 }
 
-- (void)eChooseViewDelegateTapRemove:(EChooseView *)view{
+- (void)eChooseViewDelegateTapRemove:(EChooseViewCaiDingDan *)view{
     view.hidden = YES;
     self.imageArrow.hidden = YES;
     
@@ -372,12 +376,12 @@
 }
 
 
-- (void)eChooseViewDelegate:(EChooseView *)view ButtonClick3:(UIButton *)sender withArrayTypeNoOrYes:(NSMutableArray *)arrayTypeNoOrYes withArrayStateNoOrYes:(NSMutableArray *)arrayStateNoOrYes withwithTime0:(NSString *)time0 withTime1:(NSString *)time1{
+- (void)eChooseViewDelegate:(EChooseViewCaiDingDan *)view ButtonClick3:(UIButton *)sender withArrayTypeNoOrYes:(NSMutableArray *)arrayTypeNoOrYes withArrayStateNoOrYes:(NSMutableArray *)arrayStateNoOrYes withwithTime0:(NSString *)time0 withTime1:(NSString *)time1 wihtstrSuoShuXiangMu:(NSString *)strSuoShuXiangMu withstrGongYingShang:(NSString *)strGongYingShang{
     NSMutableArray *arrayTpyeTempCount = [NSMutableArray arrayWithCapacity:0];
     NSMutableArray *arrayTradeOrderPurchaseStatusTempCount = [NSMutableArray arrayWithCapacity:0];
     if (view.tag == 0) {
         _arrayTypeNoOrYes0 = arrayTypeNoOrYes;
-        NSArray *arrayType = @[@"COM",@"ATG",@"FTG",@"TTG"];
+        NSArray *arrayType = @[@"FBJ",@"BZJ",@"SCYL",@"GXWX",@"FWJ",@"HH"];
         NSString *inquiryTypeTemp = nil;
         NSMutableArray *arrayTpyeTemp = [[NSMutableArray alloc] initWithCapacity:0];
         for (NSInteger i = 0; i < arrayType.count; i++) {
@@ -403,19 +407,20 @@
     
     _timeSelect0 = time0;
     _timeSelect1 = time1;
+    _strSuoShuXiangMu = strSuoShuXiangMu;
+    _strGongYingShang = strGongYingShang;
     
     if (sender.tag == 301) {
         view.hidden = YES;
         self.imageArrow.hidden = YES;
         
-        if (_inquiryTypeSelect0 == nil && _tradeOrderPurchaseStatusSelect0 == nil && _timeSelect0 == nil && _timeSelect1 == nil) {
+        if (_inquiryTypeSelect0 == nil && _tradeOrderPurchaseStatusSelect0 == nil && _timeSelect0 == nil && _timeSelect1 == nil && _strSuoShuXiangMu == nil && _strGongYingShang == nil) {
             [self.buttonScreen setImage:[UIImage imageNamed:@"icon_filter"] forState:UIControlStateNormal];
             [self.buttonScreen setTitleColor:colorRGB(117, 117, 117) forState:UIControlStateNormal];
         }
         
         if (view.tag == 0) {
-            
-            [self initRequestWithTableView:_tableView0 WithInquiryType:_inquiryTypeSelect0 WithInquiryOrderStatus:_tradeOrderPurchaseStatusSelect0 WithTime0:_timeSelect0 WithTime1:_timeSelect1 WithNoContentView:_viewNoContent0];
+            [self initRequestWithTableView:_tableView0 WithInquiryType:_inquiryTypeSelect0 WithInquiryOrderStatus:_tradeOrderPurchaseStatusSelect0 WithTime0:_timeSelect0 WithTime1:_timeSelect1 withstrSuoShuXiangMu:_strSuoShuXiangMu withstrGongYingShang:_strGongYingShang WithNoContentView:_viewNoContent0];
             [_tableView0.mj_header beginRefreshing];
         }
     }
@@ -787,7 +792,7 @@
 }
 
 #pragma mark initRequest
-- (void)initRequestWithTableView:(UITableView *)tableView WithInquiryType:(NSString *)inquiryType WithInquiryOrderStatus:(NSString *)tradeOrderPurchaseStatus WithTime0:(NSString *)time0 WithTime1:(NSString *)time1 WithNoContentView:(UIView *)viewNoContent{
+- (void)initRequestWithTableView:(UITableView *)tableView WithInquiryType:(NSString *)inquiryType WithInquiryOrderStatus:(NSString *)tradeOrderPurchaseStatus WithTime0:(NSString *)time0 WithTime1:(NSString *)time1 withstrSuoShuXiangMu:(NSString *)strSuoShuXiangMu withstrGongYingShang:(NSString *)strGongYingShang WithNoContentView:(UIView *)viewNoContent{
     tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
         EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
@@ -814,10 +819,13 @@
 
     
         //非标管家 19.06.03版
-        tradeOrder.inquiryType = inquiryType;
+        tradeOrder.partType = inquiryType;
         tradeOrder.tradeOrderPurchaseStatus = tradeOrderPurchaseStatus;
         tradeOrder.se_enterpriseOrderCode = self.se_enterpriseOrderCode;
         
+        
+        tradeOrder.se_supplierEnterpriseName = strGongYingShang;
+        tradeOrder.se_ownProjectName = strSuoShuXiangMu;
         
         
         
@@ -885,9 +893,12 @@
         LoginModel *loginModel = [DatabaseTool getLoginModel];
         tradeOrder.purchaseEnterpriseId = loginModel.enterpriseId;
  
-        tradeOrder.inquiryType = inquiryType;
+        tradeOrder.partType = inquiryType;
         tradeOrder.tradeOrderPurchaseStatus = tradeOrderPurchaseStatus;
         tradeOrder.se_enterpriseOrderCode = self.se_enterpriseOrderCode;
+        
+        tradeOrder.se_supplierEnterpriseName = strGongYingShang;
+        tradeOrder.se_ownProjectName = strSuoShuXiangMu;
  
         
         postEntityBean.entity = tradeOrder.mj_keyValues;

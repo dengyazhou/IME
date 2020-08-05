@@ -74,7 +74,7 @@ class IQCChuKuYuanGongMaVC: UIViewController, UITextFieldDelegate{
             if let a = dic {
                 self.request(result: a["personnelCode"] as? String)
             } else {
-                self.request(result: nil)
+                MyAlertCenter.default()?.postAlert(withMessage: "请扫描员工二维码！")
             }
         }
         self.present(saoYiSao, animated: true, completion: nil)

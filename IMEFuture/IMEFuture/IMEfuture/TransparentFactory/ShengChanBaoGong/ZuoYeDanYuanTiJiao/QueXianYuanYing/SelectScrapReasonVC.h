@@ -35,8 +35,11 @@
 //scrappedPictureFiles 报废图片
 @property (nonatomic,copy) NSString *TypeUploadImageName;
 
-//只有多工单包工的时候需要传，作为图片的fileName
+//只有多工单报工的时候需要传，作为图片的fileName
 @property (nonatomic,copy) NSString *productionControlNumAndprocessOperationId;
+
+//只有多人报工的时候需要传，作为图片的fileName
+@property (nonatomic,copy) NSString *confirmUser;
 
 
 

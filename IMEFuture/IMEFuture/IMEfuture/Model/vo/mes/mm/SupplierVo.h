@@ -22,6 +22,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, copy) NSString * supplierText;
 
+
+
+
 @property (nonatomic, assign) BOOL isSelect;
 
 

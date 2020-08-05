@@ -328,8 +328,8 @@
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         LoginModel *loginModel = [DatabaseTool getLoginModel];
-        UserBean *userBean = [UserBean mj_objectWithKeyValues:loginModel.ucenterUser];
-        NSString * siteCode = userBean.enterpriseInfo.serialNo;
+        UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
+        NSString *siteCode = tpfUser.siteCode;
         
         MesPostEntityBean *mesPostEntityBean = [[MesPostEntityBean alloc] init];
         
@@ -368,8 +368,8 @@
 - (void)requestGetMouldByProductionControlNum {
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         LoginModel *loginModel = [DatabaseTool getLoginModel];
-        UserBean *userBean = [UserBean mj_objectWithKeyValues:loginModel.ucenterUser];
-        NSString * siteCode = userBean.enterpriseInfo.serialNo;
+        UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
+        NSString *siteCode = tpfUser.siteCode;
         
         MesPostEntityBean *mesPostEntityBean = [[MesPostEntityBean alloc] init];
         ProductionControlVo *productionControlVo = [[ProductionControlVo alloc] init];
@@ -586,8 +586,8 @@
     _submitType = 1;
     
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    UserBean *userBean = [UserBean mj_objectWithKeyValues:loginModel.ucenterUser];
-    NSString *siteCode = userBean.enterpriseInfo.serialNo;
+    UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
+    NSString *siteCode = tpfUser.siteCode;
     NSString *personnerlCode = [DatabaseTool t_TpfPWTableGetPersonnelCodeWithSiteCode:siteCode];
     if (![personnerlCode isEqualToString:@"(null)"]) {//绑定了人员
         _auditor = personnerlCode;
@@ -686,8 +686,8 @@
     [_uploadImageView prepare];
     
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    UserBean *userBean = [UserBean mj_objectWithKeyValues:loginModel.ucenterUser];
-    NSString * siteCode = userBean.enterpriseInfo.serialNo;
+    UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
+    NSString *siteCode = tpfUser.siteCode;
     
     MesPostEntityBean *mesPostEntityBean = [[MesPostEntityBean alloc] init];
     ReportWorkProductionOrderConfirmVo *productionOrderConfirmVo = [[ReportWorkProductionOrderConfirmVo alloc] init];
@@ -827,8 +827,8 @@
     
     
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    UserBean *userBean = [UserBean mj_objectWithKeyValues:loginModel.ucenterUser];
-    NSString * siteCode = userBean.enterpriseInfo.serialNo;
+    UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
+    NSString *siteCode = tpfUser.siteCode;
     NSString *personnelCode = [DatabaseTool t_TpfPWTableGetPersonnelCodeWithSiteCode:siteCode];
     NSString *workUnitCode = [DatabaseTool t_TpfPWTableGetWorkUnitCodeWithSiteCode:siteCode];
     

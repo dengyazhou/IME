@@ -255,8 +255,8 @@
     LoginModel *loginModel = [DatabaseTool getLoginModel];
     
     MesPostEntityBean * mesPostEntityBean = [[MesPostEntityBean alloc] init];
-    UserInfoVo * userInfoVo = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
-    mesPostEntityBean.entity = userInfoVo.mj_keyValues;
+    UserInfoVo * tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
+    mesPostEntityBean.entity = tpfUser.mj_keyValues;
     NSDictionary *dic = mesPostEntityBean.mj_keyValues;
     
     [HttpMamager postRequestWithURLString:DYZ_userRoleAuthorities_getUserRoleAuthorities parameters:dic success:^(id responseObjectModel) {
@@ -599,8 +599,8 @@
 #pragma mark 在制工单
         case 7:{
             LoginModel *loginModel = [DatabaseTool getLoginModel];
-            UserBean *userBean = [UserBean mj_objectWithKeyValues:loginModel.ucenterUser];
-            NSString *siteCode = userBean.enterpriseInfo.serialNo;
+            UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
+            NSString *siteCode = tpfUser.siteCode;
             NSString *personnerlCode = [DatabaseTool t_TpfPWTableGetPersonnelCodeWithSiteCode:siteCode];
             if (![personnerlCode isEqualToString:@"(null)"]) {
                 ZaiZhiGongDanVC *vc = [[ZaiZhiGongDanVC alloc] init];

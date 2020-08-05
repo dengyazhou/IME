@@ -25,14 +25,24 @@ class ScanMYuanGongVC: UIViewController, UITextFieldDelegate{
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         let loginModel = DatabaseTool.getLoginModel()
-        let userBean = UserBean.mj_object(withKeyValues: loginModel?.ucenterUser)
-        let siteCode = userBean?.enterpriseInfo.serialNo
-        let personnelCode = DatabaseTool.t_TpfPWTableGetPersonnelCode(withSiteCode: siteCode)
-        if !(personnelCode! == "(null)") {
-            self.request(result: personnelCode)
+        let tpfUser = UserInfoVo.mj_object(withKeyValues: loginModel?.tpfUser)
+        let siteCode = tpfUser?.siteCode
+        
+        let path = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.cachesDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first! + "/Array_PersonnelVo_"+siteCode!+".data"
+        let array = NSKeyedUnarchiver.unarchiveObject(withFile: path) as? [PersonnelVo]
+        
+        if !(array != nil) {
+            print("不存在")
+        } else if array?.count == 0 {
+            print("====0")
+        } else if array?.count == 1 {
+            print("====1")
+            let personnelVo = array?.first
+            self.request(result: personnelVo?.personnelCode)
         } else {
-            
+            print("====2")
         }
     }
     

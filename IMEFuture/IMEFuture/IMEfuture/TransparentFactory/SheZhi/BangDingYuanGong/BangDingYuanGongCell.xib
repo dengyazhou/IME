@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="62" id="KGk-i7-Jjw" customClass="BangDingYuanGongCell">
+            <rect key="frame" x="0.0" y="0.0" width="394" height="62"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="394" height="62"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aJ3-lZ-EoC">
+                        <rect key="frame" x="0.0" y="0.0" width="394" height="44"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="张三" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="onC-Gh-KiZ">
+                                <rect key="frame" x="15" y="12.5" width="33" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已扫描" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHf-L0-MPc">
+                                <rect key="frame" x="271" y="12.5" width="49" height="19.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="49" id="Zpg-E4-Xea"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3qb-ar-i2K">
+                                <rect key="frame" x="330" y="11" width="49" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="49" id="b4f-Kw-EQD"/>
+                                </constraints>
+                                <state key="normal" image="delete"/>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QIg-1M-NLj">
+                                <rect key="frame" x="0.0" y="43.5" width="394" height="0.5"/>
+                                <color key="backgroundColor" red="0.8666666666666667" green="0.8666666666666667" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.5" id="xv2-NY-IG7"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3qb-ar-i2K" firstAttribute="leading" secondItem="eHf-L0-MPc" secondAttribute="trailing" constant="10" id="10N-gC-Hda"/>
+                            <constraint firstAttribute="height" constant="44" id="6qC-c8-xQg"/>
+                            <constraint firstAttribute="bottom" secondItem="QIg-1M-NLj" secondAttribute="bottom" id="Bsh-0z-gOg"/>
+                            <constraint firstItem="QIg-1M-NLj" firstAttribute="leading" secondItem="aJ3-lZ-EoC" secondAttribute="leading" id="TuZ-pV-ac7"/>
+                            <constraint firstAttribute="trailing" secondItem="QIg-1M-NLj" secondAttribute="trailing" id="U3E-1K-Vl1"/>
+                            <constraint firstItem="eHf-L0-MPc" firstAttribute="centerY" secondItem="onC-Gh-KiZ" secondAttribute="centerY" id="iB5-X5-Mkj"/>
+                            <constraint firstItem="onC-Gh-KiZ" firstAttribute="centerY" secondItem="aJ3-lZ-EoC" secondAttribute="centerY" id="oGS-Gm-6er"/>
+                            <constraint firstItem="3qb-ar-i2K" firstAttribute="centerY" secondItem="onC-Gh-KiZ" secondAttribute="centerY" id="sv4-Ut-0Lc"/>
+                            <constraint firstAttribute="trailing" secondItem="3qb-ar-i2K" secondAttribute="trailing" constant="15" id="wwI-f1-siw"/>
+                            <constraint firstItem="onC-Gh-KiZ" firstAttribute="leading" secondItem="aJ3-lZ-EoC" secondAttribute="leading" constant="15" id="xrR-h8-T2G"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="aJ3-lZ-EoC" secondAttribute="bottom" id="W2S-Zm-8wV"/>
+                    <constraint firstAttribute="trailing" secondItem="aJ3-lZ-EoC" secondAttribute="trailing" id="d0N-if-54M"/>
+                    <constraint firstItem="aJ3-lZ-EoC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="fs7-aq-kQH"/>
+                    <constraint firstItem="aJ3-lZ-EoC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="lzK-QY-Dpq"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="buttonDelete" destination="3qb-ar-i2K" id="ouh-rv-Fn9"/>
+                <outlet property="label1" destination="eHf-L0-MPc" id="Gkd-zD-vgS"/>
+                <outlet property="name" destination="onC-Gh-KiZ" id="aRs-pK-6Rk"/>
+            </connections>
+            <point key="canvasLocation" x="191.30434782608697" y="143.30357142857142"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="delete" width="12.5" height="14"/>
+    </resources>
+</document>

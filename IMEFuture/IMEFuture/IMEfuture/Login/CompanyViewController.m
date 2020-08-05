@@ -138,13 +138,13 @@
         }
         
         if ([dic[@"userType"] isEqualToString:@"ENTERPRISE"]) {
-            @try
-            {
-                NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic[@"member"] options:NSJSONWritingPrettyPrinted error:nil];
-                obj.member = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-            }@catch (NSException * e) {
-                obj.member = nil;
-            }
+//            @try
+//            {
+//                NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic[@"member"] options:NSJSONWritingPrettyPrinted error:nil];
+//                obj.member = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+//            }@catch (NSException * e) {
+//                obj.member = nil;
+//            }
         }
         
         @try

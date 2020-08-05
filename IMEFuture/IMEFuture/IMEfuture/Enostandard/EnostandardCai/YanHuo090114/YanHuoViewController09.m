@@ -148,7 +148,7 @@
                 model1 = model11;
             }
         }
-        cell.labelPartName.text = [NSString stringWithFormat:@"%ld、零件号/规格：%@",indexPath.row+1,model1.partNumber!=nil?model1.partNumber:@""];
+        cell.labelPartName.text = [NSString stringWithFormat:@"%@、零件号/规格：%@",model1.itemNo!=nil?model1.itemNo:@"",model1.partNumber!=nil?model1.partNumber:@""];
         [cell setButtonSelectImageCallBack:^{
             self.index = indexPath.row;
             [self upLoadImage];
@@ -255,8 +255,13 @@
         if (inspectOrderItemVo.isMianjian.integerValue == 1) {
             inspectOrderItemVo.qualityInspectType = @"E";
         } else {
-            inspectOrderItemVo.qualityInspectType = @"S";
+            inspectOrderItemVo.qualityInspectType = @"F";
         }
+        
+        inspectOrderItemVo.spotCheckNum = [NSNumber numberWithDouble:0];
+        
+        double realInspectQuantity = inspectOrderItemVo.qualityQuantity.doubleValue + inspectOrderItemVo.defectiveQuantity.doubleValue;
+        inspectOrderItemVo.realInspectQuantity = [NSNumber numberWithDouble:realInspectQuantity];
         
         inspectOrderItemVo.realQualityQuantity = inspectOrderItemVo.qualityQuantity;
         
@@ -273,7 +278,9 @@
         if ([model.status isEqualToString:@"SUCCESS"]) {
             if ([url isEqualToString:DYZ_inspect_addTemp]) {//暂存
                 [[MyAlertCenter defaultCenter] postAlertWithMessage:@"暂存成功"];
-                [self initRequest];
+//                [self initRequest];
+                [self.navigationController popViewControllerAnimated:true];
+                _viewLoading.hidden = YES;
             } else {//质检
                 [[MyAlertCenter defaultCenter] postAlertWithMessage:@"验货成功"];
                 [self.navigationController popViewControllerAnimated:true];

@@ -202,6 +202,8 @@
     NSString *strDate = [formatter stringFromDate:[NSDate date]];
     if (self.productionControlNumAndprocessOperationId) {
         uploadImageBean.fileName = [NSString stringWithFormat:@"%@.png",self.productionControlNumAndprocessOperationId];
+    } else if (self.confirmUser) {
+        uploadImageBean.fileName = [NSString stringWithFormat:@"%@%@.png",strDate,self.confirmUser];
     } else {
         uploadImageBean.fileName = [NSString stringWithFormat:@"%@.png",strDate];
     }

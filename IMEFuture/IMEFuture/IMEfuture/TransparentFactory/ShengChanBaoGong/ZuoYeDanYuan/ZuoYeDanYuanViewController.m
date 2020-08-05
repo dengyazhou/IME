@@ -151,8 +151,8 @@
 - (IBAction)buttonKaiShi:(id)sender {
     _viewLoading.hidden = NO;
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    UserBean *userBean = [UserBean mj_objectWithKeyValues:loginModel.ucenterUser];
-    NSString * siteCode = userBean.enterpriseInfo.serialNo;
+    UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
+    NSString *siteCode = tpfUser.siteCode;
     
     MesPostEntityBean *mesPostEntityBean = [[MesPostEntityBean alloc] init];
     WorkTimeLogVo *workTimeLogVo = [[WorkTimeLogVo alloc] init];
@@ -203,8 +203,8 @@
     UIAlertAction *action0 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         _viewLoading.hidden = NO;
         LoginModel *loginModel = [DatabaseTool getLoginModel];
-        UserBean *userBean = [UserBean mj_objectWithKeyValues:loginModel.ucenterUser];
-        NSString * siteCode = userBean.enterpriseInfo.serialNo;
+        UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
+        NSString *siteCode = tpfUser.siteCode;
         
         MesPostEntityBean *mesPostEntityBean = [[MesPostEntityBean alloc] init];
         WorkTimeLogVo *workTimeLogVo = [[WorkTimeLogVo alloc] init];
@@ -258,8 +258,8 @@
         _viewLoading.hidden = NO;
         
         LoginModel *loginModel = [DatabaseTool getLoginModel];
-        UserBean *userBean = [UserBean mj_objectWithKeyValues:loginModel.ucenterUser];
-        NSString * siteCode = userBean.enterpriseInfo.serialNo;
+        UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
+        NSString *siteCode = tpfUser.siteCode;
         
         MesPostEntityBean *mesPostEntityBean = [[MesPostEntityBean alloc] init];
         WorkTimeLogVo *workTimeLogVo = [[WorkTimeLogVo alloc] init];
@@ -309,8 +309,8 @@
     _viewLoading.hidden = NO;
     
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    UserBean *userBean = [UserBean mj_objectWithKeyValues:loginModel.ucenterUser];
-    NSString * siteCode = userBean.enterpriseInfo.serialNo;
+    UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
+    NSString *siteCode = tpfUser.siteCode;
     
     MesPostEntityBean *mesPostEntityBean = [[MesPostEntityBean alloc] init];
     WorkTimeLogVo *workTimeLogVo = [[WorkTimeLogVo alloc] init];
@@ -355,8 +355,8 @@
 - (void)request{
     
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    UserBean *userBean = [UserBean mj_objectWithKeyValues:loginModel.ucenterUser];
-    NSString * siteCode = userBean.enterpriseInfo.serialNo;
+    UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
+    NSString *siteCode = tpfUser.siteCode;
     
     MesPostEntityBean *mesPostEntityBean = [[MesPostEntityBean alloc] init];
     WorkTimeLogVo *workTimeLogVo = [[WorkTimeLogVo alloc] init];
@@ -486,8 +486,8 @@
     _viewLoading.hidden = NO;
     
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    UserBean *userBean = [UserBean mj_objectWithKeyValues:loginModel.ucenterUser];
-    NSString * siteCode = userBean.enterpriseInfo.serialNo;
+    UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
+    NSString *siteCode = tpfUser.siteCode;
     
     MesPostEntityBean *mesPostEntityBean = [[MesPostEntityBean alloc] init];
     ShutDownCauseVo *shutDownCauseVo = [[ShutDownCauseVo alloc] init];
@@ -527,8 +527,8 @@
 
 - (IBAction)back:(id)sender {
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    UserBean *userBean = [UserBean mj_objectWithKeyValues:loginModel.ucenterUser];
-    NSString * siteCode = userBean.enterpriseInfo.serialNo;
+    UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
+    NSString *siteCode = tpfUser.siteCode;
     NSString *personnelCode = [DatabaseTool t_TpfPWTableGetPersonnelCodeWithSiteCode:siteCode];
     NSString *workUnitCode = [DatabaseTool t_TpfPWTableGetWorkUnitCodeWithSiteCode:siteCode];
     

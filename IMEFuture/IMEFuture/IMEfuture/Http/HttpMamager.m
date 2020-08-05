@@ -265,7 +265,7 @@ static NSTimeInterval const defineTimeoutInterval = 30.0f;
 //    NSString *cerPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingString:@"/all.imefuture.com.cer"];;
     
     //先导入证书
-    NSString *cerPath = [[NSBundle mainBundle] pathForResource:@"imefuture.com" ofType:@"cer"];//证书的路径
+    NSString *cerPath = [[NSBundle mainBundle] pathForResource:@"server" ofType:@"cer"];//证书的路径
     
     
 //    NSLog(@"%@",cerPath);

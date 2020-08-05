@@ -47,16 +47,30 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    UserBean *userBean = [UserBean mj_objectWithKeyValues:loginModel.ucenterUser];
-    NSString * siteCode = userBean.enterpriseInfo.serialNo;
-    NSString *personnelCode = [DatabaseTool t_TpfPWTableGetPersonnelCodeWithSiteCode:siteCode];
-    if (![personnelCode isEqualToString:@"(null)"]) {
-        NSLog(@"(null):存在");
-        [self request:personnelCode];
+    UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
+    NSString *siteCode = tpfUser.siteCode;
+    
+    NSString * path = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:[NSString stringWithFormat:@"Array_PersonnelVo_%@.data",siteCode]];
+    NSMutableArray *array = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+    if (!array) {
+        
+    } else if (array.count == 0) {
+        
+    } else if (array.count == 1) {
+        PersonnelVo *personnelVo = array[0];
+        [self request:personnelVo.personnelCode];
     } else {
-        NSLog(@"(null):不存在");
         
     }
+    
+    
+//    NSString *personnelCode = [DatabaseTool t_TpfPWTableGetPersonnelCodeWithSiteCode:siteCode];
+//    if (![personnelCode isEqualToString:@"(null)"]) {
+//        NSLog(@"(null):存在");
+//        [self request:personnelCode];
+//    } else {
+//        NSLog(@"(null):不存在");
+//    }
 }
 
 - (void)viewDidLoad {
@@ -132,8 +146,8 @@
             
             
             LoginModel *loginModel = [DatabaseTool getLoginModel];
-            UserBean *userBean = [UserBean mj_objectWithKeyValues:loginModel.ucenterUser];
-            NSString * siteCode = userBean.enterpriseInfo.serialNo;
+            UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
+            NSString *siteCode = tpfUser.siteCode;
             
             MesPostEntityBean *mesPostEntityBean = [[MesPostEntityBean alloc] init];
             WorkTimeLogVo *workTimeLogVo = [[WorkTimeLogVo alloc] init];
@@ -209,8 +223,8 @@
 - (IBAction)back:(id)sender {
     
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    UserBean *userBean = [UserBean mj_objectWithKeyValues:loginModel.ucenterUser];
-    NSString * siteCode = userBean.enterpriseInfo.serialNo;
+    UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
+    NSString *siteCode = tpfUser.siteCode;
     NSString *personnelCode = [DatabaseTool t_TpfPWTableGetPersonnelCodeWithSiteCode:siteCode];
     NSString *workUnitCode = [DatabaseTool t_TpfPWTableGetWorkUnitCodeWithSiteCode:siteCode];
     

@@ -951,8 +951,6 @@
                         }
                     }
                     if (isTrue) {
-//                        [self goToPurchaseTabBarController];
-//                        [self webViewWithTouMingGongChangTitle:@"透明工厂" withURL:IME_TouMingGongChang];
                         NSDate *date = [NSDate date];
                         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
                         formatter.dateFormat = @"hhmmss";
@@ -978,8 +976,6 @@
                     }
                     if (isTrue) {
                         if ([userBeanModel.hasTmgc integerValue] == 1) {
-//                            [self goToPurchaseTabBarController];
-//                            [self webViewWithTouMingGongChangTitle:@"透明工厂" withURL:IME_TouMingGongChang];
                             NSDate *date = [NSDate date];
                             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
                             formatter.dateFormat = @"hhmmss";
@@ -1009,12 +1005,75 @@
 }
 
 - (void)webViewWithTouMingGongChangTitle:(NSString *)title withURL:(NSString *)url{
-//    WebDatailURLTouMingGongChang *webDatailURL = [[WebDatailURLTouMingGongChang alloc] init];
-//    webDatailURL.detailUrl = url;
-//    [self.navigationController pushViewController:webDatailURL animated:YES];
+    LoginModel *loginModel = [DatabaseTool getLoginModel];
+    if (loginModel.tpfUser) {
+        UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
+        [self requesttpfGetparameterlistWithSiteCode:tpfUser.siteCode callBack:^{
+            TpfMaiViewController *tpfMaiViewController = [[TpfMaiViewController alloc] init];
+            [self.navigationController pushViewController:tpfMaiViewController animated:YES];
+        }];
+    } else {
+        [[MyAlertCenter defaultCenter] postAlertWithMessage:@"tpfUser 不存在"];
+    }
+}
+
+#pragma mark 获取透明工厂配置参数
+- (void)requesttpfGetparameterlistWithSiteCode:(NSString *)siteCode callBack:(void(^)(void))block{
+    __block BOOL isSuccess = true;
+    _viewLoading1.hidden = false;
     
-    TpfMaiViewController *tpfMaiViewController = [[TpfMaiViewController alloc] init];
-    [self.navigationController pushViewController:tpfMaiViewController animated:YES];
+    dispatch_queue_t queue = dispatch_get_global_queue(0, 0);
+    dispatch_group_t group = dispatch_group_create();
+    
+    dispatch_group_enter(group);
+    dispatch_async(queue, ^{
+        MesPostEntityBean *postEntityBean = [[MesPostEntityBean alloc] init];
+        ParameterEntityVo *vo = [[ParameterEntityVo alloc] init];
+        vo.siteCode = siteCode;
+        postEntityBean.entity = vo.mj_keyValues;
+        NSDictionary *dic = postEntityBean.mj_keyValues;
+        [HttpMamager postRequestWithURLString:DYZ_mes_parameter_getparameterlist parameters:dic success:^(id responseObjectModel) {
+            
+            ReturnListBean *returnListBean = responseObjectModel;
+            if ([returnListBean.status isEqualToString:@"SUCCESS"]) {
+                NSMutableArray <ParameterEntityVo *> *array =  [ParameterEntityVo mj_objectArrayWithKeyValuesArray:returnListBean.list];
+                for (ParameterEntityVo *vo in array) {
+                    if ([vo.parameterCode isEqualToString:@"MATERIALARRIVEDORDEROPERATINGMODE"]) {// IQC入库 模式
+                        for (ParameterValueVo *valueVo in vo.parameterValue) {
+                            if (valueVo.defaultFlag.integerValue == 1) {
+                                [GlobalSettingManager shareGlobalSettingManager].iQCPattern = valueVo.value.integerValue;
+                            }
+                        }
+                    }
+                    if ([vo.parameterCode isEqualToString:@"PLANWORKTIMEDISPLAY"]) {// 计划工时 是否显示
+                        [GlobalSettingManager shareGlobalSettingManager].showPlanHour = vo.defaultValue.integerValue;
+                    }
+                    if ([vo.parameterCode isEqualToString:@"ALLOWSINGLEPERSONMULTITASK"]) {// 多工单报工入口 是否显示
+                        [GlobalSettingManager shareGlobalSettingManager].showMultiltask = vo.defaultValue.integerValue;
+                    }
+                }
+                isSuccess = true;
+                dispatch_group_leave(group);
+            } else {
+                [[MyAlertCenter defaultCenter] postAlertWithMessage:returnListBean.returnMsg];
+                isSuccess = false;
+                dispatch_group_leave(group);
+            }
+            
+        } fail:^(NSError *error) {
+            isSuccess = false;
+            dispatch_group_leave(group);
+            
+            
+        } isKindOfModel:NSClassFromString(@"ReturnListBean")];
+    });
+    
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        self->_viewLoading1.hidden = true;
+        if (isSuccess) {
+            block();
+        }
+    });
 }
 
 

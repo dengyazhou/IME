@@ -32,3 +32,5 @@
 #import "TpfCheckBigPictureAndDeletePictureVC.h"
 #import "UploadImageView.h"
 #import "GlobalSettingManager.h"
+#import "ScanTuZhiViewController.h"
+#import "ScanZuoYeDanYuanViewController.h"

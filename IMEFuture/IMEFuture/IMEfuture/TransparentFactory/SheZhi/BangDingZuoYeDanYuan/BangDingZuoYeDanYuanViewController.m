@@ -53,8 +53,8 @@
     self.view11.hidden = YES;
     
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    UserBean *userBean = [UserBean mj_objectWithKeyValues:loginModel.ucenterUser];
-    NSString * siteCode = userBean.enterpriseInfo.serialNo;
+    UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
+    NSString *siteCode = tpfUser.siteCode;
     NSString *workUnitCode = [DatabaseTool t_TpfPWTableGetWorkUnitCodeWithSiteCode:siteCode];
 
     if (![workUnitCode isEqualToString:@"(null)"]) {
@@ -127,8 +127,8 @@
     
     _viewLoading.hidden = NO;
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    UserBean *userBean = [UserBean mj_objectWithKeyValues:loginModel.ucenterUser];
-    NSString * siteCode = userBean.enterpriseInfo.serialNo;
+    UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
+    NSString *siteCode = tpfUser.siteCode;
     
     MesPostEntityBean *mesPostEntityBean = [[MesPostEntityBean alloc] init];
     ReportWorkWorkUnitScanVo *workUnitScanVo = [[ReportWorkWorkUnitScanVo alloc] init];
@@ -155,8 +155,8 @@
 #pragma mark 重新绑定
 - (IBAction)buttonChongXinBangDing:(id)sender {
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    UserBean *userBean = [UserBean mj_objectWithKeyValues:loginModel.ucenterUser];
-    NSString * siteCode = userBean.enterpriseInfo.serialNo;
+    UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
+    NSString *siteCode = tpfUser.siteCode;
     [DatabaseTool t_TpfPWTableUpdateWithSiteCode:siteCode andWorkUnitCode:nil andWorkUnitText:nil];
     [self viewWillAppear:YES];
 }

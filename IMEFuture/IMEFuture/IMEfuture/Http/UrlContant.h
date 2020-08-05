@@ -11,72 +11,72 @@
 
 //正式环境
 //接口url
-#define DYZBaseURL @"https://mgateway.imefuture.com"
-#define DYZBaseURLItem(_item_)[NSString stringWithFormat:@"%@%@",DYZBaseURL,_item_]
-//通知
-#define baseNotification @"https://notification.imefuture.com"
-#define notification(_pathNo_)[NSString stringWithFormat:@"%@%@",baseNotification,_pathNo_]
-//协议
-#define IME_AGREEMENT_PUR @"https://efeibiao.imefuture.com/agreement/purchaser.html?entName="
-#define IME_AGREEMENT_SUP @"https://efeibiao.imefuture.com/agreement/supplier.html?entName="
-//忘记密码
-#define PostForgetPassword @"https://account.imefuture.com/forgetpw/forgetPassword.html"
-//帐号注册
-#define PostAccount @"https://account.imefuture.com/ucweb/register/goRegister.html?https://account.imefuture.com/ucweb/login/goLogin.html&ss=iphone"
-//设置url
-#define PostURLSheZhi(_path_)[NSString stringWithFormat:@"https://account.imefuture.com%@",_path_]
-//智造家e非标
-#define IME_betand @"https://www.imefuture.com/feibiao/index.html"
-//非标管家
-#define IME_beta @"https://www.imefuture.com/feibiaoGJ/?module=feibiaoGJ"
-//透明工厂
-#define baseUTLTpf @"https://tpf.imefuture.com"
-#define IME_TouMingGongChang @"https://tpf.imefuture.com/mes/pages/m/index.html"
-#define IME_TouMingGongChangDengLu @"https://tpf.imefuture.com/mes/manage/mobileGetSession"
-#define IME_TouMingGongChangXuanChuanYe @"https://www.imefuture.com/tpf/?module=tpf"
-//智客管家
-#define IME_ThiKeGuanJia @"https://m.izker.com"
-//图纸云
-#define IME_TuZhiYun @"https://www.imefuture.com/drawingCloud/?module=drawingCloud"
-//创建企业
-#define IME_CreatEnterprise @"https://account.imefuture.com/ucweb/enterpriseReg/goEpReg.html"
-//隐私协议
-#define IME_privacy @"https://www.imefuture.com/privacy.html"
+//#define DYZBaseURL @"https://mgateway.imefuture.com"
+//#define DYZBaseURLItem(_item_)[NSString stringWithFormat:@"%@%@",DYZBaseURL,_item_]
+////通知
+//#define baseNotification @"https://notification.imefuture.com"
+//#define notification(_pathNo_)[NSString stringWithFormat:@"%@%@",baseNotification,_pathNo_]
+////协议
+//#define IME_AGREEMENT_PUR @"https://efeibiao.imefuture.com/agreement/purchaser.html?entName="
+//#define IME_AGREEMENT_SUP @"https://efeibiao.imefuture.com/agreement/supplier.html?entName="
+////忘记密码
+//#define PostForgetPassword @"https://account.imefuture.com/forgetpw/forgetPassword.html"
+////帐号注册
+//#define PostAccount @"https://account.imefuture.com/ucweb/register/goRegister.html?https://account.imefuture.com/ucweb/login/goLogin.html&ss=iphone"
+////设置url
+//#define PostURLSheZhi(_path_)[NSString stringWithFormat:@"https://account.imefuture.com%@",_path_]
+////智造家e非标
+//#define IME_betand @"https://www.imefuture.com/feibiao/index.html"
+////非标管家
+//#define IME_beta @"https://www.imefuture.com/feibiaoGJ/?module=feibiaoGJ"
+////透明工厂
+//#define baseUTLTpf @"https://tpf.imefuture.com"
+//#define IME_TouMingGongChang @"https://tpf.imefuture.com/mes/pages/m/index.html"
+//#define IME_TouMingGongChangDengLu @"https://tpf.imefuture.com/mes/manage/mobileGetSession"
+//#define IME_TouMingGongChangXuanChuanYe @"https://www.imefuture.com/tpf/?module=tpf"
+////智客管家
+//#define IME_ThiKeGuanJia @"https://m.izker.com"
+////图纸云
+//#define IME_TuZhiYun @"https://www.imefuture.com/drawingCloud/?module=drawingCloud"
+////创建企业
+//#define IME_CreatEnterprise @"https://account.imefuture.com/ucweb/enterpriseReg/goEpReg.html"
+////隐私协议
+//#define IME_privacy @"https://www.imefuture.com/privacy.html"
 
 
 //测试环境
 //接口url
-//#define DYZBaseURL @"https://betamapi.imefuture.com"
-//#define DYZBaseURLItem(_item_)[NSString stringWithFormat:@"%@%@",DYZBaseURL,_item_]
-////通知
-//#define baseNotification @"http://beta.notification.imefuture.com"
-//#define notification(_pathNo_)[NSString stringWithFormat:@"%@%@",baseNotification,_pathNo_]
-////协议
-//#define IME_AGREEMENT_PUR @"https://betand.imefuture.com/agreement/purchaser.html?entName="
-//#define IME_AGREEMENT_SUP @"https://betand.imefuture.com/agreement/supplier.html?entName="
-////忘记密码
-//#define PostForgetPassword @"https://account.imefuture.com/forgetpw/forgetPassword.html"
-////帐号注册
-//#define PostAccount @"https://betaac.imefuture.com/ucweb/register/goRegister.html?https://betaac.imefuture.com/ucweb/login/goLogin.html&ss=iphone"
-////设置url
-//#define PostURLSheZhi(_path_)[NSString stringWithFormat:@"https://betaac.imefuture.com%@",_path_]
-////智造家e非标
-//#define IME_betand @"https://beta.imefuture.com/feibiao/index.html"
-////非标管家
-//#define IME_beta @"https://beta.imefuture.com/feibiaoGJ/?module=feibiaoGJ"
-////透明工厂
-//#define baseUTLTpf @"https://testtpf.imefuture.com"
-//#define IME_TouMingGongChang @"https://testtpf.imefuture.com/mes/pages/m/index.html"
-//#define IME_TouMingGongChangDengLu @"https://testtpf.imefuture.com/mes/manage/mobileGetSession"
-//#define IME_TouMingGongChangXuanChuanYe @"https://beta.imefuture.com/tpf/?module=tpf"
-////智客管家
-//#define IME_ThiKeGuanJia @"https://betawk.izker.com"
-////图纸云
-//#define IME_TuZhiYun @"https://beta.imefuture.com/drawingCloud/?module=drawingCloud"
-////创建企业
-//#define IME_CreatEnterprise @"http://testuc.imefuture.com/ucweb/enterpriseReg/goEpReg.html"
-////隐私协议
-//#define IME_privacy @"https://beta.imefuture.com/privacy.html"
+#define DYZBaseURL @"https://betamapi.imefuture.com"
+#define DYZBaseURLItem(_item_)[NSString stringWithFormat:@"%@%@",DYZBaseURL,_item_]
+//通知
+#define baseNotification @"http://beta.notification.imefuture.com"
+#define notification(_pathNo_)[NSString stringWithFormat:@"%@%@",baseNotification,_pathNo_]
+//协议
+#define IME_AGREEMENT_PUR @"https://betand.imefuture.com/agreement/purchaser.html?entName="
+#define IME_AGREEMENT_SUP @"https://betand.imefuture.com/agreement/supplier.html?entName="
+//忘记密码
+#define PostForgetPassword @"https://account.imefuture.com/forgetpw/forgetPassword.html"
+//帐号注册
+#define PostAccount @"https://betaac.imefuture.com/ucweb/register/goRegister.html?https://betaac.imefuture.com/ucweb/login/goLogin.html&ss=iphone"
+//设置url
+#define PostURLSheZhi(_path_)[NSString stringWithFormat:@"https://betaac.imefuture.com%@",_path_]
+//智造家e非标
+#define IME_betand @"https://beta.imefuture.com/feibiao/index.html"
+//非标管家
+#define IME_beta @"https://beta.imefuture.com/feibiaoGJ/?module=feibiaoGJ"
+//透明工厂
+#define baseUTLTpf @"https://testtpf.imefuture.com"
+#define IME_TouMingGongChang @"https://testtpf.imefuture.com/mes/pages/m/index.html"
+#define IME_TouMingGongChangDengLu @"https://testtpf.imefuture.com/mes/manage/mobileGetSession"
+#define IME_TouMingGongChangXuanChuanYe @"https://beta.imefuture.com/tpf/?module=tpf"
+//智客管家
+#define IME_ThiKeGuanJia @"https://betawk.izker.com"
+//图纸云
+#define IME_TuZhiYun @"https://beta.imefuture.com/drawingCloud/?module=drawingCloud"
+//创建企业
+#define IME_CreatEnterprise @"http://testuc.imefuture.com/ucweb/enterpriseReg/goEpReg.html"
+//隐私协议
+#define IME_privacy @"https://beta.imefuture.com/privacy.html"
 
 //本地
 //接口url
@@ -573,5 +573,23 @@
 
 //获取非标token
 #define DYZ_ucenter_user_getUserEFEIBIAOToken [NSString stringWithFormat:@"%@/ucenter/user/getUserEFEIBIAOToken",DYZBaseURLItem(@"/rs")]
+
+#define DYZ_multiUserWork_getMultiWorkingOrders [NSString stringWithFormat:@"%@/mes/multiUserWork/getMultiWorkingOrders",DYZBaseURLItem(@"/rs")]
+
+//创建多人报工单
+#define DYZ_multiUserWork_createMultiUserWork [NSString stringWithFormat:@"%@/mes/multiUserWork/createMultiUserWork",DYZBaseURLItem(@"/rs")]
+
+//扫描完成获得开工界面
+#define DYZ_multiUserWork_getWorkTime [NSString stringWithFormat:@"%@/mes/multiUserWork/getWorkTime",DYZBaseURLItem(@"/rs")]
+
+//开始-暂停-完工接口
+#define DYZ_multiUserWork_workLog [NSString stringWithFormat:@"%@/mes/multiUserWork/workLog",DYZBaseURLItem(@"/rs")]
+
+//继续接口
+#define DYZ_multiUserWork_continueWork [NSString stringWithFormat:@"%@/mes/multiUserWork/continueWork",DYZBaseURLItem(@"/rs")]
+
+//多人报工完成提交
+#define DYZ_multiUserWork_doMultiUserConfirmProduction [NSString stringWithFormat:@"%@/mes/multiUserWork/doMultiUserConfirmProduction",DYZBaseURLItem(@"/rs")]
+
 
 #endif /* UrlContant_h */

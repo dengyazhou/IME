@@ -84,20 +84,23 @@ class WeiWaiSelectSupplierVC: UIViewController, UITableViewDelegate, UITableView
         let model = self.dataSupplierVo[indexPath.row]
         let cell: WeiWaiSelectSupplierCell = tableView.cellForRow(at: indexPath) as! WeiWaiSelectSupplierCell
         
+        model.isSelect = !model.isSelect
+        if model.isSelect {
+            cell.viewGb.backgroundColor = UIColor.blue
+        } else {
+            cell.viewGb.backgroundColor = UIColor.white
+        }
         
         var add = 0
         for item in self.dataSupplierVo {
-            if item.isSelect {
-                let cellTemp: WeiWaiSelectSupplierCell = tableView.cellForRow(at: IndexPath.init(row: add, section: 0)) as! WeiWaiSelectSupplierCell
-                cellTemp.viewGb.backgroundColor = UIColor.white
+            if indexPath.row != add {
+                if item.isSelect {
+                    let cellTemp: WeiWaiSelectSupplierCell = tableView.cellForRow(at: IndexPath.init(row: add, section: 0)) as! WeiWaiSelectSupplierCell
+                    cellTemp.viewGb.backgroundColor = UIColor.white
+                    item.isSelect = false;
+                }
             }
             add+=1
-            item.isSelect = false;
-        }
-        
-        model.isSelect = true
-        if model.isSelect {
-            cell.viewGb.backgroundColor = UIColor.gray
         }
     }
     
@@ -111,20 +114,22 @@ class WeiWaiSelectSupplierVC: UIViewController, UITableViewDelegate, UITableView
                 model = item
             }
         }
-        if model == nil {
-            MyAlertCenter.default().postAlert(withMessage: "请选择供应商")
-            return
-        }
         
+        let loginModel: LoginModel = DatabaseTool.getLoginModel()
+        let userBean = UserBean.mj_object(withKeyValues: loginModel.ucenterUser)
+        let siteCode = userBean?.enterpriseInfo.serialNo
         
         let mesPostEntityBean: MesPostEntityBean = MesPostEntityBean.init()
-        
         var operationOutsourcingOrderVo = OperationOutsourcingOrderVo()
-        operationOutsourcingOrderVo.siteCode = model?.siteCode
-        operationOutsourcingOrderVo.supplierCode = model!.supplierCode
+        operationOutsourcingOrderVo.siteCode = siteCode
+        
+        if model != nil {
+//            MyAlertCenter.default().postAlert(withMessage: "请选择供应商")
+//            return
+            operationOutsourcingOrderVo.supplierCode = model!.supplierCode
+        }
         
         var dataArrayTemp = NSMutableArray.init()
-        
         
         for item in self.dataArray {
             var operationOutsourcingOrderItemVo = OperationOutsourcingOrderItemVo()

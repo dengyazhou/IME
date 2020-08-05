@@ -18,6 +18,38 @@
             endingLineNumber = "499"
             landmarkName = "requestDoConfirmProduction()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "586678DC-5570-493A-8530-A080B1AC119C - db9ce68e1819d99"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IMEFuture.ScanMultiCompleteVC.requestDoConfirmProduction() -&gt; ()"
+                  moduleName = "IMEFuture"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dengyazhouPro/Desktop/Git/IME/IMEFuture/IMEFuture/IMEfuture/TransparentFactory/MultiBaoGong%20/ScanMultiComplete/ScanMultiCompleteVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "500"
+                  endingLineNumber = "500"
+                  offsetFromSymbolStart = "24722">
+               </Location>
+               <Location
+                  uuid = "586678DC-5570-493A-8530-A080B1AC119C - f52be49d0dc3db1e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Any&gt;) -&gt; () in IMEFuture.ScanMultiCompleteVC.requestDoConfirmProduction() -&gt; ()"
+                  moduleName = "IMEFuture"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dengyazhouPro/Desktop/Git/IME/IMEFuture/IMEFuture/IMEfuture/TransparentFactory/MultiBaoGong%20/ScanMultiComplete/ScanMultiCompleteVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "500"
+                  endingLineNumber = "500"
+                  offsetFromSymbolStart = "0">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -46,21 +78,133 @@
             endingLineNumber = "617"
             landmarkName = "buttonCommit(_:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "AAD2CB36-B6C2-4486-A09B-9D4DFCFC32C2 - b48638f425f1834e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IMEFuture.IQCJianYanJieGuoVC.buttonCommit(Any) -&gt; ()"
+                  moduleName = "IMEFuture"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dengyazhouPro/Desktop/Git/IME/IMEFuture/IMEFuture/IMEfuture/TransparentFactory/IQC/JianYanJieGuo/IQCJianYanJieGuoVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "618"
+                  endingLineNumber = "618"
+                  offsetFromSymbolStart = "21745">
+               </Location>
+               <Location
+                  uuid = "AAD2CB36-B6C2-4486-A09B-9D4DFCFC32C2 - 9c13cabff92c0188"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Any&gt;) -&gt; () in IMEFuture.IQCJianYanJieGuoVC.buttonCommit(Any) -&gt; ()"
+                  moduleName = "IMEFuture"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dengyazhouPro/Desktop/Git/IME/IMEFuture/IMEFuture/IMEfuture/TransparentFactory/IQC/JianYanJieGuo/IQCJianYanJieGuoVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "618"
+                  endingLineNumber = "618"
+                  offsetFromSymbolStart = "0">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2BF964BD-0B7C-4E11-A0AB-FAF815D26E16"
+            uuid = "C3FD6CD2-B649-4AB8-A5A4-03B3DE068120"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IMEFuture/IMEfuture/Enostandard/EnostandardCai/ZhiJIanSearch090114/ZhiJianSearchViewController09.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
             landmarkName = "-requestDeliverCode:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9AC185C9-B146-4DF6-9EE3-139B5356DF54"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IMEFuture/IMEfuture/Enostandard/EnostandardCai/YanHuo090114/YanHuoViewController09.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "326"
+            endingLineNumber = "326"
+            landmarkName = "-initRequest"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "45727A5A-8EA5-4CF5-9987-BD900CAED076"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IMEFuture/IMEfuture/Enostandard/EnostandardCai/YanHuo090114/YanHuoViewController09.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "307"
+            endingLineNumber = "307"
+            landmarkName = "-initRequest"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A81517BC-64E1-4E98-862C-4DFB8E27C6F6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IMEFuture/IMEfuture/Enostandard/EnostandardCai/YanHuo090114/YanHuoViewController09.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "310"
+            endingLineNumber = "310"
+            landmarkName = "-initRequest"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "89D79716-DC02-4CA5-A10C-F26F53658C66"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IMEFuture/IMEfuture/Enostandard/EnostandardCai/YanHuo090114/YanHuoViewController09.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "314"
+            endingLineNumber = "314"
+            landmarkName = "-initRequest"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "86047720-7473-41AE-AE5B-BE81EE7687FD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IMEFuture/IMEfuture/Http/HttpMamager.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "+postRequestLoginWithURLString:parameters:success:fail:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

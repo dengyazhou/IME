@@ -133,6 +133,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy) NSString * deliverOrderItemId;
 
 
+@property (nonatomic, copy) NSString * itemNo;
+
+
 @property (nonatomic,copy) NSString *receivingArea ;//DYZ
 @property (nonatomic,copy) NSString *receiveRemark;//DYZ
 @property (nonatomic,strong) NSNumber *isMianJianDYZ;//DYZ
