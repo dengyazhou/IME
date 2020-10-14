@@ -14,6 +14,7 @@
 #define kMainH ([UIScreen mainScreen].bounds.size.height)
 
 #define colorRGB(_R_,_G_,_B_) [UIColor colorWithRed:_R_/255.0 green:_G_/255.0 blue:_B_/255.0 alpha:1]
+#define colorRGBA(_R_,_G_,_B_,_A_) [UIColor colorWithRed:_R_/255.0 green:_G_/255.0 blue:_B_/255.0 alpha:_A_]
 
 #define colorCai colorRGB(255, 132, 0)
 #define colorGong colorRGB(0, 168, 255)
@@ -22,7 +23,7 @@
 
 #define colorText153 colorRGB(153, 153, 153)
 
-#define pageSizeDYZ @8
+#define pageSizeDYZ @10
 
 
 #define Screen_Height [UIScreen mainScreen].bounds.size.height

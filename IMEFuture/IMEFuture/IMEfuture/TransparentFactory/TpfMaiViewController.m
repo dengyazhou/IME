@@ -26,6 +26,11 @@
 #import "ScanGongXuViewController.h"
 #import "SweepTheCodeReturnsVC.h"
 #import "GlobalSettingManager.h"
+#import "PadProductionWorkViewController.h"
+#import "PlannedReleaseViewController.h"
+#import "ProductionDispatchViewController.h"
+#import "MouldManagerViewController.h"
+#import "EMScanYGMViewController.h"
 
 
 
@@ -95,6 +100,18 @@
 @property (weak, nonatomic) IBOutlet UILabel *label13;
 @property (weak, nonatomic) IBOutlet UIImageView *image13;
 
+@property (weak, nonatomic) IBOutlet UIButton *button14;
+@property (weak, nonatomic) IBOutlet UILabel *label14;//模具发放还回
+@property (weak, nonatomic) IBOutlet UIImageView *image14;
+
+@property (weak, nonatomic) IBOutlet UIButton *button15;
+@property (weak, nonatomic) IBOutlet UILabel *label15;//设备保养
+@property (weak, nonatomic) IBOutlet UIImageView *image15;
+
+
+@property (weak, nonatomic) IBOutlet UIButton *button50;
+@property (weak, nonatomic) IBOutlet UILabel *label50;
+@property (weak, nonatomic) IBOutlet UIImageView *image50;
 
 
 
@@ -114,6 +131,17 @@
 @property (weak, nonatomic) IBOutlet UIButton *button103;
 @property (weak, nonatomic) IBOutlet UILabel *label103;
 @property (weak, nonatomic) IBOutlet UIImageView *image103;
+
+
+
+
+@property (weak, nonatomic) IBOutlet UIButton *button200;
+@property (weak, nonatomic) IBOutlet UILabel *labe200;//计划下达
+@property (weak, nonatomic) IBOutlet UIImageView *image200;
+
+@property (weak, nonatomic) IBOutlet UIButton *button201;
+@property (weak, nonatomic) IBOutlet UILabel *labe201;//生产派工
+@property (weak, nonatomic) IBOutlet UIImageView *image201;
 
 
 @property (weak, nonatomic) IBOutlet UIButton *buttonSetUp;
@@ -268,14 +296,42 @@
             self->_arrayUserRoleAuthorities = returnListBean.list;
             [GlobalSettingManager shareGlobalSettingManager].userRoleAuthorities = self->_arrayUserRoleAuthorities;
             
+            if ([self->_arrayUserRoleAuthorities containsObject:@"DECOMPOSEPRODUCTIONORDER"]) {//计划下达
+                self.image200.alpha = 1;
+                self.labe200.alpha = 1;
+                self.button200.enabled = YES;
+            } else {
+                self.image200.alpha = 0.4;
+                self.labe200.alpha = 0.4;
+                self.button200.enabled = NO;
+            }
+            
+            if ([self->_arrayUserRoleAuthorities containsObject:@"PLACEORDERPRODUCTIONCONTROL"]) {//生产派工
+                self.image201.alpha = 1;
+                self.labe201.alpha = 1;
+                self.button201.enabled = YES;
+            } else {
+                self.image201.alpha = 0.4;
+                self.labe201.alpha = 0.4;
+                self.button201.enabled = NO;
+            }
+            
             if ([self->_arrayUserRoleAuthorities containsObject:@"PRODUCTIONRECORD"]) {//生产报工
                 self.image00.alpha = 1;
                 self.label00.alpha = 1;
                 self.button00.enabled = YES;
+                
+                self.image50.alpha = 1;//点选
+                self.label50.alpha = 1;
+                self.button50.enabled = YES;
             } else {
                 self.image00.alpha = 0.4;
                 self.label00.alpha = 0.4;
                 self.button00.enabled = NO;
+                
+                self.image50.alpha = 0.4;//点选
+                self.label50.alpha = 0.4;
+                self.button50.enabled = NO;
             }
             
             if ([GlobalSettingManager shareGlobalSettingManager].showMultiltask == 1) {
@@ -430,6 +486,26 @@
                 self.button13.enabled = NO;
             }
             
+            if ([self->_arrayUserRoleAuthorities containsObject:@"MODELSEQUENCEAPP"]) {//模具发放还回
+                self.image14.alpha = 1;
+                self.label14.alpha = 1;
+                self.button14.enabled = YES;
+            } else {
+                self.image14.alpha = 0.4;
+                self.label14.alpha = 0.4;
+                self.button14.enabled = NO;
+            }
+            
+            if ([self->_arrayUserRoleAuthorities containsObject:@"EQUIPMENTMAINTENANCEPDA"]) {//设备保养
+                self.image15.alpha = 1;
+                self.label15.alpha = 1;
+                self.button15.enabled = YES;
+            } else {
+                self.image15.alpha = 0.4;
+                self.label15.alpha = 0.4;
+                self.button15.enabled = NO;
+            }
+            
             
             
             if ([self->_arrayUserRoleAuthorities containsObject:@"EMPLOYEESTATISTIC"]) {//人员统计
@@ -481,10 +557,25 @@
                 self.buttonSetUp.alpha = 0.4;
                 self.buttonSetUp.enabled = NO;
             }
+            
+            
         } else {
+            self.image200.alpha = 0.4;
+            self.labe200.alpha = 0.4;
+            self.button200.enabled = NO;
+            self.image201.alpha = 0.4;
+            self.labe201.alpha = 0.4;
+            self.button201.enabled = NO;
+            
+            
             self.image00.alpha = 0.4;
             self.label00.alpha = 0.4;
             self.button00.enabled = NO;
+            self.image50.alpha = 0.4;
+            self.label50.alpha = 0.4;
+            self.button50.enabled = NO;
+            
+            
             self.image01.alpha = 0.4;
             self.label01.alpha = 0.4;
             self.button01.enabled = NO;
@@ -524,6 +615,12 @@
             self.image13.alpha = 0.4;
             self.label13.alpha = 0.4;
             self.button13.enabled = NO;
+            self.image14.alpha = 0.4;
+            self.label14.alpha = 0.4;
+            self.button14.enabled = NO;
+            self.image15.alpha = 0.4;
+            self.label15.alpha = 0.4;
+            self.button15.enabled = NO;
             
             self.image100.alpha = 0.4;
             self.label100.alpha = 0.4;
@@ -550,6 +647,35 @@
     } isKindOfModel:NSClassFromString(@"ReturnListBean")];
 }
 
+#pragma mark 生产管理
+- (IBAction)buttonProductionManagement:(id)sender {
+    UIButton *button = (UIButton *)sender;
+    switch (button.tag) {
+#pragma mark 计划下达
+        case 0:{
+            PlannedReleaseViewController *vc = [[PlannedReleaseViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:true];
+            break;
+        }
+#pragma mark 生产派工
+        case 1:{
+            ProductionDispatchViewController *vc = [[ProductionDispatchViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:true];
+            break;
+        }
+        case 2:{
+            
+            break;
+        }
+        case 3:{
+            
+            break;
+        }
+        default:
+            break;
+    }
+}
+
 #pragma mark 操作
 - (IBAction)buttonOperation:(id)sender {
     UIButton *button = (UIButton *)sender;
@@ -558,6 +684,11 @@
         case 0:{
             ScanTuZhiViewController * scanTuZhiViewController = [[ScanTuZhiViewController alloc] init];
             [self.navigationController pushViewController:scanTuZhiViewController animated:YES];
+            break;
+        }
+        case 50:{
+            PadProductionWorkViewController *vc = [[PadProductionWorkViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:true];
             break;
         }
 #pragma mark 多工单报工
@@ -656,6 +787,19 @@
             break;
         }
             
+#pragma mark 模具发放还回
+        case 14: {
+            MouldManagerViewController *vc = [[MouldManagerViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:true];
+            break;
+        }
+            
+#pragma mark 设备保养
+        case 15: {
+            EMScanYGMViewController *vc = [[EMScanYGMViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:true];
+            break;
+        }
             
 #pragma mark 系统设置
         case 20:{

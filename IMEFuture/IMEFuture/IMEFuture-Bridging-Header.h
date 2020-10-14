@@ -34,3 +34,11 @@
 #import "GlobalSettingManager.h"
 #import "ScanTuZhiViewController.h"
 #import "ScanZuoYeDanYuanViewController.h"
+#import "PadSingleUserWorkZuoYeDanYuanImageCell.h"
+#import "PadCheckBigImageViewController.h"
+#import "PadSelectPersonnelCheckListViewController.h"
+#import "PadProductionWorkViewController.h"
+#import "padSingleUserWorkCompleteCell1.h"
+#import "PadSingleUserWorkCompleHeader.h"
+
+#import "FunctionDYZ.h"

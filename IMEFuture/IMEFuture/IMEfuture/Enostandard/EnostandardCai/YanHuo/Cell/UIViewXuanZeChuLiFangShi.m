@@ -20,7 +20,7 @@
 
 - (void)initPickerViewButtonClick:(void (^)(NSString *string))block {
     self.buttonBlock = block;
-    _arrayData = @[@"RP",@"RE",@"DE"];
+    _arrayData = @[@"RP",@"RE",@"DE",@"DJ"];
     _stringTemp = _arrayData[0];
     self.pickerView.delegate = self;
 }

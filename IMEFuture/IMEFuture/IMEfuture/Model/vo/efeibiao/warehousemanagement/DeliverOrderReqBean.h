@@ -152,6 +152,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,copy) NSString * deliverOrderCode;
 
+@property (nonatomic, copy) NSString *upId;//暂时放在DeliverOrderReqBean这个类里面，自己添加的。为inspect/qReasonList这个接口使用
+
 @end
 
 NS_ASSUME_NONNULL_END

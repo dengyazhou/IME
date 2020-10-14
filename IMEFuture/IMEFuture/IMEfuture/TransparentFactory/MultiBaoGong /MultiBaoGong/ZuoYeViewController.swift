@@ -212,27 +212,33 @@ class ZuoYeViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     //    MARK: 暂停
     @IBAction func buttonZanTing(_ sender: Any) {
-        _viewLoading.isHidden = false
-        let mesPostEntityBean = MesPostEntityBean.init()
-        let batchWorkVo = BatchWorkVo.init()
-        batchWorkVo.siteCode = self.batchWorkVo.siteCode
-        batchWorkVo.batchWorkNum = self.batchWorkVo.batchWorkNum
-        batchWorkVo.modifyUser = self.batchWorkVo.modifyUser
-        batchWorkVo.status = NSNumber.init(value: 2)
-        let array = [batchWorkVo] as NSArray
-        mesPostEntityBean.entity = array.mj_keyValues()
-        let dic = mesPostEntityBean.mj_keyValues()
-        HttpMamager.postRequest(withURLString: DYZ_batchWork_workLog, parameters: dic as! [AnyHashable : Any], success: { (responseObjectModel: Any?) in
-            let returnMsgBean = responseObjectModel as! ReturnMsgBean
-            self._viewLoading.isHidden = true
-            if returnMsgBean.status == "SUCCESS" {
-                self.request()
-            } else {
-                MyAlertCenter.default().postAlert(withMessage: returnMsgBean.returnMsg)
-            }
-        }, fail: { (error: Error?) in
-            self._viewLoading.isHidden = true
-        }, isKindOfModel: NSClassFromString("ReturnMsgBean"))
+        let view = TpfBaoGongReasonView.init(frame: self.view.frame, withData: _dataArray)
+        view?.block1Confirm = {(model: Any?)->() in
+            let shutDownCauseVo = model as! ShutDownCauseVo
+            self._viewLoading.isHidden = false
+            let mesPostEntityBean = MesPostEntityBean.init()
+            let batchWorkVo = BatchWorkVo.init()
+            batchWorkVo.siteCode = self.batchWorkVo.siteCode
+            batchWorkVo.batchWorkNum = self.batchWorkVo.batchWorkNum
+            batchWorkVo.modifyUser = self.batchWorkVo.modifyUser
+            batchWorkVo.shutDownCauseCode = shutDownCauseVo.shutDownCauseCode // 暂停原因，多工单报工
+            batchWorkVo.status = NSNumber.init(value: 2)
+            let array = [batchWorkVo] as NSArray
+            mesPostEntityBean.entity = array.mj_keyValues()
+            let dic = mesPostEntityBean.mj_keyValues()
+            HttpMamager.postRequest(withURLString: DYZ_batchWork_workLog, parameters: dic as! [AnyHashable : Any], success: { (responseObjectModel: Any?) in
+                let returnMsgBean = responseObjectModel as! ReturnMsgBean
+                self._viewLoading.isHidden = true
+                if returnMsgBean.status == "SUCCESS" {
+                    self.request()
+                } else {
+                    MyAlertCenter.default().postAlert(withMessage: returnMsgBean.returnMsg)
+                }
+            }, fail: { (error: Error?) in
+                self._viewLoading.isHidden = true
+            }, isKindOfModel: NSClassFromString("ReturnMsgBean"))
+        }
+        self.view.addSubview(view!);
     }
     //    MARK: 继续
     @IBAction func buttonJiXu(_ sender: Any) {
@@ -279,6 +285,7 @@ class ZuoYeViewController: UIViewController, UITableViewDelegate, UITableViewDat
             if returnEntityBean.status == "SUCCESS"{
                 self.batchWorkVo = BatchWorkVo.mj_object(withKeyValues: returnEntityBean.entity)
                 self.initButtonAndRequest(batchWorkVo: self.batchWorkVo)
+                self.requestShutDownCauseListWithOperationCode(operationCode: self.batchWorkVo.operationCode)
             } else {
                 MyAlertCenter.default().postAlert(withMessage: returnEntityBean.returnMsg)
             }
@@ -352,6 +359,40 @@ class ZuoYeViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         
         self.tableView.reloadData()
+    }
+    
+    func requestShutDownCauseListWithOperationCode(operationCode: String?) {
+        _viewLoading.isHidden = false
+        
+        let loginModel: LoginModel = DatabaseTool.getLoginModel()
+        let tpfUser = UserInfoVo.mj_object(withKeyValues: loginModel.tpfUser)
+        let siteCode = tpfUser?.siteCode
+        
+        let mesPostEntityBean = MesPostEntityBean.init()
+        let shutDownCauseVo = ShutDownCauseVo.init()
+        shutDownCauseVo.siteCode = siteCode
+        shutDownCauseVo.operationCode = operationCode
+        mesPostEntityBean.entity = shutDownCauseVo.mj_keyValues()
+        let dic = mesPostEntityBean.mj_keyValues()
+        HttpMamager.postRequest(withURLString: DYZ_workRest_shutDownCauseList, parameters: dic as! [AnyHashable : Any], success: { (responseObjectModel: Any?) in
+            let returnListBean = responseObjectModel as! ReturnListBean
+            self._viewLoading.isHidden = true
+            
+            if returnListBean.status == "SUCCESS"{
+                var dataArray = [ShutDownCauseVo]()
+                for i in 0..<returnListBean.list.count {
+                    let dictemp = returnListBean.list[i]
+                    let tep = ShutDownCauseVo.mj_object(withKeyValues: dictemp)
+                    dataArray.append(tep!)
+                }
+                self._dataArray = dataArray
+            } else {
+                MyAlertCenter.default().postAlert(withMessage: returnListBean.returnMsg)
+            }
+        }, fail: { (error: Error?) in
+            self._viewLoading.isHidden = true
+        }, isKindOfModel: NSClassFromString("ReturnListBean"))
+        
     }
     
 

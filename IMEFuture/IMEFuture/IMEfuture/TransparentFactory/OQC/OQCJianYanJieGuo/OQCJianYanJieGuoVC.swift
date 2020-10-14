@@ -88,8 +88,14 @@ class OQCJianYanJieGuoVC: UIViewController, UITableViewDelegate, UITableViewData
         if  indexPath.section == 0{
             return 125
         } else if indexPath.section == 1 {
-            if indexPath.row == 3 {
-                let model = self.materialOutgoingOrderCheckVo.materialOutgoingOrderDetailInventoryLotnumVoList[0] as! MaterialOutgoingOrderDetailInventoryLotnumVo
+            let model = self.materialOutgoingOrderCheckVo.materialOutgoingOrderDetailInventoryLotnumVoList[0] as! MaterialOutgoingOrderDetailInventoryLotnumVo
+            if indexPath.row == 2 {
+                if model.sourceFlag.intValue == 1 {
+                    return 0
+                } else {
+                    return 44
+                }
+            } else if indexPath.row == 3 {
                 if model.status.intValue == 1 {//已检验
                     return 0
                 } else {//待检验
@@ -155,11 +161,18 @@ class OQCJianYanJieGuoVC: UIViewController, UITableViewDelegate, UITableViewData
                 cell.label1.text = "\(model.qualifiedQuantity.intValue)"
                 return cell
             } else if indexPath.row == 2 {
+                
                 let cell: OQCLabelAndTextFieldCell1 = tableView.dequeueReusableCell(withIdentifier: "oQCLabelAndTextFieldCell1", for: indexPath) as! OQCLabelAndTextFieldCell1
                 cell.selectionStyle = UITableViewCellSelectionStyle.none
                 cell.label0.text = "不合格数"
                 cell.textField0.placeholder = "请输入不合格数量"
                 let model = self.materialOutgoingOrderCheckVo.materialOutgoingOrderDetailInventoryLotnumVoList[0] as! MaterialOutgoingOrderDetailInventoryLotnumVo
+                if model.sourceFlag.intValue == 1 {
+                    cell.isHidden = true
+                } else {
+                    cell.isHidden = false
+                }
+                
                 if model.status.intValue == 1 {//已检验
                     if model.unQualifiedQuantity.doubleValue != 0 {
                         cell.textField0.text = "\(NSNumber.init(value: model.unQualifiedQuantity.intValue))"
@@ -390,6 +403,7 @@ class OQCJianYanJieGuoVC: UIViewController, UITableViewDelegate, UITableViewData
         materialOutgoingOrderCheckVo.siteCode = self.materialOutgoingOrderCheckVo.siteCode
         materialOutgoingOrderCheckVo.outgoingOrderNum = self.materialOutgoingOrderCheckVo.outgoingOrderNum
         materialOutgoingOrderCheckVo.operatorUser = self.materialOutgoingOrderCheckVo.operatorUser
+        materialOutgoingOrderCheckVo.sourceFlag = model.sourceFlag
         
 
         

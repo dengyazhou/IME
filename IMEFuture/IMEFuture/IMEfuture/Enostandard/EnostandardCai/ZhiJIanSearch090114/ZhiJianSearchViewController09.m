@@ -122,7 +122,7 @@
                         item.realQualityQuantity = receiveItem.receiveNum;
                         item.downgradeQuantity = [NSNumber numberWithInteger:0];
                         
-                        if (receiveItem.isMianjian.integerValue == 1) {
+                        if (receiveItem.isMianjian.integerValue == 1 || receiveItem.receiveNum.doubleValue == 0) {
                             
                         } else {
                             [inspectOrderItems addObject:item];
@@ -153,7 +153,7 @@
                         InspectOrderItemVo *model0 = inspectOrderVo.inspectOrderItems[i];
                         DeliverOrderItemBean *model1 = inspectOrderVo.deliverOrder.items[i];
                         
-                        if (model0.isReceiveMianjian.integerValue == 1) {
+                        if (model0.isReceiveMianjian.integerValue == 1 || model0.receiveNum.doubleValue == 0) {
                             
                         } else {
                             [inspectOrderItems addObject:model0];

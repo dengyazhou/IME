@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="68" id="KGk-i7-Jjw" customClass="EMaintenanceCell0">
+            <rect key="frame" x="0.0" y="0.0" width="387" height="68"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="387" height="68"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ct6-YQ-OBt">
+                        <rect key="frame" x="0.0" y="0.0" width="387" height="68"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s8Z-6b-hfZ">
+                                <rect key="frame" x="0.0" y="0.0" width="387" height="0.5"/>
+                                <color key="backgroundColor" red="0.86666666670000003" green="0.86666666670000003" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.5" id="M1j-jQ-uii"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设备编码：A1000000000002" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NwN-s7-ecu">
+                                <rect key="frame" x="15" y="14" width="190.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设备名称：轴承1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdZ-oa-lT5">
+                                <rect key="frame" x="15" y="42" width="106.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V07-gf-I9E">
+                                <rect key="frame" x="0.0" y="67.5" width="387" height="0.5"/>
+                                <color key="backgroundColor" red="0.86666666670000003" green="0.86666666670000003" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.5" id="5Gf-pm-b6V"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="保养年份：8888年" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JfK-ma-asg">
+                                <rect key="frame" x="242" y="14" width="130" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="a7l-j2-SIG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="保养月份：8月" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sDn-c8-Hxu">
+                                <rect key="frame" x="242" y="42" width="94.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="sDn-c8-Hxu" firstAttribute="leading" secondItem="JfK-ma-asg" secondAttribute="leading" id="5H9-pJ-gud"/>
+                            <constraint firstItem="JfK-ma-asg" firstAttribute="centerY" secondItem="NwN-s7-ecu" secondAttribute="centerY" id="65M-Cj-xJd"/>
+                            <constraint firstItem="bdZ-oa-lT5" firstAttribute="top" secondItem="NwN-s7-ecu" secondAttribute="bottom" constant="11" id="931-mq-VyU"/>
+                            <constraint firstItem="V07-gf-I9E" firstAttribute="leading" secondItem="ct6-YQ-OBt" secondAttribute="leading" id="Dok-6r-zlY"/>
+                            <constraint firstItem="NwN-s7-ecu" firstAttribute="leading" secondItem="ct6-YQ-OBt" secondAttribute="leading" constant="15" id="EjC-hX-I5U"/>
+                            <constraint firstItem="sDn-c8-Hxu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bdZ-oa-lT5" secondAttribute="trailing" constant="5" id="EzY-cS-NMn"/>
+                            <constraint firstItem="NwN-s7-ecu" firstAttribute="top" secondItem="ct6-YQ-OBt" secondAttribute="top" constant="14" id="Fk2-Hk-H8q"/>
+                            <constraint firstItem="s8Z-6b-hfZ" firstAttribute="leading" secondItem="ct6-YQ-OBt" secondAttribute="leading" id="M4R-oh-Agd"/>
+                            <constraint firstItem="bdZ-oa-lT5" firstAttribute="leading" secondItem="NwN-s7-ecu" secondAttribute="leading" id="MOi-G5-HBB"/>
+                            <constraint firstAttribute="height" constant="68" id="Yz6-zR-njZ"/>
+                            <constraint firstAttribute="bottom" secondItem="V07-gf-I9E" secondAttribute="bottom" id="eFR-j2-SlJ"/>
+                            <constraint firstAttribute="trailing" secondItem="V07-gf-I9E" secondAttribute="trailing" id="f5P-5g-kWt"/>
+                            <constraint firstAttribute="trailing" secondItem="s8Z-6b-hfZ" secondAttribute="trailing" id="fyU-NR-0Pm"/>
+                            <constraint firstItem="sDn-c8-Hxu" firstAttribute="centerY" secondItem="bdZ-oa-lT5" secondAttribute="centerY" id="lN6-hC-OKu"/>
+                            <constraint firstAttribute="trailing" secondItem="JfK-ma-asg" secondAttribute="trailing" constant="15" id="wiK-oa-CEG"/>
+                            <constraint firstItem="JfK-ma-asg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="NwN-s7-ecu" secondAttribute="trailing" constant="5" id="xkj-9Q-Uqu"/>
+                            <constraint firstItem="s8Z-6b-hfZ" firstAttribute="top" secondItem="ct6-YQ-OBt" secondAttribute="top" id="ykG-3Y-bCp"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="ct6-YQ-OBt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="N32-6Q-Tq1"/>
+                    <constraint firstItem="ct6-YQ-OBt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="aLD-1w-b32"/>
+                    <constraint firstAttribute="trailing" secondItem="ct6-YQ-OBt" secondAttribute="trailing" id="g3X-bo-bIR"/>
+                    <constraint firstAttribute="bottom" secondItem="ct6-YQ-OBt" secondAttribute="bottom" id="jOy-K9-WOK"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="label0" destination="NwN-s7-ecu" id="DeQ-Qq-bEZ"/>
+                <outlet property="label1" destination="bdZ-oa-lT5" id="Xgg-tE-taX"/>
+                <outlet property="label2" destination="JfK-ma-asg" id="ZEL-3W-Brx"/>
+                <outlet property="label3" destination="sDn-c8-Hxu" id="cMc-l4-vbm"/>
+            </connections>
+            <point key="canvasLocation" x="64.492753623188406" y="144.64285714285714"/>
+        </tableViewCell>
+    </objects>
+</document>

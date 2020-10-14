@@ -62,6 +62,8 @@
  */
 @property (nonatomic,copy) NSString * shutDownCauseText;
 
+@property (nonatomic, copy) NSString * shutDownCauseCode;
+
 /**
  * 工作时间
  */

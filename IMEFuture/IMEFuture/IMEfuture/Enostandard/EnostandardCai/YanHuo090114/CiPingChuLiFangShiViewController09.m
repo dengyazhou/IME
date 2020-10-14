@@ -12,6 +12,7 @@
 #import "CiPingChuLiFangShiCell.h"
 #import "CiPingChuLiModel.h"
 #import "UIViewXuanZeChuLiFangShi.h"
+#import "UIViewXuanZeChuLiType.h"
 
 //unType
 @interface CiPingChuLiFangShiViewController09 () <UITableViewDelegate,UITableViewDataSource,UITextViewDelegate> {
@@ -20,6 +21,7 @@
     
     CGFloat _height_NavBar;
     CGFloat _height_TabBar;
+    
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -28,6 +30,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *label2;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightNavBar;
+
+
+@property (nonatomic, strong) NSMutableArray *arrayDataInspectQReasonList;
 
 @end
 
@@ -64,14 +69,9 @@
             break;
         }
     }
-    if (_arrayCiPingChuLiModel.count == 0) {
-        CiPingChuLiModel *model = [[CiPingChuLiModel alloc] init];
-        model.defectiveOperateType = nil;
-        model.reissueNum = nil;
-        model.unType = nil;
-        model.unReason = @"";
-        [_arrayCiPingChuLiModel addObject:model];
-    }
+
+    
+    [self initRequest];
 }
 
 - (void)keyboardWillChange:(NSNotification *)noti {
@@ -96,8 +96,7 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.buttonChuLiFangShi.hidden = YES;
     cell.buttonChuLiFangShiQingXuanZe.hidden = YES;
-    cell.buttonGongYingShangShiFouBuFaHuo.hidden = YES;
-    cell.buttonGongYingShangShiFouBuFaHuoQingXuanZe.hidden = YES;
+    
     
     cell.labelBeiZhu.hidden = YES;
     
@@ -117,11 +116,9 @@
     }
     cell.textField.text = [model.reissueNum doubleValue]==0?nil:[NSString stringWithFormat:@"%@",model.reissueNum];
     if (model.unType) {
-//        cell.buttonGongYingShangShiFouBuFaHuo.hidden = NO;
-//        [cell.buttonGongYingShangShiFouBuFaHuo setTitle:[NSString stringWithFormat:@"%@",[model.unType integerValue] == 1?@"是":@"否"] forState:UIControlStateNormal];
-//        cell.textField1.text = model.unType;
+
     } else {
-//        cell.buttonGongYingShangShiFouBuFaHuoQingXuanZe.hidden = NO;
+        
     }
     
     
@@ -145,10 +142,9 @@
     [cell.textField1 addTarget:self action:@selector(textField1EditingDidEnd:) forControlEvents:UIControlEventEditingDidEnd];
     cell.textField1.inputAccessoryView = [self addToolbar];
     
-//    cell.buttonGongYingShangShiFouBuFaHuo.tag = indexPath.row;
-//    [cell.buttonGongYingShangShiFouBuFaHuo addTarget:self action:@selector(buttonClickGongYingShangShiFouBuFaHuo:) forControlEvents:UIControlEventTouchUpInside];
-//    cell.buttonGongYingShangShiFouBuFaHuoQingXuanZe.tag = indexPath.row;
-//    [cell.buttonGongYingShangShiFouBuFaHuoQingXuanZe addTarget:self action:@selector(buttonClickGongYingShangShiFouBuFaHuo:) forControlEvents:UIControlEventTouchUpInside];
+    cell.buttonTpye.tag = indexPath.row;
+    [cell.buttonTpye addTarget:self action:@selector(buttonClickChuLiType:) forControlEvents:UIControlEventTouchUpInside];
+    
     
     cell.textView.tag = indexPath.row;
     cell.textView.delegate = self;
@@ -172,6 +168,21 @@
         [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:sender.tag inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
     }];
 }
+// 次品类型
+- (void)buttonClickChuLiType:(UIButton *)sender {
+    CiPingChuLiModel *model = _arrayCiPingChuLiModel[sender.tag];
+    NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"UIViewXuanZeChuLiType" owner:self options:nil];
+    UIViewXuanZeChuLiType *viewTpey = [nib objectAtIndex:0];
+    viewTpey.frame = CGRectMake(0, 0, kMainW, kMainH);
+    [self.view addSubview:viewTpey];
+    viewTpey.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];
+    [viewTpey initPickerViewButtonClick:^(NSString *string) {
+        NSLog(@"%@",string);
+        model.unType = string;
+        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:sender.tag inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+    } withArray:self.arrayDataInspectQReasonList];
+}
+
 
 //数量
 - (void)textFieldEditingDidEnd:(UITextField *)sender {
@@ -352,6 +363,63 @@
     self.block(self.inspectOrderItemVo);
     
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)initRequest{
+    EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
+    postEntityBean.fbToken = [GlobalSettingManager shareGlobalSettingManager].eFeiBiaoToken;
+    DeliverOrderReqBean *deliverOrderReqBean = [DeliverOrderReqBean new];
+    deliverOrderReqBean.upId = @"0";
+    postEntityBean.entity = deliverOrderReqBean.mj_keyValues;
+    NSDictionary *dic = postEntityBean.mj_keyValues;
+    [HttpMamager postRequestWithURLString:DYZ_inspect_qReasonList parameters:dic success:^(id responseObjectModel) {
+        ReturnListBean *returnListBean = responseObjectModel;
+        
+        if ([returnListBean.status isEqualToString:@"SUCCESS"]) {
+            NSMutableArray *arrayTemp = [[NSMutableArray alloc] initWithCapacity:0];
+            for (NSInteger i=0; i<returnListBean.list.count; i++) {
+                InspectQReasonList *model = [InspectQReasonList mj_objectWithKeyValues:returnListBean.list[i]];
+                [arrayTemp addObject:model];
+            }
+            self.arrayDataInspectQReasonList = arrayTemp;
+            
+            
+            
+            
+            if (_arrayCiPingChuLiModel.count == 0) {//没有次品处理方式的时候，添加一条默认的
+                
+                CiPingChuLiModel *model = [[CiPingChuLiModel alloc] init];
+                
+                model.reissueNum = self.inspectOrderItemVo.canInspectNum;
+                self.inspectOrderItemVo.defectiveQuantity = self.inspectOrderItemVo.canInspectNum;
+                self.inspectOrderItemVo.qualityQuantity = [NSNumber numberWithDouble:self.inspectOrderItemVo.canInspectNum.doubleValue - self.inspectOrderItemVo.defectiveQuantity.doubleValue];
+                self.label0.text = [NSString stringWithFormat:@"%@",self.inspectOrderItemVo.canInspectNum];
+                self.label1.text = [NSString stringWithFormat:@"%@",self.inspectOrderItemVo.qualityQuantity];
+                self.label2.text = [NSString stringWithFormat:@"%@",self.inspectOrderItemVo.defectiveQuantity];
+                
+                
+                
+                model.defectiveOperateType = @"RE";
+        //        model.reissueNum = self.inspectOrderItemVo.defectiveQuantity;
+                if (self.arrayDataInspectQReasonList.count > 0) {
+                    InspectQReasonList *iq = self.arrayDataInspectQReasonList[0];
+                    model.unType = iq.name;
+                }
+               
+                model.unReason = @"";
+                [_arrayCiPingChuLiModel addObject:model];
+                
+                [self.tableView reloadData];
+            }
+            
+            
+            
+        } else {
+            
+        }
+    } fail:^(NSError *error) {
+        
+    } isKindOfModel:NSClassFromString(@"ReturnListBean")];
 }
 
 - (void)didReceiveMemoryWarning {

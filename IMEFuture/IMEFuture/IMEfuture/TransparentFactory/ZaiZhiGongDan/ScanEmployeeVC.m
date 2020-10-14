@@ -123,7 +123,6 @@
         } else if ([returnEntityBean.status isEqualToString:@"ERROR"]) {
             /**
              {"status":"ERROR","memberId":null,"jsonStr":null,"returnCode":-3,"returnMsg":"员工无权限审核！","entity":null}
-             
              */
             [[MyAlertCenter defaultCenter] postAlertWithMessage:returnEntityBean.returnMsg];//员工无权限审核！
         } else {

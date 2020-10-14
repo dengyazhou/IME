@@ -369,7 +369,7 @@
     mesPostEntityBean.entity = workTimeLogVo.mj_keyValues;
     NSDictionary *dic = mesPostEntityBean.mj_keyValues;
     
-    [HttpMamager postRequestWithURLString:DYZ_workRest_getWorkTime parameters:dic success:^(id responseObjectModel) {
+    [HttpMamager postRequestWithURLString:DYZ_workLog_getWorkTime parameters:dic success:^(id responseObjectModel) {
         ReturnEntityBean *returnEntityBean = responseObjectModel;
         if ([returnEntityBean.status isEqualToString:@"SUCCESS"]) {
             WorkTimeLogVo *model = [WorkTimeLogVo mj_objectWithKeyValues:returnEntityBean.entity];

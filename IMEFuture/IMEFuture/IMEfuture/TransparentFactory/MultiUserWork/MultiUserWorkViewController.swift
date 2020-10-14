@@ -187,8 +187,6 @@ class MultiUserWorkViewController: UIViewController, UITableViewDelegate, UITabl
     //    MARK: 暂停
     @IBAction func buttonZanTing(_ sender: Any) {
         
-        
-        
         let view = TpfBaoGongReasonView.init(frame: self.view.frame, withData: _dataArray)
         view?.block1Confirm = {(model: Any?)->() in
             let shutDownCauseVo = model as! ShutDownCauseVo
@@ -322,10 +320,17 @@ class MultiUserWorkViewController: UIViewController, UITableViewDelegate, UITabl
             }
         }
         
-        
-
-        self._arrayR = ["生产作业号","项目编号","项目名称","当前工序","作业单元","物料名称","订单数量","剩余天数","客户交期","操作人"]
-        self._arrayL = [(multiUserWorkVo?.productionControlNum) != nil ? (multiUserWorkVo?.productionControlNum)! : "",(multiUserWorkVo?.projectNum) != nil ? (multiUserWorkVo?.projectNum)! : "",(multiUserWorkVo?.projectName) != nil ? (multiUserWorkVo?.projectName)! : "",(multiUserWorkVo?.operationText) != nil ? (multiUserWorkVo?.operationText)! : "",(multiUserWorkVo?.workUnitText) != nil ? (multiUserWorkVo?.workUnitText)! : "",(multiUserWorkVo?.materialText) != nil ? (multiUserWorkVo?.materialText)! : "",(multiUserWorkVo?.planQuantity) != nil ? (multiUserWorkVo?.planQuantity.stringValue)! : "",(multiUserWorkVo?.remainingDays) != nil ? (multiUserWorkVo?.remainingDays)! : "",(multiUserWorkVo?.requirementDate) != nil ? (multiUserWorkVo?.requirementDate)! : "",allConfirmUserText!]
+        self._arrayR = ["生产作业号","项目编号","项目名称","物料名称","订单数量","当前工序","作业单元","操作人","剩余天数","客户交期"]
+        self._arrayL = [(multiUserWorkVo?.productionControlNum) != nil ? (multiUserWorkVo?.productionControlNum)! : "",
+                        (multiUserWorkVo?.projectNum) != nil ? (multiUserWorkVo?.projectNum)! : "",
+                        (multiUserWorkVo?.projectName) != nil ? (multiUserWorkVo?.projectName)! : "",
+                        (multiUserWorkVo?.materialText) != nil ? (multiUserWorkVo?.materialText)! : "",
+                        (multiUserWorkVo?.planQuantity) != nil ? (multiUserWorkVo?.planQuantity.stringValue)! : "",
+                        (multiUserWorkVo?.operationText) != nil ? (multiUserWorkVo?.operationText)! : "",
+                        (multiUserWorkVo?.workUnitText) != nil ? (multiUserWorkVo?.workUnitText)! : "",
+                        allConfirmUserText!,
+                        (multiUserWorkVo?.remainingDays) != nil ? (multiUserWorkVo?.remainingDays)! : "",
+                        (multiUserWorkVo?.requirementDate) != nil ? (multiUserWorkVo?.requirementDate)! : "",]
         
         self.tableView.reloadData()
     }

@@ -92,6 +92,10 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic,strong) NSMutableArray <NSString *>* causeCodes;
 
+/**
+* 来源 0：tpf 1：图纸云
+*/
+@property (nonatomic, strong) NSNumber *sourceFlag;
 
 @end
 

@@ -577,8 +577,8 @@
         [cell.buttonHangYeZiXun1 addTarget:self action:@selector(buttonHangYeZiXun0:) forControlEvents:UIControlEventTouchUpInside];//行业资讯
         [cell.buttonJiShuWenDa0 addTarget:self action:@selector(buttonJiShuWenDa0:) forControlEvents:UIControlEventTouchUpInside];//技术问答
         [cell.buttonJiShuWenDa1 addTarget:self action:@selector(buttonJiShuWenDa0:) forControlEvents:UIControlEventTouchUpInside];//技术问答
-        [cell.buttonZiDongHuaBuJian0 addTarget:self action:@selector(buttonZiDongHuaBuJian0:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.buttonZiDongHuaBuJian1 addTarget:self action:@selector(buttonZiDongHuaBuJian0:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.buttonZiDongHuaBuJian0 addTarget:self action:@selector(buttonZiDongHuaBuJian0:) forControlEvents:UIControlEventTouchUpInside];//自动化部件
+        [cell.buttonZiDongHuaBuJian1 addTarget:self action:@selector(buttonZiDongHuaBuJian0:) forControlEvents:UIControlEventTouchUpInside];//自动化部件
         
         return cell;
     } else if (indexPath.section == 3) {
@@ -628,13 +628,18 @@
     }
 }
 
-#pragma mark Vistor 登录
+#pragma mark 点击登录
 - (IBAction)viewVistorButtonLogin:(id)sender {
+    [self goLogin];
+}
+
+- (void)goLogin {
     CompanyViewController *companyVC = [[CompanyViewController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:companyVC];
     nav.modalPresentationStyle = 0;
     [self presentViewController:nav animated:YES completion:nil];
 }
+
 #pragma mark 账户管理
 - (IBAction)buttonZhangHuGuanLi:(id)sender {
     LoginModel *loginModel = [DatabaseTool getLoginModel];
@@ -747,10 +752,7 @@
 }
 #pragma mark 非标管家 小
 - (void)buttonFeiBiaoGuanJia2:(UIButton *)sender {
-    LoginModel *loginModel = [DatabaseTool getLoginModel];
-    [self getUserEFEIBIAOToken:loginModel.ucenterId callBack:^{
-        [self goPurchaser];
-    }];
+    [self goPurchaser];
 }
 #pragma mark 选择采购商
 - (void)buttonSelectProcurer:(UIButton *)sender {
@@ -781,7 +783,12 @@
 }
 #pragma mark 图纸云
 - (void)buttonTuZhiYun0:(UIButton *)sender {
-    [self webViewWithTitle:@"图纸云" withURL:IME_TuZhiYun];
+    NSString *stringPsw = [[NSUserDefaults standardUserDefaults] objectForKey:@"psw"];
+    if (!stringPsw) {//没取到密码 请先登录登录
+        [self goLogin];
+    } else {
+        [self webViewWithTitle:@"图纸云" withURL:IME_TuZhiYun];
+    }
 }
 #pragma mark 行业资讯
 - (void)buttonHangYeZiXun0:(UIButton *)sender {
@@ -800,7 +807,8 @@
 - (void)goPurchaser {
     NSString *stringPsw = [[NSUserDefaults standardUserDefaults] objectForKey:@"psw"];
     if (!stringPsw) {//没取到密码 请先登录登录 -> //进宣传页
-        [self webViewWithTitle:@"非标采购商" withURL:IME_beta];
+//        [self webViewWithTitle:@"非标采购商" withURL:IME_beta];
+        [self goLogin];
     } else {
         LoginModel *loginModel = [DatabaseTool getLoginModel];
         
@@ -863,7 +871,8 @@
 - (void)goSupplier {
     NSString *stringPsw = [[NSUserDefaults standardUserDefaults] objectForKey:@"psw"];
     if (!stringPsw) {//没取到密码 请先登录登录
-        [self webViewWithTitle:@"非标供应商" withURL:IME_beta];
+//        [self webViewWithTitle:@"非标供应商" withURL:IME_beta];
+        [self goLogin];
     } else {
         LoginModel *loginModel = [DatabaseTool getLoginModel];
         NSArray *array = [NSArray stringToJSON:loginModel.identityBeans];
@@ -927,7 +936,8 @@
 - (void)goTouMingGongChang {
     NSString *stringPsw = [[NSUserDefaults standardUserDefaults] objectForKey:@"psw"];
     if (!stringPsw) {//没取到密码 请先登录登录
-        [self webViewWithTitle:@"透明工厂" withURL:IME_TouMingGongChangXuanChuanYe];
+//        [self webViewWithTitle:@"透明工厂" withURL:IME_TouMingGongChangXuanChuanYe];
+        [self goLogin];
     } else {
         LoginModel *loginModel = [DatabaseTool getLoginModel];
         
@@ -1006,7 +1016,7 @@
 
 - (void)webViewWithTouMingGongChangTitle:(NSString *)title withURL:(NSString *)url{
     LoginModel *loginModel = [DatabaseTool getLoginModel];
-    if (loginModel.tpfUser) {
+    if (loginModel.tpfUser != [NSNull null] && loginModel.tpfUser != nil) {
         UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
         [self requesttpfGetparameterlistWithSiteCode:tpfUser.siteCode callBack:^{
             TpfMaiViewController *tpfMaiViewController = [[TpfMaiViewController alloc] init];

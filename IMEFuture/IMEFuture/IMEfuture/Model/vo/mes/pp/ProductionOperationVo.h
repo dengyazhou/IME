@@ -99,4 +99,8 @@
  */
 @property (nonatomic,strong) NSMutableArray <__kindof WorkUnitVo *> * workUnitVoList;
 
+
+
+- (id)copyWithZone:(struct _NSZone *)zone;
+
 @end

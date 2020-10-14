@@ -75,6 +75,7 @@
     
 }
 
+
 - (void)keyboardWillChange:(NSNotification *)noti {
     CGRect rect = [noti.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     if (rect.origin.y == kMainH) {
@@ -313,8 +314,9 @@
             for (NSInteger i=0; i<inspectOrderVo.inspectOrderItems.count; i++) {
                 InspectOrderItemVo *model0 = inspectOrderVo.inspectOrderItems[i];
                 DeliverOrderItemBean *model1 = inspectOrderVo.deliverOrder.items[i];
-                if (model0.isReceiveMianjian.integerValue == 1) {
+                if (model0.isReceiveMianjian.integerValue == 1 || model1.receiveQuantity.doubleValue == 0) {
                     
+                    NSLog(@"---------===receiveQuantity=0====---------");
                 } else {
                     [inspectOrderItems addObject:model0];
                     [items addObject:model1];

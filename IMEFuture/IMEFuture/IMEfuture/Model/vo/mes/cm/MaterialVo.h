@@ -212,6 +212,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic,copy) NSString * modifyDateTime; //Date
 
+
 @property (nonatomic,copy) NSString * productionControlNum;
 
 @end

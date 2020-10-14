@@ -17,6 +17,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UITextField *textField1;
+@property (weak, nonatomic) IBOutlet UIButton *buttonTpye;//请选择次品类型
 
 @property (weak, nonatomic) IBOutlet UIButton *buttonGongYingShangShiFouBuFaHuo;//供应商是否补发
 @property (weak, nonatomic) IBOutlet UIButton *buttonGongYingShangShiFouBuFaHuoQingXuanZe;

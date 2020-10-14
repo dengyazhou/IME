@@ -21,7 +21,12 @@
         const char* name = ivar_getName(var);
         NSString* key = [NSString stringWithUTF8String:name];
         id value = [self valueForKey:key];
-        [coder encodeObject:value forKey:key];
+        if ([key isEqualToString:@"_isSelect"]) {
+//            [coder encodeBool:value forKey:key];
+        } else {
+            [coder encodeObject:value forKey:key];
+        }
+        
     }
     free(ivars);
 }
@@ -35,8 +40,14 @@
             Ivar var = ivars[i];
             const char* name = ivar_getName(var);
             NSString* key = [NSString stringWithUTF8String:name];
-            id value = [coder decodeObjectForKey:key];
-            [self setValue:value forKey:key];
+            id value;
+            if ([key isEqualToString:@"_isSelect"]) {
+//                value = [coder decodeBoolForKey:key];
+            } else {
+                value = [coder decodeObjectForKey:key];
+                [self setValue:value forKey:key];
+            }
+            
         }
         free(ivars);
     }

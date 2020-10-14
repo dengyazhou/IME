@@ -23,6 +23,8 @@
 #import "UIView+AddViewNoNetAndNoContent.h"
 #import "ToolTransition.h"
 
+#import "FunctionDYZ.h"
+
 
 
 
@@ -260,5 +262,16 @@
 #import "MultiUserWorkVo.h"
 #import "MultiUserConfirmReportVo.h"
 #import "MultiUserConfirmReportItemVo.h"
+
+#import "WorkCenterVo.h"
+#import "DrawingPreviewVo.h"
+#import "PersonnelTypeVo.h"
+
+#import "InspectQReasonList.h"
+
+#import "ProductionOrderVo.h"
+#import "MateriaProcessAssignVo.h"
+#import "EquipmentMaintenancePlanMonthVo.h"
+#import "EquipmentMaintenanceLogVo.h"
 
 #endif /* VoHeader_h */

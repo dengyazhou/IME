@@ -71,6 +71,8 @@
  */
 @property (nonatomic,copy) NSString * operationCode;
 
+@property (nonatomic,copy) NSString * operationText;
+
 /**
  * 工艺工序ID
  */

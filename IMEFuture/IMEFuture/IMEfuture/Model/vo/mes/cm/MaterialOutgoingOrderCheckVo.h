@@ -42,6 +42,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSMutableArray <__kindof CauseDetailVo *>*scrappedCauseDetailVos;//报废 //CauseDetailVo
 
+/**
+* 来源 0：tpf 1：图纸云
+*/
+
+@property (nonatomic, strong) NSNumber *sourceFlag;
+
 @end
 
 NS_ASSUME_NONNULL_END

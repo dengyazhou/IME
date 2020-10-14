@@ -169,7 +169,7 @@
         DeliverOrderItemBean *model = self.deliverOrderDetailBean.items[indexPath.row];
         cell.model = model;
         [cell setTextFieldCallBack:^{
-            [self changebuttonColor];
+            [self changebuttonColor];//收货数量，可以为0，但是不能为空
         }];
         __weak ShouHuoCell0903 *weakCell = cell;
         [cell setButtonReceiveArea:^{
@@ -209,7 +209,7 @@
 - (void)changebuttonColor {
     BOOL flag = true;
     for (DeliverOrderItemBean *model in self.deliverOrderDetailBean.items) {
-        if (model.receiveQuantity.integerValue == 0) {
+        if (model.receiveQuantity == nil) {
             flag = false;
         }
     }

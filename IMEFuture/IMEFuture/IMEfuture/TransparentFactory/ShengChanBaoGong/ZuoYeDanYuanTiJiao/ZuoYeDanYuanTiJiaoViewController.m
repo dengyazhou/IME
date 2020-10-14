@@ -29,7 +29,7 @@
 
 #import "IMEFuture-swift.h"
 #import "UploadImageView.h"
-#import "Material.h"
+#import "MaterialDYZ.h"
 #import "GlobalSettingManager.h"
 
 @interface ZuoYeDanYuanTiJiaoViewController () <UITableViewDelegate,UITableViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate> {
@@ -66,8 +66,8 @@
 
 @property (nonatomic,strong) NSNumber *  netweight;
 
-@property (nonatomic, strong) Material *  materialModel;
-@property (nonatomic, strong) NSMutableArray <Material *> *materialArray;
+@property (nonatomic, strong) MaterialDYZ *  materialModel;
+@property (nonatomic, strong) NSMutableArray <MaterialDYZ *> *materialArray;
 
 
 @property (nonatomic,strong) UIImagePickerController *imagePicker;
@@ -117,7 +117,7 @@
     self.tableView.estimatedRowHeight = 285;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
-//    [self requestGetMouldByProductionControlNum];
+    [self requestGetMouldByProductionControlNum];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -227,14 +227,13 @@
             cell.textFieldJingZhong.text = self.netweight.stringValue;
         }
         //模具
-//        cell.materialArray = self.materialArray;
-//        [cell.tableView reloadData];
+        cell.materialArray = self.materialArray;
+        [cell.tableView reloadData];
         cell.labelMoJu.text = self.materialModel.sequenceNum;
-//        cell.labelMoJu.text = @"123";
-//        [cell tableViewDidSelectBlock:^(NSInteger rowYZ) {
-//            self.materialModel = self.materialArray[rowYZ];
-//            cell.labelMoJu.text = self.materialModel.materialText;
-//        }];
+        [cell tableViewDidSelectBlock:^(NSInteger rowYZ) {
+            self.materialModel = self.materialArray[rowYZ];
+            cell.labelMoJu.text = self.materialModel.sequenceNum;
+        }];
         
         //点击扫码
         [cell.buttonDianJiSaoMa addTarget:self action:@selector(buttonDianJiSaoMaClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -345,7 +344,7 @@
             ReturnMsgBean *returnMsgBean = responseObjectModel;
             if ([returnMsgBean.status isEqualToString:@"SUCCESS"]) {
                 
-                Material *material = [[Material alloc] init];
+                MaterialDYZ *material = [[MaterialDYZ alloc] init];
                 material.materialCode = dic123[@"modelCode"];
                 material.materialText = dic123[@"modelName"];
                 material.sequenceNum = dic123[@"sequenceNum"];
@@ -381,12 +380,13 @@
         [HttpMamager postRequestWithURLString:DYZ_mes_material_getMouldByProductionControlNum parameters:dic success:^(id responseObjectModel) {
             ReturnListBean *returnListBean = responseObjectModel;
             if ([returnListBean.status isEqualToString:@"SUCCESS"]) {
-                self.materialArray = [Material mj_objectArrayWithKeyValuesArray:returnListBean.list];
+                self.materialArray = [MaterialDYZ mj_objectArrayWithKeyValuesArray:returnListBean.list];
                 if (self.materialArray.count > 0) {
                     self.materialModel = self.materialArray[0];
                 } else {
-                    Material *material = [[Material alloc] init];
+                    MaterialDYZ *material = [[MaterialDYZ alloc] init];
                     material.materialText = @"暂无模具";
+                    material.sequenceNum = @"暂无模具";
                     self.materialModel = material;
                 }
                 dispatch_async(dispatch_get_main_queue(), ^{

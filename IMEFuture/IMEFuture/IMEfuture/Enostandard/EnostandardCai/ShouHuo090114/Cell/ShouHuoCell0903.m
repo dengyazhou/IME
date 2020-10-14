@@ -52,11 +52,17 @@
     if (sender.text.integerValue > self.model.deliverNum.integerValue) {
         sender.text = self.model.deliverNum.stringValue;
     }
-    if (sender.text.integerValue == 0) {
-        sender.text = nil;
+//    if (sender.text.integerValue == 0) {
+//        sender.text = nil;
+//    }
+    
+    if ([sender.text isEqualToString:@""]) {
+        self.model.receiveQuantity = nil;
+    } else {
+        self.model.receiveQuantity = [NSNumber numberWithInteger:sender.text.integerValue];
     }
     
-    self.model.receiveQuantity = [NSNumber numberWithInteger:sender.text.integerValue];
+    
     if (self.textFieldCallBack) {
         self.textFieldCallBack();
     }

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="KGk-i7-Jjw" customClass="PadSingleUserWorkZuoYeDanYuanImageCell">
+            <rect key="frame" x="0.0" y="0.0" width="362" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="362" height="100"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cHt-D9-dFE">
+                        <rect key="frame" x="0.0" y="0.0" width="362" height="100"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uAH-LO-ryH">
+                                <rect key="frame" x="109" y="0.0" width="144" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="144" id="fJp-L6-caF"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorWithUIColor">
+                                        <color key="value" red="0.8666666666666667" green="0.8666666666666667" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUH-wf-VVR">
+                                <rect key="frame" x="109" y="0.0" width="144" height="100"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="LUH-wf-VVR" firstAttribute="top" secondItem="uAH-LO-ryH" secondAttribute="top" id="2yM-nZ-kP4"/>
+                            <constraint firstItem="uAH-LO-ryH" firstAttribute="centerY" secondItem="cHt-D9-dFE" secondAttribute="centerY" id="366-vQ-Hoj"/>
+                            <constraint firstItem="LUH-wf-VVR" firstAttribute="bottom" secondItem="uAH-LO-ryH" secondAttribute="bottom" id="57f-BB-HA8"/>
+                            <constraint firstItem="LUH-wf-VVR" firstAttribute="trailing" secondItem="uAH-LO-ryH" secondAttribute="trailing" id="8mY-E3-1I1"/>
+                            <constraint firstAttribute="height" constant="100" id="Mqb-R2-Jam"/>
+                            <constraint firstItem="uAH-LO-ryH" firstAttribute="centerX" secondItem="cHt-D9-dFE" secondAttribute="centerX" id="QqA-LS-XDE"/>
+                            <constraint firstItem="uAH-LO-ryH" firstAttribute="top" secondItem="cHt-D9-dFE" secondAttribute="top" id="Xc0-UH-gbG"/>
+                            <constraint firstAttribute="bottom" secondItem="uAH-LO-ryH" secondAttribute="bottom" id="elj-T2-Nuj"/>
+                            <constraint firstItem="LUH-wf-VVR" firstAttribute="leading" secondItem="uAH-LO-ryH" secondAttribute="leading" id="uKH-OW-BJs"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="cHt-D9-dFE" secondAttribute="trailing" id="6tE-au-zi0"/>
+                    <constraint firstAttribute="bottom" secondItem="cHt-D9-dFE" secondAttribute="bottom" id="Bb8-ij-gCH"/>
+                    <constraint firstItem="cHt-D9-dFE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Jxa-Ga-EXW"/>
+                    <constraint firstItem="cHt-D9-dFE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="arc-Ub-apK"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="imageButton" destination="LUH-wf-VVR" id="nCL-gI-9pt"/>
+                <outlet property="imageView1" destination="uAH-LO-ryH" id="Iff-3G-Ago"/>
+            </connections>
+            <point key="canvasLocation" x="166.66666666666669" y="163.39285714285714"/>
+        </tableViewCell>
+    </objects>
+</document>

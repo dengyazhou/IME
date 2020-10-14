@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment version="2304" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SheBeiDianJianVC" customModule="NIM" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SheBeiDianJianVC" customModule="IMEFuture" customModuleProvider="target">
             <connections>
                 <outlet property="heightBottomBar" destination="ndb-gW-qa5" id="h8A-ef-rhW"/>
                 <outlet property="heightBottomBar1" destination="AGf-aX-pE6" id="Yr1-WY-8hX"/>
@@ -44,13 +42,13 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设备点检" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xVM-4U-bRU">
-                            <rect key="frame" x="147" y="30" width="82" height="24"/>
+                            <rect key="frame" x="146.5" y="30" width="82" height="24"/>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qSV-lh-ZtW" userLabel="View Line Botton">
-                            <rect key="frame" x="0.0" y="64" width="375" height="0.0"/>
+                            <rect key="frame" x="0.0" y="63.5" width="375" height="0.5"/>
                             <color key="backgroundColor" red="0.86666666670000003" green="0.86666666670000003" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="0.5" id="71c-XC-1VR"/>
@@ -121,10 +119,10 @@
                     <rect key="frame" x="0.0" y="114" width="375" height="320.5"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scanning_diagram" translatesAutoresizingMaskIntoConstraints="NO" id="oe1-Kq-liF">
-                            <rect key="frame" x="89" y="109" width="196" height="143"/>
+                            <rect key="frame" x="89.5" y="109" width="196" height="143"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="摄像头对准作业单元二维码，\n点击扫描" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N4T-ds-w6j">
-                            <rect key="frame" x="23.5" y="289" width="327.5" height="21.5"/>
+                            <rect key="frame" x="24" y="289" width="327.5" height="21.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -258,12 +256,13 @@
                 <constraint firstItem="BjW-g6-JeY" firstAttribute="top" secondItem="8fk-is-gAj" secondAttribute="bottom" id="s6H-z2-UaS"/>
                 <constraint firstItem="YEn-yX-LQc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="spw-5d-tTD"/>
             </constraints>
+            <point key="canvasLocation" x="138" y="154"/>
         </view>
     </objects>
     <resources>
         <image name="icon_return" width="22" height="22"/>
         <image name="scanning_diagram" width="196" height="143"/>
-        <image name="scavenging" width="16" height="16"/>
+        <image name="scavenging" width="20" height="20"/>
         <image name="search" width="14" height="14"/>
     </resources>
 </document>

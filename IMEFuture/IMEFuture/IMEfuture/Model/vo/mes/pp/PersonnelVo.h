@@ -36,4 +36,6 @@
 */
 @property (nonatomic, copy) NSString *operationCode;
 
+@property (nonatomic, assign) Boolean isSelect; //DYZ 添加，用来标记是否选择了。 默认值 为 NO
+
 @end

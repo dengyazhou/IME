@@ -9,10 +9,10 @@
 import Foundation
 
 //正式环境
-//let DYZBaseURL = "https://mgateway.imefuture.com"
+let DYZBaseURL = "https://mgateway.imefuture.com"
 
 //测试环境
-let DYZBaseURL = "https://betamapi.imefuture.com"
+//let DYZBaseURL = "https://betamapi.imefuture.com"
 
 //本地
 //let DYZBaseURL = "http://192.168.255.196:9090/gateway"
@@ -40,7 +40,7 @@ let DYZ_scanRest_personnelScanCheck = DYZBaseURL + "/rs" + "/mes/scan/personnelS
 
 let DYZ_workRest_shutDownCauseList = DYZBaseURL + "/rs" + "/mes/workLog/shutDownCauseList"
 
-let DYZ_workRest_getWorkTime = DYZBaseURL + "/rs" + "/mes/workLog/getWorkTime"
+let DYZ_workLog_getWorkTime = DYZBaseURL + "/rs" + "/mes/workLog/getWorkTime"
 
 let DYZ_workRest_workLog = DYZBaseURL + "/rs" + "/mes/workLog/workLog"
 
@@ -147,4 +147,6 @@ let DYZ_multiUserWork_workLog = DYZBaseURL + "/rs" + "/mes/multiUserWork/workLog
 let DYZ_multiUserWork_continueWork = DYZBaseURL + "/rs" + "/mes/multiUserWork/continueWork" //继续接口
 
 let DYZ_multiUserWork_doMultiUserConfirmProduction = DYZBaseURL + "/rs" + "/mes/multiUserWork/doMultiUserConfirmProduction" //多人报工完成提交
+
+let DYZ_productionControl_selectProductionControlVo = DYZBaseURL + "/rs" + "/mes/productionControl/selectProductionControlVo"
 

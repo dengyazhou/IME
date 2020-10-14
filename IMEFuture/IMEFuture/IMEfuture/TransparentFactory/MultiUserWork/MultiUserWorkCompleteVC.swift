@@ -388,28 +388,32 @@ class MultiUserWorkCompleteVC: UIViewController,UITableViewDelegate,UITableViewD
         if flag {
             showAlertOrContinue(index: 1)//审核
         } else {
-            _submitType = 1
-            let loginModel = DatabaseTool.getLoginModel()
-            let userBean = UserBean.mj_object(withKeyValues: loginModel?.ucenterUser)
-            let siteCode = userBean?.enterpriseInfo.serialNo
-            let personnerlCode = DatabaseTool.t_TpfPWTableGetPersonnelCode(withSiteCode: siteCode)
-            if personnerlCode != "(null)" {//绑定了人员
-                _auditor = personnerlCode
-                showAlertViewPasswordAuthentification()
-            } else {
-                let vc = ScanEmployeeVC()
-                vc.passwordAuthentificationCallBack { (str, needPassword) in
-                    if needPassword == 1 {
-                        self._auditor = str
-                        self.perform(#selector(self.afterdyz), with: nil, afterDelay: 1)
-                        self.showAlertViewPasswordAuthentification()
-                    } else {
-                        self._auditor = str
-                        self.requestDoConfirmProduction()
-                    }
+            self.continueCheck()
+        }
+    }
+    
+    @objc func continueCheck() {
+        _submitType = 1
+        let loginModel = DatabaseTool.getLoginModel()
+        let userBean = UserBean.mj_object(withKeyValues: loginModel?.ucenterUser)
+        let siteCode = userBean?.enterpriseInfo.serialNo
+        let personnerlCode = DatabaseTool.t_TpfPWTableGetPersonnelCode(withSiteCode: siteCode)
+        if personnerlCode != "(null)" {//绑定了人员
+            _auditor = personnerlCode
+            showAlertViewPasswordAuthentification()
+        } else {
+            let vc = ScanEmployeeVC()
+            vc.passwordAuthentificationCallBack { (str, needPassword) in
+                if needPassword == 1 {
+                    self._auditor = str
+                    self.perform(#selector(self.afterdyz), with: nil, afterDelay: 1)
+                    self.showAlertViewPasswordAuthentification()
+                } else {
+                    self._auditor = str
+                    self.requestDoConfirmProduction()
                 }
-                self.navigationController?.pushViewController(vc, animated: true)
             }
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
@@ -460,28 +464,7 @@ class MultiUserWorkCompleteVC: UIViewController,UITableViewDelegate,UITableViewD
                 self._submitType = 0
                 self.requestDoConfirmProduction()
             } else if index == 1 {//审核
-                self._submitType = 1
-                let loginModel = DatabaseTool.getLoginModel()
-                let userBean = UserBean.mj_object(withKeyValues: loginModel?.ucenterUser)
-                let siteCode = userBean?.enterpriseInfo.serialNo
-                let personnerlCode = DatabaseTool.t_TpfPWTableGetPersonnelCode(withSiteCode: siteCode)
-                if personnerlCode != "(null)" {//绑定了人员
-                    self._auditor = personnerlCode
-                    self.showAlertViewPasswordAuthentification()
-                } else {
-                    let vc = ScanEmployeeVC()
-                    vc.passwordAuthentificationCallBack { (str, needPassword) in
-                        if needPassword == 1 {
-                            self._auditor = str
-                            self.perform(#selector(self.afterdyz), with: nil, afterDelay: 1)
-                            self.showAlertViewPasswordAuthentification()
-                        } else {
-                            self._auditor = str
-                            self.requestDoConfirmProduction()
-                        }
-                    }
-                    self.navigationController?.pushViewController(vc, animated: true)
-                }
+                self.continueCheck()
             }
         }))
         alertVC.addAction(UIAlertAction(title: "取消", style: .cancel, handler: nil))
@@ -489,38 +472,7 @@ class MultiUserWorkCompleteVC: UIViewController,UITableViewDelegate,UITableViewD
     }
     
     func requestDoConfirmProduction() {
-        for i in 0..<self.list.count {
-//            let multiUserConfirmReportItemVo = self.list[i] as! MultiUserConfirmReportItemVo
-//            //报废数
-//            if multiUserConfirmReportItemVo.scrappedQuantity.doubleValue > 0 {
-//                if (multiUserConfirmReportItemVo.scrappedCauseDetailVos != nil) {
-//                    var total = 0.0
-//                    for i in 0..<multiUserConfirmReportItemVo.scrappedCauseDetailVos.count {
-//                        let causeDetailVo = multiUserConfirmReportItemVo.scrappedCauseDetailVos[i] as! CauseDetailVo
-//                        total = total + causeDetailVo.quantity.doubleValue
-//                    }
-//                    if total > multiUserConfirmReportItemVo.scrappedQuantity.doubleValue {
-//                        MyAlertCenter.default()?.postAlert(withMessage: "不得大于缺陷总数")
-//                        return
-//                    }
-//                }
-//            }
-//            //不良数
-//            if multiUserConfirmReportItemVo.repairQuantity.doubleValue > 0 {
-//                if (multiUserConfirmReportItemVo.repairCauseDetailVos != nil) {
-//                    var total = 0.0
-//                    for i in 0..<multiUserConfirmReportItemVo.repairCauseDetailVos.count {
-//                        let causeDetailVo = multiUserConfirmReportItemVo.repairCauseDetailVos[i] as! CauseDetailVo
-//                        total = total + causeDetailVo.quantity.doubleValue
-//                    }
-//                    if total > multiUserConfirmReportItemVo.repairQuantity.doubleValue {
-//                        MyAlertCenter.default()?.postAlert(withMessage: "不得大于缺陷总数")
-//                        return
-//                    }
-//                }
-//            }
-        }
-        
+    
         _uploadImageView.isHidden = false
         _uploadImageView.prepare()
         
@@ -529,16 +481,7 @@ class MultiUserWorkCompleteVC: UIViewController,UITableViewDelegate,UITableViewD
         let multiUserConfirmReportVo = MultiUserConfirmReportVo.init()
         self.multiUserWorkVo.confirmSourceType = NSNumber.init(value: 9)
         multiUserConfirmReportVo.multiUserWorkVo = self.multiUserWorkVo
-        
-        for vv in self.list {
-            let multiUserConfirmReportItemVo = vv as! MultiUserConfirmReportItemVo
-//            if batchWorkItemReportVo.productionOperationVo.completedQuantity.doubleValue > batchWorkItemReportVo.productionOperationVo.unCompletedQuantity.doubleValue{
-//                MyAlertCenter.default().postAlert(withMessage: "报工数大于计划数")
-//                _viewLoading.isHidden = true
-//                return
-//            }
-        }
-        
+    
         var imageArray:[UploadImageBean] = []
         for i in 0..<self.list.count {
             let multiUserConfirmReportItemVo = self.list[i] as! MultiUserConfirmReportItemVo

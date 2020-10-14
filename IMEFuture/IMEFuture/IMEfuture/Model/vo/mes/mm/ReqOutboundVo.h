@@ -100,6 +100,11 @@
  */
 @property (nonatomic,copy) NSString * toWarehouseOperator;
 
+/**
+ 工序编号
+ */
+@property (nonatomic, copy) NSString *operationCode;
+
 
 
 @property (nonatomic,copy) NSString * testdyz;

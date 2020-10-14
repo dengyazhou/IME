@@ -17,6 +17,8 @@ target 'IMEFuture' do
   pod 'AFNetworking', '~> 3.1.0'
   pod 'Masonry', '~> 1.0.1'
   pod 'MJRefresh'
+  
+  pod 'ReactiveObjC'
 
   pod 'JPush'
   

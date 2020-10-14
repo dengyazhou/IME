@@ -92,6 +92,7 @@ class YingLiaoRuKuViewController: UIViewController, UITextFieldDelegate, UITable
         
         cell.label1.text = reqOutboundVo.materialText
         cell.label2.text = reqOutboundVo.reqNum.stringValue
+        cell.label3.text = reqOutboundVo.quantity.stringValue
         
         if let outNum = reqOutboundVo.outNum {
             cell.textField.text = outNum.stringValue

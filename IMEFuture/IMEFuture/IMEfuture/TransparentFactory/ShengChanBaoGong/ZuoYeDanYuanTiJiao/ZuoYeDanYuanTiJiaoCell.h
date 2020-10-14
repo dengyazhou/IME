@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "UploadImageBean.h"
-#import "Material.h"
+#import "MaterialDYZ.h"
 
 @interface ZuoYeDanYuanTiJiaoCell : UITableViewCell
 
@@ -43,7 +43,7 @@
 @property(nonatomic,strong) NSMutableArray <UploadImageBean * >*arrayDateImage;
 
 
-@property (nonatomic, strong) NSMutableArray <Material *> *materialArray;
+@property (nonatomic, strong) NSMutableArray <MaterialDYZ *> *materialArray;
 
 
 @property (nonatomic, copy) void(^blockDaTu)(NSInteger rowYZ);

@@ -284,8 +284,16 @@ class OQCViewController: UIViewController, UITextFieldDelegate, UITableViewDeleg
             return
         }
         
+        
+        
         materialOutgoingOrderCheckVo.materialOutgoingOrderDetailInventoryLotnumVoList =  NSMutableArray.init(array: arrayTemp)
         
+        
+        if self.arrayMaterialOutgoingOrderDetailInventoryLotnumVo.count > 0 {
+            let temp:MaterialOutgoingOrderDetailInventoryLotnumVo = self.arrayMaterialOutgoingOrderDetailInventoryLotnumVo.first!;
+            materialOutgoingOrderCheckVo.sourceFlag = temp.sourceFlag;
+        }
+                
         mesPostEntityBean.entity = materialOutgoingOrderCheckVo.mj_keyValues() as! [AnyHashable : Any]!
         let jsonStr = mesPostEntityBean.mj_JSONString()
         let dic = ["data":jsonStr!]

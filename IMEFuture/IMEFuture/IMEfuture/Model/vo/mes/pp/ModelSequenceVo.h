@@ -37,6 +37,12 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, strong) NSNumber * quantity;//Double
 
+@property (nonatomic, strong) NSNumber * status;
+
+@property (nonatomic, copy) NSString * productionControlNum;
+
+@property (nonatomic, strong) NSNumber * isSelect;//0:没选；1:选了。。。获取数据是赋值为0，所以默认为没选
+
 @end
 
 NS_ASSUME_NONNULL_END

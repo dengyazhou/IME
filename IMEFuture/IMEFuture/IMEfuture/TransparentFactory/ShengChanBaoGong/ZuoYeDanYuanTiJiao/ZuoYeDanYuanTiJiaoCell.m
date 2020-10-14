@@ -35,46 +35,45 @@
     
     
     
-//    self.ViewBGTaBleViewMuJu.layer.borderColor = colorRGB(221, 221, 221).CGColor;
-//    self.ViewBGTaBleViewMuJu.layer.borderWidth = 1;
-//    self.ViewBGTaBleViewMuJu.hidden = YES;
+    self.ViewBGTaBleViewMuJu.layer.borderColor = colorRGB(221, 221, 221).CGColor;
+    self.ViewBGTaBleViewMuJu.layer.borderWidth = 1;
+    self.ViewBGTaBleViewMuJu.hidden = YES;
     
     
-//    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
-//    self.tableView.delegate = self;
-//    self.tableView.dataSource = self;
-//    self.tableView.rowHeight = 33;
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.rowHeight = 33;
 }
 
-//- (IBAction)buttonXuanZeMuJuClick:(id)sender {
-//    if (self.materialArray.count == 0) {
-//        return;
-//    }
-////    self.ViewBGTaBleViewMuJu.hidden = NO;
-//}
+- (IBAction)buttonXuanZeMuJuClick:(id)sender {
+    if (self.materialArray.count == 0) {
+        return;
+    }
+    self.ViewBGTaBleViewMuJu.hidden = NO;
+}
 
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.materialArray.count;
+}
 
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return self.materialArray.count;
-//}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//
-//    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-//    cell.textLabel.text = self.materialArray[indexPath.row].materialText;
-//    return cell;
-//}
+    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    cell.textLabel.text = self.materialArray[indexPath.row].sequenceNum;
+    return cell;
+}
 
 
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    NSLog(@"%@",indexPath);
-//
-////    self.ViewBGTaBleViewMuJu.hidden = YES;
-//    if (self.blockTableSelect) {
-//        self.blockTableSelect(indexPath.row);
-//    }
-//}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"%@",indexPath);
+
+    self.ViewBGTaBleViewMuJu.hidden = YES;
+    if (self.blockTableSelect) {
+        self.blockTableSelect(indexPath.row);
+    }
+}
 
 
 

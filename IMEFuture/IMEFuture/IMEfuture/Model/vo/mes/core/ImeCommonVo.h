@@ -51,6 +51,16 @@
 @property (nonatomic,copy) NSString * modifyDateTime;//Date
 
 /**
+ * 搜索创建时间大于
+ */
+@property (nonatomic,copy) NSString * seb_createDateTime;
+
+/**
+ * 搜索创建时间小于
+ */
+@property (nonatomic,copy) NSString * see_createDateTime;
+
+/**
  * 搜索更新时间大于
  */
 @property (nonatomic,copy) NSString * seb_modifyDateTime;//Date

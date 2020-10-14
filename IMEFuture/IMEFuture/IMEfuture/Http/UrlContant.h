@@ -11,72 +11,72 @@
 
 //正式环境
 //接口url
-//#define DYZBaseURL @"https://mgateway.imefuture.com"
-//#define DYZBaseURLItem(_item_)[NSString stringWithFormat:@"%@%@",DYZBaseURL,_item_]
-////通知
-//#define baseNotification @"https://notification.imefuture.com"
-//#define notification(_pathNo_)[NSString stringWithFormat:@"%@%@",baseNotification,_pathNo_]
-////协议
-//#define IME_AGREEMENT_PUR @"https://efeibiao.imefuture.com/agreement/purchaser.html?entName="
-//#define IME_AGREEMENT_SUP @"https://efeibiao.imefuture.com/agreement/supplier.html?entName="
-////忘记密码
-//#define PostForgetPassword @"https://account.imefuture.com/forgetpw/forgetPassword.html"
-////帐号注册
-//#define PostAccount @"https://account.imefuture.com/ucweb/register/goRegister.html?https://account.imefuture.com/ucweb/login/goLogin.html&ss=iphone"
-////设置url
-//#define PostURLSheZhi(_path_)[NSString stringWithFormat:@"https://account.imefuture.com%@",_path_]
-////智造家e非标
-//#define IME_betand @"https://www.imefuture.com/feibiao/index.html"
-////非标管家
-//#define IME_beta @"https://www.imefuture.com/feibiaoGJ/?module=feibiaoGJ"
-////透明工厂
-//#define baseUTLTpf @"https://tpf.imefuture.com"
-//#define IME_TouMingGongChang @"https://tpf.imefuture.com/mes/pages/m/index.html"
-//#define IME_TouMingGongChangDengLu @"https://tpf.imefuture.com/mes/manage/mobileGetSession"
-//#define IME_TouMingGongChangXuanChuanYe @"https://www.imefuture.com/tpf/?module=tpf"
-////智客管家
-//#define IME_ThiKeGuanJia @"https://m.izker.com"
-////图纸云
-//#define IME_TuZhiYun @"https://www.imefuture.com/drawingCloud/?module=drawingCloud"
-////创建企业
-//#define IME_CreatEnterprise @"https://account.imefuture.com/ucweb/enterpriseReg/goEpReg.html"
-////隐私协议
-//#define IME_privacy @"https://www.imefuture.com/privacy.html"
+#define DYZBaseURL @"https://mgateway.imefuture.com"
+#define DYZBaseURLItem(_item_)[NSString stringWithFormat:@"%@%@",DYZBaseURL,_item_]
+//通知
+#define baseNotification @"https://notification.imefuture.com"
+#define notification(_pathNo_)[NSString stringWithFormat:@"%@%@",baseNotification,_pathNo_]
+//协议
+#define IME_AGREEMENT_PUR @"https://efeibiao.imefuture.com/agreement/purchaser.html?entName="
+#define IME_AGREEMENT_SUP @"https://efeibiao.imefuture.com/agreement/supplier.html?entName="
+//忘记密码
+#define PostForgetPassword @"https://account.imefuture.com/forgetpw/forgetPassword.html"
+//帐号注册
+#define PostAccount @"https://account.imefuture.com/ucweb/register/goRegister.html?https://account.imefuture.com/ucweb/login/goLogin.html&ss=iphone"
+//设置url
+#define PostURLSheZhi(_path_)[NSString stringWithFormat:@"https://account.imefuture.com%@",_path_]
+//智造家e非标
+#define IME_betand @"https://www.imefuture.com/feibiao/index.html"
+//非标管家
+#define IME_beta @"https://www.imefuture.com/feibiaoGJ/?module=feibiaoGJ"
+//透明工厂
+#define baseUTLTpf @"https://tpf.imefuture.com"
+#define IME_TouMingGongChang @"https://tpf.imefuture.com/mes/pages/m/index.html"
+#define IME_TouMingGongChangDengLu @"https://tpf.imefuture.com/mes/manage/mobileGetSession"
+#define IME_TouMingGongChangXuanChuanYe @"https://www.imefuture.com/tpf/?module=tpf"
+//智客管家
+#define IME_ThiKeGuanJia @"https://m.izker.com"
+//图纸云
+#define IME_TuZhiYun @"https://www.imefuture.com/drawingCloud/?module=drawingCloud"
+//创建企业
+#define IME_CreatEnterprise @"https://account.imefuture.com/ucweb/enterpriseReg/goEpReg.html"
+//隐私协议
+#define IME_privacy @"https://www.imefuture.com/privacy.html"
 
 
 //测试环境
 //接口url
-#define DYZBaseURL @"https://betamapi.imefuture.com"
-#define DYZBaseURLItem(_item_)[NSString stringWithFormat:@"%@%@",DYZBaseURL,_item_]
-//通知
-#define baseNotification @"http://beta.notification.imefuture.com"
-#define notification(_pathNo_)[NSString stringWithFormat:@"%@%@",baseNotification,_pathNo_]
-//协议
-#define IME_AGREEMENT_PUR @"https://betand.imefuture.com/agreement/purchaser.html?entName="
-#define IME_AGREEMENT_SUP @"https://betand.imefuture.com/agreement/supplier.html?entName="
-//忘记密码
-#define PostForgetPassword @"https://account.imefuture.com/forgetpw/forgetPassword.html"
-//帐号注册
-#define PostAccount @"https://betaac.imefuture.com/ucweb/register/goRegister.html?https://betaac.imefuture.com/ucweb/login/goLogin.html&ss=iphone"
-//设置url
-#define PostURLSheZhi(_path_)[NSString stringWithFormat:@"https://betaac.imefuture.com%@",_path_]
-//智造家e非标
-#define IME_betand @"https://beta.imefuture.com/feibiao/index.html"
-//非标管家
-#define IME_beta @"https://beta.imefuture.com/feibiaoGJ/?module=feibiaoGJ"
-//透明工厂
-#define baseUTLTpf @"https://testtpf.imefuture.com"
-#define IME_TouMingGongChang @"https://testtpf.imefuture.com/mes/pages/m/index.html"
-#define IME_TouMingGongChangDengLu @"https://testtpf.imefuture.com/mes/manage/mobileGetSession"
-#define IME_TouMingGongChangXuanChuanYe @"https://beta.imefuture.com/tpf/?module=tpf"
-//智客管家
-#define IME_ThiKeGuanJia @"https://betawk.izker.com"
-//图纸云
-#define IME_TuZhiYun @"https://beta.imefuture.com/drawingCloud/?module=drawingCloud"
-//创建企业
-#define IME_CreatEnterprise @"http://testuc.imefuture.com/ucweb/enterpriseReg/goEpReg.html"
-//隐私协议
-#define IME_privacy @"https://beta.imefuture.com/privacy.html"
+//#define DYZBaseURL @"https://betamapi.imefuture.com"
+//#define DYZBaseURLItem(_item_)[NSString stringWithFormat:@"%@%@",DYZBaseURL,_item_]
+////通知
+//#define baseNotification @"http://beta.notification.imefuture.com"
+//#define notification(_pathNo_)[NSString stringWithFormat:@"%@%@",baseNotification,_pathNo_]
+////协议
+//#define IME_AGREEMENT_PUR @"https://betand.imefuture.com/agreement/purchaser.html?entName="
+//#define IME_AGREEMENT_SUP @"https://betand.imefuture.com/agreement/supplier.html?entName="
+////忘记密码
+//#define PostForgetPassword @"https://account.imefuture.com/forgetpw/forgetPassword.html"
+////帐号注册
+//#define PostAccount @"https://betaac.imefuture.com/ucweb/register/goRegister.html?https://betaac.imefuture.com/ucweb/login/goLogin.html&ss=iphone"
+////设置url
+//#define PostURLSheZhi(_path_)[NSString stringWithFormat:@"https://betaac.imefuture.com%@",_path_]
+////智造家e非标
+//#define IME_betand @"https://beta.imefuture.com/feibiao/index.html"
+////非标管家
+//#define IME_beta @"https://beta.imefuture.com/feibiaoGJ/?module=feibiaoGJ"
+////透明工厂
+//#define baseUTLTpf @"https://testtpf.imefuture.com"
+//#define IME_TouMingGongChang @"https://testtpf.imefuture.com/mes/pages/m/index.html"
+//#define IME_TouMingGongChangDengLu @"https://testtpf.imefuture.com/mes/manage/mobileGetSession"
+//#define IME_TouMingGongChangXuanChuanYe @"https://beta.imefuture.com/tpf/?module=tpf"
+////智客管家
+//#define IME_ThiKeGuanJia @"https://betawk.izker.com"
+////图纸云
+//#define IME_TuZhiYun @"https://beta.imefuture.com/drawingCloud/?module=drawingCloud"
+////创建企业
+//#define IME_CreatEnterprise @"http://testuc.imefuture.com/ucweb/enterpriseReg/goEpReg.html"
+////隐私协议
+//#define IME_privacy @"https://beta.imefuture.com/privacy.html"
 
 //本地
 //接口url
@@ -363,7 +363,7 @@
 
 #define DYZ_workRest_shutDownCauseList [NSString stringWithFormat:@"%@/mes/workLog/shutDownCauseList",DYZBaseURLItem(@"/rs")]
 
-#define DYZ_workRest_getWorkTime [NSString stringWithFormat:@"%@/mes/workLog/getWorkTime",DYZBaseURLItem(@"/rs")]
+#define DYZ_workLog_getWorkTime [NSString stringWithFormat:@"%@/mes/workLog/getWorkTime",DYZBaseURLItem(@"/rs")]
 
 #define DYZ_workRest_workLog [NSString stringWithFormat:@"%@/mes/workLog/workLog",DYZBaseURLItem(@"/rs")]
 
@@ -423,6 +423,9 @@
 #define DYZ_deliverOrder_supplierDeliverOrder [NSString stringWithFormat:@"%@/efeibiao/deliverOrder/supplierDeliverOrder",DYZBaseURLItem(@"/rs")] //供应商发货
 
 #define DYZ_inspect_appGetInspectOrder [NSString stringWithFormat:@"%@/efeibiao/inspect/appGetInspectOrder",DYZBaseURLItem(@"/rs")] //根据发货单号查询质检发货收货单
+
+#define DYZ_inspect_qReasonList [NSString stringWithFormat:@"%@/efeibiao/inspect/qReasonList",DYZBaseURLItem(@"/rs")]
+
 #define DYZ_receiveOrder_areaList [NSString stringWithFormat:@"%@/efeibiao/receiveOrder/areaList",DYZBaseURLItem(@"/rs")] //收货区列表
 #define DYZ_receiveOrder_purchaseAddReceiveOrder [NSString stringWithFormat:@"%@/efeibiao/receiveOrder/purchaseAddReceiveOrder",DYZBaseURLItem(@"/rs")] //采购商收货
 
@@ -590,6 +593,60 @@
 
 //多人报工完成提交
 #define DYZ_multiUserWork_doMultiUserConfirmProduction [NSString stringWithFormat:@"%@/mes/multiUserWork/doMultiUserConfirmProduction",DYZBaseURLItem(@"/rs")]
+
+//获取工作中心列表
+#define DYZ_workCenter_selectAllWorkCenter [NSString stringWithFormat:@"%@/mes/workCenter/selectAllWorkCenter",DYZBaseURLItem(@"/rs")]
+
+//生产作业报工列表接口
+#define DYZ_productionControl_selectProductionControlList [NSString stringWithFormat:@"%@/mes/productionControl/selectProductionControlList",DYZBaseURLItem(@"/rs")]
+
+//获取生产工序及作业单元接口
+#define DYZ_productionControl_getWorkUnitList [NSString stringWithFormat:@"%@/mes/productionControl/getWorkUnitList",DYZBaseURLItem(@"/rs")]
+
+#define DYZ_personnel_getPersonnelListByOperation [NSString stringWithFormat:@"%@/mes/personnel/getPersonnelListByOperation",DYZBaseURLItem(@"/rs")]
+
+//获取图片接口
+#define DYZ_productionControl_selectProductionControlVo [NSString stringWithFormat:@"%@/mes/productionControl/selectProductionControlVo",DYZBaseURLItem(@"/rs")]
+
+//查看大图 获取接口
+#define DYZ_productionControl_createPreviewUrlNew [NSString stringWithFormat:@"%@/mes/productionControl/createPreviewUrlNew",DYZBaseURLItem(@"/rs")]
+
+#define DYZ_personnel_getPersonnelCheckList [NSString stringWithFormat:@"%@/mes/personnel/getPersonnelCheckList",DYZBaseURLItem(@"/rs")]
+
+//获取工单列表接口
+#define DYZ_productionControl_getProductionControl [NSString stringWithFormat:@"%@/mes/productionControl/getProductionControl",DYZBaseURLItem(@"/rs")]
+//获取发放序列号接口
+#define DYZ_modelSequence_getModelSequenceByMouldCode [NSString stringWithFormat:@"%@/mes/modelSequence/getModelSequenceByMouldCode",DYZBaseURLItem(@"/rs")]
+//修改序列号接口
+#define DYZ_modelSequence_updateModelSequenceStatus [NSString stringWithFormat:@"%@/mes/modelSequence/updateModelSequenceStatus",DYZBaseURLItem(@"/rs")]
+//获取还回序列号接口
+#define DYZ_modelSequence_getProductionModelSequence [NSString stringWithFormat:@"%@/mes/modelSequence/getProductionModelSequence",DYZBaseURLItem(@"/rs")]
+
+
+//查找待下达订单列表
+#define DYZ_productionOrderConfirm_getProductionOrderList [NSString stringWithFormat:@"%@/mes/productionOrderConfirm/getProductionOrderList",DYZBaseURLItem(@"/rs")]
+
+//生产订单下达
+#define DYZ_productionOrderConfirm_decomposeProductionOrder [NSString stringWithFormat:@"%@/mes/productionOrderConfirm/decomposeProductionOrder",DYZBaseURLItem(@"/rs")]
+
+//下达提交
+#define DYZ_productionOrderConfirm_saveProductionControl [NSString stringWithFormat:@"%@/mes/productionOrderConfirm/saveProductionControl",DYZBaseURLItem(@"/rs")]
+
+//批量下达投产提交
+#define DYZ_productionOrderConfirm_batchDecomposeProductionOrder [NSString stringWithFormat:@"%@/mes/productionOrderConfirm/batchDecomposeProductionOrder",DYZBaseURLItem(@"/rs")]
+
+//查询待投产工单列表
+#define DYZ_productionControl_selectProductionControlProductList [NSString stringWithFormat:@"%@/mes/productionControl/selectProductionControlProductList",DYZBaseURLItem(@"/rs")]
+
+//工单投产
+#define DYZ_productionControl_placeOrderProductionControl [NSString stringWithFormat:@"%@/mes/productionControl/placeOrderProductionControl",DYZBaseURLItem(@"/rs")]
+
+//查询月份设备保养明细列表
+#define DYZ_equipmentMaintenance_selectEquipmentMaintenancePlanMonthList [NSString stringWithFormat:@"%@/mes/equipmentMaintenance/selectEquipmentMaintenancePlanMonthList",DYZBaseURLItem(@"/rs")]
+
+//提交设备保养
+#define DYZ_equipmentMaintenance_commitEquipmentMaintenance [NSString stringWithFormat:@"%@/mes/equipmentMaintenance/commitEquipmentMaintenance",DYZBaseURLItem(@"/rs")]
+
 
 
 #endif /* UrlContant_h */

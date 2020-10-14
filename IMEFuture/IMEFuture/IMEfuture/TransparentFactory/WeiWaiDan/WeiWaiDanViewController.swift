@@ -63,10 +63,12 @@ class WeiWaiDanViewController: UIViewController, UITextFieldDelegate{
             self.buttonLeft.setTitleColor(colorRGB(r: 0, g: 122, b: 254), for: UIControlState.normal)
             self.buttonRight.setTitleColor(UIColor.black, for: UIControlState.normal)
             self.lineLeftConstraint.constant = 0;
+            self.setAttributedString(text: "摄像头对准委外单号，\n点击扫描")
         } else if self.index == 1 {
             self.buttonLeft.setTitleColor(UIColor.black, for: UIControlState.normal)
             self.buttonRight.setTitleColor(colorRGB(r: 0, g: 122, b: 254), for: UIControlState.normal)
             self.lineLeftConstraint.constant = kMainW/2.0;
+            self.setAttributedString(text: "摄像头对准工序流转卡，\n点击扫描")
         }
     }
     
