@@ -135,57 +135,15 @@
         if ([returnEntityBean.status isEqualToString:@"SUCCESS"]) {
             PersonnelVo *personnelVo = [PersonnelVo mj_objectWithKeyValues:returnEntityBean.entity];
             
+            ReportWorkProductionOrderConfirmVo *model = [[ReportWorkProductionOrderConfirmVo alloc] init];
+            model.productionControlNum = self.workUnitScanVo.productionControlNum;
+            model.operationCode = self.workUnitScanVo.operationCode;
+            model.workUnitCode = self.workUnitScanVo.workUnitCode;
+            model.processOperationId = self.workUnitScanVo.processOperationId;
+            model.confirmUser = personnelVo.personnelCode;
             
-            LoginModel *loginModel = [DatabaseTool getLoginModel];
-            UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
-            NSString *siteCode = tpfUser.siteCode;
+            [self validateWorkRecordType:model personnelVo:personnelVo];
             
-            MesPostEntityBean *mesPostEntityBean = [[MesPostEntityBean alloc] init];
-            WorkTimeLogVo *workTimeLogVo = [[WorkTimeLogVo alloc] init];
-            workTimeLogVo.siteCode = siteCode;
-            workTimeLogVo.productionControlNum = self.workUnitScanVo.productionControlNum;;
-            workTimeLogVo.processOperationId = self.workUnitScanVo.processOperationId;
-            workTimeLogVo.workUnitCode = self.workUnitScanVo.workUnitCode;
-            workTimeLogVo.confirmUser = result;
-            workTimeLogVo.workTimeLogType = [NSNumber numberWithInteger:1];
-            mesPostEntityBean.entity = workTimeLogVo.mj_keyValues;
-            NSDictionary *dic = mesPostEntityBean.mj_keyValues;
-            
-            [HttpMamager postRequestWithURLString:DYZ_workLog_getWorkTime parameters:dic success:^(id responseObjectModel) {
-                ReturnEntityBean *returnEntityBean = responseObjectModel;
-                if ([returnEntityBean.status isEqualToString:@"SUCCESS"]) {
-                    WorkTimeLogVo *model = [WorkTimeLogVo mj_objectWithKeyValues:returnEntityBean.entity];
-                    
-                    ZuoYeDanYuanViewController *zuoYeDanYuanViewController = [[ZuoYeDanYuanViewController alloc] init];
-                    zuoYeDanYuanViewController.planTime = self.workUnitScanVo.planTime;
-                    zuoYeDanYuanViewController.surplusTime = self.workUnitScanVo.surplusTime;
-                    zuoYeDanYuanViewController.workUnitText = self.workUnitScanVo.workUnitText;
-                    zuoYeDanYuanViewController.operationText = self.workUnitScanVo.operationText;
-                    zuoYeDanYuanViewController.operationTextNext = self.workUnitScanVo.operationTextNext;
-                    zuoYeDanYuanViewController.productionControlNum = self.workUnitScanVo.productionControlNum;
-                    zuoYeDanYuanViewController.workUnitCode = self.workUnitScanVo.workUnitCode;
-                    zuoYeDanYuanViewController.operationCode = self.workUnitScanVo.operationCode;
-                    zuoYeDanYuanViewController.processOperationId = self.workUnitScanVo.processOperationId;
-                    zuoYeDanYuanViewController.confirmFlag = self.workUnitScanVo.confirmFlag;
-                    zuoYeDanYuanViewController.confirmUser = result;
-                    zuoYeDanYuanViewController.productionOrderNum = self.productionOrderNum;
-                    zuoYeDanYuanViewController.requirementDate = self.requirementDate;
-                    zuoYeDanYuanViewController.personnelName = personnelVo.personnelName;
-                    zuoYeDanYuanViewController.workRecordType = self.workRecordType;
-                    
-            
-                    [self.navigationController pushViewController:zuoYeDanYuanViewController animated:YES];
-                 
-                } else if ([returnEntityBean.status isEqualToString:@"ERROR"] && returnEntityBean.returnCode.integerValue == -4) {
-                    ZuoYeViewController *vc = [[ZuoYeViewController alloc] init];
-                    vc.batchWorkNum = returnEntityBean.returnMsg;
-                    [self.navigationController pushViewController:vc animated:true];
-                } else {
-                    [[MyAlertCenter defaultCenter] postAlertWithMessage:returnEntityBean.returnMsg];
-                }
-            } fail:^(NSError *error) {
-                
-            } isKindOfModel:NSClassFromString(@"ReturnEntityBean")];
         } else {
             [[MyAlertCenter defaultCenter] postAlertWithMessage:returnEntityBean.returnMsg];
         }
@@ -194,6 +152,114 @@
        
     } isKindOfModel:NSClassFromString(@"ReturnEntityBean")];
 }
+
+#pragma mark 请选择报工记录类型
+- (void)validateWorkRecordType:(ReportWorkProductionOrderConfirmVo *)model personnelVo:(PersonnelVo *)personnelVo{
+    _viewLoading.hidden = NO;
+    LoginModel *loginModel = [DatabaseTool getLoginModel];
+    UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
+    NSString *siteCode = tpfUser.siteCode;
+    
+    MesPostEntityBean *mesPostEntityBean = [[MesPostEntityBean alloc] init];
+    ReportWorkProductionOrderConfirmVo *reportWorkProductionOrderConfirmVo = [[ReportWorkProductionOrderConfirmVo alloc] init];
+    reportWorkProductionOrderConfirmVo.siteCode = siteCode;
+    reportWorkProductionOrderConfirmVo.productionControlNum = model.productionControlNum;
+    reportWorkProductionOrderConfirmVo.operationCode = model.operationCode;
+    reportWorkProductionOrderConfirmVo.workUnitCode = model.workUnitCode;
+    reportWorkProductionOrderConfirmVo.processOperationId = model.processOperationId;
+    reportWorkProductionOrderConfirmVo.confirmUser = model.confirmUser;
+    
+    NSMutableArray *array = [NSMutableArray arrayWithCapacity:0];
+    [array addObject:reportWorkProductionOrderConfirmVo];
+    mesPostEntityBean.entity = array.mj_keyValues;
+    NSDictionary *dic = mesPostEntityBean.mj_keyValues;
+    [HttpMamager postRequestWithURLString:DYZ_mes_productionOrderConfirm_validateWorkRecordType parameters:dic success:^(id responseObjectModel) {
+        ReturnListBean *returnListBean = responseObjectModel;
+        _viewLoading.hidden = YES;
+        if ([returnListBean.status isEqualToString:@"SUCCESS"]) {
+            if (returnListBean.list.count > 0) {
+                ReportWorkProductionOrderConfirmVo *temp = [ReportWorkProductionOrderConfirmVo mj_objectWithKeyValues:returnListBean.list[0]];
+                if (temp.chooseWorkRecordTypeFlag.integerValue == 1) {//弹款 选择
+                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"请选择报工记录类型" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+                    UIAlertAction *action = [UIAlertAction actionWithTitle:@"正常生产" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        [self gointoZuoYeDanYuanViewController:personnelVo workRecordType:[NSNumber numberWithInteger:0]];
+                    }];
+                    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"返工返修" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        [self gointoZuoYeDanYuanViewController:personnelVo workRecordType:[NSNumber numberWithInteger:1]];
+                    }];
+                    [alertController addAction:action];
+                    [alertController addAction:action1];
+                    
+                    if ([alertController respondsToSelector:@selector(popoverPresentationController)]) {
+                        alertController.popoverPresentationController.sourceView = self.view;//必须加
+                        alertController.popoverPresentationController.sourceRect = CGRectMake(0, kMainH, kMainW, kMainH);//可选
+                    }
+                    [self presentViewController:alertController animated:true completion:nil];
+                } else {
+                    [self gointoZuoYeDanYuanViewController:personnelVo workRecordType:[NSNumber numberWithInteger:0]];
+                }
+            }
+        } else {
+            [[MyAlertCenter defaultCenter] postAlertWithMessage:returnListBean.returnMsg];
+        }
+    } fail:^(NSError *error) {
+        _viewLoading.hidden = YES;
+    } isKindOfModel:NSClassFromString(@"ReturnListBean")];
+}
+
+- (void)gointoZuoYeDanYuanViewController:(PersonnelVo *)personnelVo workRecordType:(NSNumber *)workRecordType{
+    LoginModel *loginModel = [DatabaseTool getLoginModel];
+    UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
+    NSString *siteCode = tpfUser.siteCode;
+    
+    MesPostEntityBean *mesPostEntityBean = [[MesPostEntityBean alloc] init];
+    WorkTimeLogVo *workTimeLogVo = [[WorkTimeLogVo alloc] init];
+    workTimeLogVo.siteCode = siteCode;
+    workTimeLogVo.productionControlNum = self.workUnitScanVo.productionControlNum;;
+    workTimeLogVo.processOperationId = self.workUnitScanVo.processOperationId;
+    workTimeLogVo.workUnitCode = self.workUnitScanVo.workUnitCode;
+    workTimeLogVo.confirmUser = personnelVo.personnelCode;
+    workTimeLogVo.workTimeLogType = [NSNumber numberWithInteger:1];
+    mesPostEntityBean.entity = workTimeLogVo.mj_keyValues;
+    NSDictionary *dic = mesPostEntityBean.mj_keyValues;
+    
+    [HttpMamager postRequestWithURLString:DYZ_workLog_getWorkTime parameters:dic success:^(id responseObjectModel) {
+        ReturnEntityBean *returnEntityBean = responseObjectModel;
+        if ([returnEntityBean.status isEqualToString:@"SUCCESS"]) {
+//            WorkTimeLogVo *model = [WorkTimeLogVo mj_objectWithKeyValues:returnEntityBean.entity];
+            
+            
+            ZuoYeDanYuanViewController *zuoYeDanYuanViewController = [[ZuoYeDanYuanViewController alloc] init];
+            zuoYeDanYuanViewController.planTime = self.workUnitScanVo.planTime;
+            zuoYeDanYuanViewController.surplusTime = self.workUnitScanVo.surplusTime;
+            zuoYeDanYuanViewController.workUnitText = self.workUnitScanVo.workUnitText;
+            zuoYeDanYuanViewController.operationText = self.workUnitScanVo.operationText;
+            zuoYeDanYuanViewController.operationTextNext = self.workUnitScanVo.operationTextNext;
+            zuoYeDanYuanViewController.productionControlNum = self.workUnitScanVo.productionControlNum;
+            zuoYeDanYuanViewController.workUnitCode = self.workUnitScanVo.workUnitCode;
+            zuoYeDanYuanViewController.operationCode = self.workUnitScanVo.operationCode;
+            zuoYeDanYuanViewController.processOperationId = self.workUnitScanVo.processOperationId;
+            zuoYeDanYuanViewController.confirmFlag = self.workUnitScanVo.confirmFlag;
+            zuoYeDanYuanViewController.confirmUser = personnelVo.personnelCode;
+            zuoYeDanYuanViewController.productionOrderNum = self.productionOrderNum;
+            zuoYeDanYuanViewController.requirementDate = self.requirementDate;
+            zuoYeDanYuanViewController.personnelName = personnelVo.personnelName;
+            zuoYeDanYuanViewController.workRecordType = workRecordType;
+            
+            [self.navigationController pushViewController:zuoYeDanYuanViewController animated:YES];
+         
+        } else if ([returnEntityBean.status isEqualToString:@"ERROR"] && returnEntityBean.returnCode.integerValue == -4) {
+            ZuoYeViewController *vc = [[ZuoYeViewController alloc] init];
+            vc.batchWorkNum = returnEntityBean.returnMsg;
+            [self.navigationController pushViewController:vc animated:true];
+        } else {
+            [[MyAlertCenter defaultCenter] postAlertWithMessage:returnEntityBean.returnMsg];
+        }
+    } fail:^(NSError *error) {
+        
+    } isKindOfModel:NSClassFromString(@"ReturnEntityBean")];
+}
+
 
 #pragma mark 回到首页
 - (IBAction)buttonGoHome:(id)sender {

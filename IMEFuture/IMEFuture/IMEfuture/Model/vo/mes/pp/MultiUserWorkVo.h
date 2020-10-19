@@ -219,6 +219,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSNumber * confirmSourceType;
 
+/**
+* 继续报工标志 、0否1是
+*/
+@property (nonatomic, strong) NSNumber * continueFlag;//Integer
+
 
 @end
 

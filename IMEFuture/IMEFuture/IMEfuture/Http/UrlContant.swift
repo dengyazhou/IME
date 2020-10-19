@@ -9,7 +9,7 @@
 import Foundation
 
 //正式环境
-let DYZBaseURL = "https://mgateway.imefuture.com"
+//let DYZBaseURL = "https://mgateway.imefuture.com"
 
 //测试环境
 //let DYZBaseURL = "https://betamapi.imefuture.com"
@@ -25,7 +25,7 @@ let DYZBaseURL = "https://mgateway.imefuture.com"
 //liuBo
 //let DYZBaseURL = "http://192.168.255.103:9191/gateway"
 //liXuYang
-//let DYZBaseURL = "http://192.168.255.104:9090/gateway"
+let DYZBaseURL = "http://192.168.255.104:9090/gateway"
 //let DYZBaseURL = "http://2350141n1a.wicp.vip/gateway"
 //jyh
 //let DYZBaseURL = "http://192.168.255.108:9090/gateway"

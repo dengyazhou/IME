@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *processOperationId;
 @property (nonatomic, copy) NSString *operationCode;
 @property (nonatomic, copy) NSString *workUnitCode;
+@property (nonatomic, strong) NSNumber *workRecordType;
 
 @end
 

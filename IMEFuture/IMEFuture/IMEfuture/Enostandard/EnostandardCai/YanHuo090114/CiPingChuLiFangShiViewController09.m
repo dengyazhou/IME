@@ -315,10 +315,10 @@
                 [[MyAlertCenter defaultCenter] postAlertWithMessage:@"请填写次品类型"];
                 return;
             }
-            if (model.unReason.length <= 0) {
-                [[MyAlertCenter defaultCenter] postAlertWithMessage:@"请填写不合格原因"];
-                return;
-            }
+//            if (model.unReason.length <= 0) {
+//                [[MyAlertCenter defaultCenter] postAlertWithMessage:@"请填写不合格原因"];
+//                return;
+//            }
         } else {
             [self.inspectOrderItemVo setValue:nil forKey:[NSString stringWithFormat:@"defectiveOperateType%ld",i+1]];
             [self.inspectOrderItemVo setValue:nil forKey:[NSString stringWithFormat:@"reissueNum%ld",i+1]];

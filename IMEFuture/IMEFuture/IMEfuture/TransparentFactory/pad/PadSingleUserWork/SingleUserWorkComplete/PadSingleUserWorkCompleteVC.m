@@ -675,10 +675,10 @@
     }
     
     if (self.workTimeLogVo.completionMode.integerValue == 1) {
-        if (_completedQuantity > self.workTimeLogVo.unfinishedQuantity.doubleValue) {
-            [[MyAlertCenter defaultCenter] postAlertWithMessage:@"合格数量不能大于未完成数量"];
-            return;
-        }
+//        if (_completedQuantity > self.workTimeLogVo.unfinishedQuantity.doubleValue) {
+//            [[MyAlertCenter defaultCenter] postAlertWithMessage:@"合格数量不能大于未完成数量"];
+//            return;
+//        }
     } else {
         
     }

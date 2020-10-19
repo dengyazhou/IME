@@ -155,24 +155,65 @@ class ZuoYeViewController: UIViewController, UITableViewDelegate, UITableViewDat
         batchWorkVo.batchWorkNum = self.batchWorkVo.batchWorkNum
         batchWorkVo.modifyUser = self.batchWorkVo.modifyUser
         batchWorkVo.status = NSNumber.init(value: 1)
+        batchWorkVo.continueFlag = NSNumber.init(value: 0)
         let array = [batchWorkVo] as NSArray
         mesPostEntityBean.entity = array.mj_keyValues()
         let dic = mesPostEntityBean.mj_keyValues()
-        print(dic)
+//        print(dic)
         
         HttpMamager.postRequest(withURLString: DYZ_batchWork_workLog, parameters: dic as! [AnyHashable : Any], success: { (responseObjectModel: Any?) in
             let returnMsgBean = responseObjectModel as! ReturnMsgBean
-            self._viewLoading.isHidden = true
-            if returnMsgBean.status == "SUCCESS" {
-                self.request()
+            if returnMsgBean.returnCode.intValue == -888 {
+                self.secondKaiShi();
             } else {
-                MyAlertCenter.default().postAlert(withMessage: returnMsgBean.returnMsg)
+                self._viewLoading.isHidden = true
+                if returnMsgBean.status == "SUCCESS" {
+                    self.request()
+                } else {
+                    MyAlertCenter.default().postAlert(withMessage: returnMsgBean.returnMsg)
+                }
             }
         }, fail: { (error: Error?) in
             self._viewLoading.isHidden = true
         }, isKindOfModel: NSClassFromString("ReturnMsgBean"))
         
     }
+    func secondKaiShi() {
+        let alertController = UIAlertController(title: "订单已达计划数量，是否继续报工？", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+        let action0 = UIAlertAction.init(title: "确定", style: UIAlertActionStyle.default) { (action) in
+            self._viewLoading.isHidden = false
+            let mesPostEntityBean = MesPostEntityBean.init()
+            let batchWorkVo = BatchWorkVo.init()
+            batchWorkVo.siteCode = self.batchWorkVo.siteCode
+            batchWorkVo.batchWorkNum = self.batchWorkVo.batchWorkNum
+            batchWorkVo.modifyUser = self.batchWorkVo.modifyUser
+            batchWorkVo.status = NSNumber.init(value: 1)
+            let array = [batchWorkVo] as NSArray
+            mesPostEntityBean.entity = array.mj_keyValues()
+            let dic = mesPostEntityBean.mj_keyValues()
+            
+            HttpMamager.postRequest(withURLString: DYZ_batchWork_workLog, parameters: dic as! [AnyHashable : Any], success: { (responseObjectModel: Any?) in
+                let returnMsgBean = responseObjectModel as! ReturnMsgBean
+                
+                
+                self._viewLoading.isHidden = true
+                if returnMsgBean.status == "SUCCESS" {
+                    self.request()
+                } else {
+                    MyAlertCenter.default().postAlert(withMessage: returnMsgBean.returnMsg)
+                }
+            }, fail: { (error: Error?) in
+                self._viewLoading.isHidden = true
+            }, isKindOfModel: NSClassFromString("ReturnMsgBean"))
+        }
+        let action1 = UIAlertAction.init(title: "取消", style: UIAlertActionStyle.default, handler: nil)
+        alertController.addAction(action0)
+        alertController.addAction(action1)
+        self.navigationController?.present(alertController, animated: true, completion: nil)
+    }
+    
+    
+    
     //    MARK: 取消
     @IBAction func buttonQuXiao(_ sender: Any) {
         self.buttonGoHome(sender)

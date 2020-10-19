@@ -145,60 +145,179 @@
         } else if (arrayPersonnel.count == 1) {
 #pragma 单人报工
             PersonnelVo *personnel = arrayPersonnel[0];
+            [self validateWorkRecordTypeSingleUserWorkWithPersonnelCode:personnel.personnelCode];
             
-            PadSingleUserWorkZuoYeDanYuanViewController *vc = [[PadSingleUserWorkZuoYeDanYuanViewController alloc] init];
-            vc.productionControlNum = self.productionControlNum;
-            vc.processOperationId = self.processOperationId;
-            vc.workUnitCode = self.workUnitCode;
-            vc.confirmUser = personnel.personnelCode;
-            vc.operationCode = self.operationCode;
-            [self.navigationController pushViewController:vc animated:true];
+            
         } else if (arrayPersonnel.count > 1) {
 #pragma 多人报工
-            _viewLoading.hidden = NO;
-            LoginModel *loginModel = [DatabaseTool getLoginModel];
-            UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
-            NSString *siteCode = tpfUser.siteCode;
-            
-            MesPostEntityBean *mesPostEntityBean = [[MesPostEntityBean alloc] init];
-            MultiUserWorkVo *multiUserWorkVo = [[MultiUserWorkVo alloc] init];
-            multiUserWorkVo.siteCode = siteCode;
-            multiUserWorkVo.createUser = tpfUser.userCode;
-            multiUserWorkVo.productionControlNum = self.productionControlNum;
-            multiUserWorkVo.operationCode = self.operationCode;
-            multiUserWorkVo.workUnitCode = self.workUnitCode;
-            
-            NSMutableArray *arrTmp = [[NSMutableArray alloc] initWithCapacity:0];
-            for (PersonnelVo *personnelVo in arrayPersonnel) {
-                WorkTimeLogVo *workTimeLogVo = [[WorkTimeLogVo alloc] init];
-                workTimeLogVo.confirmUser = personnelVo.personnelCode;
-                [arrTmp addObject:workTimeLogVo];
-            }
-            
-            multiUserWorkVo.multiUserWorkItemList = arrTmp;
-            
-            mesPostEntityBean.entity = multiUserWorkVo.mj_keyValues;
-            NSDictionary *dic = mesPostEntityBean.mj_keyValues;
-
-            [HttpMamager postRequestWithURLString:DYZ_multiUserWork_createMultiUserWork parameters:dic success:^(id responseObjectModel) {
-                ReturnMsgBean *returnMsgBean = responseObjectModel;
-                _viewLoading.hidden = YES;
-                if ([returnMsgBean.status isEqualToString:@"SUCCESS"]) {
-                    PadMultiUserWorkViewController *vc = [[PadMultiUserWorkViewController alloc] init];
-                    vc.multiUserWorkNum = returnMsgBean.returnMsg;
-                    [self.navigationController pushViewController:vc animated:true];
-                } else {
-                    [[MyAlertCenter defaultCenter] postAlertWithMessage:returnMsgBean.returnMsg];
-                }
-            } fail:^(NSError *error) {
-                _viewLoading.hidden = YES;
-            } isKindOfModel:NSClassFromString(@"ReturnMsgBean")];
+            [self validateWorkRecordTypeMultiUserWorkWithArrayPersonnel:arrayPersonnel];
         }
         
     }];
     
     [self requestGetPersonnelListByOperation];
 }
+
+#pragma mark 请选择报工记录类型 单人
+- (void)validateWorkRecordTypeSingleUserWorkWithPersonnelCode:(NSString *)personnelCode {
+    _viewLoading.hidden = NO;
+    LoginModel *loginModel = [DatabaseTool getLoginModel];
+    UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
+    NSString *siteCode = tpfUser.siteCode;
+    
+    MesPostEntityBean *mesPostEntityBean = [[MesPostEntityBean alloc] init];
+    ReportWorkProductionOrderConfirmVo *reportWorkProductionOrderConfirmVo = [[ReportWorkProductionOrderConfirmVo alloc] init];
+    reportWorkProductionOrderConfirmVo.siteCode = siteCode;
+    reportWorkProductionOrderConfirmVo.productionControlNum = self.productionControlNum;
+    reportWorkProductionOrderConfirmVo.operationCode = self.operationCode;
+    reportWorkProductionOrderConfirmVo.workUnitCode = self.workUnitCode;
+    reportWorkProductionOrderConfirmVo.processOperationId = self.processOperationId;
+    reportWorkProductionOrderConfirmVo.confirmUser = personnelCode;
+    NSMutableArray *array = [NSMutableArray arrayWithCapacity:0];
+    [array addObject:reportWorkProductionOrderConfirmVo];
+    mesPostEntityBean.entity = array.mj_keyValues;
+    NSDictionary *dic = mesPostEntityBean.mj_keyValues;
+    [HttpMamager postRequestWithURLString:DYZ_mes_productionOrderConfirm_validateWorkRecordType parameters:dic success:^(id responseObjectModel) {
+        ReturnListBean *returnListBean = responseObjectModel;
+        _viewLoading.hidden = YES;
+        if ([returnListBean.status isEqualToString:@"SUCCESS"]) {
+            if (returnListBean.list.count > 0) {
+                ReportWorkProductionOrderConfirmVo *temp = [ReportWorkProductionOrderConfirmVo mj_objectWithKeyValues:returnListBean.list[0]];
+                if (temp.chooseWorkRecordTypeFlag.integerValue == 1) {//弹款 选择
+                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"请选择报工记录类型" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+                    UIAlertAction *action = [UIAlertAction actionWithTitle:@"正常生产" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        [self gointoSingleUserWorkWithPersonnelCode:personnelCode workRecordType:[NSNumber numberWithInteger:0]];
+                    }];
+                    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"返工返修" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        [self gointoSingleUserWorkWithPersonnelCode:personnelCode workRecordType:[NSNumber numberWithInteger:1]];
+                    }];
+                    [alertController addAction:action];
+                    [alertController addAction:action1];
+                    
+                    if ([alertController respondsToSelector:@selector(popoverPresentationController)]) {
+                        alertController.popoverPresentationController.sourceView = self.view;//必须加
+                        alertController.popoverPresentationController.sourceRect = CGRectMake(0, kMainH, kMainW, kMainH);//可选
+                    }
+                    [self presentViewController:alertController animated:true completion:nil];
+                } else {
+                    //正常生产
+                    [self gointoSingleUserWorkWithPersonnelCode:personnelCode workRecordType:[NSNumber numberWithInteger:0]];
+                }
+            }
+        } else {
+            [[MyAlertCenter defaultCenter] postAlertWithMessage:returnListBean.returnMsg];
+        }
+    } fail:^(NSError *error) {
+        
+    } isKindOfModel:NSClassFromString(@"ReturnListBean")];
+}
+#pragma mark 请选择报工记录类型 多人
+- (void)validateWorkRecordTypeMultiUserWorkWithArrayPersonnel:(NSMutableArray *)arrayPersonnel {
+    _viewLoading.hidden = NO;
+    LoginModel *loginModel = [DatabaseTool getLoginModel];
+    UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
+    NSString *siteCode = tpfUser.siteCode;
+    
+    MesPostEntityBean *mesPostEntityBean = [[MesPostEntityBean alloc] init];
+    ReportWorkProductionOrderConfirmVo *reportWorkProductionOrderConfirmVo = [[ReportWorkProductionOrderConfirmVo alloc] init];
+    reportWorkProductionOrderConfirmVo.siteCode = siteCode;
+    reportWorkProductionOrderConfirmVo.productionControlNum = self.productionControlNum;
+    reportWorkProductionOrderConfirmVo.operationCode = self.operationCode;
+    reportWorkProductionOrderConfirmVo.workUnitCode = self.workUnitCode;
+    reportWorkProductionOrderConfirmVo.processOperationId = self.processOperationId;
+//    reportWorkProductionOrderConfirmVo.confirmUser = ;
+    NSMutableArray *array = [NSMutableArray arrayWithCapacity:0];
+    [array addObject:reportWorkProductionOrderConfirmVo];
+    mesPostEntityBean.entity = array.mj_keyValues;
+    NSDictionary *dic = mesPostEntityBean.mj_keyValues;
+    [HttpMamager postRequestWithURLString:DYZ_mes_productionOrderConfirm_validateWorkRecordType parameters:dic success:^(id responseObjectModel) {
+        ReturnListBean *returnListBean = responseObjectModel;
+        _viewLoading.hidden = YES;
+        if ([returnListBean.status isEqualToString:@"SUCCESS"]) {
+            if (returnListBean.list.count > 0) {
+                ReportWorkProductionOrderConfirmVo *temp = [ReportWorkProductionOrderConfirmVo mj_objectWithKeyValues:returnListBean.list[0]];
+                if (temp.chooseWorkRecordTypeFlag.integerValue == 1) {//弹款 选择
+                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"请选择报工记录类型" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+                    UIAlertAction *action = [UIAlertAction actionWithTitle:@"正常生产" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        [self gointoMultiUserWorkWithArrayPersonnel:arrayPersonnel workRecordType:[NSNumber numberWithInteger:0]];
+                    }];
+                    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"返工返修" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        [self gointoMultiUserWorkWithArrayPersonnel:arrayPersonnel workRecordType:[NSNumber numberWithInteger:1]];
+                    }];
+                    [alertController addAction:action];
+                    [alertController addAction:action1];
+                    
+                    if ([alertController respondsToSelector:@selector(popoverPresentationController)]) {
+                        alertController.popoverPresentationController.sourceView = self.view;//必须加
+                        alertController.popoverPresentationController.sourceRect = CGRectMake(0, kMainH, kMainW, kMainH);//可选
+                    }
+                    [self presentViewController:alertController animated:true completion:nil];
+                } else {
+                    //正常生产
+                    [self gointoMultiUserWorkWithArrayPersonnel:arrayPersonnel workRecordType:[NSNumber numberWithInteger:0]];
+                }
+            }
+        } else {
+            [[MyAlertCenter defaultCenter] postAlertWithMessage:returnListBean.returnMsg];
+        }
+    } fail:^(NSError *error) {
+        
+    } isKindOfModel:NSClassFromString(@"ReturnListBean")];
+}
+// 单人
+- (void)gointoSingleUserWorkWithPersonnelCode:(NSString *)personnelCode workRecordType:(NSNumber *)workRecordType {
+    PadSingleUserWorkZuoYeDanYuanViewController *vc = [[PadSingleUserWorkZuoYeDanYuanViewController alloc] init];
+    vc.productionControlNum = self.productionControlNum;
+    vc.processOperationId = self.processOperationId;
+    vc.workUnitCode = self.workUnitCode;
+    vc.confirmUser = personnelCode;
+    vc.operationCode = self.operationCode;
+    vc.workRecordType = workRecordType;
+    [self.navigationController pushViewController:vc animated:true];
+}
+// 多人
+- (void)gointoMultiUserWorkWithArrayPersonnel:(NSMutableArray *)arrayPersonnel workRecordType:(NSNumber *)workRecordType {
+    _viewLoading.hidden = NO;
+    LoginModel *loginModel = [DatabaseTool getLoginModel];
+    UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
+    NSString *siteCode = tpfUser.siteCode;
+    
+    MesPostEntityBean *mesPostEntityBean = [[MesPostEntityBean alloc] init];
+    MultiUserWorkVo *multiUserWorkVo = [[MultiUserWorkVo alloc] init];
+    multiUserWorkVo.siteCode = siteCode;
+    multiUserWorkVo.createUser = tpfUser.userCode;
+    multiUserWorkVo.productionControlNum = self.productionControlNum;
+    multiUserWorkVo.operationCode = self.operationCode;
+    multiUserWorkVo.workUnitCode = self.workUnitCode;
+    multiUserWorkVo.workRecordType = workRecordType;
+    NSMutableArray *arrTmp = [[NSMutableArray alloc] initWithCapacity:0];
+    for (PersonnelVo *personnelVo in arrayPersonnel) {
+        WorkTimeLogVo *workTimeLogVo = [[WorkTimeLogVo alloc] init];
+        workTimeLogVo.confirmUser = personnelVo.personnelCode;
+        [arrTmp addObject:workTimeLogVo];
+    }
+    
+    multiUserWorkVo.multiUserWorkItemList = arrTmp;
+    
+    mesPostEntityBean.entity = multiUserWorkVo.mj_keyValues;
+    NSDictionary *dic = mesPostEntityBean.mj_keyValues;
+
+    [HttpMamager postRequestWithURLString:DYZ_multiUserWork_createMultiUserWork parameters:dic success:^(id responseObjectModel) {
+        ReturnMsgBean *returnMsgBean = responseObjectModel;
+        _viewLoading.hidden = YES;
+        if ([returnMsgBean.status isEqualToString:@"SUCCESS"]) {
+            PadMultiUserWorkViewController *vc = [[PadMultiUserWorkViewController alloc] init];
+            vc.multiUserWorkNum = returnMsgBean.returnMsg;
+            vc.workRecordType = workRecordType;
+            [self.navigationController pushViewController:vc animated:true];
+        } else {
+            [[MyAlertCenter defaultCenter] postAlertWithMessage:returnMsgBean.returnMsg];
+        }
+    } fail:^(NSError *error) {
+        _viewLoading.hidden = YES;
+    } isKindOfModel:NSClassFromString(@"ReturnMsgBean")];
+}
+
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
     if ([touch.view isDescendantOfView:self.viewSearchContent]) {

@@ -94,7 +94,7 @@
 /**
  * 工艺工序id
  */
-@property (nonatomic,strong) NSNumber * processOperationId;//Long
+@property (nonatomic,copy) NSString * processOperationId;//Long
 
 /**
  * 报工时长

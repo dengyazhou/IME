@@ -273,5 +273,6 @@
 #import "MateriaProcessAssignVo.h"
 #import "EquipmentMaintenancePlanMonthVo.h"
 #import "EquipmentMaintenanceLogVo.h"
+#import "ModelReturnCauseVo.h"
 
 #endif /* VoHeader_h */

@@ -106,6 +106,9 @@
 @property (nonatomic, copy) NSString *operationCode;
 
 
+@property (nonatomic, strong) NSNumber *useReplaceableMaterial;//integer
+
+
 
 @property (nonatomic,copy) NSString * testdyz;
 

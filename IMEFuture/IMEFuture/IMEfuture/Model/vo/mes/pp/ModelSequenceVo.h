@@ -41,6 +41,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) NSString * productionControlNum;
 
+/**
+ * 原因编号
+ */
+@property (nonatomic, copy) NSString * causeCode;
+/**
+ * 原因描述
+ */
+@property (nonatomic, copy) NSString * causeText;
+
 @property (nonatomic, strong) NSNumber * isSelect;//0:没选；1:选了。。。获取数据是赋值为0，所以默认为没选
 
 @end

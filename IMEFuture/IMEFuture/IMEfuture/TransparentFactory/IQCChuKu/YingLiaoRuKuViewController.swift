@@ -211,6 +211,7 @@ class YingLiaoRuKuViewController: UIViewController, UITextFieldDelegate, UITable
             }
             value.operator = userCode
             value.toWarehouseOperator = warehouseInOperator
+            value.useReplaceableMaterial = NSNumber.init(value: 0)
             arrayTemp.append(value)
         }
         mesPostEntityBean.entity = arrayTemp
@@ -220,16 +221,66 @@ class YingLiaoRuKuViewController: UIViewController, UITextFieldDelegate, UITable
         HttpMamager.postRequest(withURLString: DYZ_reqOutbound_saveReqOutbound, parameters: dic, success: { (responseObjectModel: Any?) in
             let returnMsgBean =  responseObjectModel as! ReturnMsgBean
             self._viewLoading.isHidden = true
-            if returnMsgBean.status == "SUCCESS" {
-                MyAlertCenter.default().postAlert(withMessage: "提交成功")
-                self.navigationController?.popViewController(animated: true)
+            if returnMsgBean.returnCode.intValue == -888 {
+                self.secondKaiShi();
             } else {
-                MyAlertCenter.default().postAlert(withMessage: returnMsgBean.returnMsg)
+                if returnMsgBean.status == "SUCCESS" {
+                    MyAlertCenter.default().postAlert(withMessage: "提交成功")
+                    self.navigationController?.popViewController(animated: true)
+                } else {
+                    MyAlertCenter.default().postAlert(withMessage: returnMsgBean.returnMsg)
+                }
             }
+            
             
         }, fail: { (error: Error?) in
             self._viewLoading.isHidden = true
         }, isKindOfModel: NSClassFromString("ReturnMsgBean"))
+    }
+    
+    func secondKaiShi() {
+        let alertController = UIAlertController(title: "主件库存不足,是否使用替用物料出库？", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+        let action0 = UIAlertAction.init(title: "确定", style: UIAlertActionStyle.default) { (action) in
+            self._viewLoading.isHidden = false
+            let loginModel = DatabaseTool.getLoginModel()
+            let tpfUser = UserInfoVo.mj_object(withKeyValues: loginModel?.tpfUser)
+            let userCode = tpfUser?.userCode
+            
+            let mesPostEntityBean: MesPostEntityBean = MesPostEntityBean()
+            var arrayTemp: [ReqOutboundVo] = []
+            for value in self.arrayReqOutboundVo {
+                if let outNum = value.outNum {
+                    
+                } else {
+                    value.outNum = value.reqNum
+                }
+                value.operator = userCode
+                value.toWarehouseOperator = self.warehouseInOperator
+                value.useReplaceableMaterial = NSNumber.init(value: 1)
+                arrayTemp.append(value)
+            }
+            mesPostEntityBean.entity = arrayTemp
+            
+            let dic = mesPostEntityBean.mj_keyValues() as! [AnyHashable : Any]
+            
+            HttpMamager.postRequest(withURLString: DYZ_reqOutbound_saveReqOutbound, parameters: dic, success: { (responseObjectModel: Any?) in
+                let returnMsgBean =  responseObjectModel as! ReturnMsgBean
+                self._viewLoading.isHidden = true
+                if returnMsgBean.status == "SUCCESS" {
+                    MyAlertCenter.default().postAlert(withMessage: "提交成功")
+                    self.navigationController?.popViewController(animated: true)
+                } else {
+                    MyAlertCenter.default().postAlert(withMessage: returnMsgBean.returnMsg)
+                }
+                
+            }, fail: { (error: Error?) in
+                self._viewLoading.isHidden = true
+            }, isKindOfModel: NSClassFromString("ReturnMsgBean"))
+        }
+        let action1 = UIAlertAction.init(title: "取消", style: UIAlertActionStyle.default, handler: nil)
+        alertController.addAction(action0)
+        alertController.addAction(action1)
+        self.navigationController?.present(alertController, animated: true, completion: nil)
     }
     
     func setAttributedString(text: String) {

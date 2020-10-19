@@ -15,6 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *label0;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView0;
 
+@property (weak, nonatomic) IBOutlet UILabel *label1;
+@property (weak, nonatomic) IBOutlet UITextField *textField;
+@property (weak, nonatomic) IBOutlet UIButton *buttonSelect;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

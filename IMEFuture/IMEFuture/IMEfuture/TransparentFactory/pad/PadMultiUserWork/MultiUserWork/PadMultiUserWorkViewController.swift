@@ -14,6 +14,7 @@ class PadMultiUserWorkViewController: UIViewController, UITableViewDelegate, UIT
     
     
     @objc var multiUserWorkNum: String!
+    @objc var workRecordType: NSNumber!
     var multiUserWorkVo: MultiUserWorkVo!
     var productionControlVo: ProductionControlVo!
     
@@ -185,6 +186,13 @@ class PadMultiUserWorkViewController: UIViewController, UITableViewDelegate, UIT
         multiUserWorkVo.siteCode = self.multiUserWorkVo.siteCode
         multiUserWorkVo.multiUserWorkNum = self.multiUserWorkVo.multiUserWorkNum
         multiUserWorkVo.status = NSNumber.init(value: 1)
+        multiUserWorkVo.workRecordType = self.workRecordType
+        if self.workRecordType.intValue == 0 {
+            multiUserWorkVo.continueFlag = NSNumber.init(value: 0)
+        } else if self.workRecordType.intValue == 1 {
+            
+        }
+        
         let array = [multiUserWorkVo] as NSArray
         mesPostEntityBean.entity = array.mj_keyValues()
         let dic = mesPostEntityBean.mj_keyValues()
@@ -193,16 +201,54 @@ class PadMultiUserWorkViewController: UIViewController, UITableViewDelegate, UIT
         HttpMamager.postRequest(withURLString: DYZ_multiUserWork_workLog, parameters: dic as! [AnyHashable : Any], success: { (responseObjectModel: Any?) in
             let returnMsgBean = responseObjectModel as! ReturnMsgBean
             self._viewLoading.isHidden = true
-            if returnMsgBean.status == "SUCCESS" {
-                self.request()
+            if returnMsgBean.returnCode.intValue == -888 {
+                self.secondKaiShi()
             } else {
-                MyAlertCenter.default().postAlert(withMessage: returnMsgBean.returnMsg)
+                if returnMsgBean.status == "SUCCESS" {
+                    self.request()
+                } else {
+                    MyAlertCenter.default().postAlert(withMessage: returnMsgBean.returnMsg)
+                }
             }
+            
         }, fail: { (error: Error?) in
             self._viewLoading.isHidden = true
         }, isKindOfModel: NSClassFromString("ReturnMsgBean"))
         
     }
+    func secondKaiShi() {
+        let alertController = UIAlertController(title: "订单已达计划数量，是否继续报工？", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+        let action0 = UIAlertAction.init(title: "确定", style: UIAlertActionStyle.default) { (action) in
+            self._viewLoading.isHidden = false
+            let mesPostEntityBean = MesPostEntityBean.init()
+            let multiUserWorkVo = MultiUserWorkVo.init()
+            multiUserWorkVo.siteCode = self.multiUserWorkVo.siteCode
+            multiUserWorkVo.multiUserWorkNum = self.multiUserWorkVo.multiUserWorkNum
+            multiUserWorkVo.status = NSNumber.init(value: 1)
+            multiUserWorkVo.workRecordType = self.workRecordType
+            let array = [multiUserWorkVo] as NSArray
+            mesPostEntityBean.entity = array.mj_keyValues()
+            let dic = mesPostEntityBean.mj_keyValues()
+            print(dic)
+            
+            HttpMamager.postRequest(withURLString: DYZ_multiUserWork_workLog, parameters: dic as! [AnyHashable : Any], success: { (responseObjectModel: Any?) in
+                let returnMsgBean = responseObjectModel as! ReturnMsgBean
+                self._viewLoading.isHidden = true
+                if returnMsgBean.status == "SUCCESS" {
+                    self.request()
+                } else {
+                    MyAlertCenter.default().postAlert(withMessage: returnMsgBean.returnMsg)
+                }
+            }, fail: { (error: Error?) in
+                self._viewLoading.isHidden = true
+            }, isKindOfModel: NSClassFromString("ReturnMsgBean"))
+        }
+        let action1 = UIAlertAction.init(title: "取消", style: UIAlertActionStyle.default, handler: nil)
+        alertController.addAction(action0)
+        alertController.addAction(action1)
+        self.navigationController?.present(alertController, animated: true, completion: nil)
+    }
+    
     //    MARK: 取消
     @IBAction func buttonQuXiao(_ sender: Any) {
         for value in (self.navigationController?.viewControllers)! {

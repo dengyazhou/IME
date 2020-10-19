@@ -18,6 +18,8 @@
 
 #import "PadCheckBigImageViewController.h"
 
+#import "MouldManagerGiveOutSelectCauseView.h"
+
 
 #import <ReactiveObjC.h>
 
@@ -30,6 +32,7 @@
 @property (nonatomic, strong) NSMutableArray *arrayProductionControlVo;
 @property (nonatomic, strong) NSMutableArray *arrayTotalProductionControlVo;
 @property (nonatomic, strong) NSMutableArray *arrayModelSequenceVo;
+@property (nonatomic, strong) NSMutableArray *arrayModelReturnCauseList;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
@@ -51,6 +54,8 @@
 
 
 @property (nonatomic, assign) NSInteger indexWorkCenterVo;
+
+@property (nonatomic, strong) MouldManagerGiveOutSelectCauseView *mouldManagerGiveOutSelectCauseView;
 
 
 
@@ -96,6 +101,7 @@
     self.tableView.sectionFooterHeight = 0.1;
     
     [self request_productionControl_getProductionControl];
+    [self request_modelSequence_getModelReturnCauseList];
     
     
     //rac
@@ -149,10 +155,25 @@
     }];
     
     
+    self.mouldManagerGiveOutSelectCauseView = [MouldManagerGiveOutSelectCauseView loadMyView];
+    [self.view addSubview:self.mouldManagerGiveOutSelectCauseView];
+    self.mouldManagerGiveOutSelectCauseView.hidden = YES;
+    
+    [self.mouldManagerGiveOutSelectCauseView callBackSelectTableViewIndex:^(NSInteger index, ModelReturnCauseVo * _Nonnull model) {
+        ModelSequenceVo *sequenceVo = self.arrayModelSequenceVo[index];
+        sequenceVo.causeText = model.causeText;
+        sequenceVo.causeCode = model.causeCode;
+        
+        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+        
+    }];
+    
+    
 }
 
+
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(kMainW, 94);
+    return CGSizeMake(kMainW, 114);
 }
 
 
@@ -189,6 +210,8 @@
     } else if (productionControlVo.status.integerValue == 3) {
         cell.label5.text = @"报工";
     }
+    
+    cell.label6.text = productionControlVo.plannedstartDateTime;
     return cell;
 }
 
@@ -203,6 +226,7 @@
     vc.requirementDate = productionControlVo.requirementDate;
     vc.mouldCode = productionControlVo.mouldCode;
     vc.status = productionControlVo.status;
+    vc.plannedstartDateTime = productionControlVo.plannedstartDateTime;
     vc.productionControlNum = productionControlVo.productionControlNum;
     [self.navigationController pushViewController:vc animated:true];
 }
@@ -225,7 +249,21 @@
         cell.imageView0.image = [UIImage imageNamed:@"selection"];
     }
     
+    cell.label1.text = model.modelCode;
+    
+    [cell.buttonSelect addTarget:self action:@selector(buttonMouldManagerGiveOutSelectCauseView:) forControlEvents:UIControlEventTouchUpInside];
+    cell.buttonSelect.tag = indexPath.row;
+    
+    cell.textField.text = model.causeText;
+    cell.textField.placeholder = @"请选择";
+    
     return cell;
+}
+
+- (void)buttonMouldManagerGiveOutSelectCauseView:(UIButton *)sender {
+    self.mouldManagerGiveOutSelectCauseView.hidden = NO;
+    self.mouldManagerGiveOutSelectCauseView.index = sender.tag;
+    
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -309,15 +347,52 @@
     } isKindOfModel:NSClassFromString(@"ReturnListBean")];
 }
 
+- (void)request_modelSequence_getModelReturnCauseList {
+    _viewLoading.hidden = NO;
+    LoginModel *loginModel = [DatabaseTool getLoginModel];
+    UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
+    NSString *siteCode = tpfUser.siteCode;
+    
+    MesPostEntityBean *mesPostEntityBean = [[MesPostEntityBean alloc] init];
+    
+    ModelReturnCauseVo *modelReturnCauseVo = [[ModelReturnCauseVo alloc] init];
+    modelReturnCauseVo.siteCode = siteCode;
+        
+    mesPostEntityBean.entity = modelReturnCauseVo.mj_keyValues;
+    NSDictionary *dic = mesPostEntityBean.mj_keyValues;
+    
+    [HttpMamager postRequestWithURLString:DYZ_modelSequence_getModelReturnCauseList parameters:dic success:^(id responseObjectModel) {
+        ReturnListBean *returnListBean = responseObjectModel;
+        self->_viewLoading.hidden = YES;
+        if ([returnListBean.status isEqualToString:@"SUCCESS"]) {
+            self.arrayModelReturnCauseList = [[NSMutableArray alloc] initWithCapacity:0];
+            NSMutableArray *dataArray = returnListBean.list;
+            for (NSDictionary *dic in dataArray) {
+                ModelReturnCauseVo  *model  = [ModelReturnCauseVo  mj_objectWithKeyValues:dic];
+                [self.arrayModelReturnCauseList addObject:model];
+            }
+            [self.mouldManagerGiveOutSelectCauseView loadTableWithArray:self.arrayModelReturnCauseList];
+        } else {
+            [[MyAlertCenter defaultCenter] postAlertWithMessage:returnListBean.returnMsg];
+        }
+    } fail:^(NSError *error) {
+       self->_viewLoading.hidden = YES;
+    } isKindOfModel:NSClassFromString(@"ReturnListBean")];
+}
+
 - (void)request_modelSequence_updateModelSequenceStatus {
     
     MesPostEntityBean *mesPostEntityBean = [[MesPostEntityBean alloc] init];
     
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:0];
     
+    LoginModel *loginModel = [DatabaseTool getLoginModel];
+    UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
+    
     for (ModelSequenceVo *model in self.arrayModelSequenceVo) {
         if (model.isSelect.integerValue == 1) {
             model.status = [NSNumber numberWithInteger:0];
+            model.createUser = tpfUser.userCode;
             [array addObject:model];
         }
     }
@@ -337,7 +412,8 @@
         self->_viewLoading.hidden = YES;
         if ([returnMsgBean.status isEqualToString:@"SUCCESS"]) {
             [[MyAlertCenter defaultCenter] postAlertWithMessage:@"还回成功"];
-            [self.navigationController popViewControllerAnimated:true];
+//            [self.navigationController popViewControllerAnimated:true];
+            [self request_modelSequence_getProductionModelSequence];
         } else {
             [[MyAlertCenter defaultCenter] postAlertWithMessage:returnMsgBean.returnMsg];
         }

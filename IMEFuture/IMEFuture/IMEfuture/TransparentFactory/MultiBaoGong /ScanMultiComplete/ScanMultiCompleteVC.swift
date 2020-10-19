@@ -421,14 +421,14 @@ class ScanMultiCompleteVC: UIViewController,UITableViewDelegate,UITableViewDataS
         let batchConfirmPeportVo = BatchConfirmReportVo.init()
         batchConfirmPeportVo.batchWorkVo = self.batchWorkVo
         
-        for vv in self.list {
-            let batchWorkItemReportVo = vv as! BatchWorkItemReportVo
-            if batchWorkItemReportVo.productionOperationVo.completedQuantity.doubleValue > batchWorkItemReportVo.productionOperationVo.unCompletedQuantity.doubleValue{
-                MyAlertCenter.default().postAlert(withMessage: "报工数大于计划数")
-                _viewLoading.isHidden = true
-                return
-            }
-        }
+//        for vv in self.list {
+//            let batchWorkItemReportVo = vv as! BatchWorkItemReportVo
+//            if batchWorkItemReportVo.productionOperationVo.completedQuantity.doubleValue > batchWorkItemReportVo.productionOperationVo.unCompletedQuantity.doubleValue{
+//                MyAlertCenter.default().postAlert(withMessage: "报工数大于计划数")
+//                return
+//            }
+//        }
+        
         
         var imageArray:[UploadImageBean] = []
         for i in 0..<self.list.count {

@@ -70,6 +70,8 @@
  */
 @property (nonatomic,strong) NSNumber * status;//Integer
 
+@property (nonatomic,strong) NSMutableArray * statusArry;//Integer
+
 /**
  * 图号
  */
@@ -282,6 +284,8 @@
 @property (nonatomic,copy) NSString *mouldCode;
 
 @property (nonatomic, copy) NSString *parameterCodeAndText;
+
+@property (nonatomic, copy) NSString *plannedstartDateTime;
 
 @property (nonatomic, strong) NSNumber * isSelect;//0:没选；1:选了。。。获取数据是赋值为0，所以默认为没选
 

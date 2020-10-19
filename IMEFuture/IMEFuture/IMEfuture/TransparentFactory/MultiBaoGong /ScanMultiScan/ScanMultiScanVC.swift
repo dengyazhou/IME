@@ -190,6 +190,7 @@ class ScanMultiScanVC: UIViewController,UITextFieldDelegate,UITableViewDelegate,
         let reportWorkProductionOrderConfirmVo = ReportWorkProductionOrderConfirmVo.init()
         reportWorkProductionOrderConfirmVo.siteCode = siteCode
         reportWorkProductionOrderConfirmVo.productionControlNum = batchWorkVo?.productionControlNum
+        reportWorkProductionOrderConfirmVo.operationCode = batchWorkVo?.operationCode
         var array: NSMutableArray = NSMutableArray.init(object: reportWorkProductionOrderConfirmVo)
         mesPostEntityBean.entity = array.mj_keyValues()
         let dic = mesPostEntityBean.mj_keyValues()

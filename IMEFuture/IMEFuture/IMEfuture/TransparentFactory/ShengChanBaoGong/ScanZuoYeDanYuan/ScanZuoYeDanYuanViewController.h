@@ -22,9 +22,5 @@
  */
 @property (nonatomic,copy) NSString * requirementDate;
 
-/**
- * 报工记录类型 0 正常生产 1 返工返修
- */
-@property (nonatomic,strong) NSNumber * workRecordType;//Integer
 
 @end

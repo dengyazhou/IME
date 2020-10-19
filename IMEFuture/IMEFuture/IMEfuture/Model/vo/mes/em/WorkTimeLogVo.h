@@ -218,4 +218,9 @@
  */
 @property (nonatomic,strong) NSNumber * completionMode;//Integer
 
+/**
+ * 继续报工标志 、0否1是
+ */
+@property (nonatomic, strong) NSNumber * continueFlag;//Integer
+
 @end

@@ -147,6 +147,7 @@
     NSLog(@"operationCode:%@",model.operationCode);
     NSLog(@"workUnitCode:%@",model.workUnitCode);
     
+    
     LoginModel *loginModel = [DatabaseTool getLoginModel];
     UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
     NSString *siteCode = tpfUser.siteCode;
@@ -169,7 +170,6 @@
         scanYuanGongMaViewController.workUnitScanVo = model;
         scanYuanGongMaViewController.productionOrderNum = self.productionOrderNum;
         scanYuanGongMaViewController.requirementDate = self.requirementDate;
-        scanYuanGongMaViewController.workRecordType = self.workRecordType;
         [self.navigationController pushViewController:scanYuanGongMaViewController animated:YES];
     } else if (array.count > 1) {
         //进入多人报工界面
@@ -208,6 +208,7 @@
                 NSLog(@"进入 多人报工 哈哈哈 --%@",returnMsgBean.returnMsg);
                 MultiUserWorkViewController *vc = [[MultiUserWorkViewController alloc] init];
                 vc.multiUserWorkNum = returnMsgBean.returnMsg;
+//                vc.workRecordType = workRecordType;
                 [self.navigationController pushViewController:vc animated:true];
             } else {
                 _viewLoading.hidden = YES;

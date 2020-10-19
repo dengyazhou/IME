@@ -15,7 +15,6 @@
 @property (nonatomic,copy) NSString *productionOrderNum;
 @property (nonatomic,strong) ReportWorkWorkUnitScanVo *workUnitScanVo;
 @property (nonatomic,copy) NSString * requirementDate;
-@property (nonatomic,strong) NSNumber * workRecordType;//Integer
 
 
 @end

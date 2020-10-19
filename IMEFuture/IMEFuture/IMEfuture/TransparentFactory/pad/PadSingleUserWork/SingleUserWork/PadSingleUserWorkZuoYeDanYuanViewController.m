@@ -208,6 +208,11 @@
     workTimeLogVo.status = [NSNumber numberWithInt:1];
     workTimeLogVo.workTime = [NSNumber numberWithLong:0];
     workTimeLogVo.workRecordType = self.workRecordType;
+    if (self.workRecordType.integerValue == 0) { // 正常生产
+         workTimeLogVo.continueFlag = [NSNumber numberWithInteger:0];
+    } else if (self.workRecordType.integerValue == 1) { // 返工返修
+        
+    }
     
     NSArray *array = [NSArray arrayWithObjects:workTimeLogVo.mj_keyValues, nil];
     mesPostEntityBean.entity = array.mj_keyValues;
@@ -217,20 +222,75 @@
     [HttpMamager postRequestWithURLString:DYZ_workRest_workLog parameters:dic success:^(id responseObjectModel) {
         ReturnListBean *returnListBean = responseObjectModel;
         _viewLoading.hidden = YES;
-        if ([returnListBean.status isEqualToString:@"SUCCESS"]) {
-            WorkTimeLogVo *model = [WorkTimeLogVo mj_objectWithKeyValues:returnListBean.list[0]];
-            
-            self.workTimeLogVo = model;
-            
-            [self initButtonAndRequest:model];
-        
+        if (returnListBean.returnCode.integerValue == -888) {
+            [self secondKaiShi];
         } else {
-            [[MyAlertCenter defaultCenter] postAlertWithMessage:returnListBean.returnMsg];
+            if ([returnListBean.status isEqualToString:@"SUCCESS"]) {
+                WorkTimeLogVo *model = [WorkTimeLogVo mj_objectWithKeyValues:returnListBean.list[0]];
+                
+                self.workTimeLogVo = model;
+                
+                [self initButtonAndRequest:model];
+            
+            } else {
+                [[MyAlertCenter defaultCenter] postAlertWithMessage:returnListBean.returnMsg];
+            }
         }
     } fail:^(NSError *error) {
         _viewLoading.hidden = YES;
        
     } isKindOfModel:NSClassFromString(@"ReturnListBean")];
+}
+
+- (void)secondKaiShi {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"订单已达计划数量，是否继续报工？" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action0 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        _viewLoading.hidden = NO;
+        LoginModel *loginModel = [DatabaseTool getLoginModel];
+        UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
+        NSString *siteCode = tpfUser.siteCode;
+        
+        MesPostEntityBean *mesPostEntityBean = [[MesPostEntityBean alloc] init];
+        WorkTimeLogVo *workTimeLogVo = [[WorkTimeLogVo alloc] init];
+        workTimeLogVo.siteCode = siteCode;
+        workTimeLogVo.startDateTime = [ToolTransition stringFromDate:[NSDate date]];
+        workTimeLogVo.productionControlNum = self.productionControlNum;
+        workTimeLogVo.workUnitCode = self.workUnitCode;
+        workTimeLogVo.operationCode = self.operationCode;
+        workTimeLogVo.imeiCode = @"355797079515229";
+        workTimeLogVo.confirmUser = self.confirmUser;
+        workTimeLogVo.processOperationId = self.processOperationId;
+        workTimeLogVo.status = [NSNumber numberWithInt:1];
+        workTimeLogVo.workTime = [NSNumber numberWithLong:0];
+        workTimeLogVo.workRecordType = self.workRecordType;
+        
+        NSArray *array = [NSArray arrayWithObjects:workTimeLogVo.mj_keyValues, nil];
+        mesPostEntityBean.entity = array.mj_keyValues;
+        NSDictionary *dic = mesPostEntityBean.mj_keyValues;
+        NSLog(@"%@",dic);
+        
+        [HttpMamager postRequestWithURLString:DYZ_workRest_workLog parameters:dic success:^(id responseObjectModel) {
+            ReturnListBean *returnListBean = responseObjectModel;
+            _viewLoading.hidden = YES;
+            if ([returnListBean.status isEqualToString:@"SUCCESS"]) {
+                WorkTimeLogVo *model = [WorkTimeLogVo mj_objectWithKeyValues:returnListBean.list[0]];
+                
+                self.workTimeLogVo = model;
+                
+                [self initButtonAndRequest:model];
+            
+            } else {
+                [[MyAlertCenter defaultCenter] postAlertWithMessage:returnListBean.returnMsg];
+            }
+        } fail:^(NSError *error) {
+            _viewLoading.hidden = YES;
+           
+        } isKindOfModel:NSClassFromString(@"ReturnListBean")];
+    }];
+    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
+    [alertController addAction:action0];
+    [alertController addAction:action1];
+    [self.navigationController presentViewController:alertController animated:YES completion:nil];
 }
 
 #pragma mark 取消

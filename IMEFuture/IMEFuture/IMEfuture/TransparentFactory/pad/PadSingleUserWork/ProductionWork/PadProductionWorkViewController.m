@@ -69,7 +69,11 @@
 
 // status = 2 : 待生产作业单
 // status = 3 : 进行中作业单
-@property (nonatomic, assign) NSInteger status;
+//@property (nonatomic, assign) NSInteger status;
+
+//@[2,6] : 待生产作业单
+//@[3,4] : 进行中作业单
+@property (nonatomic, strong) NSMutableArray *statusArry;
 
 @property (nonatomic, assign) NSInteger indexWorkCenterVo;
 
@@ -107,7 +111,7 @@
 
     [self requestSelectAllWorkCenter];
     
-    self.status = 2;
+    self.statusArry = [NSMutableArray arrayWithObjects:@"2",@"6", nil];
     _tempText = @"";
     _tempStartDate = [NSNull null];
     _tempEndDate = [NSNull null];
@@ -204,7 +208,7 @@
     //待生产作业单
     [[self.buttonLeftStatue2 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
         @strongify(self);
-        self.status = 2;
+        self.statusArry = [NSMutableArray arrayWithObjects:@"2",@"6", nil];
         self.buttonLeftBottomLine.backgroundColor = colorRGB(72, 184, 252);
         self.buttonRightBottomLine.backgroundColor = colorRGB(255, 255, 255);
         [self.collectionView.mj_header beginRefreshing];
@@ -213,7 +217,7 @@
     //进行中作业单
     [[self.buttonRightStatue3 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
         @strongify(self);
-        self.status = 3;
+        self.statusArry = [NSMutableArray arrayWithObjects:@"3",@"4", nil];
         self.buttonLeftBottomLine.backgroundColor = colorRGB(255, 255, 255);
         self.buttonRightBottomLine.backgroundColor = colorRGB(72, 184, 252);
         [self.collectionView.mj_header beginRefreshing];
@@ -363,7 +367,7 @@
         productionControlVo.workCenterCode = workCenterVo.workCenterCode;
         productionControlVo.startDate = self->_tempStartDate;
         productionControlVo.endDate = self->_tempEndDate;
-        productionControlVo.status = [NSNumber numberWithInteger:self.status];
+        productionControlVo.statusArry = self->_statusArry;
         productionControlVo.text = self->_tempText;//没有值就是空字符串
         
         mesPostEntityBean.entity = productionControlVo.mj_keyValues;
@@ -421,9 +425,9 @@
            
            productionControlVo.workCenterCode = workCenterVo.workCenterCode;
            productionControlVo.startDate = self->_tempStartDate;
-        productionControlVo.endDate = self->_tempEndDate;
-           productionControlVo.status = [NSNumber numberWithInteger:self.status];
-        productionControlVo.text = self->_tempText;
+           productionControlVo.endDate = self->_tempEndDate;
+        productionControlVo.statusArry = self->_statusArry;
+           productionControlVo.text = self->_tempText;
         
            mesPostEntityBean.entity = productionControlVo.mj_keyValues;
            NSDictionary *dic = mesPostEntityBean.mj_keyValues;

@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *label4;
 @property (weak, nonatomic) IBOutlet UILabel *label5;
 
+@property (weak, nonatomic) IBOutlet UILabel *label6;
 
 @end
 

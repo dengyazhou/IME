@@ -96,49 +96,12 @@
         _viewLoading.hidden = YES;
         if ([returnEntityBean.status isEqualToString:@"SUCCESS"]) {
             //扫描成功进入下级界面
+            
             //主线程
             ProductionControlVo *scanVo = [ProductionControlVo mj_objectWithKeyValues:returnEntityBean.entity];
             
-            MesPostEntityBean *mesPostEntityBean = [[MesPostEntityBean alloc] init];
-            ReportWorkProductionOrderConfirmVo *reportWorkProductionOrderConfirmVo = [[ReportWorkProductionOrderConfirmVo alloc] init];
-            reportWorkProductionOrderConfirmVo.siteCode = siteCode;
-            reportWorkProductionOrderConfirmVo.productionControlNum = scanVo.productionControlNum;
-            NSMutableArray *array = [NSMutableArray arrayWithCapacity:0];
-            [array addObject:reportWorkProductionOrderConfirmVo];
-            mesPostEntityBean.entity = array.mj_keyValues;
-            NSDictionary *dic = mesPostEntityBean.mj_keyValues;
-            [HttpMamager postRequestWithURLString:DYZ_mes_productionOrderConfirm_validateWorkRecordType parameters:dic success:^(id responseObjectModel) {
-                ReturnListBean *returnListBean = responseObjectModel;
-                if ([returnListBean.status isEqualToString:@"SUCCESS"]) {
-                    if (returnListBean.list.count > 0) {
-                        ReportWorkProductionOrderConfirmVo *temp = [ReportWorkProductionOrderConfirmVo mj_objectWithKeyValues:returnListBean.list[0]];
-                        if (temp.chooseWorkRecordTypeFlag.integerValue == 1) {//弹款 选择
-                            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"请选择报工记录类型" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-                            UIAlertAction *action = [UIAlertAction actionWithTitle:@"正常生产" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                                [self goScanZuoYeDanYuanViewControllerWithProductionControlNum:result productionOrderNum:scanVo.productionOrderNum requirementDate:scanVo.requirementDate workRecordType:[NSNumber numberWithInteger:0]];
-                            }];
-                            UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"返工返修" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                                [self goScanZuoYeDanYuanViewControllerWithProductionControlNum:result productionOrderNum:scanVo.productionOrderNum requirementDate:scanVo.requirementDate workRecordType:[NSNumber numberWithInteger:1]];
-                            }];
-                            [alertController addAction:action];
-                            [alertController addAction:action1];
-                            
-                            if ([alertController respondsToSelector:@selector(popoverPresentationController)]) {
-                                alertController.popoverPresentationController.sourceView = self.view;//必须加
-                                alertController.popoverPresentationController.sourceRect = CGRectMake(0, kMainH, kMainW, kMainH);//可选
-                            }
-                            [self presentViewController:alertController animated:true completion:nil];
-                        } else {
-                            //正常生产
-                            [self goScanZuoYeDanYuanViewControllerWithProductionControlNum:result productionOrderNum:scanVo.productionOrderNum requirementDate:scanVo.requirementDate workRecordType:[NSNumber numberWithInteger:0]];
-                        }
-                    }
-                } else {
-                    [[MyAlertCenter defaultCenter] postAlertWithMessage:returnListBean.returnMsg];
-                }
-            } fail:^(NSError *error) {
-                
-            } isKindOfModel:NSClassFromString(@"ReturnListBean")];
+            [self goScanZuoYeDanYuanViewControllerWithProductionControlNum:result productionOrderNum:scanVo.productionOrderNum requirementDate:scanVo.requirementDate];
+        
         } else {
             [[MyAlertCenter defaultCenter] postAlertWithMessage:returnEntityBean.returnMsg];
         }
@@ -148,12 +111,11 @@
     } isKindOfModel:NSClassFromString(@"ReturnEntityBean")];
 }
 
-- (void)goScanZuoYeDanYuanViewControllerWithProductionControlNum:(NSString *)productionControlNum productionOrderNum:(NSString *)productionOrderNum requirementDate:(NSString *)requirementDate workRecordType:(NSNumber *)workRecordType {
+- (void)goScanZuoYeDanYuanViewControllerWithProductionControlNum:(NSString *)productionControlNum productionOrderNum:(NSString *)productionOrderNum requirementDate:(NSString *)requirementDate{
     ScanZuoYeDanYuanViewController *scanZuoYeDanYuanViewController = [[ScanZuoYeDanYuanViewController alloc] init];
     scanZuoYeDanYuanViewController.productionControlNum = productionControlNum;
     scanZuoYeDanYuanViewController.productionOrderNum = productionOrderNum;
     scanZuoYeDanYuanViewController.requirementDate = requirementDate;
-    scanZuoYeDanYuanViewController.workRecordType = workRecordType;
     [self.navigationController pushViewController:scanZuoYeDanYuanViewController animated:YES];
 }
 

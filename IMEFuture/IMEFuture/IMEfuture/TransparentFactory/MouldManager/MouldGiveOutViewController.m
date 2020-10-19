@@ -99,7 +99,7 @@
         } else if (self.status.integerValue == 3) {
             cell.label5.text = @"报工";
         }
-        
+        cell.label6.text = self.plannedstartDateTime;
         return cell;
         
     } else if (indexPath.section == 1) {
@@ -196,10 +196,14 @@
     
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:0];
     
+    LoginModel *loginModel = [DatabaseTool getLoginModel];
+    UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
+    
     for (ModelSequenceVo *model in self.arrayModelSequenceVo) {
         if (model.isSelect.integerValue == 1) {
             model.status = [NSNumber numberWithInteger:1];
             model.productionControlNum = self.productionControlNum;
+            model.createUser = tpfUser.userCode;
             [array addObject:model];
         }
     }

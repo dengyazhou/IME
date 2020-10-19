@@ -219,6 +219,9 @@
 		93E4D6422500E04B00AFF194 /* MouldManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93E4D6402500E04B00AFF194 /* MouldManagerViewController.xib */; };
 		93E4D6462500E9ED00AFF194 /* MouldGiveOutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93E4D6442500E9ED00AFF194 /* MouldGiveOutCell.m */; };
 		93E4D6472500E9ED00AFF194 /* MouldGiveOutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93E4D6452500E9ED00AFF194 /* MouldGiveOutCell.xib */; };
+		93E8E7E42536DB9100B55601 /* MouldManagerGiveOutSelectCauseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93E8E7E32536DB9100B55601 /* MouldManagerGiveOutSelectCauseView.m */; };
+		93E8E7E62536DBB100B55601 /* MouldManagerGiveOutSelectCauseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93E8E7E52536DBB100B55601 /* MouldManagerGiveOutSelectCauseView.xib */; };
+		93E8E7E92536FA6E00B55601 /* ModelReturnCauseVo.m in Sources */ = {isa = PBXBuildFile; fileRef = 93E8E7E82536FA6E00B55601 /* ModelReturnCauseVo.m */; };
 		93EF0C7022E0372C00182152 /* TemporaryTaskVo.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EF0C6F22E0372C00182152 /* TemporaryTaskVo.m */; };
 		93EF0C7422E038BF00182152 /* TemporaryTaskTypeVo.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EF0C7322E038BF00182152 /* TemporaryTaskTypeVo.m */; };
 		93EF0C7722E0395D00182152 /* TemporaryTaskShutdownVo.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EF0C7622E0395D00182152 /* TemporaryTaskShutdownVo.m */; };
@@ -1647,6 +1650,11 @@
 		93E4D6432500E9ED00AFF194 /* MouldGiveOutCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MouldGiveOutCell.h; sourceTree = "<group>"; };
 		93E4D6442500E9ED00AFF194 /* MouldGiveOutCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MouldGiveOutCell.m; sourceTree = "<group>"; };
 		93E4D6452500E9ED00AFF194 /* MouldGiveOutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MouldGiveOutCell.xib; sourceTree = "<group>"; };
+		93E8E7E22536DB9100B55601 /* MouldManagerGiveOutSelectCauseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MouldManagerGiveOutSelectCauseView.h; sourceTree = "<group>"; };
+		93E8E7E32536DB9100B55601 /* MouldManagerGiveOutSelectCauseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MouldManagerGiveOutSelectCauseView.m; sourceTree = "<group>"; };
+		93E8E7E52536DBB100B55601 /* MouldManagerGiveOutSelectCauseView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MouldManagerGiveOutSelectCauseView.xib; sourceTree = "<group>"; };
+		93E8E7E72536FA6E00B55601 /* ModelReturnCauseVo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelReturnCauseVo.h; sourceTree = "<group>"; };
+		93E8E7E82536FA6E00B55601 /* ModelReturnCauseVo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModelReturnCauseVo.m; sourceTree = "<group>"; };
 		93EF0C6E22E0372C00182152 /* TemporaryTaskVo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TemporaryTaskVo.h; sourceTree = "<group>"; };
 		93EF0C6F22E0372C00182152 /* TemporaryTaskVo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TemporaryTaskVo.m; sourceTree = "<group>"; };
 		93EF0C7222E038BF00182152 /* TemporaryTaskTypeVo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TemporaryTaskTypeVo.h; sourceTree = "<group>"; };
@@ -3909,6 +3917,9 @@
 				93C423F02501E23F00472C1D /* MouldGiveOutViewController.h */,
 				93C423F12501E23F00472C1D /* MouldGiveOutViewController.m */,
 				93C423F22501E23F00472C1D /* MouldGiveOutViewController.xib */,
+				93E8E7E22536DB9100B55601 /* MouldManagerGiveOutSelectCauseView.h */,
+				93E8E7E32536DB9100B55601 /* MouldManagerGiveOutSelectCauseView.m */,
+				93E8E7E52536DBB100B55601 /* MouldManagerGiveOutSelectCauseView.xib */,
 			);
 			path = MouldManager;
 			sourceTree = "<group>";
@@ -5141,6 +5152,8 @@
 				93947D3924C930140010C5FD /* MultiUserWorkVo.m */,
 				93C4240F25023F1500472C1D /* ProductionOrderVo.h */,
 				93C4241025023F1500472C1D /* ProductionOrderVo.m */,
+				93E8E7E72536FA6E00B55601 /* ModelReturnCauseVo.h */,
+				93E8E7E82536FA6E00B55601 /* ModelReturnCauseVo.m */,
 			);
 			path = pp;
 			sourceTree = "<group>";
@@ -8224,6 +8237,7 @@
 				9312BF95251DBA5800742050 /* EMaintenanceCell1.xib in Resources */,
 				93F70FAC22B0D7BB000B2D9D /* BaoJiaViewController4.xib in Resources */,
 				93F70C7E22B0D7BA000B2D9D /* WebDatailURL.xib in Resources */,
+				93E8E7E62536DBB100B55601 /* MouldManagerGiveOutSelectCauseView.xib in Resources */,
 				9312BF84251D9B9200742050 /* EquipmentMaintenanceViewController.xib in Resources */,
 				93F70F3F22B0D7BB000B2D9D /* ECOrderCell.xib in Resources */,
 				93F70C8722B0D7BA000B2D9D /* ViewSelectIdentity.xib in Resources */,
@@ -9113,6 +9127,7 @@
 				93AEFDB024E2828400F29A94 /* PadSingleUserWorkCompleteCell2.m in Sources */,
 				93F70D0422B0D7BA000B2D9D /* BaseTag.m in Sources */,
 				93F70E7422B0D7BB000B2D9D /* YanHuoDetailCell090002.m in Sources */,
+				93E8E7E92536FA6E00B55601 /* ModelReturnCauseVo.m in Sources */,
 				93F70E8522B0D7BB000B2D9D /* ShaiXianBaoJiaCell0.m in Sources */,
 				93F70CF922B0D7BA000B2D9D /* OrderOperate.m in Sources */,
 				93F70EFF22B0D7BB000B2D9D /* YanHuoCell2.m in Sources */,
@@ -9379,6 +9394,7 @@
 				93F70BFF22B0D7BA000B2D9D /* IQCRuKuViewController.swift in Sources */,
 				93F70FA822B0D7BB000B2D9D /* BaoJiaViewController.m in Sources */,
 				93F70F6E22B0D7BB000B2D9D /* ShouHuoXiangQingChaKanXiangQingHeaderView0.m in Sources */,
+				93E8E7E42536DB9100B55601 /* MouldManagerGiveOutSelectCauseView.m in Sources */,
 				93F70F7722B0D7BB000B2D9D /* ShouHuoXiangQingChaKanXiangQingCell0.m in Sources */,
 				93F70D7322B0D7BA000B2D9D /* LianXiRenSouSuoViewController1.m in Sources */,
 				93B3D16D24DD5053003F700B /* DrawingPreviewVo.m in Sources */,

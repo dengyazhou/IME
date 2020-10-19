@@ -151,7 +151,6 @@ class XiaLiaoBaoGongViewController: UIViewController,UITableViewDelegate, UITabl
     }
     //    MARK: 完工
     @IBAction func buttonWanGong(_ sender: Any) {
-        //DYZ_batchWork_workLog
         
         let alertController = UIAlertController.init(title: "是否确认完工？", message: nil, preferredStyle: UIAlertControllerStyle.alert)
         let action0 = UIAlertAction.init(title: "确定", style: UIAlertActionStyle.default) { (action: UIAlertAction) in
