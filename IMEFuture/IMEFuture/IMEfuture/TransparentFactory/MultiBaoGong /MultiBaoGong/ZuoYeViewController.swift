@@ -395,8 +395,8 @@ class ZuoYeViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self._arrayR = ["生产作业号","生产单元","操作员","本道工序","计划工时","剩余总工时"]
             self._arrayL = [workTimeLogVo.productionControlNum,(batchWorkVo?.workUnitText)!,(batchWorkVo?.confirmUserText)!,(batchWorkVo?.operationText)!,planString,String(format: "%d小时%02d分", surplusTime,Int(round(surplusTime1)))]
         } else {
-            self._arrayR = ["生产作业号","生产单元","操作员","本道工序","剩余总工时"]
-            self._arrayL = [workTimeLogVo.productionControlNum,(batchWorkVo?.workUnitText)!,(batchWorkVo?.confirmUserText)!,(batchWorkVo?.operationText)!,String(format: "%d小时%02d分", surplusTime,Int(round(surplusTime1)))]
+            self._arrayR = ["生产作业号","生产单元","操作员","本道工序"]
+            self._arrayL = [workTimeLogVo.productionControlNum,(batchWorkVo?.workUnitText)!,(batchWorkVo?.confirmUserText)!,(batchWorkVo?.operationText)!]
         }
         
         self.tableView.reloadData()

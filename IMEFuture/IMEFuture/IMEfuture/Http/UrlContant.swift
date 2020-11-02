@@ -8,6 +8,10 @@
 
 import Foundation
 
+//私有化部署
+//let DYZBaseURL = "http://mgateway.imefuture.vip"
+
+
 //正式环境
 //let DYZBaseURL = "https://mgateway.imefuture.com"
 
@@ -20,12 +24,12 @@ import Foundation
 //国罗
 //let DYZBaseURL = "http://192.168.66.198:9090/gateway";
 //weiwei
-//let DYZBaseURL = "http://192.168.255.132:9090/gateway"
+let DYZBaseURL = "http://192.168.255.132:9090/gateway"
 //let DYZBaseURL = "http://s2r9260622.wicp.vip/gateway"
 //liuBo
 //let DYZBaseURL = "http://192.168.255.103:9191/gateway"
 //liXuYang
-let DYZBaseURL = "http://192.168.255.104:9090/gateway"
+//let DYZBaseURL = "http://192.168.255.104:9090/gateway"
 //let DYZBaseURL = "http://2350141n1a.wicp.vip/gateway"
 //jyh
 //let DYZBaseURL = "http://192.168.255.108:9090/gateway"
@@ -149,4 +153,10 @@ let DYZ_multiUserWork_continueWork = DYZBaseURL + "/rs" + "/mes/multiUserWork/co
 let DYZ_multiUserWork_doMultiUserConfirmProduction = DYZBaseURL + "/rs" + "/mes/multiUserWork/doMultiUserConfirmProduction" //多人报工完成提交
 
 let DYZ_productionControl_selectProductionControlVo = DYZBaseURL + "/rs" + "/mes/productionControl/selectProductionControlVo"
+
+let DYZ_warehouse_getWarehouseList = DYZBaseURL + "/rs" + "/mes/warehouse/getWarehouseList" //查询仓库列表
+
+let DYZ_requisition_selectReqMaterialByProjectForCreateRequisition = DYZBaseURL + "/rs" + "/mes/requisition/selectReqMaterialByProjectForCreateRequisition" //按项目领料创建领料单，获取物料信息
+
+let DYZ_requisition_createRequisition = DYZBaseURL + "/rs" + "/mes/requisition/createRequisition" //创建领料单
 

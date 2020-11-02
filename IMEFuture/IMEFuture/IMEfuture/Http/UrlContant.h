@@ -9,6 +9,10 @@
 #ifndef UrlContant_h
 #define UrlContant_h
 
+//私有化部署
+//接口url
+//#define DYZBaseURL @"http://mgateway.imefuture.vip"
+
 //正式环境
 //接口url
 //#define DYZBaseURL @"https://mgateway.imefuture.com"
@@ -42,6 +46,9 @@
 //#define IME_CreatEnterprise @"https://account.imefuture.com/ucweb/enterpriseReg/goEpReg.html"
 ////隐私协议
 //#define IME_privacy @"https://www.imefuture.com/privacy.html"
+////tpf
+//#define IME_tpf @"https://tpf.imefuture.com"
+
 
 
 //测试环境
@@ -77,6 +84,8 @@
 #define IME_CreatEnterprise @"http://testuc.imefuture.com/ucweb/enterpriseReg/goEpReg.html"
 //隐私协议
 #define IME_privacy @"https://beta.imefuture.com/privacy.html"
+//tpf
+#define IME_tpf @"https://testtpf.imefuture.com/mes/manage"
 
 //本地
 //接口url
@@ -88,20 +97,23 @@
 ////国罗
 //#define DYZBaseURL @"http://192.168.66.198:9090/gateway"
 ////weiwei
-//#define DYZBaseURL @"http://192.168.255.132:9090/gateway"
+#define DYZBaseURL @"http://192.168.255.132:9090/gateway"
 //#define DYZBaseURL @"http://s2r9260622.wicp.vip/gateway"
 ////liuBo
 //#define DYZBaseURL @"http://192.168.255.103:9191/gateway"
 ////liXuYang
-#define DYZBaseURL @"http://192.168.255.104:9090/gateway"
+//#define DYZBaseURL @"http://192.168.255.104:9090/gateway"
 //#define DYZBaseURL @"http://2350141n1a.wicp.vip/gateway"
 ////zhangcheng
 //#define DYZBaseURL @"http://192.168.255.191:9090/gateway"
 ////jyh
 //#define DYZBaseURL @"http://192.168.255.108:9090/gateway"
 //#define DYZBaseURL @"http://2z924u3140.wicp.vip/gateway"
+//tpf
+//#define IME_tpf @"http://192.168.255.104:9191/ime.platform/manage"
 
-//
+
+
 //#define DYZBaseURLItem(_item_)[NSString stringWithFormat:@"%@%@",DYZBaseURL,_item_]
 ////通知
 //#define baseNotification @"http://beta.notification.imefuture.com"
@@ -648,6 +660,15 @@
 
 //提交设备保养
 #define DYZ_equipmentMaintenance_commitEquipmentMaintenance [NSString stringWithFormat:@"%@/mes/equipmentMaintenance/commitEquipmentMaintenance",DYZBaseURLItem(@"/rs")]
+
+//工序二维码打印接扣
+#define DYZ_showInfo_printProductionOperationBarcode [NSString stringWithFormat:@"%@/showInfo/printProductionOperationBarcode",IME_tpf]
+
+//待还回模具作业工单
+#define DYZ_productionControl_getUseModelProductionControl [NSString stringWithFormat:@"%@/mes/productionControl/getUseModelProductionControl",DYZBaseURLItem(@"/rs")]
+
+//模具报工明细
+#define DYZ_modelSequence_getWorkTimeLogByModel [NSString stringWithFormat:@"%@/mes/modelSequence/getWorkTimeLogByModel",DYZBaseURLItem(@"/rs")]
 
 
 

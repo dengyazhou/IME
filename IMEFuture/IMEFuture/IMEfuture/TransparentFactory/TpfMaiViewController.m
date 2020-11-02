@@ -711,8 +711,8 @@
         }
 #pragma mark 领料出库
         case 4:{
-            IQCChuKuYuanGongMaVC *iQCChuKuYuanGongMaVC = [[IQCChuKuYuanGongMaVC alloc] init];
-            [self.navigationController pushViewController:iQCChuKuYuanGongMaVC animated:YES];
+            LingliaochukuVC *vc = [[LingliaochukuVC alloc] init];
+            [self.navigationController pushViewController:vc animated:true];
             break;
         }
 #pragma mark OQC发货单
@@ -732,10 +732,14 @@
             LoginModel *loginModel = [DatabaseTool getLoginModel];
             UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
             NSString *siteCode = tpfUser.siteCode;
-            NSString *personnerlCode = [DatabaseTool t_TpfPWTableGetPersonnelCodeWithSiteCode:siteCode];
-            if (![personnerlCode isEqualToString:@"(null)"]) {
+            
+            NSString * path = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:[NSString stringWithFormat:@"Array_PersonnelVo_%@.data",siteCode]];
+            NSMutableArray *array = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+           if (array.count == 1) {
+                PersonnelVo *personnelVo = array[0];
+                
                 ZaiZhiGongDanVC *vc = [[ZaiZhiGongDanVC alloc] init];
-                vc.confirmUser = personnerlCode;
+                vc.confirmUser = personnelVo.personnelCode;
                 [self.navigationController pushViewController:vc animated:YES];
             } else {
                 ScanYuanGongMaVC *scanYuanGongMaVC = [[ScanYuanGongMaVC alloc] init];

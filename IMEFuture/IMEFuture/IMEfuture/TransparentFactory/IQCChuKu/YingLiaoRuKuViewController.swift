@@ -12,6 +12,8 @@ class YingLiaoRuKuViewController: UIViewController, UITextFieldDelegate, UITable
     
     var arrayReqOutboundVo: [ReqOutboundVo]! = []
     var warehouseInOperator: String?
+    var requisitionCode:String? //领料单号
+    
     
     private let _height_NavBar = Height_NavBar
     private let _height_BottomBar = Height_BottomBar
@@ -49,7 +51,6 @@ class YingLiaoRuKuViewController: UIViewController, UITextFieldDelegate, UITable
         self.viewZhong1.isHidden = true
         self.viewBottom1.isHidden = true
         
-//        self.tableView.register(UITableViewCell().classForCoder, forCellReuseIdentifier: "cell")
         self.tableView.register(UINib.init(nibName: "IQCChuKuCell", bundle: nil), forCellReuseIdentifier: "iQCChuKuCell")
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -65,6 +66,8 @@ class YingLiaoRuKuViewController: UIViewController, UITextFieldDelegate, UITable
         self.setAttributedString(text: "摄像头对准领料单二维码，\n点击扫描")//设置中间字颜色
         
         self.textField.delegate = self
+        
+        self.request(result: self.requisitionCode)
         
     }
     
@@ -122,6 +125,11 @@ class YingLiaoRuKuViewController: UIViewController, UITextFieldDelegate, UITable
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField.text?.count == 0 {
+            MyAlertCenter.default()?.postAlert(withMessage: "请输入领料单号")
+            textField.resignFirstResponder()
+            return false
+        }
         self.request(result: textField.text!)
         textField.resignFirstResponder()
         return true
@@ -133,7 +141,6 @@ class YingLiaoRuKuViewController: UIViewController, UITextFieldDelegate, UITable
     
 //    MARK: 扫描
     @IBAction func buttonScan(_ sender: Any) {
-//        print("\(#function)");
         let saoYiSao = SaoYiSaoVC()
         saoYiSao.scanTitle = "扫描领料单号"
         saoYiSao.resultBlock = {(result: String!) -> () in
@@ -194,8 +201,24 @@ class YingLiaoRuKuViewController: UIViewController, UITextFieldDelegate, UITable
         
     }
     
-//    MARK:提交
+//    MARK:去扫人
     @IBAction func buttonCommit(_ sender: Any) {
+        let saoYiSao = SaoYiSaoVC()
+        saoYiSao.scanTitle = "扫描员工二维码"
+        saoYiSao.resultBlock = {(result: String!) -> () in
+
+            let jsonData = result.data(using: String.Encoding.utf8)! as Data
+            let dic = try? JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers) as! [AnyHashable : Any]
+            if let a = dic {
+                self.requestCommit(result: a["personnelCode"] as? String)
+            } else {
+                MyAlertCenter.default()?.postAlert(withMessage: "请扫描员工二维码！")
+            }
+        }
+        self.present(saoYiSao, animated: true, completion: nil)
+    }
+    
+    func requestCommit(result: String?) {
         _viewLoading.isHidden = false
         let loginModel = DatabaseTool.getLoginModel()
         let tpfUser = UserInfoVo.mj_object(withKeyValues: loginModel?.tpfUser)
@@ -210,7 +233,7 @@ class YingLiaoRuKuViewController: UIViewController, UITextFieldDelegate, UITable
                 value.outNum = value.reqNum
             }
             value.operator = userCode
-            value.toWarehouseOperator = warehouseInOperator
+            value.toWarehouseOperator = result
             value.useReplaceableMaterial = NSNumber.init(value: 0)
             arrayTemp.append(value)
         }
@@ -222,11 +245,16 @@ class YingLiaoRuKuViewController: UIViewController, UITextFieldDelegate, UITable
             let returnMsgBean =  responseObjectModel as! ReturnMsgBean
             self._viewLoading.isHidden = true
             if returnMsgBean.returnCode.intValue == -888 {
-                self.secondKaiShi();
+                self.secondKaiShi(result: result)
             } else {
                 if returnMsgBean.status == "SUCCESS" {
                     MyAlertCenter.default().postAlert(withMessage: "提交成功")
-                    self.navigationController?.popViewController(animated: true)
+                    for value in (self.navigationController?.viewControllers)! {
+                        if value.isKind(of: LingliaochukuVC.classForCoder()) {
+                            self.navigationController?.popToViewController(value, animated: true)
+                            break
+                        }
+                    }
                 } else {
                     MyAlertCenter.default().postAlert(withMessage: returnMsgBean.returnMsg)
                 }
@@ -238,7 +266,7 @@ class YingLiaoRuKuViewController: UIViewController, UITextFieldDelegate, UITable
         }, isKindOfModel: NSClassFromString("ReturnMsgBean"))
     }
     
-    func secondKaiShi() {
+    func secondKaiShi(result: String?) {
         let alertController = UIAlertController(title: "主件库存不足,是否使用替用物料出库？", message: nil, preferredStyle: UIAlertControllerStyle.alert)
         let action0 = UIAlertAction.init(title: "确定", style: UIAlertActionStyle.default) { (action) in
             self._viewLoading.isHidden = false
@@ -255,7 +283,7 @@ class YingLiaoRuKuViewController: UIViewController, UITextFieldDelegate, UITable
                     value.outNum = value.reqNum
                 }
                 value.operator = userCode
-                value.toWarehouseOperator = self.warehouseInOperator
+                value.toWarehouseOperator = result
                 value.useReplaceableMaterial = NSNumber.init(value: 1)
                 arrayTemp.append(value)
             }
@@ -268,7 +296,12 @@ class YingLiaoRuKuViewController: UIViewController, UITextFieldDelegate, UITable
                 self._viewLoading.isHidden = true
                 if returnMsgBean.status == "SUCCESS" {
                     MyAlertCenter.default().postAlert(withMessage: "提交成功")
-                    self.navigationController?.popViewController(animated: true)
+                    for value in (self.navigationController?.viewControllers)! {
+                        if value.isKind(of: LingliaochukuVC.classForCoder()) {
+                            self.navigationController?.popToViewController(value, animated: true)
+                            break
+                        }
+                    }
                 } else {
                     MyAlertCenter.default().postAlert(withMessage: returnMsgBean.returnMsg)
                 }
@@ -282,6 +315,7 @@ class YingLiaoRuKuViewController: UIViewController, UITextFieldDelegate, UITable
         alertController.addAction(action1)
         self.navigationController?.present(alertController, animated: true, completion: nil)
     }
+        
     
     func setAttributedString(text: String) {
         let attributeStr: NSMutableAttributedString = NSMutableAttributedString.init(string: text)
@@ -304,7 +338,12 @@ class YingLiaoRuKuViewController: UIViewController, UITextFieldDelegate, UITable
     }
     
     @IBAction func back(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        for value in (self.navigationController?.viewControllers)! {
+            if value.isKind(of: LingliaochukuVC.classForCoder()) {
+                self.navigationController?.popToViewController(value, animated: true)
+                break
+            }
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

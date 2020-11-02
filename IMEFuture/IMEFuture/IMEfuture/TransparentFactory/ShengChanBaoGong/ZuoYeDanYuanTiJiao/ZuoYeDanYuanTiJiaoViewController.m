@@ -31,8 +31,12 @@
 #import "UploadImageView.h"
 #import "MaterialDYZ.h"
 #import "GlobalSettingManager.h"
+#import <WebKit/WebKit.h>
+#import "NSString+Hash.h"
 
-@interface ZuoYeDanYuanTiJiaoViewController () <UITableViewDelegate,UITableViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate> {
+
+
+@interface ZuoYeDanYuanTiJiaoViewController () <UITableViewDelegate,UITableViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,WKNavigationDelegate> {
     CGFloat _height_NavBar;
     CGFloat _height_BottomBar;
     
@@ -77,6 +81,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightNavBar;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightBottomBar;
 
+@property (nonatomic, assign) NSInteger isLabelPrinting;//1:打印,0:不打印
+@property (nonatomic, strong) WKWebView *myWebView;
 
 @end
 
@@ -89,7 +95,13 @@
     _height_BottomBar = Height_BottomBar;
     self.heightNavBar.constant = _height_NavBar;
     self.heightBottomBar.constant = _height_BottomBar;
+    self.isLabelPrinting = 0;
 //    _reworkStatus = 0;
+    
+    self.myWebView = [[WKWebView alloc] initWithFrame:CGRectZero];
+    self.myWebView.navigationDelegate = self;
+    
+    [self.view addSubview:self.myWebView];
     
     _reportWorkProductionOrderConfirmVoTemp = [[ReportWorkProductionOrderConfirmVo alloc] init];
     
@@ -573,6 +585,18 @@
     };
     [self.navigationController pushViewController:vc animated:YES];
 }
+
+#pragma mark 标签打印
+
+- (IBAction)buttonLabelPrinting:(UIButton *)sender {
+    //multiselect_selected
+    //multiselect_unchecked
+    
+    self.isLabelPrinting = self.isLabelPrinting==0?1:0;
+    NSString *imageName = self.isLabelPrinting==0?@"multiselect_unchecked":@"multiselect_selected";
+    [sender setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+}
+
 #pragma mark 审核
 - (IBAction)buttonCheck:(id)sender {
     if (_bool001 == NO) {
@@ -777,27 +801,23 @@
         self->_uploadImageView.hidden = YES;
         if ([returnMsgBean.status isEqualToString:@"SUCCESS"]) {
             [[MyAlertCenter defaultCenter] postAlertWithMessage:@"提交成功"];
-
-            for (UIViewController *temp in self.navigationController.viewControllers) {
-                if ([temp isMemberOfClass:[ScanTuZhiViewController class]]) {
-                    [self.navigationController popToViewController:temp animated:YES];
-                    return;
-                }
+            
+            if (self.isLabelPrinting == 1) {//打印
+                self->_viewLoading.hidden = NO;
+                NSString *salt = returnMsgBean.salt;
+                NSString *str = [NSString stringWithFormat:@"%@%@%@",siteCode,self.logId,salt];
+                NSString *md5Str = [str md5String];
+                NSString *parameters = [NSString stringWithFormat:@"siteCode=%@&id=%@&v=%@",siteCode,self.logId,md5Str];
+                NSString *urlStr = [NSString stringWithFormat:@"%@?%@",DYZ_showInfo_printProductionOperationBarcode,parameters];
+                NSLog(@"urlStr:%@",urlStr);
+                
+                //siteCode
+                //self.logId
+//                DYZ_showInfo_printProductionOperationBarcode
+                [self.myWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlStr]]];
+            } else {
+                [self successBack];
             }
-            //再制工单
-            for (UIViewController *temp in self.navigationController.viewControllers) {
-                if ([temp isKindOfClass:[ZaiZhiGongDanVC class]]) {
-                    [self.navigationController popToViewController:temp animated:YES];
-                    return;
-                }
-            }
-            for (UIViewController *temp in self.navigationController.viewControllers) {
-                if ([temp isKindOfClass:[ScanYuanGongMaVC class]]) {
-                    [self.navigationController popToViewController:temp animated:YES];
-                    return;
-                }
-            }
-
         } else {
             [[MyAlertCenter defaultCenter] postAlertWithMessage:returnMsgBean.returnMsg];
         }
@@ -811,6 +831,62 @@
     } fail:^(NSError *error) {
         self->_uploadImageView.hidden = YES;
     } isKindOfModelClass:NSClassFromString(@"ReturnMsgBean")];
+}
+
+- (void)successBack {
+    for (UIViewController *temp in self.navigationController.viewControllers) {
+        if ([temp isMemberOfClass:[ScanTuZhiViewController class]]) {
+            [self.navigationController popToViewController:temp animated:YES];
+            return;
+        }
+    }
+    //再制工单
+    for (UIViewController *temp in self.navigationController.viewControllers) {
+        if ([temp isKindOfClass:[ZaiZhiGongDanVC class]]) {
+            [self.navigationController popToViewController:temp animated:YES];
+            return;
+        }
+    }
+    for (UIViewController *temp in self.navigationController.viewControllers) {
+        if ([temp isKindOfClass:[ScanYuanGongMaVC class]]) {
+            [self.navigationController popToViewController:temp animated:YES];
+            return;
+        }
+    }
+}
+
+#pragma mark WKNavigationDelegate
+- (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation {
+    self->_viewLoading.hidden = YES;
+    NSLog(@"%s",__FUNCTION__);
+    
+    UIPrintInteractionController *controller = [UIPrintInteractionController sharedPrintController];
+    void (^completionHandler)(UIPrintInteractionController *, BOOL, NSError *) =
+        ^(UIPrintInteractionController *printController, BOOL completed, NSError *error) {
+        if(!completed && error){
+            NSLog(@"FAILED! due to error in domain %@ with error code %ld",error.domain, (long)error.code);
+            [[MyAlertCenter defaultCenter] postAlertWithMessage:@"打印出错！！！"];
+        }
+        [self successBack];
+    };
+    UIPrintInfo *printInfo = [UIPrintInfo printInfo];
+    printInfo.outputType = UIPrintInfoOutputGeneral;
+//    printInfo.jobName = [urlField text];
+    printInfo.jobName = @"webView打印";
+    printInfo.duplex = UIPrintInfoDuplexLongEdge;
+    controller.printInfo = printInfo;
+//    controller.showsPageRange = YES;
+
+    UIViewPrintFormatter *viewFormatter = [self.myWebView viewPrintFormatter];
+    viewFormatter.startPage = 0;
+    controller.printFormatter = viewFormatter;
+ 
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+//        [controller presentFromBarButtonItem:sender animated:YES completionHandler:completionHandler];
+    } else {
+        [controller presentAnimated:YES completionHandler:completionHandler];
+    }
+    
 }
 
 #pragma mark 回到首页

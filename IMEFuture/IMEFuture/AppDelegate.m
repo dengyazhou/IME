@@ -138,6 +138,19 @@ NSString *NTESNotificationLogout = @"NTESNotificationLogout";
     //        [[NSUserDefaults standardUserDefaults] synchronize];
     //    }
     
+#pragma mark 添加初始化 APNs 代码
+    //Required
+    //notice: 3.0.0 及以后版本注册可以这样写，也可以继续用之前的注册方式
+    JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
+    entity.types = JPAuthorizationOptionAlert|JPAuthorizationOptionBadge|JPAuthorizationOptionSound|JPAuthorizationOptionProvidesAppNotificationSettings;
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+      // 可以添加自定义 categories
+      // NSSet<UNNotificationCategory *> *categories for iOS10 or later
+      // NSSet<UIUserNotificationCategory *> *categories for iOS8 and iOS9
+    }
+    [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
+    
+    
 #pragma mark Jpush 注册
     if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
         //可以添加自定义categories
@@ -147,7 +160,8 @@ NSString *NTESNotificationLogout = @"NTESNotificationLogout";
                                               categories:nil];
     } else {
         //categories 必须为nil
-        [JPUSHService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)categories:nil];
+//        [JPUSHService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)categories:nil];
+        [JPUSHService registerForRemoteNotificationTypes:(JPAuthorizationOptionAlert | JPAuthorizationOptionBadge | JPAuthorizationOptionSound)categories:nil];
     }
     [JPUSHService setupWithOption:launchOptions appKey:appKey channel:channel apsForProduction:isProduction];
     
@@ -845,6 +859,23 @@ NSString *NTESNotificationLogout = @"NTESNotificationLogout";
     } isKindOfModel:NSClassFromString(@"ReturnMsgBean")];
 }
 
+#pragma mark 新增了前台展示 apns 通知 ; apns代理回调
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger options))completionHandler {
+
+    NSDictionary *userInfo = notification.request.content.userInfo;
+    if (@available(iOS 10.0, *)) {
+        if ([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+            [JPUSHService handleRemoteNotification:userInfo];
+        } else {
+
+        }
+        completionHandler(UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionSound|UNNotificationPresentationOptionAlert);
+    } else {
+        // Fallback on earlier versions
+    }
+
+}
+
 - (void)getZoneData {
     EfeibiaoPostEntityBean *postEntityBean = [[EfeibiaoPostEntityBean alloc] init];
     Zone *zone = [[Zone alloc] init];
@@ -973,9 +1004,7 @@ NSString *NTESNotificationLogout = @"NTESNotificationLogout";
         if (dic[@"tpfUser"] != [NSNull null] && dic[@"tpfUser"] != nil) {
             NSData *jsonTpfUser = [NSJSONSerialization dataWithJSONObject:dic[@"tpfUser"] options:NSJSONWritingPrettyPrinted error:nil];
             obj.tpfUser = [[NSString alloc] initWithData:jsonTpfUser encoding:NSUTF8StringEncoding];
-            
-//            UserInfoVo *userInfo = [UserInfoVo mj_objectWithKeyValues:obj.tpfUser];
-//            [[GlobalSettingManager shareGlobalSettingManager] requesttpfGetparameterlistWithSiteCode:userInfo.siteCode];
+    
         } else {
             obj.tpfUser = nil;
         }

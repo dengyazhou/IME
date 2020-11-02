@@ -287,6 +287,29 @@
 
 @property (nonatomic, copy) NSString *plannedstartDateTime;
 
+///**
+//    * 异常标记 0：正常1：异常
+//    */
+//   private Integer exceptionFlag;
+
+/**
+ * 模具数量
+ */
+@property (nonatomic,copy) NSString *modelCount;//Integer
+/**
+ * 可用数量
+ */
+@property (nonatomic,copy) NSString *availableModelCount;//Integer
+/**
+ * 已发数量
+ */
+@property (nonatomic,copy) NSString *useModelCount;//Integer
+
+///**
+// * 完工数量:number(19,3)
+// */
+//private Double completedQuantity;
+
 @property (nonatomic, strong) NSNumber * isSelect;//0:没选；1:选了。。。获取数据是赋值为0，所以默认为没选
 
 @end

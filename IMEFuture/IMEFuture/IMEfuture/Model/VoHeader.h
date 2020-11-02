@@ -274,5 +274,8 @@
 #import "EquipmentMaintenancePlanMonthVo.h"
 #import "EquipmentMaintenanceLogVo.h"
 #import "ModelReturnCauseVo.h"
+#import "ProductionConfirmVo.h"
+#import "ReqMaterialVo.h"
+#import "WarehouseVo.h"
 
 #endif /* VoHeader_h */

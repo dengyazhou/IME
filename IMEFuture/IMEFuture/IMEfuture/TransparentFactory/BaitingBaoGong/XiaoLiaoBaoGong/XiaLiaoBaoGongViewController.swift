@@ -313,8 +313,8 @@ class XiaLiaoBaoGongViewController: UIViewController,UITableViewDelegate, UITabl
             self._arrayR =  ["下料单号","生产单元","操作员","本道工序","计划工时","剩余总工时"]
             self._arrayL = [blankingWorkTimeLogVo?.blankingCode,blankingWorkTimeLogVo?.workUnitText,blankingWorkTimeLogVo?.confirmUserText,blankingWorkTimeLogVo?.operationText,String(format: "%d小时%d分", planTime,Int(round(planTime1))),String(format: "%d小时%02d分", surplusTime,Int(round(surplusTime1)))] as? [String]
         } else {
-            self._arrayR =  ["下料单号","生产单元","操作员","本道工序","剩余总工时"]
-            self._arrayL = [blankingWorkTimeLogVo?.blankingCode,blankingWorkTimeLogVo?.workUnitText,blankingWorkTimeLogVo?.confirmUserText,blankingWorkTimeLogVo?.operationText,String(format: "%d小时%02d分", surplusTime,Int(round(surplusTime1)))] as? [String]
+            self._arrayR =  ["下料单号","生产单元","操作员","本道工序"]
+            self._arrayL = [blankingWorkTimeLogVo?.blankingCode,blankingWorkTimeLogVo?.workUnitText,blankingWorkTimeLogVo?.confirmUserText,blankingWorkTimeLogVo?.operationText] as? [String]
         }
         
         self.tableView.reloadData()

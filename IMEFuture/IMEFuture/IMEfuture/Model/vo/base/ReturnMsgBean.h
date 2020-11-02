@@ -75,4 +75,6 @@
  */
 @property (nonatomic,copy) NSString *memberId;
 
+@property (nonatomic,copy) NSString *salt;
+
 @end

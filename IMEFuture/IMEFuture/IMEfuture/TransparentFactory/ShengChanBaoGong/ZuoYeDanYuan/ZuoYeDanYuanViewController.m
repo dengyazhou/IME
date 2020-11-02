@@ -175,10 +175,11 @@
     
     NSArray *array = [NSArray arrayWithObjects:workTimeLogVo.mj_keyValues, nil];
     mesPostEntityBean.entity = array.mj_keyValues;
-    NSDictionary *dic = mesPostEntityBean.mj_keyValues;
+    NSDictionary *dic1 = mesPostEntityBean.mj_keyValues;
+    NSDictionary *dic = @{@"data":[NSString convertToJsonData:dic1]};
     NSLog(@"%@",dic);
     
-    [HttpMamager postRequestWithURLString:DYZ_workRest_workLog parameters:dic success:^(id responseObjectModel) {
+    [HttpMamager postRequestImageWithURLString:DYZ_workRest_workLog parameters:dic UploadImageBean:nil success:^(id responseObjectModel) {
         ReturnListBean *returnListBean = responseObjectModel;
         _viewLoading.hidden = YES;
         if (returnListBean.returnCode.integerValue == -888) {
@@ -190,15 +191,15 @@
                 self.workTimeLogVo = model;
                 
                 [self initButtonAndRequest:model];
-            
+                
             } else {
                 [[MyAlertCenter defaultCenter] postAlertWithMessage:returnListBean.returnMsg];
             }
         }
-    } fail:^(NSError *error) {
+        
+    } progress:nil fail:^(NSError *error) {
         _viewLoading.hidden = YES;
-       
-    } isKindOfModel:NSClassFromString(@"ReturnListBean")];
+    } isKindOfModelClass:NSClassFromString(@"ReturnListBean")];
 }
 
 - (void)secondKaiShi {
@@ -225,10 +226,11 @@
         
         NSArray *array = [NSArray arrayWithObjects:workTimeLogVo.mj_keyValues, nil];
         mesPostEntityBean.entity = array.mj_keyValues;
-        NSDictionary *dic = mesPostEntityBean.mj_keyValues;
+        NSDictionary *dic1 = mesPostEntityBean.mj_keyValues;
+        NSDictionary *dic = @{@"data":[NSString convertToJsonData:dic1]};
         NSLog(@"%@",dic);
         
-        [HttpMamager postRequestWithURLString:DYZ_workRest_workLog parameters:dic success:^(id responseObjectModel) {
+        [HttpMamager postRequestImageWithURLString:DYZ_workRest_workLog parameters:dic UploadImageBean:nil success:^(id responseObjectModel) {
             ReturnListBean *returnListBean = responseObjectModel;
             _viewLoading.hidden = YES;
             if ([returnListBean.status isEqualToString:@"SUCCESS"]) {
@@ -237,14 +239,13 @@
                 self.workTimeLogVo = model;
                 
                 [self initButtonAndRequest:model];
-            
+                
             } else {
                 [[MyAlertCenter defaultCenter] postAlertWithMessage:returnListBean.returnMsg];
             }
-        } fail:^(NSError *error) {
+        } progress:nil fail:^(NSError *error) {
             _viewLoading.hidden = YES;
-           
-        } isKindOfModel:NSClassFromString(@"ReturnListBean")];
+        } isKindOfModelClass:NSClassFromString(@"ReturnListBean")];
     }];
     UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
     [alertController addAction:action0];
@@ -282,10 +283,11 @@
         
         NSArray *array = [NSArray arrayWithObjects:workTimeLogVo.mj_keyValues, nil];
         mesPostEntityBean.entity = array.mj_keyValues;
-        NSDictionary *dic = mesPostEntityBean.mj_keyValues;
+        NSDictionary *dic1 = mesPostEntityBean.mj_keyValues;
+        NSDictionary *dic = @{@"data":[NSString convertToJsonData:dic1]};
         NSLog(@"%@",dic);
         
-        [HttpMamager postRequestWithURLString:DYZ_workRest_workLog parameters:dic success:^(id responseObjectModel) {
+        [HttpMamager postRequestImageWithURLString:DYZ_workRest_workLog parameters:dic UploadImageBean:nil success:^(id responseObjectModel) {
             ReturnListBean *returnListBean = responseObjectModel;
             _viewLoading.hidden = YES;
             if ([returnListBean.status isEqualToString:@"SUCCESS"]) {
@@ -297,10 +299,10 @@
             } else {
                 [[MyAlertCenter defaultCenter] postAlertWithMessage:returnListBean.returnMsg];
             }
-        } fail:^(NSError *error) {
-            _viewLoading.hidden = YES;
             
-        } isKindOfModel:NSClassFromString(@"ReturnListBean")];
+        } progress:nil fail:^(NSError *error) {
+            _viewLoading.hidden = YES;
+        } isKindOfModelClass:NSClassFromString(@"ReturnListBean")];
     }];
     UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
     [alertController addAction:action0];
@@ -338,10 +340,11 @@
         
         NSArray *array = [NSArray arrayWithObjects:workTimeLogVo.mj_keyValues, nil];
         mesPostEntityBean.entity = array.mj_keyValues;
-        NSDictionary *dic = mesPostEntityBean.mj_keyValues;
+        NSDictionary *dic1 = mesPostEntityBean.mj_keyValues;
+        NSDictionary *dic = @{@"data":[NSString convertToJsonData:dic1]};
         NSLog(@"%@",dic);
         
-        [HttpMamager postRequestWithURLString:DYZ_workRest_workLog parameters:dic success:^(id responseObjectModel) {
+        [HttpMamager postRequestImageWithURLString:DYZ_workRest_workLog parameters:dic UploadImageBean:nil success:^(id responseObjectModel) {
             ReturnListBean *returnListBean = responseObjectModel;
             _viewLoading.hidden = YES;
             if ([returnListBean.status isEqualToString:@"SUCCESS"]) {
@@ -353,11 +356,10 @@
                 [[MyAlertCenter defaultCenter] postAlertWithMessage:returnListBean.returnMsg];
                 
             }
-        } fail:^(NSError *error) {
+            
+        } progress:nil fail:^(NSError *error) {
             _viewLoading.hidden = YES;
-       
-        } isKindOfModel:NSClassFromString(@"ReturnListBean")];
-        
+        } isKindOfModelClass:NSClassFromString(@"ReturnListBean")];
         
     }];
     [self.view addSubview:view];
@@ -454,8 +456,8 @@
                 self->_arrayR = @[@"生产订单",@"生产单元",@"操作员",@"本道工序",@"项目编号",@"物料名称",@"物料编号",@"物料描述",@"物料规格",@"工序计划数/完成数",@"计划工时",@"剩余工时",@"客户交期"];
                 self->_arrayL = @[self.productionOrderNum,self.workUnitText,self.personnelName!=nil?self.personnelName:@"",self.operationText!=nil?self.operationText:@"",self.projectNum!=nil?self.projectNum:@"",self.materialText!=nil?self.materialText:@"",self.materialCode!=nil?self.materialCode:@"",self.materialText!=nil?self.materialText:@"",self.materialspec!=nil?self.materialspec:@"",[NSString stringWithFormat:@"%@/%@",self.plannedQuantity,self.completedQuantity],[NSString stringWithFormat:@"%d小时%d分",planTime,planTime1],[NSString stringWithFormat:@"%d小时%d分",surplusTime,surplusTime1],self.requirementDate];
             } else {//不显示计划工时
-                self->_arrayR = @[@"生产订单",@"生产单元",@"操作员",@"本道工序",@"项目编号",@"物料名称",@"物料编号",@"物料描述",@"物料规格",@"工序计划数/完成数",@"剩余工时",@"客户交期"];
-                self->_arrayL = @[self.productionOrderNum,self.workUnitText,self.personnelName!=nil?self.personnelName:@"",self.operationText!=nil?self.operationText:@"",self.projectNum!=nil?self.projectNum:@"",self.materialText!=nil?self.materialText:@"",self.materialCode!=nil?self.materialCode:@"",self.materialText!=nil?self.materialText:@"",self.materialspec!=nil?self.materialspec:@"",[NSString stringWithFormat:@"%@/%@",self.plannedQuantity,self.completedQuantity],[NSString stringWithFormat:@"%d小时%d分",surplusTime,surplusTime1],self.requirementDate];
+                self->_arrayR = @[@"生产订单",@"生产单元",@"操作员",@"本道工序",@"项目编号",@"物料名称",@"物料编号",@"物料描述",@"物料规格",@"工序计划数/完成数",@"客户交期"];
+                self->_arrayL = @[self.productionOrderNum,self.workUnitText,self.personnelName!=nil?self.personnelName:@"",self.operationText!=nil?self.operationText:@"",self.projectNum!=nil?self.projectNum:@"",self.materialText!=nil?self.materialText:@"",self.materialCode!=nil?self.materialCode:@"",self.materialText!=nil?self.materialText:@"",self.materialspec!=nil?self.materialspec:@"",[NSString stringWithFormat:@"%@/%@",self.plannedQuantity,self.completedQuantity],self.requirementDate];
             }
             
             

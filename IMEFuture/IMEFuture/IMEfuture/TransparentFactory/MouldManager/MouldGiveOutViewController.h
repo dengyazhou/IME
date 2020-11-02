@@ -20,6 +20,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *mouldCode;
 @property (nonatomic, strong) NSNumber *status;
 @property (nonatomic, copy) NSString *plannedstartDateTime;
+@property (nonatomic, copy) NSString *placeOrderDateTime;
+@property (nonatomic, copy) NSString *modelCount;
+@property (nonatomic, copy) NSString *availableModelCount;
+@property (nonatomic, copy) NSString *useModelCount;
+
 
 @property (nonatomic, copy) NSString *productionControlNum;
 

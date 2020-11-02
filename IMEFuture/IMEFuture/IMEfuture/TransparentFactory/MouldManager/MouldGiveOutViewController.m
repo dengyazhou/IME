@@ -9,9 +9,11 @@
 #import "MouldGiveOutViewController.h"
 #import "VoHeader.h"
 #import "MouldGiveOutHeader.h"
-#import "MouldGiveInCell.h"
+#import "MouldGiveInDetailCell.h"
 #import "MouldGiveOutDetailCell01.h"
 #import "MouldGiveOutDetailCell02.h"
+
+#import "MouldProductionDetailViewController.h"
 
 #import <ReactiveObjC.h>
 
@@ -100,14 +102,34 @@
             cell.label5.text = @"报工";
         }
         cell.label6.text = self.plannedstartDateTime;
+        cell.label7.text = [[FunctionDYZ dyz] strDateFormat:self.placeOrderDateTime withEnterDateFormat:@"yyyy-MM-dd HH:mm:ss" withGoDateFormat:@"yyyy-MM-dd"];
+        cell.label8.text = self.modelCount;
+        cell.label9.text = self.availableModelCount;
+        cell.label10.text = self.useModelCount;
         return cell;
         
     } else if (indexPath.section == 1) {
         MouldGiveOutDetailCell02 *cell = [tableView dequeueReusableCellWithIdentifier:@"mouldGiveOutDetailCell02" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
+        if (indexPath.row%2 == 0) {
+            cell.viewBg.backgroundColor = [UIColor whiteColor];
+        } else {
+            cell.viewBg.backgroundColor = colorRGB(210, 210, 210);
+        }
+        
+        
         ModelSequenceVo  *model  = self.arrayModelSequenceVo[indexPath.row];
-        cell.label0.text = model.sequenceNum;
+        NSDictionary *attribtDic = @{NSUnderlineStyleAttributeName : [NSNumber numberWithInteger:NSUnderlineStyleSingle], NSUnderlineColorAttributeName : colorRGB(0, 54, 255)};
+        NSMutableAttributedString *label0Str = [[NSMutableAttributedString alloc] initWithString:model.sequenceNum attributes:attribtDic];
+        cell.label0.attributedText = label0Str;
+        
+        [cell.buttonLabel0 addTarget:self action:@selector(buttonSequenceNumClickGoToDetail:) forControlEvents:UIControlEventTouchUpInside];
+        cell.buttonLabel0.tag = indexPath.row;
+        
+        cell.label1.text = model.modelCode;
+        cell.label2.text = model.confirmCount.stringValue;
+        cell.label3.text = model.roughweightSum.stringValue;
     
         NSString *status;
         if (model.status.integerValue == 0) {
@@ -121,7 +143,7 @@
         } else if (model.status.integerValue == 4) {
             status = @"报废";
         }
-        cell.label1.text = status;
+        cell.label4.text = status;
         
         if (model.isSelect.integerValue == 0) {
             cell.imageView0.image = [UIImage imageNamed:@"unselection"];
@@ -133,6 +155,14 @@
     } else {
        return nil;
     }
+}
+
+- (void)buttonSequenceNumClickGoToDetail:(UIButton *)sender {
+    ModelSequenceVo  *model  = self.arrayModelSequenceVo[sender.tag];
+    MouldProductionDetailViewController *vc = [[MouldProductionDetailViewController alloc] init];
+    vc.modelCode = model.modelCode;
+    vc.sequenceNum = model.sequenceNum;
+    [self.navigationController pushViewController:vc animated:true];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {

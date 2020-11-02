@@ -50,6 +50,18 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, copy) NSString * causeText;
 
+@property (nonatomic, strong) NSNumber * exceptionFlag;//Integer
+
+/**
+ 总数
+ */
+@property (nonatomic, strong) NSNumber * roughweightSum;//Double
+
+/**
+ 次数
+ */
+@property (nonatomic, strong) NSNumber * confirmCount;//Double
+
 @property (nonatomic, strong) NSNumber * isSelect;//0:没选；1:选了。。。获取数据是赋值为0，所以默认为没选
 
 @end

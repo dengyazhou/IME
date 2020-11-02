@@ -10,15 +10,12 @@
 #import "VoHeader.h"
 #import "MouldGiveOutCell.h"
 #import "MouldGiveInCell.h"
-#import "MouldGiveOutHeader.h"
 #import "MouldGiveOutViewController.h"
+#import "MouldGiveInViewController.h"
 
 
-#import "PadSelectWorkUnitViewController.h"
 
-#import "PadCheckBigImageViewController.h"
 
-#import "MouldManagerGiveOutSelectCauseView.h"
 
 
 #import <ReactiveObjC.h>
@@ -31,8 +28,8 @@
 @property (nonatomic, copy) NSArray *arrayAllWorkCenter;
 @property (nonatomic, strong) NSMutableArray *arrayProductionControlVo;
 @property (nonatomic, strong) NSMutableArray *arrayTotalProductionControlVo;
-@property (nonatomic, strong) NSMutableArray *arrayModelSequenceVo;
-@property (nonatomic, strong) NSMutableArray *arrayModelReturnCauseList;
+
+@property (nonatomic, strong) NSMutableArray *arrayProductionControlVoGiveIn;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
@@ -50,12 +47,6 @@
 @property (weak, nonatomic) IBOutlet UIView *buttonLeftBottomLine;
 @property (weak, nonatomic) IBOutlet UIView *buttonRightBottomLine;
 
-@property (weak, nonatomic) IBOutlet UIButton *buttonGiveIn;
-
-
-@property (nonatomic, assign) NSInteger indexWorkCenterVo;
-
-@property (nonatomic, strong) MouldManagerGiveOutSelectCauseView *mouldManagerGiveOutSelectCauseView;
 
 
 
@@ -66,8 +57,9 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self request_modelSequence_getProductionModelSequence];
+    [self request_productionControl_getUseModelProductionControl];
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -90,18 +82,14 @@
     self.collectionView.dataSource = self;
     
     [self.tableView registerNib:[UINib nibWithNibName:@"MouldGiveInCell" bundle:nil] forCellReuseIdentifier:@"mouldGiveInCell"];
-    [self.tableView registerNib:[UINib nibWithNibName:@"MouldGiveOutHeader" bundle:nil] forHeaderFooterViewReuseIdentifier:@"mouldGiveOutHeader"];
+
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.estimatedRowHeight = 0.1;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedSectionHeaderHeight = 0.1;
-    self.tableView.sectionHeaderHeight = UITableViewAutomaticDimension;
-    self.tableView.sectionFooterHeight = 0.1;
     
     [self request_productionControl_getProductionControl];
-    [self request_modelSequence_getModelReturnCauseList];
     
     
     //rac
@@ -148,32 +136,12 @@
     
     self.textFieldSearch.inputAccessoryView = [self addToolbar];
     
-    //还回
-    [[self.buttonGiveIn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
-        @strongify(self);
-        [self request_modelSequence_updateModelSequenceStatus];
-    }];
-    
-    
-    self.mouldManagerGiveOutSelectCauseView = [MouldManagerGiveOutSelectCauseView loadMyView];
-    [self.view addSubview:self.mouldManagerGiveOutSelectCauseView];
-    self.mouldManagerGiveOutSelectCauseView.hidden = YES;
-    
-    [self.mouldManagerGiveOutSelectCauseView callBackSelectTableViewIndex:^(NSInteger index, ModelReturnCauseVo * _Nonnull model) {
-        ModelSequenceVo *sequenceVo = self.arrayModelSequenceVo[index];
-        sequenceVo.causeText = model.causeText;
-        sequenceVo.causeCode = model.causeCode;
-        
-        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
-        
-    }];
-    
     
 }
 
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(kMainW, 114);
+    return CGSizeMake(kMainW, 154);
 }
 
 
@@ -183,9 +151,6 @@
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MouldGiveOutCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"mouldGiveOutCell" forIndexPath:indexPath];
-    
-    cell.label0.text = @"项目想好想没想啊千万啊个";
-    
 //    if (indexPath.row == 2) {
 //        cell.viewBg.layer.borderWidth = 0.5;
 //        cell.viewBg.layer.borderColor = colorRGBA(40, 155, 229, 0.5).CGColor;
@@ -198,6 +163,12 @@
 //        cell.viewBg.layer.borderWidth = 0;
 //        cell.viewBg.layer.shadowRadius = 0;
 //    }
+    
+    if (indexPath.row%2 == 0) {
+        cell.viewBg.backgroundColor = [UIColor whiteColor];
+    } else {
+        cell.viewBg.backgroundColor = colorRGB(210, 210, 210);
+    }
     
     ProductionControlVo *productionControlVo = self.arrayProductionControlVo[indexPath.row];
     cell.label0.text = productionControlVo.materialCode;
@@ -212,6 +183,10 @@
     }
     
     cell.label6.text = productionControlVo.plannedstartDateTime;
+    cell.label7.text = [[FunctionDYZ dyz] strDateFormat:productionControlVo.placeOrderDateTime withEnterDateFormat:@"yyyy-MM-dd HH:mm:ss" withGoDateFormat:@"yyyy-MM-dd"];
+    cell.label8.text = productionControlVo.modelCount;
+    cell.label9.text = productionControlVo.availableModelCount;
+    cell.label10.text = productionControlVo.useModelCount;
     return cell;
 }
 
@@ -227,56 +202,50 @@
     vc.mouldCode = productionControlVo.mouldCode;
     vc.status = productionControlVo.status;
     vc.plannedstartDateTime = productionControlVo.plannedstartDateTime;
+    vc.placeOrderDateTime = productionControlVo.placeOrderDateTime;
+    vc.modelCount = productionControlVo.modelCount;
+    vc.availableModelCount = productionControlVo.availableModelCount;
+    vc.useModelCount = productionControlVo.useModelCount;
+    
+    
+    
     vc.productionControlNum = productionControlVo.productionControlNum;
     [self.navigationController pushViewController:vc animated:true];
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.arrayModelSequenceVo.count;
+    return self.arrayProductionControlVoGiveIn.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MouldGiveInCell *cell = [tableView dequeueReusableCellWithIdentifier:@"mouldGiveInCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    ModelSequenceVo  *model  = self.arrayModelSequenceVo[indexPath.row];
-    cell.label0.text = model.sequenceNum;
-
-    if (model.isSelect.integerValue == 0) {
-        cell.imageView0.image = [UIImage imageNamed:@"unselection"];
+    if (indexPath.row%2 == 0) {
+        cell.viewBg.backgroundColor = [UIColor whiteColor];
     } else {
-        cell.imageView0.image = [UIImage imageNamed:@"selection"];
+        cell.viewBg.backgroundColor = colorRGB(210, 210, 210);
     }
     
-    cell.label1.text = model.modelCode;
+    ProductionControlVo *model = self.arrayProductionControlVoGiveIn[indexPath.row];
     
-    [cell.buttonSelect addTarget:self action:@selector(buttonMouldManagerGiveOutSelectCauseView:) forControlEvents:UIControlEventTouchUpInside];
-    cell.buttonSelect.tag = indexPath.row;
-    
-    cell.textField.text = model.causeText;
-    cell.textField.placeholder = @"请选择";
+    cell.label0.text = model.materialCode;
+    cell.label1.text = model.materialText;
+    cell.label2.text = model.plannedQuantity.stringValue;
+    cell.label3.text = model.completedQuantity.stringValue;
+    cell.label4.text = model.modelCount;
     
     return cell;
 }
 
-- (void)buttonMouldManagerGiveOutSelectCauseView:(UIButton *)sender {
-    self.mouldManagerGiveOutSelectCauseView.hidden = NO;
-    self.mouldManagerGiveOutSelectCauseView.index = sender.tag;
-    
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    MouldGiveOutHeader *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"mouldGiveOutHeader"];
-    view.labelTitle.text = @"生产现场模具序列号";
-    return view;
-}
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    ModelSequenceVo  *model  = self.arrayModelSequenceVo[indexPath.row];
-    model.isSelect = model.isSelect.integerValue==0?[NSNumber numberWithInteger:1]:[NSNumber numberWithInteger:0];
-    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    ProductionControlVo *model = self.arrayProductionControlVoGiveIn[indexPath.row];
+    MouldGiveInViewController *vc = [[MouldGiveInViewController alloc] init];
+    vc.productionControlNum = model.productionControlNum;
+    [self.navigationController pushViewController:vc animated:true];
 }
 
 - (void)request_productionControl_getProductionControl {
@@ -314,29 +283,30 @@
     } isKindOfModel:NSClassFromString(@"ReturnListBean")];
 }
 
-- (void)request_modelSequence_getProductionModelSequence {
+- (void)request_productionControl_getUseModelProductionControl {
+    
     _viewLoading.hidden = NO;
     LoginModel *loginModel = [DatabaseTool getLoginModel];
     UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
     NSString *siteCode = tpfUser.siteCode;
-    
+
     MesPostEntityBean *mesPostEntityBean = [[MesPostEntityBean alloc] init];
-    
-    ModelSequenceVo *modelSequenceVo = [[ModelSequenceVo alloc] init];
-    modelSequenceVo.siteCode = siteCode;
-        
-    mesPostEntityBean.entity = modelSequenceVo.mj_keyValues;
+
+    ProductionControlVo *productionControlVo = [[ProductionControlVo alloc] init];
+    productionControlVo.siteCode = siteCode;
+
+    mesPostEntityBean.entity = productionControlVo.mj_keyValues;
     NSDictionary *dic = mesPostEntityBean.mj_keyValues;
-    
-    [HttpMamager postRequestWithURLString:DYZ_modelSequence_getProductionModelSequence parameters:dic success:^(id responseObjectModel) {
+
+    [HttpMamager postRequestWithURLString:DYZ_productionControl_getUseModelProductionControl parameters:dic success:^(id responseObjectModel) {
         ReturnListBean *returnListBean = responseObjectModel;
         self->_viewLoading.hidden = YES;
         if ([returnListBean.status isEqualToString:@"SUCCESS"]) {
-            self.arrayModelSequenceVo = [[NSMutableArray alloc] initWithCapacity:0];
+            self.arrayProductionControlVoGiveIn = [[NSMutableArray alloc] initWithCapacity:0];
             NSMutableArray *dataArray = returnListBean.list;
             for (NSDictionary *dic in dataArray) {
-                ModelSequenceVo  *model  = [ModelSequenceVo  mj_objectWithKeyValues:dic];
-                [self.arrayModelSequenceVo addObject:model];
+                ProductionControlVo  *model  = [ProductionControlVo  mj_objectWithKeyValues:dic];
+                [self.arrayProductionControlVoGiveIn addObject:model];
             }
             [self.tableView reloadData];
         } else {
@@ -347,80 +317,8 @@
     } isKindOfModel:NSClassFromString(@"ReturnListBean")];
 }
 
-- (void)request_modelSequence_getModelReturnCauseList {
-    _viewLoading.hidden = NO;
-    LoginModel *loginModel = [DatabaseTool getLoginModel];
-    UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
-    NSString *siteCode = tpfUser.siteCode;
-    
-    MesPostEntityBean *mesPostEntityBean = [[MesPostEntityBean alloc] init];
-    
-    ModelReturnCauseVo *modelReturnCauseVo = [[ModelReturnCauseVo alloc] init];
-    modelReturnCauseVo.siteCode = siteCode;
-        
-    mesPostEntityBean.entity = modelReturnCauseVo.mj_keyValues;
-    NSDictionary *dic = mesPostEntityBean.mj_keyValues;
-    
-    [HttpMamager postRequestWithURLString:DYZ_modelSequence_getModelReturnCauseList parameters:dic success:^(id responseObjectModel) {
-        ReturnListBean *returnListBean = responseObjectModel;
-        self->_viewLoading.hidden = YES;
-        if ([returnListBean.status isEqualToString:@"SUCCESS"]) {
-            self.arrayModelReturnCauseList = [[NSMutableArray alloc] initWithCapacity:0];
-            NSMutableArray *dataArray = returnListBean.list;
-            for (NSDictionary *dic in dataArray) {
-                ModelReturnCauseVo  *model  = [ModelReturnCauseVo  mj_objectWithKeyValues:dic];
-                [self.arrayModelReturnCauseList addObject:model];
-            }
-            [self.mouldManagerGiveOutSelectCauseView loadTableWithArray:self.arrayModelReturnCauseList];
-        } else {
-            [[MyAlertCenter defaultCenter] postAlertWithMessage:returnListBean.returnMsg];
-        }
-    } fail:^(NSError *error) {
-       self->_viewLoading.hidden = YES;
-    } isKindOfModel:NSClassFromString(@"ReturnListBean")];
-}
 
-- (void)request_modelSequence_updateModelSequenceStatus {
-    
-    MesPostEntityBean *mesPostEntityBean = [[MesPostEntityBean alloc] init];
-    
-    NSMutableArray *array = [NSMutableArray arrayWithCapacity:0];
-    
-    LoginModel *loginModel = [DatabaseTool getLoginModel];
-    UserInfoVo *tpfUser = [UserInfoVo mj_objectWithKeyValues:loginModel.tpfUser];
-    
-    for (ModelSequenceVo *model in self.arrayModelSequenceVo) {
-        if (model.isSelect.integerValue == 1) {
-            model.status = [NSNumber numberWithInteger:0];
-            model.createUser = tpfUser.userCode;
-            [array addObject:model];
-        }
-    }
-    
-    if (array.count == 0) {
-        [[MyAlertCenter defaultCenter] postAlertWithMessage:@"请选择模具号"];
-        return;
-    }
-        
-    mesPostEntityBean.entity = array.mj_keyValues;
-    NSDictionary *dic = mesPostEntityBean.mj_keyValues;
-    
-    _viewLoading.hidden = NO;
-    
-    [HttpMamager postRequestWithURLString:DYZ_modelSequence_updateModelSequenceStatus parameters:dic success:^(id responseObjectModel) {
-        ReturnMsgBean *returnMsgBean = responseObjectModel;
-        self->_viewLoading.hidden = YES;
-        if ([returnMsgBean.status isEqualToString:@"SUCCESS"]) {
-            [[MyAlertCenter defaultCenter] postAlertWithMessage:@"还回成功"];
-//            [self.navigationController popViewControllerAnimated:true];
-            [self request_modelSequence_getProductionModelSequence];
-        } else {
-            [[MyAlertCenter defaultCenter] postAlertWithMessage:returnMsgBean.returnMsg];
-        }
-    } fail:^(NSError *error) {
-       self->_viewLoading.hidden = YES;
-    } isKindOfModel:NSClassFromString(@"ReturnMsgBean")];
-}
+
 
 
 - (UIToolbar *)addToolbar {

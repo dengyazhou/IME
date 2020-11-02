@@ -1,5 +1,5 @@
 //
-//  MouldGiveInCell.h
+//  MouldGiveInDetailCell.h
 //  IMEFuture
 //
 //  Created by 邓亚洲 on 2020/9/4.
@@ -10,12 +10,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MouldGiveInCell : UITableViewCell
+@interface MouldGiveInDetailCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *label0;
+
 @property (weak, nonatomic) IBOutlet UIImageView *imageView0;
 
+@property (weak, nonatomic) IBOutlet UILabel *label0;
 @property (weak, nonatomic) IBOutlet UILabel *label1;
+@property (weak, nonatomic) IBOutlet UILabel *label2;
+@property (weak, nonatomic) IBOutlet UILabel *label3;
+
+
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UIButton *buttonSelect;
 

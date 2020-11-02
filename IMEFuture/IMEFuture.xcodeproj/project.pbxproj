@@ -156,6 +156,22 @@
 		93BD35292445AE1600E55523 /* ParameterEntityVo.m in Sources */ = {isa = PBXBuildFile; fileRef = 93BD35282445AE1600E55523 /* ParameterEntityVo.m */; };
 		93BD352C2445AED800E55523 /* ParameterValueVo.m in Sources */ = {isa = PBXBuildFile; fileRef = 93BD352B2445AED800E55523 /* ParameterValueVo.m */; };
 		93BD35322446F0EA00E55523 /* MaterialDYZ.m in Sources */ = {isa = PBXBuildFile; fileRef = 93BD35312446F0EA00E55523 /* MaterialDYZ.m */; };
+		93C25CF4254A8AF700A635C0 /* LingliaochukuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C25CF2254A8AF700A635C0 /* LingliaochukuVC.swift */; };
+		93C25CF5254A8AF700A635C0 /* LingliaochukuVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C25CF3254A8AF700A635C0 /* LingliaochukuVC.xib */; };
+		93C25CFC254AA7C000A635C0 /* LingliaoCreateVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C25CFA254AA7BF00A635C0 /* LingliaoCreateVC.xib */; };
+		93C25CFD254AA7C000A635C0 /* LingliaoCreateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C25CFB254AA7BF00A635C0 /* LingliaoCreateVC.swift */; };
+		93C25D04254AAD3100A635C0 /* LingliaoCreateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C25D02254AAD3100A635C0 /* LingliaoCreateCell.swift */; };
+		93C25D05254AAD3100A635C0 /* LingliaoCreateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C25D03254AAD3100A635C0 /* LingliaoCreateCell.xib */; };
+		93C25D11254BB82400A635C0 /* MouldGiveInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C25D0F254BB82300A635C0 /* MouldGiveInViewController.m */; };
+		93C25D12254BB82400A635C0 /* MouldGiveInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C25D10254BB82400A635C0 /* MouldGiveInViewController.xib */; };
+		93C25D1B254BC3D500A635C0 /* MouldGiveInCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C25D19254BC3D500A635C0 /* MouldGiveInCell.xib */; };
+		93C25D1C254BC3D500A635C0 /* MouldGiveInCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C25D1A254BC3D500A635C0 /* MouldGiveInCell.m */; };
+		93C25D25254BEC0800A635C0 /* MouldProductionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C25D22254BEC0700A635C0 /* MouldProductionDetailViewController.m */; };
+		93C25D26254BEC0800A635C0 /* MouldProductionDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C25D23254BEC0800A635C0 /* MouldProductionDetailViewController.xib */; };
+		93C25D2F254BEE6600A635C0 /* MouldProductionDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C25D2D254BEE6500A635C0 /* MouldProductionDetailCell.xib */; };
+		93C25D30254BEE6600A635C0 /* MouldProductionDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C25D2E254BEE6600A635C0 /* MouldProductionDetailCell.m */; };
+		93C25D34254C06AE00A635C0 /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C25D33254C06AE00A635C0 /* NSString+Hash.m */; };
+		93C25D37254C27B900A635C0 /* ProductionConfirmVo.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C25D36254C27B900A635C0 /* ProductionConfirmVo.m */; };
 		93C33ED72398E4900026D9EB /* WeiWaiChuangJianViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C33ED52398E4900026D9EB /* WeiWaiChuangJianViewController.swift */; };
 		93C33ED82398E4900026D9EB /* WeiWaiChuangJianViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C33ED62398E4900026D9EB /* WeiWaiChuangJianViewController.xib */; };
 		93C33EE22398F0490026D9EB /* WeiWaiChuangJianCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C33EE02398F0490026D9EB /* WeiWaiChuangJianCell.swift */; };
@@ -164,8 +180,8 @@
 		93C33EF3239A01540026D9EB /* WeiWaiSelectSupplierVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C33EF1239A01540026D9EB /* WeiWaiSelectSupplierVC.xib */; };
 		93C33EFA239A21BE0026D9EB /* WeiWaiSelectSupplierCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C33EF8239A21BE0026D9EB /* WeiWaiSelectSupplierCell.swift */; };
 		93C33EFB239A21BE0026D9EB /* WeiWaiSelectSupplierCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C33EF9239A21BE0026D9EB /* WeiWaiSelectSupplierCell.xib */; };
-		93C423E92501D70B00472C1D /* MouldGiveInCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C423E72501D70B00472C1D /* MouldGiveInCell.m */; };
-		93C423EA2501D70B00472C1D /* MouldGiveInCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C423E82501D70B00472C1D /* MouldGiveInCell.xib */; };
+		93C423E92501D70B00472C1D /* MouldGiveInDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C423E72501D70B00472C1D /* MouldGiveInDetailCell.m */; };
+		93C423EA2501D70B00472C1D /* MouldGiveInDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C423E82501D70B00472C1D /* MouldGiveInDetailCell.xib */; };
 		93C423ED2501DDFB00472C1D /* MouldGiveOutHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C423EC2501DDFB00472C1D /* MouldGiveOutHeader.m */; };
 		93C423EF2501DE3D00472C1D /* MouldGiveOutHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C423EE2501DE3D00472C1D /* MouldGiveOutHeader.xib */; };
 		93C423F32501E23F00472C1D /* MouldGiveOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C423F12501E23F00472C1D /* MouldGiveOutViewController.m */; };
@@ -222,6 +238,7 @@
 		93E8E7E42536DB9100B55601 /* MouldManagerGiveOutSelectCauseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93E8E7E32536DB9100B55601 /* MouldManagerGiveOutSelectCauseView.m */; };
 		93E8E7E62536DBB100B55601 /* MouldManagerGiveOutSelectCauseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93E8E7E52536DBB100B55601 /* MouldManagerGiveOutSelectCauseView.xib */; };
 		93E8E7E92536FA6E00B55601 /* ModelReturnCauseVo.m in Sources */ = {isa = PBXBuildFile; fileRef = 93E8E7E82536FA6E00B55601 /* ModelReturnCauseVo.m */; };
+		93EA3E2D254030DE00F5B505 /* ime_sound_notice.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 93EA3E2C254030DE00F5B505 /* ime_sound_notice.mp3 */; };
 		93EF0C7022E0372C00182152 /* TemporaryTaskVo.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EF0C6F22E0372C00182152 /* TemporaryTaskVo.m */; };
 		93EF0C7422E038BF00182152 /* TemporaryTaskTypeVo.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EF0C7322E038BF00182152 /* TemporaryTaskTypeVo.m */; };
 		93EF0C7722E0395D00182152 /* TemporaryTaskShutdownVo.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EF0C7622E0395D00182152 /* TemporaryTaskShutdownVo.m */; };
@@ -241,6 +258,8 @@
 		93EF0CA522E18F0B00182152 /* CompleteConfirmationConfirmationSuccessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93EF0CA222E18F0B00182152 /* CompleteConfirmationConfirmationSuccessView.xib */; };
 		93EF0CAE22E18F9200182152 /* TemporaryTaskSuspendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EF0CAC22E18F9200182152 /* TemporaryTaskSuspendView.m */; };
 		93EF0CAF22E18F9200182152 /* TemporaryTaskSuspendView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93EF0CAD22E18F9200182152 /* TemporaryTaskSuspendView.xib */; };
+		93F26F9B254FCBC300FB4C9A /* ReqMaterialVo.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F26F9A254FCBC300FB4C9A /* ReqMaterialVo.m */; };
+		93F26F9E254FCEFD00FB4C9A /* WarehouseVo.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F26F9D254FCEFD00FB4C9A /* WarehouseVo.m */; };
 		93F48BCC237025300041E8BD /* ScanGongXuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93F48BC92370252F0041E8BD /* ScanGongXuViewController.xib */; };
 		93F48BCD237025300041E8BD /* ScanGongXuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F48BCB237025300041E8BD /* ScanGongXuViewController.m */; };
 		93F48BD023702A950041E8BD /* ProcessOperationDetailVo.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F48BCF23702A950041E8BD /* ProcessOperationDetailVo.m */; };
@@ -1555,6 +1574,28 @@
 		93BD352B2445AED800E55523 /* ParameterValueVo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParameterValueVo.m; sourceTree = "<group>"; };
 		93BD35302446F0EA00E55523 /* MaterialDYZ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MaterialDYZ.h; sourceTree = "<group>"; };
 		93BD35312446F0EA00E55523 /* MaterialDYZ.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MaterialDYZ.m; sourceTree = "<group>"; };
+		93C25CF2254A8AF700A635C0 /* LingliaochukuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LingliaochukuVC.swift; sourceTree = "<group>"; };
+		93C25CF3254A8AF700A635C0 /* LingliaochukuVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LingliaochukuVC.xib; sourceTree = "<group>"; };
+		93C25CFA254AA7BF00A635C0 /* LingliaoCreateVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LingliaoCreateVC.xib; sourceTree = "<group>"; };
+		93C25CFB254AA7BF00A635C0 /* LingliaoCreateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LingliaoCreateVC.swift; sourceTree = "<group>"; };
+		93C25D02254AAD3100A635C0 /* LingliaoCreateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LingliaoCreateCell.swift; sourceTree = "<group>"; };
+		93C25D03254AAD3100A635C0 /* LingliaoCreateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LingliaoCreateCell.xib; sourceTree = "<group>"; };
+		93C25D0E254BB82300A635C0 /* MouldGiveInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MouldGiveInViewController.h; sourceTree = "<group>"; };
+		93C25D0F254BB82300A635C0 /* MouldGiveInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MouldGiveInViewController.m; sourceTree = "<group>"; };
+		93C25D10254BB82400A635C0 /* MouldGiveInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MouldGiveInViewController.xib; sourceTree = "<group>"; };
+		93C25D18254BC3D500A635C0 /* MouldGiveInCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MouldGiveInCell.h; sourceTree = "<group>"; };
+		93C25D19254BC3D500A635C0 /* MouldGiveInCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MouldGiveInCell.xib; sourceTree = "<group>"; };
+		93C25D1A254BC3D500A635C0 /* MouldGiveInCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MouldGiveInCell.m; sourceTree = "<group>"; };
+		93C25D22254BEC0700A635C0 /* MouldProductionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MouldProductionDetailViewController.m; sourceTree = "<group>"; };
+		93C25D23254BEC0800A635C0 /* MouldProductionDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MouldProductionDetailViewController.xib; sourceTree = "<group>"; };
+		93C25D24254BEC0800A635C0 /* MouldProductionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MouldProductionDetailViewController.h; sourceTree = "<group>"; };
+		93C25D2C254BEE6500A635C0 /* MouldProductionDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MouldProductionDetailCell.h; sourceTree = "<group>"; };
+		93C25D2D254BEE6500A635C0 /* MouldProductionDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MouldProductionDetailCell.xib; sourceTree = "<group>"; };
+		93C25D2E254BEE6600A635C0 /* MouldProductionDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MouldProductionDetailCell.m; sourceTree = "<group>"; };
+		93C25D32254C06AE00A635C0 /* NSString+Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Hash.h"; sourceTree = "<group>"; };
+		93C25D33254C06AE00A635C0 /* NSString+Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hash.m"; sourceTree = "<group>"; };
+		93C25D35254C27B900A635C0 /* ProductionConfirmVo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProductionConfirmVo.h; sourceTree = "<group>"; };
+		93C25D36254C27B900A635C0 /* ProductionConfirmVo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProductionConfirmVo.m; sourceTree = "<group>"; };
 		93C33ED52398E4900026D9EB /* WeiWaiChuangJianViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiWaiChuangJianViewController.swift; sourceTree = "<group>"; };
 		93C33ED62398E4900026D9EB /* WeiWaiChuangJianViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeiWaiChuangJianViewController.xib; sourceTree = "<group>"; };
 		93C33EE02398F0490026D9EB /* WeiWaiChuangJianCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeiWaiChuangJianCell.swift; sourceTree = "<group>"; };
@@ -1563,9 +1604,9 @@
 		93C33EF1239A01540026D9EB /* WeiWaiSelectSupplierVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeiWaiSelectSupplierVC.xib; sourceTree = "<group>"; };
 		93C33EF8239A21BE0026D9EB /* WeiWaiSelectSupplierCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeiWaiSelectSupplierCell.swift; sourceTree = "<group>"; };
 		93C33EF9239A21BE0026D9EB /* WeiWaiSelectSupplierCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeiWaiSelectSupplierCell.xib; sourceTree = "<group>"; };
-		93C423E62501D70B00472C1D /* MouldGiveInCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MouldGiveInCell.h; sourceTree = "<group>"; };
-		93C423E72501D70B00472C1D /* MouldGiveInCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MouldGiveInCell.m; sourceTree = "<group>"; };
-		93C423E82501D70B00472C1D /* MouldGiveInCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MouldGiveInCell.xib; sourceTree = "<group>"; };
+		93C423E62501D70B00472C1D /* MouldGiveInDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MouldGiveInDetailCell.h; sourceTree = "<group>"; };
+		93C423E72501D70B00472C1D /* MouldGiveInDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MouldGiveInDetailCell.m; sourceTree = "<group>"; };
+		93C423E82501D70B00472C1D /* MouldGiveInDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MouldGiveInDetailCell.xib; sourceTree = "<group>"; };
 		93C423EB2501DDFB00472C1D /* MouldGiveOutHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MouldGiveOutHeader.h; sourceTree = "<group>"; };
 		93C423EC2501DDFB00472C1D /* MouldGiveOutHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MouldGiveOutHeader.m; sourceTree = "<group>"; };
 		93C423EE2501DE3D00472C1D /* MouldGiveOutHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MouldGiveOutHeader.xib; sourceTree = "<group>"; };
@@ -1655,6 +1696,8 @@
 		93E8E7E52536DBB100B55601 /* MouldManagerGiveOutSelectCauseView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MouldManagerGiveOutSelectCauseView.xib; sourceTree = "<group>"; };
 		93E8E7E72536FA6E00B55601 /* ModelReturnCauseVo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelReturnCauseVo.h; sourceTree = "<group>"; };
 		93E8E7E82536FA6E00B55601 /* ModelReturnCauseVo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModelReturnCauseVo.m; sourceTree = "<group>"; };
+		93EA3E2C254030DE00F5B505 /* ime_sound_notice.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ime_sound_notice.mp3; sourceTree = "<group>"; };
+		93EA3E2E254030FE00F5B505 /* ime_sound_notice.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = ime_sound_notice.mp3; path = IMEFuture/ime_sound_notice.mp3; sourceTree = "<group>"; };
 		93EF0C6E22E0372C00182152 /* TemporaryTaskVo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TemporaryTaskVo.h; sourceTree = "<group>"; };
 		93EF0C6F22E0372C00182152 /* TemporaryTaskVo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TemporaryTaskVo.m; sourceTree = "<group>"; };
 		93EF0C7222E038BF00182152 /* TemporaryTaskTypeVo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TemporaryTaskTypeVo.h; sourceTree = "<group>"; };
@@ -1685,6 +1728,10 @@
 		93EF0CAB22E18F9100182152 /* TemporaryTaskSuspendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemporaryTaskSuspendView.h; sourceTree = "<group>"; };
 		93EF0CAC22E18F9200182152 /* TemporaryTaskSuspendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemporaryTaskSuspendView.m; sourceTree = "<group>"; };
 		93EF0CAD22E18F9200182152 /* TemporaryTaskSuspendView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemporaryTaskSuspendView.xib; sourceTree = "<group>"; };
+		93F26F99254FCBC300FB4C9A /* ReqMaterialVo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReqMaterialVo.h; sourceTree = "<group>"; };
+		93F26F9A254FCBC300FB4C9A /* ReqMaterialVo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReqMaterialVo.m; sourceTree = "<group>"; };
+		93F26F9C254FCEFD00FB4C9A /* WarehouseVo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WarehouseVo.h; sourceTree = "<group>"; };
+		93F26F9D254FCEFD00FB4C9A /* WarehouseVo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WarehouseVo.m; sourceTree = "<group>"; };
 		93F48BC92370252F0041E8BD /* ScanGongXuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScanGongXuViewController.xib; sourceTree = "<group>"; };
 		93F48BCA237025300041E8BD /* ScanGongXuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanGongXuViewController.h; sourceTree = "<group>"; };
 		93F48BCB237025300041E8BD /* ScanGongXuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanGongXuViewController.m; sourceTree = "<group>"; };
@@ -3739,6 +3786,58 @@
 			path = SelectPersonnelCheckList;
 			sourceTree = "<group>";
 		};
+		93C25D06254BB74100A635C0 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				93E4D6432500E9ED00AFF194 /* MouldGiveOutCell.h */,
+				93E4D6442500E9ED00AFF194 /* MouldGiveOutCell.m */,
+				93E4D6452500E9ED00AFF194 /* MouldGiveOutCell.xib */,
+				93C25D18254BC3D500A635C0 /* MouldGiveInCell.h */,
+				93C25D1A254BC3D500A635C0 /* MouldGiveInCell.m */,
+				93C25D19254BC3D500A635C0 /* MouldGiveInCell.xib */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		93C25D07254BB75400A635C0 /* GiveOutCell */ = {
+			isa = PBXGroup;
+			children = (
+				93C423EB2501DDFB00472C1D /* MouldGiveOutHeader.h */,
+				93C423EC2501DDFB00472C1D /* MouldGiveOutHeader.m */,
+				93C423EE2501DE3D00472C1D /* MouldGiveOutHeader.xib */,
+				93C423F52501ED9D00472C1D /* MouldGiveOutDetailCell01.h */,
+				93C423F62501ED9D00472C1D /* MouldGiveOutDetailCell01.m */,
+				93C423F72501ED9D00472C1D /* MouldGiveOutDetailCell01.xib */,
+				93C4240A2502068D00472C1D /* MouldGiveOutDetailCell02.h */,
+				93C4240B2502068E00472C1D /* MouldGiveOutDetailCell02.m */,
+				93C4240C2502068F00472C1D /* MouldGiveOutDetailCell02.xib */,
+			);
+			path = GiveOutCell;
+			sourceTree = "<group>";
+		};
+		93C25D08254BB78000A635C0 /* GiveInCell */ = {
+			isa = PBXGroup;
+			children = (
+				93E8E7E22536DB9100B55601 /* MouldManagerGiveOutSelectCauseView.h */,
+				93E8E7E32536DB9100B55601 /* MouldManagerGiveOutSelectCauseView.m */,
+				93E8E7E52536DBB100B55601 /* MouldManagerGiveOutSelectCauseView.xib */,
+				93C423E62501D70B00472C1D /* MouldGiveInDetailCell.h */,
+				93C423E72501D70B00472C1D /* MouldGiveInDetailCell.m */,
+				93C423E82501D70B00472C1D /* MouldGiveInDetailCell.xib */,
+			);
+			path = GiveInCell;
+			sourceTree = "<group>";
+		};
+		93C25D31254BEECD00A635C0 /* ProductionDetailCell */ = {
+			isa = PBXGroup;
+			children = (
+				93C25D2C254BEE6500A635C0 /* MouldProductionDetailCell.h */,
+				93C25D2E254BEE6600A635C0 /* MouldProductionDetailCell.m */,
+				93C25D2D254BEE6500A635C0 /* MouldProductionDetailCell.xib */,
+			);
+			path = ProductionDetailCell;
+			sourceTree = "<group>";
+		};
 		93D1616325072ABC0093A95A /* PlannedReleaseCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -3809,6 +3908,7 @@
 		93E3FBCC229CCF3400693CFC = {
 			isa = PBXGroup;
 			children = (
+				93EA3E2E254030FE00F5B505 /* ime_sound_notice.mp3 */,
 				93E3FBD7229CCF3400693CFC /* IMEFuture */,
 				93E3FBF0229CCF3500693CFC /* IMEFutureTests */,
 				93E3FBFB229CCF3500693CFC /* IMEFutureUITests */,
@@ -3844,6 +3944,7 @@
 				93E3FBE6229CCF3500693CFC /* Info.plist */,
 				93E3FBE7229CCF3500693CFC /* main.m */,
 				93E3FC0D229CFFD900693CFC /* IMEFuture-Bridging-Header.h */,
+				93EA3E2C254030DE00F5B505 /* ime_sound_notice.mp3 */,
 			);
 			path = IMEFuture;
 			sourceTree = "<group>";
@@ -3896,30 +3997,22 @@
 		93E4D63D2500E02900AFF194 /* MouldManager */ = {
 			isa = PBXGroup;
 			children = (
-				93E4D6432500E9ED00AFF194 /* MouldGiveOutCell.h */,
-				93E4D6442500E9ED00AFF194 /* MouldGiveOutCell.m */,
-				93E4D6452500E9ED00AFF194 /* MouldGiveOutCell.xib */,
-				93C423EB2501DDFB00472C1D /* MouldGiveOutHeader.h */,
-				93C423EC2501DDFB00472C1D /* MouldGiveOutHeader.m */,
-				93C423EE2501DE3D00472C1D /* MouldGiveOutHeader.xib */,
-				93C423F52501ED9D00472C1D /* MouldGiveOutDetailCell01.h */,
-				93C423F62501ED9D00472C1D /* MouldGiveOutDetailCell01.m */,
-				93C423F72501ED9D00472C1D /* MouldGiveOutDetailCell01.xib */,
-				93C4240A2502068D00472C1D /* MouldGiveOutDetailCell02.h */,
-				93C4240B2502068E00472C1D /* MouldGiveOutDetailCell02.m */,
-				93C4240C2502068F00472C1D /* MouldGiveOutDetailCell02.xib */,
-				93C423E62501D70B00472C1D /* MouldGiveInCell.h */,
-				93C423E72501D70B00472C1D /* MouldGiveInCell.m */,
-				93C423E82501D70B00472C1D /* MouldGiveInCell.xib */,
+				93C25D06254BB74100A635C0 /* cell */,
 				93E4D63E2500E04900AFF194 /* MouldManagerViewController.h */,
 				93E4D63F2500E04A00AFF194 /* MouldManagerViewController.m */,
 				93E4D6402500E04B00AFF194 /* MouldManagerViewController.xib */,
+				93C25D07254BB75400A635C0 /* GiveOutCell */,
 				93C423F02501E23F00472C1D /* MouldGiveOutViewController.h */,
 				93C423F12501E23F00472C1D /* MouldGiveOutViewController.m */,
 				93C423F22501E23F00472C1D /* MouldGiveOutViewController.xib */,
-				93E8E7E22536DB9100B55601 /* MouldManagerGiveOutSelectCauseView.h */,
-				93E8E7E32536DB9100B55601 /* MouldManagerGiveOutSelectCauseView.m */,
-				93E8E7E52536DBB100B55601 /* MouldManagerGiveOutSelectCauseView.xib */,
+				93C25D31254BEECD00A635C0 /* ProductionDetailCell */,
+				93C25D24254BEC0800A635C0 /* MouldProductionDetailViewController.h */,
+				93C25D22254BEC0700A635C0 /* MouldProductionDetailViewController.m */,
+				93C25D23254BEC0800A635C0 /* MouldProductionDetailViewController.xib */,
+				93C25D08254BB78000A635C0 /* GiveInCell */,
+				93C25D0E254BB82300A635C0 /* MouldGiveInViewController.h */,
+				93C25D0F254BB82300A635C0 /* MouldGiveInViewController.m */,
+				93C25D10254BB82400A635C0 /* MouldGiveInViewController.xib */,
 			);
 			path = MouldManager;
 			sourceTree = "<group>";
@@ -4558,12 +4651,18 @@
 		93F7050422B0D7B9000B2D9D /* IQCChuKu */ = {
 			isa = PBXGroup;
 			children = (
-				936E199523F52E040064FD72 /* IQCChuKuYuanGongMaVC.swift */,
-				936E199623F52E050064FD72 /* IQCChuKuYuanGongMaVC.xib */,
+				93C25CF2254A8AF700A635C0 /* LingliaochukuVC.swift */,
+				93C25CF3254A8AF700A635C0 /* LingliaochukuVC.xib */,
 				93F7050722B0D7B9000B2D9D /* IQCChuKuCell.swift */,
 				93F7050822B0D7B9000B2D9D /* IQCChuKuCell.xib */,
 				93F7050622B0D7B9000B2D9D /* YingLiaoRuKuViewController.swift */,
 				93F7050522B0D7B9000B2D9D /* YingLiaoRuKuViewController.xib */,
+				93C25D02254AAD3100A635C0 /* LingliaoCreateCell.swift */,
+				93C25D03254AAD3100A635C0 /* LingliaoCreateCell.xib */,
+				93C25CFB254AA7BF00A635C0 /* LingliaoCreateVC.swift */,
+				93C25CFA254AA7BF00A635C0 /* LingliaoCreateVC.xib */,
+				936E199523F52E040064FD72 /* IQCChuKuYuanGongMaVC.swift */,
+				936E199623F52E050064FD72 /* IQCChuKuYuanGongMaVC.xib */,
 			);
 			path = IQCChuKu;
 			sourceTree = "<group>";
@@ -4785,6 +4884,8 @@
 				93F7056A22B0D7B9000B2D9D /* Tools */,
 				93F7059322B0D7B9000B2D9D /* NSString+Utils.h */,
 				93F7059F22B0D7B9000B2D9D /* NSString+Utils.m */,
+				93C25D32254C06AE00A635C0 /* NSString+Hash.h */,
+				93C25D33254C06AE00A635C0 /* NSString+Hash.m */,
 				93F7059C22B0D7B9000B2D9D /* CALayer+LayerBorderColor.h */,
 				93F7056722B0D7B9000B2D9D /* CALayer+LayerBorderColor.m */,
 				93F705A022B0D7B9000B2D9D /* NSArray+Transition.h */,
@@ -5154,6 +5255,8 @@
 				93C4241025023F1500472C1D /* ProductionOrderVo.m */,
 				93E8E7E72536FA6E00B55601 /* ModelReturnCauseVo.h */,
 				93E8E7E82536FA6E00B55601 /* ModelReturnCauseVo.m */,
+				93C25D35254C27B900A635C0 /* ProductionConfirmVo.h */,
+				93C25D36254C27B900A635C0 /* ProductionConfirmVo.m */,
 			);
 			path = pp;
 			sourceTree = "<group>";
@@ -5225,6 +5328,10 @@
 				93F7064422B0D7B9000B2D9D /* ReqOutboundVo.m */,
 				93428D8223A2434F0056E3D8 /* SupplierVo.h */,
 				93428D8323A2434F0056E3D8 /* SupplierVo.m */,
+				93F26F99254FCBC300FB4C9A /* ReqMaterialVo.h */,
+				93F26F9A254FCBC300FB4C9A /* ReqMaterialVo.m */,
+				93F26F9C254FCEFD00FB4C9A /* WarehouseVo.h */,
+				93F26F9D254FCEFD00FB4C9A /* WarehouseVo.m */,
 			);
 			path = mm;
 			sourceTree = "<group>";
@@ -8059,6 +8166,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93EA3E2D254030DE00F5B505 /* ime_sound_notice.mp3 in Resources */,
 				93428D7E23A1EDA30056E3D8 /* OQCCell0.xib in Resources */,
 				93F70DD522B0D7BB000B2D9D /* ECChakanWuliuCell.xib in Resources */,
 				93F70FCB22B0D7BB000B2D9D /* MXBaoJiaCell02.xib in Resources */,
@@ -8168,6 +8276,7 @@
 				93F70F2722B0D7BB000B2D9D /* YanHuoViewController09.xib in Resources */,
 				93F70F6322B0D7BB000B2D9D /* ECChaKanShouPanYiJiaViewController.xib in Resources */,
 				93B3D1A124DE963C003F700B /* PadMultiUserWorkViewController.xib in Resources */,
+				93C25D12254BB82400A635C0 /* MouldGiveInViewController.xib in Resources */,
 				93F70DC822B0D7BB000B2D9D /* YiJiaEGMingXiXiuGaiCell11.xib in Resources */,
 				93F70C4422B0D7BA000B2D9D /* XiaLiaoCompleteHeader.xib in Resources */,
 				93F70F9322B0D7BB000B2D9D /* ProjectCell.xib in Resources */,
@@ -8363,6 +8472,7 @@
 				9399D381240F95AD00807975 /* SelectScrapPictureVC.xib in Resources */,
 				93F70DE422B0D7BB000B2D9D /* YiCiFaHuoCell2.xib in Resources */,
 				93F70BFD22B0D7BA000B2D9D /* IQCRuKuViewController.xib in Resources */,
+				93C25D26254BEC0800A635C0 /* MouldProductionDetailViewController.xib in Resources */,
 				93F48BCC237025300041E8BD /* ScanGongXuViewController.xib in Resources */,
 				93F70E4722B0D7BB000B2D9D /* XunPanCell.xib in Resources */,
 				93F70E9022B0D7BB000B2D9D /* ECYiJiaViewController.xib in Resources */,
@@ -8412,6 +8522,7 @@
 				93F70BFE22B0D7BA000B2D9D /* IQCRuKuCell.xib in Resources */,
 				93F70FE022B0D7BB000B2D9D /* ELJXQTableViewSectionView.xib in Resources */,
 				93D1616925072B2C0093A95A /* ReleaseCell.xib in Resources */,
+				93C25D05254AAD3100A635C0 /* LingliaoCreateCell.xib in Resources */,
 				93F70FDB22B0D7BB000B2D9D /* PartDetailsViewController.xib in Resources */,
 				9339888222CF28E800E30CBC /* ChaKanYuanYinCell1.xib in Resources */,
 				93F70FEE22B0D7BC000B2D9D /* FaBaoPingLunTuoGuanViewController.xib in Resources */,
@@ -8448,16 +8559,18 @@
 				93F70FC222B0D7BB000B2D9D /* MXBaoJiaCell13.xib in Resources */,
 				93F70FDA22B0D7BB000B2D9D /* LingJianXiangQingViewController2.xib in Resources */,
 				93F70E5D22B0D7BB000B2D9D /* ShouHuoCell090102.xib in Resources */,
+				93C25CF5254A8AF700A635C0 /* LingliaochukuVC.xib in Resources */,
 				93F70EB322B0D7BB000B2D9D /* BJXuanZeGYSVC.xib in Resources */,
 				93F70F7E22B0D7BB000B2D9D /* ShouHuoXiangQingCell1.xib in Resources */,
 				9376949F23C30EB500FB696D /* ZuoYeDanYuanTiJiaoCollectionViewCell1.xib in Resources */,
-				93C423EA2501D70B00472C1D /* MouldGiveInCell.xib in Resources */,
+				93C423EA2501D70B00472C1D /* MouldGiveInDetailCell.xib in Resources */,
 				93F70F7F22B0D7BB000B2D9D /* ShouHuoXiangQingCell.xib in Resources */,
 				93F70E7322B0D7BB000B2D9D /* YanHuoDetailCell090002.xib in Resources */,
 				9399D36B240CFFF000807975 /* SweepTheCodeReturnsVC.xib in Resources */,
 				93F70E9822B0D7BB000B2D9D /* YiJiaECMingXiXiuGaiCell13.xib in Resources */,
 				93F70DB922B0D7BB000B2D9D /* BuFaHuoLieBiaoHeader.xib in Resources */,
 				93F70E6622B0D7BB000B2D9D /* UIViewXuanZeShuoHuoArea.xib in Resources */,
+				93C25D1B254BC3D500A635C0 /* MouldGiveInCell.xib in Resources */,
 				93F70BDA22B0D7BA000B2D9D /* SheBeiDianJianCell.xib in Resources */,
 				93F70E9B22B0D7BB000B2D9D /* YiJiaECMingXiXiuGaiCell00.xib in Resources */,
 				93F70CAD22B0D7BA000B2D9D /* HuoDongViewController.xib in Resources */,
@@ -8513,6 +8626,7 @@
 				93F70C0822B0D7BA000B2D9D /* ZuoYeDanYuanLBCell.xib in Resources */,
 				93D1616E250730220093A95A /* ReleaseHeader.xib in Resources */,
 				93F70F9C22B0D7BB000B2D9D /* icon_Private_letter_blue.gif in Resources */,
+				93C25CFC254AA7C000A635C0 /* LingliaoCreateVC.xib in Resources */,
 				93F70E3822B0D7BB000B2D9D /* DingDanXiangQingGongViewController.xib in Resources */,
 				93F70C4122B0D7BA000B2D9D /* XiaLiaoBaoGongViewController.xib in Resources */,
 				93AEFD9524E2358500F29A94 /* PadCheckBigImageViewController.xib in Resources */,
@@ -8541,6 +8655,7 @@
 				93F70F4922B0D7BB000B2D9D /* ShouHuoDetailCell090001.xib in Resources */,
 				93F70FD322B0D7BB000B2D9D /* XiuGaiBaoJia3Cell01.xib in Resources */,
 				93F70E6722B0D7BB000B2D9D /* ShouHuoViewController09.xib in Resources */,
+				93C25D2F254BEE6600A635C0 /* MouldProductionDetailCell.xib in Resources */,
 				93F70F7222B0D7BB000B2D9D /* ShouHuoXiangQingChaKanXiangQingCell1.xib in Resources */,
 				93F70FDF22B0D7BB000B2D9D /* ShengChangJinDuTableViewCell.xib in Resources */,
 				93F70E2A22B0D7BB000B2D9D /* FaHuoLieBiaoVC.xib in Resources */,
@@ -8683,6 +8798,7 @@
 				93F70E2922B0D7BB000B2D9D /* FaHuoLieBiaoCell.m in Sources */,
 				93F70CBC22B0D7BA000B2D9D /* PcwebNotification.m in Sources */,
 				93F70DD122B0D7BB000B2D9D /* ECCheckTheLogisticsViewController.m in Sources */,
+				93C25D25254BEC0800A635C0 /* MouldProductionDetailViewController.m in Sources */,
 				93F70F8022B0D7BB000B2D9D /* ShouHuoXiangQingFooter.m in Sources */,
 				93F70D6522B0D7BA000B2D9D /* ReturnEntityBean.m in Sources */,
 				93F70F8E22B0D7BB000B2D9D /* ShouHuoLieBiaoVC.m in Sources */,
@@ -8691,6 +8807,7 @@
 				93EF0C7722E0395D00182152 /* TemporaryTaskShutdownVo.m in Sources */,
 				93F70C9B22B0D7BA000B2D9D /* DatabaseTool.m in Sources */,
 				93F70CD122B0D7BA000B2D9D /* TechnologyBean.m in Sources */,
+				93C25D37254C27B900A635C0 /* ProductionConfirmVo.m in Sources */,
 				93F70CD622B0D7BA000B2D9D /* ReportWorkProductionOrderConfirmVo.m in Sources */,
 				93F70E6122B0D7BB000B2D9D /* ShouHuoCell0900.m in Sources */,
 				93471C41230BE8140052145A /* TpfCheckBigPictureAndDeletePictureVC.m in Sources */,
@@ -8805,6 +8922,7 @@
 				93F70F0E22B0D7BB000B2D9D /* ECSupplierViewController.m in Sources */,
 				93F70EAC22B0D7BB000B2D9D /* XunPanGongYiHeader.m in Sources */,
 				93F70DDF22B0D7BB000B2D9D /* FaHuoLieBiaoCell09.m in Sources */,
+				93C25CF4254A8AF700A635C0 /* LingliaochukuVC.swift in Sources */,
 				93F70FD222B0D7BB000B2D9D /* XiuGaiBaoJia3Cell01.m in Sources */,
 				93F70DCE22B0D7BB000B2D9D /* YiJiaEGMingXiXiuGaiCell01.m in Sources */,
 				93F70DEF22B0D7BB000B2D9D /* UIViewXuanZeSongHuoFangShi.m in Sources */,
@@ -8880,6 +8998,7 @@
 				93F70DFC22B0D7BB000B2D9D /* FaHuoCell0902.m in Sources */,
 				93F70C5F22B0D7BA000B2D9D /* OQCLabelAndButtonCell.swift in Sources */,
 				93F70F4722B0D7BB000B2D9D /* ShouHuoDetailCell090001.m in Sources */,
+				93C25D30254BEE6600A635C0 /* MouldProductionDetailCell.m in Sources */,
 				93F70CC622B0D7BA000B2D9D /* ReturnInfoBean.m in Sources */,
 				93F70C6322B0D7BA000B2D9D /* ScanYuanGongMaVC.swift in Sources */,
 				93F70D2522B0D7BA000B2D9D /* InquiryOrderItemFile.m in Sources */,
@@ -8897,6 +9016,7 @@
 				93F70F7D22B0D7BB000B2D9D /* UIViewTuiHou.m in Sources */,
 				93E4D62E2500921D00AFF194 /* PlannedReleaseCell.m in Sources */,
 				93F70BF822B0D7BA000B2D9D /* ZuoYeDanYuanJiaGongXiangQingVC.swift in Sources */,
+				93C25CFD254AA7C000A635C0 /* LingliaoCreateVC.swift in Sources */,
 				93F70C4722B0D7BA000B2D9D /* XiaLiaoCompleteCell.swift in Sources */,
 				93F70CF822B0D7BA000B2D9D /* RoutingInspectionVo.m in Sources */,
 				93F70FC522B0D7BB000B2D9D /* MXBaoJiaCell01.m in Sources */,
@@ -8946,6 +9066,7 @@
 				93F70EB522B0D7BB000B2D9D /* XZGongYingShangCell.m in Sources */,
 				93F70FAE22B0D7BB000B2D9D /* BaoJiaViewController4.m in Sources */,
 				93E4D62925008D1100AFF194 /* PlannedReleaseViewController.m in Sources */,
+				93C25D04254AAD3100A635C0 /* LingliaoCreateCell.swift in Sources */,
 				93F70F4522B0D7BB000B2D9D /* ShouHuooDetailCell0903.m in Sources */,
 				93F70CAE22B0D7BA000B2D9D /* ModelInformationActivity.m in Sources */,
 				93F70C0622B0D7BA000B2D9D /* IQCRuKuCell.swift in Sources */,
@@ -8968,6 +9089,7 @@
 				93F70D5022B0D7BA000B2D9D /* TpfProcess.m in Sources */,
 				93DEBA1024CAAA0F00209063 /* MultiUserWorkCompleteVC.swift in Sources */,
 				93F70C0F22B0D7BA000B2D9D /* TpfBaoGongReasonView.m in Sources */,
+				93C25D1C254BC3D500A635C0 /* MouldGiveInCell.m in Sources */,
 				9399D36F240D112500807975 /* SweepTheCodeReturnsCell.m in Sources */,
 				939ADBB024A85FCB008BD1D2 /* XuLieHaoXiuGaiVC.swift in Sources */,
 				93F70FBB22B0D7BB000B2D9D /* MXBaoJiaCell04.m in Sources */,
@@ -9003,7 +9125,7 @@
 				93F70BEE22B0D7BA000B2D9D /* XunJianTJCell0.swift in Sources */,
 				93F70F3422B0D7BB000B2D9D /* CiPingChuLiFangShiViewController09.m in Sources */,
 				93F70D1122B0D7BA000B2D9D /* PreviewBean.m in Sources */,
-				93C423E92501D70B00472C1D /* MouldGiveInCell.m in Sources */,
+				93C423E92501D70B00472C1D /* MouldGiveInDetailCell.m in Sources */,
 				93F70F9122B0D7BB000B2D9D /* ECProjectViewController.m in Sources */,
 				936AFF8F23A8CD18006E3068 /* MaterialOutgoingOrderCheckVo.m in Sources */,
 				93F70FA922B0D7BB000B2D9D /* ChaKanZiJiDeBaoJiaViewController.m in Sources */,
@@ -9049,6 +9171,7 @@
 				93F70C4822B0D7BA000B2D9D /* ScanXiaLiaoViewController.swift in Sources */,
 				93EF0C9722E1664C00182152 /* CompleteConfirmationCipherConfirmationView.m in Sources */,
 				93F70E9C22B0D7BB000B2D9D /* YiJiaECHeJiaXiXiuGaiCell00.m in Sources */,
+				93F26F9E254FCEFD00FB4C9A /* WarehouseVo.m in Sources */,
 				93F70D1422B0D7BA000B2D9D /* PurchaseOrderReqBean.m in Sources */,
 				93F70F0D22B0D7BB000B2D9D /* ShenHeShouPanDingJiaViewController.m in Sources */,
 				93F70D1522B0D7BA000B2D9D /* QuotationTemplateItem.m in Sources */,
@@ -9062,6 +9185,7 @@
 				93F70C5122B0D7BA000B2D9D /* OQCJYJGCell1.swift in Sources */,
 				93DEBA1724CAB24600209063 /* MultiUserConfirmReportItemVo.m in Sources */,
 				93F70EB822B0D7BB000B2D9D /* ShanChuTuPianVC.m in Sources */,
+				93C25D11254BB82400A635C0 /* MouldGiveInViewController.m in Sources */,
 				93F70D0322B0D7BA000B2D9D /* FactoryDeliverInfoBean.m in Sources */,
 				93F70FF322B0D7BC000B2D9D /* EInquiryActionCell.m in Sources */,
 				93F70FFA22B0D7BC000B2D9D /* Cell1.m in Sources */,
@@ -9093,6 +9217,7 @@
 				93428D8423A2434F0056E3D8 /* SupplierVo.m in Sources */,
 				93F70CA722B0D7BA000B2D9D /* ToolTransition.m in Sources */,
 				93F70D0522B0D7BA000B2D9D /* TradeOrderItemFile.m in Sources */,
+				93F26F9B254FCBC300FB4C9A /* ReqMaterialVo.m in Sources */,
 				93F70C6622B0D7BA000B2D9D /* ZaiZhiGongDanVC.swift in Sources */,
 				93F70E5022B0D7BB000B2D9D /* ECPingJiaCell.m in Sources */,
 				93F70C8422B0D7BA000B2D9D /* ShouYeCell10.m in Sources */,
@@ -9219,6 +9344,7 @@
 				93F70F9E22B0D7BB000B2D9D /* UIButtonIM.m in Sources */,
 				9399D374240F83A000807975 /* SelectScrapReasonCell.m in Sources */,
 				93F70E4B22B0D7BB000B2D9D /* ECTuoGuanSupplierViewController.m in Sources */,
+				93C25D34254C06AE00A635C0 /* NSString+Hash.m in Sources */,
 				93F70EAA22B0D7BB000B2D9D /* XunPanGongYiCell.m in Sources */,
 				93F70D7F22B0D7BA000B2D9D /* LianXiRenViewController.m in Sources */,
 				93F70D4222B0D7BA000B2D9D /* ReceiveOrder.m in Sources */,
@@ -9637,7 +9763,7 @@
 					"$(PROJECT_DIR)/IMEFuture/IMEfuture/Jpush",
 					"$(PROJECT_DIR)/IMEFuture/imefuture/Jpush",
 				);
-				MARKETING_VERSION = 2.79.6;
+				MARKETING_VERSION = 2.79.8;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-isystem",
@@ -9699,7 +9825,7 @@
 					"$(PROJECT_DIR)/IMEFuture/IMEfuture/Jpush",
 					"$(PROJECT_DIR)/IMEFuture/imefuture/Jpush",
 				);
-				MARKETING_VERSION = 2.79.6;
+				MARKETING_VERSION = 2.79.8;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-isystem",

@@ -9,7 +9,7 @@
 import UIKit
 
 class IQCChuKuYuanGongMaVC: UIViewController, UITextFieldDelegate{
-    var arrayWorkingOrderVO: [WorkingOrderVO]! = []
+    
     
     private let _height_NavBar = Height_NavBar!
     private let _height_BottomBar = Height_BottomBar!
@@ -81,10 +81,12 @@ class IQCChuKuYuanGongMaVC: UIViewController, UITextFieldDelegate{
     }
     
     func request(result: String?) {        
-        let vc = YingLiaoRuKuViewController.init()
-        vc.warehouseInOperator = result
-        self.navigationController?.pushViewController(vc, animated: true)
+
+        
+        
     }
+    
+    
     
 //    MARK: back
     @IBAction func back(_ sender: Any) {

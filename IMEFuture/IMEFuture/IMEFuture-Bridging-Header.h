@@ -42,3 +42,5 @@
 #import "PadSingleUserWorkCompleHeader.h"
 
 #import "FunctionDYZ.h"
+
+#import "NSString+Utils.h"

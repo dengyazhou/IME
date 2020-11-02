@@ -688,19 +688,21 @@ class ZaiZhiGongDanVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                 return
             }
             mesPostEntityBean.entity = arrayTemp
-            let dic = mesPostEntityBean.mj_keyValues() as! [AnyHashable : Any]
-            HttpMamager.postRequest(withURLString: DYZ_workRest_workLog, parameters: dic, success: { (responseObjectModel: Any?) in
+            let dic1 = mesPostEntityBean.mj_keyValues()
+            let dic = ["data":String.toolSwiftGetJSONFromDictionary(dictionary: dic1!)]
+            
+            HttpMamager.postRequestImage(withURLString: DYZ_workRest_workLog, parameters: dic, uploadImageBean: nil, success: { (responseObjectModel: Any?) in
                 let returnListBean = responseObjectModel as! ReturnListBean
-//                self._viewLoading.isHidden = true
+                //                self._viewLoading.isHidden = true
                 if returnListBean.status == "SUCCESS" {
                     self.requestRefeshSingleWork()
                 } else {
                     MyAlertCenter.default().postAlert(withMessage: returnListBean.returnMsg)
                 }
                 
-            }, fail: { (error: Error?) in
+            }, progress: nil, fail: { (error: Error?) in
                 self._viewLoading.isHidden = true
-            }, isKindOfModel: NSClassFromString("ReturnListBean"))
+            }, isKindOfModelClass: NSClassFromString("ReturnListBean"))
         }
         self.view.addSubview(view!)
     }

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment version="2304" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -126,12 +124,26 @@
                     <rect key="frame" x="0.0" y="64" width="375" height="541"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NNf-aY-D7v">
+                    <rect key="frame" x="10" y="588" width="70" height="16"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="打印标签" image="multiselect_unchecked">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="buttonLabelPrinting:" destination="-1" eventType="touchUpInside" id="O4O-Vc-pD3"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Jbg-4D-qgY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="4SL-Iq-ecL"/>
                 <constraint firstItem="5V1-Qp-rzl" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="9lM-4f-sUy"/>
                 <constraint firstItem="5V1-Qp-rzl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="A8t-9g-Lw4"/>
+                <constraint firstItem="Jbg-4D-qgY" firstAttribute="top" secondItem="NNf-aY-D7v" secondAttribute="bottom" constant="1" id="DKf-sN-2Zn"/>
+                <constraint firstItem="NNf-aY-D7v" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="Jv3-sQ-s6o"/>
                 <constraint firstItem="kvB-jz-nYO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="LdM-u9-Vih"/>
                 <constraint firstAttribute="trailing" secondItem="kvB-jz-nYO" secondAttribute="trailing" id="P37-U3-K0j"/>
                 <constraint firstAttribute="trailing" secondItem="Jbg-4D-qgY" secondAttribute="trailing" id="QEe-Vw-ziO"/>
@@ -146,5 +158,6 @@
     <resources>
         <image name="home1" width="18.5" height="16"/>
         <image name="icon_return" width="22" height="22"/>
+        <image name="multiselect_unchecked" width="16" height="16"/>
     </resources>
 </document>
