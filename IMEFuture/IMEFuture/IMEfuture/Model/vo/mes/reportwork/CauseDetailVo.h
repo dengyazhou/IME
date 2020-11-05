@@ -29,6 +29,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic,strong) NSNumber * quantity;//Double
 
+ /**
+ * 缺陷备注
+ */
+@property (nonatomic,copy) NSString * causeMemo;
+
 /**
  * 图片集合
  */

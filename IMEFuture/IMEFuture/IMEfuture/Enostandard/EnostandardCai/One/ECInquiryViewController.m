@@ -52,6 +52,8 @@
 #import "RefreshManager.h"
 #import "GlobalSettingManager.h"
 
+#import "EInspectionListVC.h"
+
 @interface ECInquiryViewController () <UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,EChooseViewDelegate,UIPickerViewDelegate,UIPickerViewDataSource,UIGestureRecognizerDelegate> {
     NSArray *_arrayButton;
     UITableView *_tableView0;
@@ -251,21 +253,23 @@
     self.viewZhiJianShouHuoBg.hidden = false;
 }
 
+#pragma mark 质检、收货、送达、巡检
 - (IBAction)buttonZhiJianOrShouHuoClick:(UIButton *)sender {
     self.viewZhiJianShouHuoBg.hidden = true;
-    if (sender.tag == 0) {
+    if (sender.tag == 0) {//质检
         ZhiJianSearchViewController09 *vc = [[ZhiJianSearchViewController09 alloc] init];
         [self.navigationController pushViewController:vc animated:true];
-    } else if (sender.tag == 1) {
+    } else if (sender.tag == 1) {//收货
         ShouHuoSearchViewController09 *vc = [[ShouHuoSearchViewController09 alloc] init];
         [self.navigationController pushViewController:vc animated:true];
-    } else if (sender.tag == 2) {
+    } else if (sender.tag == 2) {//送达
         SongDaSearchViewController09 *vc = [[SongDaSearchViewController09 alloc] init];
+        [self.navigationController pushViewController:vc animated:true];
+    } else if (sender.tag == 3) {//巡检
+        EInspectionListVC *vc = [[EInspectionListVC alloc] init];
         [self.navigationController pushViewController:vc animated:true];
     }
 }
-
-
 
 - (void)kVORefresh {
     if (!_indexInquiryType) {

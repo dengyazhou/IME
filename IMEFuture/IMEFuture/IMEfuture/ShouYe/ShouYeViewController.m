@@ -607,7 +607,6 @@
         ModelGetInformationListList *model = _dataArray[indexPath.row];
         [cell.imageView1 sd_setImageWithURL:[NSURL URLWithString:model.urlPath]];
         cell.labelContent.text = model.title;
-        cell.labelDate.text = [[model.pubTm componentsSeparatedByString:@" "] firstObject];
         return cell;
     } else {
         return nil;

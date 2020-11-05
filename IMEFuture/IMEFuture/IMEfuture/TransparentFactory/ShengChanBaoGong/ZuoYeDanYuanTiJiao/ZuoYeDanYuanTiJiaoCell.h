@@ -35,6 +35,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelMoJu;//模具
 @property (weak, nonatomic) IBOutlet UIButton *buttonDianJiXuanZeMoJu;//点击选择模具
 
+
+@property (weak, nonatomic) IBOutlet UIView *view33;//模具
+@property (weak, nonatomic) IBOutlet UIButton *buttonQueXianYuanYing33;//报废原因
+@property (weak, nonatomic) IBOutlet UIButton *buttonQueXianYuanYingQingXuanZe33;
+
 @property (weak, nonatomic) IBOutlet UIView *ViewBGTaBleViewMuJu;//tableView的BG
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 

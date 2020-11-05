@@ -277,5 +277,7 @@
 #import "ProductionConfirmVo.h"
 #import "ReqMaterialVo.h"
 #import "WarehouseVo.h"
+#import "GlobalTemplateBean.h"
+#import "OssUploadResBean.h"
 
 #endif /* VoHeader_h */

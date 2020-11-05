@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ZuoYeDanYuanTiJiaoCollectionViewCell1 : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UIButton *button;
+@property (weak, nonatomic) IBOutlet UILabel *label0;
 
 @end
 

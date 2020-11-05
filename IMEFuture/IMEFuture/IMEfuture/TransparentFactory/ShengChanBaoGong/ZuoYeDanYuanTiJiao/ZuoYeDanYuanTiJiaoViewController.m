@@ -33,6 +33,7 @@
 #import "GlobalSettingManager.h"
 #import <WebKit/WebKit.h>
 #import "NSString+Hash.h"
+#import "SelectMouldScrapReasonVC.h"
 
 
 
@@ -181,12 +182,6 @@
             cell.view21.hidden = NO;
         }
         
-        //报废
-        cell.view22.hidden = YES;
-        if (_scrappedQuantity > 0) {
-            cell.view22.hidden = NO;
-        }
-        
         //不良
         cell.buttonQueXianYuanYing21.hidden = YES;
         cell.buttonQueXianYuanYingQingXuanZe21.hidden = YES;
@@ -206,6 +201,12 @@
         [cell.buttonQueXianYuanYingQingXuanZe21 addTarget:self action:@selector(buttonQueXianYuanYingQingXuanZe21:) forControlEvents:UIControlEventTouchUpInside];
         
         //报废
+        cell.view22.hidden = YES;
+        if (_scrappedQuantity > 0) {
+            cell.view22.hidden = NO;
+        }
+        
+        //报废
         cell.buttonQueXianYuanYing22.hidden = YES;
         cell.buttonQueXianYuanYingQingXuanZe22.hidden = YES;
         NSMutableArray <__kindof CauseDetailVo *>*arrayTemp2 = [[NSMutableArray alloc] initWithCapacity:0];
@@ -222,6 +223,30 @@
         }
         [cell.buttonQueXianYuanYing22 addTarget:self action:@selector(buttonQueXianYuanYingQingXuanZe22:) forControlEvents:UIControlEventTouchUpInside];
         [cell.buttonQueXianYuanYingQingXuanZe22 addTarget:self action:@selector(buttonQueXianYuanYingQingXuanZe22:) forControlEvents:UIControlEventTouchUpInside];
+        
+        //模具
+        cell.view33.hidden = YES;
+        if (self.materialModel.materialCode.length > 0) {
+            cell.view33.hidden = NO;
+        }
+        
+        //模具
+        cell.buttonQueXianYuanYing33.hidden = YES;
+        cell.buttonQueXianYuanYingQingXuanZe33.hidden = YES;
+        NSMutableArray <__kindof CauseDetailVo *>*arrayTemp3 = [[NSMutableArray alloc] initWithCapacity:0];
+        for (CauseDetailVo *causeDetailVo in _reportWorkProductionOrderConfirmVoTemp.modelCauseDetailVos) {
+            if (causeDetailVo.causeMemo.length > 0) {
+                [arrayTemp3 addObject:causeDetailVo];
+            }
+        }
+        if (arrayTemp3.count > 0) {
+            cell.buttonQueXianYuanYing33.hidden = NO;
+            [cell.buttonQueXianYuanYing33 setTitle:[NSString stringWithFormat:@"已选择%ld种模具缺陷",arrayTemp3.count] forState:UIControlStateNormal];
+        } else {
+            cell.buttonQueXianYuanYingQingXuanZe33.hidden = NO;
+        }
+        [cell.buttonQueXianYuanYing33 addTarget:self action:@selector(buttonQueXianYuanYingQingXuanZe33:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.buttonQueXianYuanYingQingXuanZe33 addTarget:self action:@selector(buttonQueXianYuanYingQingXuanZe33:) forControlEvents:UIControlEventTouchUpInside];
         
         
         //毛重
@@ -471,6 +496,25 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+//模具缺陷选择
+- (void)buttonQueXianYuanYingQingXuanZe33:(UIButton *)sender {
+    SelectMouldScrapReasonVC *vc = [[SelectMouldScrapReasonVC alloc] init];
+    vc.TypeUploadImageName = @"modelPictureFiles";//报废图片
+
+    if (_reportWorkProductionOrderConfirmVoTemp.modelCauseDetailVos.count > 0) {
+        //存在
+        vc.causeDetailVos = [_reportWorkProductionOrderConfirmVoTemp.modelCauseDetailVos mutableCopy];
+    } else {
+        //不存在
+    }
+    vc.blockArrayCauseDetailVo = ^(NSMutableArray<CauseDetailVo *> *causeDetailVos) {
+        _reportWorkProductionOrderConfirmVoTemp.modelCauseDetailVos = causeDetailVos;
+        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+    };
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
+
 - (void)addImage {
     if (_arrayDateImageView0.count >= 10) {
         [[MyAlertCenter defaultCenter] postAlertWithMessage:@"最多添加10张图片"];
@@ -670,7 +714,6 @@
         
     }
 
-    
     _submitType = 0;
     [self requestDoConfirmProduction];
 }
@@ -729,7 +772,7 @@
     productionOrderConfirmVo.confirmFlag = [NSNumber numberWithInteger:[self.confirmFlag integerValue]];
     productionOrderConfirmVo.actualEndDateTime = self.actualendDateTime;
     productionOrderConfirmVo.logId = self.logId;
-    productionOrderConfirmVo.processOperationId = [NSNumber numberWithLong:[self.processOperationId longLongValue]];
+    productionOrderConfirmVo.processOperationId = self.processOperationId;
     productionOrderConfirmVo.workTime = [self.workTime stringValue];
     productionOrderConfirmVo.auditor = _auditor;
     productionOrderConfirmVo.password = _password;
@@ -785,6 +828,28 @@
             }
         }
     }
+    if (self.materialModel.materialCode.length > 0) {//模具
+        if (_reportWorkProductionOrderConfirmVoTemp.modelCauseDetailVos) {
+            NSMutableArray <__kindof CauseDetailVo *>*arrayTemp = [[NSMutableArray alloc] initWithCapacity:0];
+            
+            for (CauseDetailVo *causeDetailVo in _reportWorkProductionOrderConfirmVoTemp.modelCauseDetailVos) {
+                if (causeDetailVo.causeMemo.length > 0) {
+                    [arrayTemp addObject:causeDetailVo];
+                }
+                for (UploadImageBean *uploadImageBean in causeDetailVo.uploadImageBeanList) {
+                    [array addObject:uploadImageBean];
+                }
+               
+            }
+            productionOrderConfirmVo.modelCauseDetailVos = arrayTemp;
+        }
+        if (_reportWorkProductionOrderConfirmVoTemp.modelCauseDetailVos) {
+            for (CauseDetailVo *causeDetailVo in _reportWorkProductionOrderConfirmVoTemp.modelCauseDetailVos) {
+                causeDetailVo.uploadImageBeanList = [[NSMutableArray alloc] initWithCapacity:0];
+            }
+        }
+        
+    }
     
     mesPostEntityBean.entity = productionOrderConfirmVo.mj_keyValues;
     NSDictionary *dic1 = mesPostEntityBean.mj_keyValues;
@@ -793,7 +858,6 @@
     NSDictionary *dic = @{@"data":[NSString convertToJsonDataTouMingGongChang:dic1]};
     
     NSLog(@"%@",dic);
-    
     
     [HttpMamager postRequestImageWithURLString:DYZ_productionOrderConfirm_doConfirmProduction parameters:dic UploadImageBean:array success:^(id responseObjectModel) {
         ReturnMsgBean *returnMsgBean = responseObjectModel;
@@ -804,7 +868,7 @@
             
             if (self.isLabelPrinting == 1) {//打印
                 self->_viewLoading.hidden = NO;
-                NSString *salt = returnMsgBean.salt;
+                NSString *salt = returnMsgBean.returnMsg;
                 NSString *str = [NSString stringWithFormat:@"%@%@%@",siteCode,self.logId,salt];
                 NSString *md5Str = [str md5String];
                 NSString *parameters = [NSString stringWithFormat:@"siteCode=%@&id=%@&v=%@",siteCode,self.logId,md5Str];

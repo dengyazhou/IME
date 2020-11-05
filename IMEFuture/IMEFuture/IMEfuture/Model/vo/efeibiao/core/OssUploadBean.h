@@ -29,6 +29,10 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic,copy) NSString * thumbnailUrl;
 
+@property (nonatomic,copy) NSString * folderPath;
+
+@property (nonatomic,copy) NSString * fileSuffix;
+
 @end
 
 NS_ASSUME_NONNULL_END

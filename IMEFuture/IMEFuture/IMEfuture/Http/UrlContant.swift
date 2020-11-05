@@ -16,7 +16,7 @@ import Foundation
 //let DYZBaseURL = "https://mgateway.imefuture.com"
 
 //测试环境
-//let DYZBaseURL = "https://betamapi.imefuture.com"
+let DYZBaseURL = "https://betamapi.imefuture.com"
 
 //本地
 //let DYZBaseURL = "http://192.168.255.196:9090/gateway"
@@ -24,7 +24,7 @@ import Foundation
 //国罗
 //let DYZBaseURL = "http://192.168.66.198:9090/gateway";
 //weiwei
-let DYZBaseURL = "http://192.168.255.132:9090/gateway"
+//let DYZBaseURL = "http://192.168.255.132:9090/gateway"
 //let DYZBaseURL = "http://s2r9260622.wicp.vip/gateway"
 //liuBo
 //let DYZBaseURL = "http://192.168.255.103:9191/gateway"

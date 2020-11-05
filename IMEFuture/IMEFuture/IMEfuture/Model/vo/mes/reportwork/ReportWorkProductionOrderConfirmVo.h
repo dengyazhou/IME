@@ -136,5 +136,6 @@
 
 @property (nonatomic, strong) NSMutableArray <__kindof CauseDetailVo *>*repairCauseDetailVos;// 不良 //CauseDetailVo
 @property (nonatomic, strong) NSMutableArray <__kindof CauseDetailVo *>*scrappedCauseDetailVos;//报废 //CauseDetailVo
+@property (nonatomic, strong) NSMutableArray <__kindof CauseDetailVo *>*modelCauseDetailVos;//模具缺陷 //CauseDetailVo
 
 @end

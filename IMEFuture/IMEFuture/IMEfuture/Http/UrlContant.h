@@ -53,7 +53,7 @@
 
 //测试环境
 //接口url
-//#define DYZBaseURL @"https://betamapi.imefuture.com"
+#define DYZBaseURL @"https://betamapi.imefuture.com"
 #define DYZBaseURLItem(_item_)[NSString stringWithFormat:@"%@%@",DYZBaseURL,_item_]
 //通知
 #define baseNotification @"http://beta.notification.imefuture.com"
@@ -97,20 +97,20 @@
 ////国罗
 //#define DYZBaseURL @"http://192.168.66.198:9090/gateway"
 ////weiwei
-#define DYZBaseURL @"http://192.168.255.132:9090/gateway"
+//#define DYZBaseURL @"http://192.168.255.132:9090/gateway"
 //#define DYZBaseURL @"http://s2r9260622.wicp.vip/gateway"
 ////liuBo
 //#define DYZBaseURL @"http://192.168.255.103:9191/gateway"
 ////liXuYang
 //#define DYZBaseURL @"http://192.168.255.104:9090/gateway"
 //#define DYZBaseURL @"http://2350141n1a.wicp.vip/gateway"
+//#define IME_tpf @"http://192.168.255.104:9191/ime.platform/manage"//tpf
 ////zhangcheng
 //#define DYZBaseURL @"http://192.168.255.191:9090/gateway"
 ////jyh
 //#define DYZBaseURL @"http://192.168.255.108:9090/gateway"
 //#define DYZBaseURL @"http://2z924u3140.wicp.vip/gateway"
-//tpf
-//#define IME_tpf @"http://192.168.255.104:9191/ime.platform/manage"
+//#define IME_tpf @"http://192.168.255.108:8080/manage"//tpf
 
 
 
@@ -669,6 +669,19 @@
 
 //模具报工明细
 #define DYZ_modelSequence_getWorkTimeLogByModel [NSString stringWithFormat:@"%@/mes/modelSequence/getWorkTimeLogByModel",DYZBaseURLItem(@"/rs")]
+
+//模具缺陷原因查询接口
+#define DYZ_modelSequence_getModelReturnCauseList [NSString stringWithFormat:@"%@/mes/modelSequence/getModelReturnCauseList",DYZBaseURLItem(@"/rs")]
+
+//模糊搜索供应商接口
+#define DYZ_api_project_tgSupplierList [NSString stringWithFormat:@"%@/efeibiao/inspect/api/project/tgSupplierList",DYZBaseURLItem(@"/rs")]
+//模巡检列表接口
+#define DYZ_api_purchaseInspection_inspectionList [NSString stringWithFormat:@"%@/efeibiao/inspect/api/purchaseInspection/inspectionList",DYZBaseURLItem(@"/rs")]
+//添加供应商巡检
+#define DYZ_api_purchaseInspection_addSupplierInspection [NSString stringWithFormat:@"%@/efeibiao/inspect/api/purchaseInspection/addSupplierInspection",DYZBaseURLItem(@"/rs")]
+//巡检图片上传
+#define DYZ_api_upload_uploadFileMethod [NSString stringWithFormat:@"%@/efeibiao/uploadfile/api/upload/uploadFileMethod",DYZBaseURLItem(@"/rs")]
+
 
 
 

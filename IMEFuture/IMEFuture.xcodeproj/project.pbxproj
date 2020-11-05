@@ -50,6 +50,10 @@
 		93471C4B230BF0E30052145A /* SelectScrapReasonVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93471C48230BF0E30052145A /* SelectScrapReasonVC.xib */; };
 		93471C4C230BF0E30052145A /* SelectScrapReasonVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 93471C49230BF0E30052145A /* SelectScrapReasonVC.m */; };
 		934B5A5A24B59E2100AC1C96 /* EChooseViewCaiDingDan.m in Sources */ = {isa = PBXBuildFile; fileRef = 934B5A5824B59E2000AC1C96 /* EChooseViewCaiDingDan.m */; };
+		93587F532552563300A808EF /* EInspectionDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93587F502552563200A808EF /* EInspectionDetailVC.xib */; };
+		93587F542552563300A808EF /* EInspectionDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 93587F522552563200A808EF /* EInspectionDetailVC.m */; };
+		93587F5D255256E300A808EF /* EInspectionDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93587F5B255256E200A808EF /* EInspectionDetailCell.m */; };
+		93587F5E255256E300A808EF /* EInspectionDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93587F5C255256E200A808EF /* EInspectionDetailCell.xib */; };
 		9359DD5A236835DD00811564 /* SongDaSearchViewController09.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9359DD57236835DD00811564 /* SongDaSearchViewController09.xib */; };
 		9359DD5B236835DD00811564 /* SongDaSearchViewController09.m in Sources */ = {isa = PBXBuildFile; fileRef = 9359DD59236835DD00811564 /* SongDaSearchViewController09.m */; };
 		935AF99222C207F900729D60 /* ECInquiryViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 935AF99122C207F900729D60 /* ECInquiryViewControllerTest.m */; };
@@ -80,6 +84,10 @@
 		937694A223C45DB400FB696D /* MaterialVo.m in Sources */ = {isa = PBXBuildFile; fileRef = 937694A123C45DB400FB696D /* MaterialVo.m */; };
 		937AC5752472A3E5007983A8 /* MemberResBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 937AC5742472A3E5007983A8 /* MemberResBean.m */; };
 		937AC5782472A4E2007983A8 /* EnterpriseInfoResBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 937AC5772472A4E2007983A8 /* EnterpriseInfoResBean.m */; };
+		9385A80C2550FD540089429D /* SelectMouldScrapReasonVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9385A80A2550FD530089429D /* SelectMouldScrapReasonVC.m */; };
+		9385A80D2550FD540089429D /* SelectMouldScrapReasonVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9385A80B2550FD540089429D /* SelectMouldScrapReasonVC.xib */; };
+		9385A81725513F1E0089429D /* EInspectionListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9385A81425513F1D0089429D /* EInspectionListVC.m */; };
+		9385A81825513F1E0089429D /* EInspectionListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9385A81625513F1D0089429D /* EInspectionListVC.xib */; };
 		93947D3A24C930140010C5FD /* MultiUserWorkVo.m in Sources */ = {isa = PBXBuildFile; fileRef = 93947D3924C930140010C5FD /* MultiUserWorkVo.m */; };
 		9399D36A240CFFF000807975 /* SweepTheCodeReturnsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9399D368240CFFF000807975 /* SweepTheCodeReturnsVC.m */; };
 		9399D36B240CFFF000807975 /* SweepTheCodeReturnsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9399D369240CFFF000807975 /* SweepTheCodeReturnsVC.xib */; };
@@ -99,10 +107,14 @@
 		939ADBB524A86E51008BD1D2 /* XuLieHaoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939ADBB324A86E51008BD1D2 /* XuLieHaoCell.xib */; };
 		939ADBB824A8709E008BD1D2 /* XuLieHao1Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939ADBB624A8709E008BD1D2 /* XuLieHao1Cell.swift */; };
 		939ADBB924A8709E008BD1D2 /* XuLieHao1Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939ADBB724A8709E008BD1D2 /* XuLieHao1Cell.xib */; };
+		939DC5F5255168A5002561B3 /* EInspectionCreateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 939DC5F2255168A4002561B3 /* EInspectionCreateCell.m */; };
+		939DC5F6255168A5002561B3 /* EInspectionCreateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939DC5F3255168A4002561B3 /* EInspectionCreateCell.xib */; };
 		93A22213250641F200917395 /* ReleaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A22211250641F200917395 /* ReleaseViewController.m */; };
 		93A22214250641F200917395 /* ReleaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93A22212250641F200917395 /* ReleaseViewController.xib */; };
 		93A43D0024C9A179009C33C5 /* BangDingYuanGongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A43CFE24C9A179009C33C5 /* BangDingYuanGongCell.m */; };
 		93A43D0124C9A179009C33C5 /* BangDingYuanGongCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93A43CFF24C9A179009C33C5 /* BangDingYuanGongCell.xib */; };
+		93A4B9C82552A723008C407E /* InspectionBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A4B9C72552A723008C407E /* InspectionBean.m */; };
+		93A4B9D12553C432008C407E /* OssUploadResBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A4B9D02553C432008C407E /* OssUploadResBean.m */; };
 		93AEE0E922D3371E008A324E /* YunShuDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AEE0E722D3371E008A324E /* YunShuDetailVC.m */; };
 		93AEE0EA22D3371E008A324E /* YunShuDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93AEE0E822D3371E008A324E /* YunShuDetailVC.xib */; };
 		93AEE0F322D33ED0008A324E /* YunShuShouHuoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AEE0F122D33ED0008A324E /* YunShuShouHuoVC.m */; };
@@ -128,6 +140,8 @@
 		93AEFDB724E2849900F29A94 /* PadSingleUserWorkCompleteCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93AEFDB524E2849900F29A94 /* PadSingleUserWorkCompleteCell1.xib */; };
 		93AEFDBA24E2972200F29A94 /* PadSingleUserWorkCompleHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AEFDB924E2972200F29A94 /* PadSingleUserWorkCompleHeader.m */; };
 		93AEFDBC24E2977500F29A94 /* PadSingleUserWorkCompleHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93AEFDBB24E2977500F29A94 /* PadSingleUserWorkCompleHeader.xib */; };
+		93B2503A2551463E000B2259 /* EInspectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93B250382551463E000B2259 /* EInspectionCell.m */; };
+		93B2503B2551463E000B2259 /* EInspectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93B250392551463E000B2259 /* EInspectionCell.xib */; };
 		93B2D1BE24E3972A003BA1E9 /* PadMultiUserWorkCompleteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2D1BC24E39729003BA1E9 /* PadMultiUserWorkCompleteVC.swift */; };
 		93B2D1BF24E3972A003BA1E9 /* PadMultiUserWorkCompleteVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93B2D1BD24E3972A003BA1E9 /* PadMultiUserWorkCompleteVC.xib */; };
 		93B3D14D24DCFC2A003F700B /* PadProductionWorkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93B3D14B24DCFC2A003F700B /* PadProductionWorkViewController.m */; };
@@ -1321,6 +1335,8 @@
 		93F70FF922B0D7BC000B2D9D /* WoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93F70BCE22B0D7BA000B2D9D /* WoViewController.xib */; };
 		93F70FFA22B0D7BC000B2D9D /* Cell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F70BCF22B0D7BA000B2D9D /* Cell1.m */; };
 		93F70FFB22B0D7BC000B2D9D /* Cell2.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F70BD122B0D7BA000B2D9D /* Cell2.m */; };
+		93FE45F5255165AB001987D0 /* EInspectionCreateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FE45F2255165AA001987D0 /* EInspectionCreateVC.m */; };
+		93FE45F6255165AB001987D0 /* EInspectionCreateVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93FE45F3255165AB001987D0 /* EInspectionCreateVC.xib */; };
 		9512039EC81228F7B7CDF6E5 /* libPods-IMEFuture.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4DFBCD01FB2C7EF3CDC19FB /* libPods-IMEFuture.a */; };
 		EB2622FA0138F00335C5C79E /* libPods-IMEFutureUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E95365AE183C2C98F1FB4797 /* libPods-IMEFutureUITests.a */; };
 /* End PBXBuildFile section */
@@ -1414,6 +1430,12 @@
 		93471C4A230BF0E30052145A /* SelectScrapReasonVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectScrapReasonVC.h; sourceTree = "<group>"; };
 		934B5A5824B59E2000AC1C96 /* EChooseViewCaiDingDan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EChooseViewCaiDingDan.m; sourceTree = "<group>"; };
 		934B5A5924B59E2000AC1C96 /* EChooseViewCaiDingDan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EChooseViewCaiDingDan.h; sourceTree = "<group>"; };
+		93587F502552563200A808EF /* EInspectionDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EInspectionDetailVC.xib; sourceTree = "<group>"; };
+		93587F512552563200A808EF /* EInspectionDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EInspectionDetailVC.h; sourceTree = "<group>"; };
+		93587F522552563200A808EF /* EInspectionDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EInspectionDetailVC.m; sourceTree = "<group>"; };
+		93587F5A255256E200A808EF /* EInspectionDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EInspectionDetailCell.h; sourceTree = "<group>"; };
+		93587F5B255256E200A808EF /* EInspectionDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EInspectionDetailCell.m; sourceTree = "<group>"; };
+		93587F5C255256E200A808EF /* EInspectionDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EInspectionDetailCell.xib; sourceTree = "<group>"; };
 		9359DD57236835DD00811564 /* SongDaSearchViewController09.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongDaSearchViewController09.xib; sourceTree = "<group>"; };
 		9359DD58236835DD00811564 /* SongDaSearchViewController09.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongDaSearchViewController09.h; sourceTree = "<group>"; };
 		9359DD59236835DD00811564 /* SongDaSearchViewController09.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongDaSearchViewController09.m; sourceTree = "<group>"; };
@@ -1459,6 +1481,12 @@
 		937AC5742472A3E5007983A8 /* MemberResBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemberResBean.m; sourceTree = "<group>"; };
 		937AC5762472A4E2007983A8 /* EnterpriseInfoResBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnterpriseInfoResBean.h; sourceTree = "<group>"; };
 		937AC5772472A4E2007983A8 /* EnterpriseInfoResBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EnterpriseInfoResBean.m; sourceTree = "<group>"; };
+		9385A8092550FD530089429D /* SelectMouldScrapReasonVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectMouldScrapReasonVC.h; sourceTree = "<group>"; };
+		9385A80A2550FD530089429D /* SelectMouldScrapReasonVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectMouldScrapReasonVC.m; sourceTree = "<group>"; };
+		9385A80B2550FD540089429D /* SelectMouldScrapReasonVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectMouldScrapReasonVC.xib; sourceTree = "<group>"; };
+		9385A81425513F1D0089429D /* EInspectionListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EInspectionListVC.m; sourceTree = "<group>"; };
+		9385A81525513F1D0089429D /* EInspectionListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EInspectionListVC.h; sourceTree = "<group>"; };
+		9385A81625513F1D0089429D /* EInspectionListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EInspectionListVC.xib; sourceTree = "<group>"; };
 		93947D3824C930140010C5FD /* MultiUserWorkVo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MultiUserWorkVo.h; sourceTree = "<group>"; };
 		93947D3924C930140010C5FD /* MultiUserWorkVo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MultiUserWorkVo.m; sourceTree = "<group>"; };
 		9399D367240CFFF000807975 /* SweepTheCodeReturnsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SweepTheCodeReturnsVC.h; sourceTree = "<group>"; };
@@ -1486,12 +1514,19 @@
 		939ADBB324A86E51008BD1D2 /* XuLieHaoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XuLieHaoCell.xib; sourceTree = "<group>"; };
 		939ADBB624A8709E008BD1D2 /* XuLieHao1Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XuLieHao1Cell.swift; sourceTree = "<group>"; };
 		939ADBB724A8709E008BD1D2 /* XuLieHao1Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XuLieHao1Cell.xib; sourceTree = "<group>"; };
+		939DC5F2255168A4002561B3 /* EInspectionCreateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EInspectionCreateCell.m; sourceTree = "<group>"; };
+		939DC5F3255168A4002561B3 /* EInspectionCreateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EInspectionCreateCell.xib; sourceTree = "<group>"; };
+		939DC5F4255168A5002561B3 /* EInspectionCreateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EInspectionCreateCell.h; sourceTree = "<group>"; };
 		93A22210250641F200917395 /* ReleaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReleaseViewController.h; sourceTree = "<group>"; };
 		93A22211250641F200917395 /* ReleaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReleaseViewController.m; sourceTree = "<group>"; };
 		93A22212250641F200917395 /* ReleaseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReleaseViewController.xib; sourceTree = "<group>"; };
 		93A43CFD24C9A179009C33C5 /* BangDingYuanGongCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BangDingYuanGongCell.h; sourceTree = "<group>"; };
 		93A43CFE24C9A179009C33C5 /* BangDingYuanGongCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BangDingYuanGongCell.m; sourceTree = "<group>"; };
 		93A43CFF24C9A179009C33C5 /* BangDingYuanGongCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BangDingYuanGongCell.xib; sourceTree = "<group>"; };
+		93A4B9C62552A723008C407E /* InspectionBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InspectionBean.h; sourceTree = "<group>"; };
+		93A4B9C72552A723008C407E /* InspectionBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InspectionBean.m; sourceTree = "<group>"; };
+		93A4B9CF2553C432008C407E /* OssUploadResBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OssUploadResBean.h; sourceTree = "<group>"; };
+		93A4B9D02553C432008C407E /* OssUploadResBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OssUploadResBean.m; sourceTree = "<group>"; };
 		93AEE0E622D3371E008A324E /* YunShuDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YunShuDetailVC.h; sourceTree = "<group>"; };
 		93AEE0E722D3371E008A324E /* YunShuDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YunShuDetailVC.m; sourceTree = "<group>"; };
 		93AEE0E822D3371E008A324E /* YunShuDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YunShuDetailVC.xib; sourceTree = "<group>"; };
@@ -1531,6 +1566,9 @@
 		93AEFDB824E2972200F29A94 /* PadSingleUserWorkCompleHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PadSingleUserWorkCompleHeader.h; sourceTree = "<group>"; };
 		93AEFDB924E2972200F29A94 /* PadSingleUserWorkCompleHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PadSingleUserWorkCompleHeader.m; sourceTree = "<group>"; };
 		93AEFDBB24E2977500F29A94 /* PadSingleUserWorkCompleHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PadSingleUserWorkCompleHeader.xib; sourceTree = "<group>"; };
+		93B250372551463E000B2259 /* EInspectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EInspectionCell.h; sourceTree = "<group>"; };
+		93B250382551463E000B2259 /* EInspectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EInspectionCell.m; sourceTree = "<group>"; };
+		93B250392551463E000B2259 /* EInspectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EInspectionCell.xib; sourceTree = "<group>"; };
 		93B2D1BC24E39729003BA1E9 /* PadMultiUserWorkCompleteVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PadMultiUserWorkCompleteVC.swift; sourceTree = "<group>"; };
 		93B2D1BD24E3972A003BA1E9 /* PadMultiUserWorkCompleteVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PadMultiUserWorkCompleteVC.xib; sourceTree = "<group>"; };
 		93B3D14A24DCFC2A003F700B /* PadProductionWorkViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PadProductionWorkViewController.h; sourceTree = "<group>"; };
@@ -3382,6 +3420,9 @@
 		93F70BD022B0D7BA000B2D9D /* WoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WoViewController.h; sourceTree = "<group>"; };
 		93F70BD122B0D7BA000B2D9D /* Cell2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cell2.m; sourceTree = "<group>"; };
 		93F70BD222B0D7BA000B2D9D /* WoChaKanDaTuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WoChaKanDaTuViewController.h; sourceTree = "<group>"; };
+		93FE45F2255165AA001987D0 /* EInspectionCreateVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EInspectionCreateVC.m; sourceTree = "<group>"; };
+		93FE45F3255165AB001987D0 /* EInspectionCreateVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EInspectionCreateVC.xib; sourceTree = "<group>"; };
+		93FE45F4255165AB001987D0 /* EInspectionCreateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EInspectionCreateVC.h; sourceTree = "<group>"; };
 		A96B3055B9DC27FECD8D6748 /* Pods-IMEFuture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IMEFuture.release.xcconfig"; path = "Pods/Target Support Files/Pods-IMEFuture/Pods-IMEFuture.release.xcconfig"; sourceTree = "<group>"; };
 		B4DFBCD01FB2C7EF3CDC19FB /* libPods-IMEFuture.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IMEFuture.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E95365AE183C2C98F1FB4797 /* libPods-IMEFutureUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IMEFutureUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3533,6 +3574,26 @@
 			path = BaoJiaHeader;
 			sourceTree = "<group>";
 		};
+		93587F4A255169AA00A808EF /* createCell */ = {
+			isa = PBXGroup;
+			children = (
+				939DC5F4255168A5002561B3 /* EInspectionCreateCell.h */,
+				939DC5F2255168A4002561B3 /* EInspectionCreateCell.m */,
+				939DC5F3255168A4002561B3 /* EInspectionCreateCell.xib */,
+			);
+			path = createCell;
+			sourceTree = "<group>";
+		};
+		93587F5F255256F400A808EF /* detailCell */ = {
+			isa = PBXGroup;
+			children = (
+				93587F5A255256E200A808EF /* EInspectionDetailCell.h */,
+				93587F5B255256E200A808EF /* EInspectionDetailCell.m */,
+				93587F5C255256E200A808EF /* EInspectionDetailCell.xib */,
+			);
+			path = detailCell;
+			sourceTree = "<group>";
+		};
 		9359DD512368353200811564 /* SongDaSearch */ = {
 			isa = PBXGroup;
 			children = (
@@ -3584,6 +3645,27 @@
 			path = NetworkInformationThree;
 			sourceTree = "<group>";
 		};
+		9385A80E25513C6C0089429D /* Xunjian */ = {
+			isa = PBXGroup;
+			children = (
+				939DC5EC25516818002561B3 /* cell */,
+				9385A81525513F1D0089429D /* EInspectionListVC.h */,
+				9385A81425513F1D0089429D /* EInspectionListVC.m */,
+				9385A81625513F1D0089429D /* EInspectionListVC.xib */,
+				93587F4A255169AA00A808EF /* createCell */,
+				93A4B9C62552A723008C407E /* InspectionBean.h */,
+				93A4B9C72552A723008C407E /* InspectionBean.m */,
+				93FE45F4255165AB001987D0 /* EInspectionCreateVC.h */,
+				93FE45F2255165AA001987D0 /* EInspectionCreateVC.m */,
+				93FE45F3255165AB001987D0 /* EInspectionCreateVC.xib */,
+				93587F5F255256F400A808EF /* detailCell */,
+				93587F512552563200A808EF /* EInspectionDetailVC.h */,
+				93587F522552563200A808EF /* EInspectionDetailVC.m */,
+				93587F502552563200A808EF /* EInspectionDetailVC.xib */,
+			);
+			path = Xunjian;
+			sourceTree = "<group>";
+		};
 		9399D366240CFFB100807975 /* SweepTheCodeReturns */ = {
 			isa = PBXGroup;
 			children = (
@@ -3595,6 +3677,16 @@
 				9399D369240CFFF000807975 /* SweepTheCodeReturnsVC.xib */,
 			);
 			path = SweepTheCodeReturns;
+			sourceTree = "<group>";
+		};
+		939DC5EC25516818002561B3 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				93B250372551463E000B2259 /* EInspectionCell.h */,
+				93B250382551463E000B2259 /* EInspectionCell.m */,
+				93B250392551463E000B2259 /* EInspectionCell.xib */,
+			);
+			path = cell;
 			sourceTree = "<group>";
 		};
 		93AEE0F522D33F60008A324E /* Cell1 */ = {
@@ -4474,6 +4566,9 @@
 				93471C4A230BF0E30052145A /* SelectScrapReasonVC.h */,
 				93471C49230BF0E30052145A /* SelectScrapReasonVC.m */,
 				93471C48230BF0E30052145A /* SelectScrapReasonVC.xib */,
+				9385A8092550FD530089429D /* SelectMouldScrapReasonVC.h */,
+				9385A80A2550FD530089429D /* SelectMouldScrapReasonVC.m */,
+				9385A80B2550FD540089429D /* SelectMouldScrapReasonVC.xib */,
 				9399D37D240F95AD00807975 /* SelectScrapPictureVC.h */,
 				9399D37E240F95AD00807975 /* SelectScrapPictureVC.m */,
 				9399D37F240F95AD00807975 /* SelectScrapPictureVC.xib */,
@@ -5494,6 +5589,8 @@
 				93F706DF22B0D7B9000B2D9D /* ProjectDrawingResBean.m */,
 				931E73AF22CB208D004BB849 /* GlobalTemplateBean.h */,
 				931E73B022CB208D004BB849 /* GlobalTemplateBean.m */,
+				93A4B9CF2553C432008C407E /* OssUploadResBean.h */,
+				93A4B9D02553C432008C407E /* OssUploadResBean.m */,
 			);
 			path = efeibiao;
 			sourceTree = "<group>";
@@ -6595,6 +6692,7 @@
 				93F70A6B22B0D7BA000B2D9D /* YanHuo090114 */,
 				93F7091722B0D7B9000B2D9D /* YanHuoDetail090114 */,
 				9359DD512368353200811564 /* SongDaSearch */,
+				9385A80E25513C6C0089429D /* Xunjian */,
 			);
 			path = EnostandardCai;
 			sourceTree = "<group>";
@@ -8200,6 +8298,7 @@
 				93F70EFE22B0D7BB000B2D9D /* UIViewXuanZeChuLiFangShi.xib in Resources */,
 				93F70DE122B0D7BB000B2D9D /* YiCiFaHuoXiangQingVC.xib in Resources */,
 				937579FA238F8F7F009EF9FC /* ScanXiaLiaoPersonVC.xib in Resources */,
+				9385A80D2550FD540089429D /* SelectMouldScrapReasonVC.xib in Resources */,
 				93F70F5D22B0D7BB000B2D9D /* YiJiaECZongCell00.xib in Resources */,
 				93F70EE722B0D7BB000B2D9D /* UIViewXuanZeDanWei.xib in Resources */,
 				93F70E1C22B0D7BB000B2D9D /* LogisticsInformationVC.xib in Resources */,
@@ -8230,11 +8329,13 @@
 				93F70E9322B0D7BB000B2D9D /* YiJiaECZongXiuGaiCell00.xib in Resources */,
 				93F70E3022B0D7BB000B2D9D /* XunPanXiangQingCell1.xib in Resources */,
 				93F70EB722B0D7BB000B2D9D /* HYJXuanZeGYSVC.xib in Resources */,
+				93587F532552563300A808EF /* EInspectionDetailVC.xib in Resources */,
 				93E3FC0C229CFF8D00693CFC /* Remark in Resources */,
 				93F70EDA22B0D7BB000B2D9D /* EFBFaPanCell4.xib in Resources */,
 				93F70F2A22B0D7BB000B2D9D /* YanHuoCell0900.xib in Resources */,
 				93F70BF522B0D7BA000B2D9D /* ZuoYeDanYuanGongXuXuanZeVC.xib in Resources */,
 				93F70DD922B0D7BB000B2D9D /* EGInquiryViewController.xib in Resources */,
+				93FE45F6255165AB001987D0 /* EInspectionCreateVC.xib in Resources */,
 				93AEE10422D354B1008A324E /* YunShuYuNanVC.xib in Resources */,
 				93F70DF522B0D7BB000B2D9D /* FaHuoViewController09.xib in Resources */,
 				93E4D6472500E9ED00AFF194 /* MouldGiveOutCell.xib in Resources */,
@@ -8329,6 +8430,7 @@
 				93F70DF822B0D7BB000B2D9D /* FaHuoCell0903.xib in Resources */,
 				93F70F3922B0D7BB000B2D9D /* YanHuoLieBiaoCell.xib in Resources */,
 				93F70C1222B0D7BA000B2D9D /* ScanZuoYeDanYuanViewController.xib in Resources */,
+				9385A81825513F1E0089429D /* EInspectionListVC.xib in Resources */,
 				93F70C3722B0D7BA000B2D9D /* ScanMTuZhiVC.xib in Resources */,
 				93F70E7522B0D7BB000B2D9D /* YanHuoDetailCell0900.xib in Resources */,
 				93F70BE622B0D7BA000B2D9D /* WeiWaiDanViewController.xib in Resources */,
@@ -8361,6 +8463,7 @@
 				93F70EEF22B0D7BB000B2D9D /* EFBFaPanViewController1.xib in Resources */,
 				93F70DEB22B0D7BB000B2D9D /* UIViewXuanZeWuLiuGongSi.xib in Resources */,
 				93F70F9622B0D7BB000B2D9D /* TiWenViewController.xib in Resources */,
+				939DC5F6255168A5002561B3 /* EInspectionCreateCell.xib in Resources */,
 				93F70EDE22B0D7BB000B2D9D /* EFBFaPanCell2.xib in Resources */,
 				93F70EE422B0D7BB000B2D9D /* UIViewXuanZeYaoQiuDaoHuoRiQi.xib in Resources */,
 				93F70EA722B0D7BB000B2D9D /* CaiGouShangFaPanVC.xib in Resources */,
@@ -8385,6 +8488,7 @@
 				93F70DC122B0D7BB000B2D9D /* UIViewCiPingChuLiFangShi.xib in Resources */,
 				93F70E4022B0D7BB000B2D9D /* DingDanXQCell2.xib in Resources */,
 				93F70BF722B0D7BA000B2D9D /* ZuoYeDanYuanJiaGongXiangQingVC.xib in Resources */,
+				93B2503B2551463E000B2259 /* EInspectionCell.xib in Resources */,
 				9339888722CF305700E30CBC /* ChaKanYuanYinCell2.xib in Resources */,
 				93F70FE722B0D7BC000B2D9D /* PartDetailsDingDanViewController.xib in Resources */,
 				93F70C2622B0D7BA000B2D9D /* SeeMoreViewController.xib in Resources */,
@@ -8584,6 +8688,7 @@
 				93F70F5922B0D7BB000B2D9D /* YiJiaECMingXiCell02.xib in Resources */,
 				93F70E1A22B0D7BB000B2D9D /* ChaKanShouPanViewController.xib in Resources */,
 				93F70FEF22B0D7BC000B2D9D /* FaBaoPingLunGongViewController.xib in Resources */,
+				93587F5E255256E300A808EF /* EInspectionDetailCell.xib in Resources */,
 				93F70D9E22B0D7BA000B2D9D /* XiuGaiBaoJiaViewController.xib in Resources */,
 				93F70E4822B0D7BB000B2D9D /* FenLeiSouSuoJieGuoViewController.xib in Resources */,
 				93F70E5E22B0D7BB000B2D9D /* ShouHuoCell090101.xib in Resources */,
@@ -8943,11 +9048,13 @@
 				93F70BD322B0D7BA000B2D9D /* UIViewController_tool.swift in Sources */,
 				93F70D6D22B0D7BA000B2D9D /* QRImage.m in Sources */,
 				93F70FBD22B0D7BB000B2D9D /* MXBaoJiaCell111.m in Sources */,
+				93B2503A2551463E000B2259 /* EInspectionCell.m in Sources */,
 				93F70DBA22B0D7BB000B2D9D /* BuFaHuoLieBiaoCVCell.m in Sources */,
 				93F70EB622B0D7BB000B2D9D /* HYJXuanZeGYSVC.m in Sources */,
 				93F70E6B22B0D7BB000B2D9D /* ChaKanJiaoHuoShiCVCell.m in Sources */,
 				93F70C1A22B0D7BA000B2D9D /* ZuoYeDanYuanTiJiaoCell1.m in Sources */,
 				93706386231D276A00C659E9 /* ScanEmployeeVC.m in Sources */,
+				9385A80C2550FD540089429D /* SelectMouldScrapReasonVC.m in Sources */,
 				93F70C5E22B0D7BA000B2D9D /* OQCLabelAndTextFieldCell1.swift in Sources */,
 				93471C4C230BF0E30052145A /* SelectScrapReasonVC.m in Sources */,
 				93F70E3322B0D7BB000B2D9D /* XPXQInquiryActionCell.m in Sources */,
@@ -8984,6 +9091,7 @@
 				93F70E2322B0D7BB000B2D9D /* EGChaKanYiJiaHeaderCell.m in Sources */,
 				93B3D1A224DE963C003F700B /* PadMultiUserWorkViewController.swift in Sources */,
 				93F70F1822B0D7BB000B2D9D /* ECSLabelManagementVC.m in Sources */,
+				93587F5D255256E300A808EF /* EInspectionDetailCell.m in Sources */,
 				93F70DF922B0D7BB000B2D9D /* FaHuoCell0906.m in Sources */,
 				93E1D7D02506049F00A3739C /* ProductionDispatchViewDetailsVC.m in Sources */,
 				93F70E1D22B0D7BB000B2D9D /* BuFaHuoXiangQingVC.m in Sources */,
@@ -9033,6 +9141,7 @@
 				93EF0C8E22E08AC600182152 /* CompleteConfirmationVC.m in Sources */,
 				9399D384240FA49A00807975 /* CauseDetailVo.m in Sources */,
 				93F70CD422B0D7BA000B2D9D /* EnterpriseFileBean.m in Sources */,
+				939DC5F5255168A5002561B3 /* EInspectionCreateCell.m in Sources */,
 				93F70C9C22B0D7BA000B2D9D /* HDQCircleProgressView.m in Sources */,
 				93F70EE222B0D7BB000B2D9D /* UIViewXuanZeHuoYunFangShi.m in Sources */,
 				93F70BE522B0D7BA000B2D9D /* WeiWaiFaHuoViewController.swift in Sources */,
@@ -9142,6 +9251,7 @@
 				93F70D3922B0D7BA000B2D9D /* ProjectDrawingResBean.m in Sources */,
 				93F70D3B22B0D7BA000B2D9D /* MemberRole.m in Sources */,
 				93F70C5922B0D7BA000B2D9D /* OQCLabelAndTextFieldCell2.swift in Sources */,
+				93587F542552563300A808EF /* EInspectionDetailVC.m in Sources */,
 				93F70CC822B0D7BA000B2D9D /* TagReBean.m in Sources */,
 				93F70C4222B0D7BA000B2D9D /* XiaLiaoCompleteVC.swift in Sources */,
 				93F70DA622B0D7BA000B2D9D /* FaHuoHeaderView.m in Sources */,
@@ -9230,6 +9340,7 @@
 				937579FB238F8F7F009EF9FC /* ScanXiaLiaoPersonVC.swift in Sources */,
 				93B3D15F24DD2F27003F700B /* PadSelectWorkUnitCollectionViewCell.m in Sources */,
 				93F70DA922B0D7BA000B2D9D /* FaHuoCell0.m in Sources */,
+				93A4B9D12553C432008C407E /* OssUploadResBean.m in Sources */,
 				93F70CC022B0D7BA000B2D9D /* Notification.m in Sources */,
 				93F70FB222B0D7BB000B2D9D /* MingXiQueRenBaoJia02.m in Sources */,
 				93F70FEA22B0D7BC000B2D9D /* FaBaoPingLunGongViewController.m in Sources */,
@@ -9297,6 +9408,7 @@
 				93F70D5222B0D7BA000B2D9D /* TpfOperation.m in Sources */,
 				93F70DBF22B0D7BB000B2D9D /* UIViewCiPingChuLiFangShi.m in Sources */,
 				93F70C9722B0D7BA000B2D9D /* JHCollectionViewLayoutAttributes.m in Sources */,
+				9385A81725513F1E0089429D /* EInspectionListVC.m in Sources */,
 				93F70E0C22B0D7BB000B2D9D /* ChaKanShouPanViewController.m in Sources */,
 				93F70D2222B0D7BA000B2D9D /* InquiryOrderItem.m in Sources */,
 				93F70BE822B0D7BA000B2D9D /* WeiWaiDanViewController.swift in Sources */,
@@ -9391,6 +9503,7 @@
 				93F70CFD22B0D7BA000B2D9D /* TradeOrderSupplierStatusCount.m in Sources */,
 				93F70D4A22B0D7BA000B2D9D /* DeliverOrderDetailBean.m in Sources */,
 				93F70F6F22B0D7BB000B2D9D /* ShouHuoXiangQingChaKanXiangQingCell2.m in Sources */,
+				93FE45F5255165AB001987D0 /* EInspectionCreateVC.m in Sources */,
 				93F70D4322B0D7BA000B2D9D /* CreateDeliverOrderBean.m in Sources */,
 				93F70D2C22B0D7BA000B2D9D /* PurchaseProject.m in Sources */,
 				93F70D6C22B0D7BA000B2D9D /* MingPianShareViewController.m in Sources */,
@@ -9423,6 +9536,7 @@
 				93F70CCC22B0D7BA000B2D9D /* EnterpriseSpecialAppInfoBean.m in Sources */,
 				93F70F1122B0D7BB000B2D9D /* ECAddSupplierCell.m in Sources */,
 				93F70E2C22B0D7BB000B2D9D /* XunPanXiangQingViewController.m in Sources */,
+				93A4B9C82552A723008C407E /* InspectionBean.m in Sources */,
 				93C33EFA239A21BE0026D9EB /* WeiWaiSelectSupplierCell.swift in Sources */,
 				9359DD5B236835DD00811564 /* SongDaSearchViewController09.m in Sources */,
 				93F70F8222B0D7BB000B2D9D /* ShouHuoXiangQingCell1.m in Sources */,

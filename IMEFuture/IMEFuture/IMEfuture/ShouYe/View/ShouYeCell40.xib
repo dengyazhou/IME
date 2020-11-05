@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,7 +13,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="93"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="92.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="93"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Onv-bh-aYq">
@@ -31,16 +29,10 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开放大数据、工业大数据与工业互联网的关系" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2se-EK-4ao">
                                 <rect key="frame" x="135" y="17" width="225" height="33.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="33.5" id="z4d-nW-Y8e"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="63" id="z4d-nW-Y8e"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018-10-06" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HV8-Hy-qbi">
-                                <rect key="frame" x="135" y="61.5" width="58" height="12"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YDh-4J-L0T" userLabel="ViewLineTop">
@@ -75,14 +67,12 @@
                             <constraint firstAttribute="trailing" secondItem="H1M-XI-MV3" secondAttribute="trailing" id="Oo2-aK-FPO"/>
                             <constraint firstItem="yFt-Se-1cD" firstAttribute="leading" secondItem="Onv-bh-aYq" secondAttribute="leading" constant="15" id="T0s-2U-ULn"/>
                             <constraint firstItem="H1M-XI-MV3" firstAttribute="leading" secondItem="Onv-bh-aYq" secondAttribute="leading" id="dyn-AM-WCq"/>
-                            <constraint firstItem="HV8-Hy-qbi" firstAttribute="top" secondItem="2se-EK-4ao" secondAttribute="bottom" constant="11" id="e0H-cQ-WJm"/>
                             <constraint firstItem="2se-EK-4ao" firstAttribute="leading" secondItem="HGz-gu-8f1" secondAttribute="trailing" constant="15" id="kcw-HJ-ibj"/>
                             <constraint firstItem="HGz-gu-8f1" firstAttribute="centerY" secondItem="Onv-bh-aYq" secondAttribute="centerY" id="kdN-T2-9N8"/>
                             <constraint firstAttribute="bottom" secondItem="H1M-XI-MV3" secondAttribute="bottom" id="obK-YU-BR0"/>
                             <constraint firstItem="HGz-gu-8f1" firstAttribute="leading" secondItem="Onv-bh-aYq" secondAttribute="leading" constant="15" id="pcd-lM-kyJ"/>
                             <constraint firstAttribute="trailing" secondItem="2se-EK-4ao" secondAttribute="trailing" constant="15" id="rzb-Kw-zCg"/>
                             <constraint firstItem="YDh-4J-L0T" firstAttribute="leading" secondItem="Onv-bh-aYq" secondAttribute="leading" id="t0y-fF-ZNi"/>
-                            <constraint firstItem="HV8-Hy-qbi" firstAttribute="leading" secondItem="2se-EK-4ao" secondAttribute="leading" id="tlM-bc-f3M"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -96,7 +86,6 @@
             <connections>
                 <outlet property="imageView1" destination="HGz-gu-8f1" id="Mip-dc-5da"/>
                 <outlet property="labelContent" destination="2se-EK-4ao" id="WIB-y8-3WY"/>
-                <outlet property="labelDate" destination="HV8-Hy-qbi" id="p7r-26-XMu"/>
                 <outlet property="viewLineBottom" destination="H1M-XI-MV3" id="IcW-NJ-BkA"/>
                 <outlet property="viewLineBottom15" destination="yFt-Se-1cD" id="RLB-Xt-GCu"/>
                 <outlet property="viewLineTop" destination="YDh-4J-L0T" id="dM0-9G-BKf"/>
